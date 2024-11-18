@@ -1,0 +1,16 @@
+/* Define the size-variant mixin */
+@mixin size-variant($font-size, $padding) {
+  font-size: $font-size;
+  padding: $padding;
+}
+
+/* Define the color-variant mixin */
+@mixin color-variant($background-color, $text-color) {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+/* Use mixins in button classes */
+.xsSize--PrimaryButton {
+  @include size-variant(0.75rem, 0.4em 0.8em);
+}

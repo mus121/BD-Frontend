@@ -1,0 +1,27 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/primaryButton';
+@import '../../../../styles/mixin';
+
+.secondaryButtonGeneric {
+  @include center-flex();
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Apply size variants */
+.xsSize--SecondaryButton {
+  @include size-variant(12px, 8px 12px);
+}
+
+.smSize--SecondaryButton {
+  @include size-variant(14px, 10px 20px);
+}
+
+.baseSize--SecondaryButton {
+  @include size-variant(16px, 8px 12px);
+}
+
+.orange--SecondaryButton {
+  @include color-variant($Orange-400, $Orange-1000);
+}

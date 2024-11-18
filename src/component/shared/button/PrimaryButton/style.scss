@@ -1,0 +1,27 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/primaryButton';
+@import '../../../../styles/mixin';
+
+.primaryButtonGeneric {
+  @include center-flex();
+  border: 1px solid $Orange-400;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Apply size variants */
+.xsSize--PrimaryButton {
+  @include size-variant(12px, 8px 12px);
+}
+
+.smSize--PrimaryButton {
+  @include size-variant(14px, 10px 12px);
+}
+
+.baseSize--PrimaryButton {
+  @include size-variant(16px, 8px 12px);
+}
+
+.orange--PrimaryButton {
+  @include color-variant(unset, $Orange-400);
+}

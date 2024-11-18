@@ -1,0 +1,58 @@
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin justify-center {
+  display: flex;
+  justify-content: center;
+}
+@mixin justify-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+@mixin space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin space-evenly {
+  display: flex;
+  justify-content: space-around;
+}
+
+@mixin border-radius($radius: 8px) {
+  border-radius: $radius;
+}
+
+@mixin button-style($Gradient-Close, $text-color, $width: 32px, $height: 32px) {
+  background-color: $Gradient-Close;
+  color: $text-color;
+  width: $width;
+  height: $height;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 22px;
+  @include border-radius();
+}
+
+// Popup Message Mixin
+@mixin Cancel-Allow(
+  $font-size,
+  $weight,
+  $height,
+  $color,
+  $border-color,
+  $border-radius,
+  $font-weight
+) {
+  font-size: $font-size;
+  width: $weight;
+  height: $height;
+  color: $color;
+  border: 1px solid $border-color;
+  cursor: pointer;
+  background: none;
+  @include border-radius();
+}

@@ -1,3 +1,81 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "plugins": ["react", "jsx-a11y", "prettier", "import"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "no-console": "warn",
+    "semi": ["error", "always"],
+    "react/require-default-props": "off",
+    "react/button-has-type": "off",
+    // "space-before-function-paren": ["error", "never"],
+    "comma-dangle": ["error", "always-multiline"],
+    "function-paren-newline": ["error", "consistent"],
+    "operator-linebreak": ["error", "after"],
+    "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+    "no-underscore-dangle": ["error", { "allow": ["_source", "_id"] }],
+
+    // TypeScript-specific rules
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+
+    // React-specific rules
+    "react/jsx-curly-newline": "off", // Adjusted to avoid issues with Prettier
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-props-no-spreading": "off", // Allow prop spreading
+    "react/react-in-jsx-scope": "off", // Not needed in Next.js
+
+    // Accessibility rules
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+
+    // Import rules
+    "import/prefer-default-export": "off", // For flexibility with named exports
+
+    // Code style and formatting
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "all",
+        "endOfLine": "lf"
+      }
+    ],
+
+    // Additional settings for maintainability
+    "max-len": ["warn", { "code": 100 }],
+    "no-loop-func": "warn",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  }
 }

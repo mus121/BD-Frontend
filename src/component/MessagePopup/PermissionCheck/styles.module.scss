@@ -1,0 +1,14 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.Permissionitem {
+  @include space-between;
+  margin-top: 25px;
+  .Text {
+    flex: 1;
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-15;
+    margin-left: 12px;
+  }
+}

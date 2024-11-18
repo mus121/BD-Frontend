@@ -1,0 +1,31 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/primaryButton';
+@import '../../../../styles/mixin';
+
+.primaryButtonGeneric {
+  @include center-flex();
+  border: 1px solid rgba(94, 94, 94, 1);
+  border-radius: 8px;
+  cursor: pointer;
+  width: 72px;
+  height: 34px;
+  background-color: $gray-800;
+  color: $gray-100;
+}
+
+/* Apply size variants */
+.xsSize--TertiaryButton {
+  @include size-variant(12px, 8px 12px);
+}
+
+.smSize--TertiaryButton {
+  @include size-variant(0.875rem, 0.5em 1em);
+}
+
+.baseSize--TertiaryButton {
+  @include size-variant(12px, 8px 12px);
+}
+
+.orange--TertiaryButton {
+  @include color-variant($gray-100, $gray-100);
+}

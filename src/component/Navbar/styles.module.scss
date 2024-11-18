@@ -1,0 +1,10 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+
+.Navbar {
+  @include space-between;
+  box-sizing: border-box;
+  border-bottom: 2px solid $Gradient-bottom-Nav;
+  padding: 4px 32px;
+  z-index: 100;
+}

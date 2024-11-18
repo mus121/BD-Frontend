@@ -1,0 +1,15 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+@import '../../../styles/fonts';
+
+.Authbutton {
+  @include center-flex();
+  gap: 24px;
+  margin-top: 32px;
+}
+.Googleimg {
+  margin-right: 5px;
+}
+.Buttonoutlook {
+  opacity: 50%;
+}

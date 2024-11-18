@@ -1,0 +1,135 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+@import '../../styles/fonts';
+
+.Profilecard {
+  @include center-flex;
+  height: 89vh;
+  padding: 20px;
+
+  .Profilecontent {
+    padding: 80px 100px;
+    border: 1px solid $gray-800;
+    border-radius: 16px;
+    // background: $Gradient-Profile;
+    @include justify-center;
+
+    .Profiledata {
+      text-align: justify;
+      width: 498px;
+
+      .Title {
+        @include fontAlpha();
+        color: $white-color;
+        font-size: 35px;
+        line-height: 54px;
+        font-weight: 500;
+      }
+      .Description {
+        @include fontAlpha();
+        color: $gray-100;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        margin-top: 16px;
+      }
+      .Linkedincard {
+        border: 1px solid $gray-700;
+        border-radius: 16px;
+        padding: 32px;
+        margin-top: 40px;
+
+        .Linkedin {
+          display: flex;
+          .Linkedheading {
+            @include fontAlpha();
+            font-size: 16px;
+            line-height: 20px;
+            margin-left: 4px;
+            color: $gray-100;
+            font-weight: 400;
+            position: relative;
+            bottom: 2px;
+          }
+        }
+        .Carddata {
+          display: flex;
+          margin-top: 24px;
+          .Head {
+            margin-left: 10px;
+            h5 {
+              @include fontAlpha();
+              font-size: 24px;
+              list-style: 30px;
+              color: $gray-10;
+              font-weight: 600px;
+            }
+            span {
+              @include fontAlpha();
+              font-size: 16px;
+              line-height: 24px;
+              font-weight: 500;
+              color: $gray-25;
+            }
+          }
+        }
+      }
+      .CardLocation {
+        @include space-between();
+        margin-top: 24px;
+        .Location {
+          display: flex;
+          h5 {
+            @include fontAlpha();
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: $gray-300;
+            margin-left: 8px;
+          }
+        }
+        .University {
+          display: flex;
+          .Home {
+            position: relative;
+            top: 2px;
+          }
+          h5 {
+            @include fontAlpha();
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            color: $gray-300;
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+.CheckOut {
+  width: 498px;
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  margin-top: 24px;
+  h5 {
+    @include fontAlpha();
+    color: $gray-15;
+    font-size: 14px;
+    line-height: 21px;
+    margin-left: 5px;
+  }
+}
+.Buttons {
+  @include center-flex;
+  margin-top: 40px;
+  gap: 24px;
+  .Confirmbutton {
+    width: 506px;
+    // height: 43px;
+  }
+}
+.Userprofile {
+  border-radius: 50px;
+}

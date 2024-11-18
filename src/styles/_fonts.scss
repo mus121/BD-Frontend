@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Rubik:100,200,300,400,500,600,700,800,900');
+@import './colors';
+
+@mixin fontAlpha() {
+  font-family: Inter;
+}
+@mixin fontRubik() {
+  font-family: Rubik;
+  text-transform: uppercase;
+}
+@mixin text-xs(
+  $color: $orange-990,
+  $weight: 500,
+  $borderRadius: 0px,
+  $bgColor: transparent,
+  $size: 12px,
+  $padding: 0,
+  $margin: 0,
+  $lineHeight: 141.76%
+) {
+  @include fontAlpha();
+  border-radius: $borderRadius;
+  color: $color;
+  background-color: $bgColor;
+  margin: $margin;
+  padding: $padding;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lineHeight;
+}

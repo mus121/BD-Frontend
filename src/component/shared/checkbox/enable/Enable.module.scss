@@ -1,0 +1,57 @@
+@import '../../../../styles/colors';
+
+.customCheckboxContainer {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .customCheckbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: $gray-300;
+    border-radius: 4px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 5px;
+      top: 1px;
+      width: 4px;
+      height: 8px;
+      border: solid $gray-300;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  input[type='checkbox']:checked ~ .customCheckbox {
+    background-color: $Orange-400;
+
+    &::after {
+      display: block;
+      border-color: $white-color; // Change tick color to white
+    }
+  }
+
+  input[type='checkbox']:disabled ~ .customCheckbox {
+    background-color: $gray-300;
+    opacity: 0.6;
+
+    &::after {
+      display: block;
+      border-color: $white-color;
+    }
+  }
+}

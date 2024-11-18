@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_GOOGLE_API_LOGIN: process.env.NEXT_GOOGLE_API_LOGIN,
+  },
+};
 
 export default nextConfig;

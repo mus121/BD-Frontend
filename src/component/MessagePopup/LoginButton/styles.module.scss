@@ -1,0 +1,19 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+@import '../../../styles/fonts';
+
+.Button {
+  @include space-between();
+  margin-top: 24px;
+  .Cancel {
+    @include center-flex;
+    @include Cancel-Allow(12px, 180px, 34px, $Orange-400, $Orange-400, 8px, 500);
+    @include fontAlpha();
+  }
+  .Allow {
+    @include center-flex;
+    @include Cancel-Allow(12px, 180px, 34px, $Orange-1000, $Orange-400, 8px, 500);
+    @include fontAlpha();
+    background-color: $Orange-400;
+  }
+}

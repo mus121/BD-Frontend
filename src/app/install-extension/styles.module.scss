@@ -1,0 +1,50 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+@import '../../styles/fonts';
+
+.Extesnion {
+  @include center-flex;
+  height: 95vh;
+
+  .Linkextension {
+    padding: 100px 120px;
+    // height: 471px;
+    border: 1px solid $gray-700;
+    border-radius: 16px;
+    @include center-flex();
+
+    .Lextension {
+      text-align: justify;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 521px;
+    }
+
+    .Title {
+      @include fontAlpha();
+      color: $gray-10;
+      font-size: 36px;
+      line-height: 54px;
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: 0px;
+    }
+    .Description {
+      @include fontAlpha();
+      color: $gray-100;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .Buttoncenter {
+      @include center-flex();
+      .Installextension {
+        background-color: $orange-400;
+        width: 220px;
+        height: 34px;
+      }
+    }
+  }
+}
