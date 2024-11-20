@@ -4,6 +4,7 @@ import '../styles/globals.scss';
 import Providers from '../store/Providers';
 import Navbar from '../component/Navbar/Navbar';
 import QueryProvider from './QueryProvider';
+import Extensionsignal from '../component/Extensionsignal/index';
 
 export const metadata: Metadata = {
   title: 'Bussiness Development App',
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body>
         <QueryProvider>
           <Providers>
+            <Extensionsignal />
             <Navbar />
             {children}
           </Providers>

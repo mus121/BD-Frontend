@@ -4,7 +4,7 @@
 
 .Profilecard {
   @include center-flex;
-  height: 89vh;
+  height: 95vh;
   padding: 20px;
 
   .Profilecontent {
@@ -66,7 +66,7 @@
             }
             span {
               @include fontAlpha();
-              font-size: 16px;
+              font-size: 15px;
               line-height: 24px;
               font-weight: 500;
               color: $gray-25;
@@ -125,9 +125,11 @@
   @include center-flex;
   margin-top: 40px;
   gap: 24px;
+  .Notprofile {
+    width: 240px;
+  }
   .Confirmbutton {
-    width: 506px;
-    // height: 43px;
+    width: 240px;
   }
 }
 .Userprofile {

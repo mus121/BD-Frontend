@@ -8,7 +8,7 @@ function FollowProfile() {
     // Follow-Profile
     <div className={styles.Profiletop}>
       <div className={styles.Profilefollow}>
-        <h5>Follow profiles</h5>
+        <h5>Connect with Your Network</h5>
         <SecondaryButton
           colorVariant='lightGray'
           text='Follow 5 profiles'
@@ -20,16 +20,14 @@ function FollowProfile() {
 
       <div className={styles.Profiledescription}>
         <p>
-          Search and follow profiles to enhance your network. Upon your selection system will
-          suggest new profiles tailored to your preferences. Connect to enhance your business
-          growth.
+          Follow at least 5 profiles from your network to help us tailor recommendations to you.
         </p>
       </div>
 
       {/* Conatct Profiles */}
       <div className={styles.Contacttop}>
         <div className={styles.Conatctprofile}>
-          <h5>Contact Profiles</h5>
+          <h5>Your Connections</h5>
           <SearchProfile />
         </div>
       </div>

@@ -1,9 +1,11 @@
 import Image from 'next/image';
+import { useAppSelector } from '@/hooks/rtk';
 import styles from './styles.module.scss';
 import TertiaryButton from '../shared/button/TertiaryButton';
 import Location from '../common/svg/Location';
 
 function ConnectionProfileCard() {
+  // const profile = useAppSelector(state => state.)
   return (
     <div className={styles.Cardcontainer}>
       <div className={styles.Userprofile}>

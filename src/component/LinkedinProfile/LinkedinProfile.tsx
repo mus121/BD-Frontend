@@ -1,46 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useAppSelector } from '@/hooks/rtk';
 import styles from './styles.module.scss';
 import Home from '../common/svg/Home';
 import Location from '../common/svg/Location';
 import PrimaryButton from '../shared/button/PrimaryButton';
 import SecondaryButton from '../shared/button/SecondaryButton';
 import Check from '../shared/checkbox/enable/enable';
-import { email, name, userImg } from '../../actions';
 
 function LinkedinProfile() {
-  const [user, setUser] = useState({
-    username: '',
-    email: '',
-    userImage: '/assets/images/user.png',
-  });
-
-  useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const userEmail = await email();
-        const userName = await name();
-        const img = await userImg();
-
-        // Replace '+' with ' ' in the username
-        const cleanUserName = userName?.value.replace(/\+/g, ' ') || '';
-        setUser({
-          username: cleanUserName,
-          email: userEmail?.value || '',
-          userImage: img?.value || '',
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    fetchUserData();
-  }, []);
+  const miniProfile = useAppSelector(state => state.profile.miniProfile);
+  const imgUrl = miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl
+    ? `${miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl}${miniProfile.picture['com.linkedin.common.VectorImage'].artifacts[0]?.fileIdentifyingUrlPathSegment}`
+    : '';
   const router = useRouter();
-
   const followprofile = () => {
     router.push('/dashboard/follow');
   };
@@ -67,17 +42,21 @@ function LinkedinProfile() {
             </div>
             <div className={styles.Carddata}>
               <div className={styles.Usersimg}>
-                <img
-                  src={user.userImage}
-                  width={48}
-                  height={48}
-                  alt='User'
-                  className={styles.Userprofile}
-                />
+                {imgUrl && (
+                  <Image
+                    src={imgUrl}
+                    width={48}
+                    height={48}
+                    alt='User'
+                    className={styles.Userprofile}
+                  />
+                )}
               </div>
               <div className={styles.Head}>
-                <h5>{user.username}</h5>
-                <span>{user.email}</span>
+                <h5>
+                  {miniProfile.firstName} {miniProfile.lastName}
+                </h5>
+                <span>{miniProfile.occupation}</span>
               </div>
             </div>
             <div className={styles.CardLocation}>
@@ -109,6 +88,7 @@ function LinkedinProfile() {
               type='button'
               sizeVariant='base'
               colorVariant='orange'
+              primaryButtonClassName={styles.Notprofile}
             />
 
             <SecondaryButton

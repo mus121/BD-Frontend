@@ -28,6 +28,7 @@ function AuthenticationButton() {
           sizeVariant='xs'
           colorVariant='orange'
           onClick={handleButtonClick}
+          primaryButtonClassName={styles.Google}
         >
           <Image
             src='/assets/images/Google - Original.png'
@@ -45,7 +46,7 @@ function AuthenticationButton() {
           colorVariant='orange'
           primaryButtonClassName={styles.Buttonoutlook}
           onClick={handleButtonClick}
-          isDisabled
+          disabled
         >
           <Image
             src='/assets/images/outlook_icon.png'
