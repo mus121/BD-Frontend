@@ -46,13 +46,14 @@ const useExtension = () => {
 
   // Linkedin Connections
   const handleLinkedinConnections = useCallback(() => {
-    sendlinkedinprofile<{ response: any }>('LINKEDCONNECTION', pollCallbackProfile);
+    sendconnectionProfile<{ response: any }>('LINKEDCONNECTION', pollCallbackProfile);
   }, [pollCallbackProfile]);
 
   useEffect(() => {
     if (intervalRef.current === null) {
       handleCheckExtension();
       handleLinkedProfile();
+      handleLinkedinConnections();
       const newIntervalId = window.setInterval(handleCheckExtension, 5000);
       intervalRef.current = newIntervalId;
     }
@@ -65,3 +66,9 @@ const useExtension = () => {
   }, [handleCheckExtension, handleLinkedProfile, handleLinkedinConnections]);
 };
 export default useExtension;
+
+export const getMutualConnections = (setState: any) => {
+  sendlinkedinprofile<{ response: any }>('LINKEDCONNECTION', response => {
+    setState(response);
+  });
+};
