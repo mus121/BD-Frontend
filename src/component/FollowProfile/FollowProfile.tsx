@@ -54,8 +54,14 @@ function FollowProfile() {
                 firstName: connection.connectedMemberResolutionResult.firstName,
                 lastName: connection.connectedMemberResolutionResult.lastName,
                 headline: connection.connectedMemberResolutionResult.headline,
-                profilePicture: '',
-                location: 'Islamabad, Pakistan',
+                profilePicture:
+                  // eslint-disable-next-line no-unsafe-optional-chaining
+                  connection.connectedMemberResolutionResult.profilePicture?.displayImageReference
+                    ?.vectorImage?.rootUrl +
+                    // eslint-disable-next-line no-unsafe-optional-chaining
+                    connection.connectedMemberResolutionResult.profilePicture?.displayImageReference
+                      ?.vectorImage?.artifacts[2]?.fileIdentifyingUrlPathSegment || '',
+                location: '',
               }}
             />
           </div>

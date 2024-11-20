@@ -19,22 +19,22 @@ function ConnectionProfileCard({ profile }: ProfileProps) {
   return (
     <div className={styles.Cardcontainer}>
       <div className={styles.Userprofile}>
-        {/* <Image
+        <Image
           src={profilePicture || '/assets/images/Avatar.png'}
           alt={`${firstName} ${lastName}`}
           width={48}
           height={48}
           className={styles.Profileimg}
-        /> */}
+        />
         <div className={styles.Profile}>
           <h5>{`${firstName} ${lastName}`}</h5>
           <p>{headline}</p>
-          <div className={styles.Local}>
+          {/* <div className={styles.Local}>
             <span className={styles.Location}>
               <Location size={24} />
             </span>
             <span>{location}</span>
-          </div>
+          </div> */}
         </div>
       </div>
       <TertiaryButton

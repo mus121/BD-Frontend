@@ -5,11 +5,17 @@
 .Cardcontainer {
   @include justify-space-between();
   width: 488px;
+  height: 160px;
   padding: 20px 16px;
   border: 1px solid $gray-700;
   border-radius: 16px;
   .Userprofile {
     display: flex;
+    .Profileimg {
+      width: 48px;
+      height: 48px;
+      border-radius: 100px;
+    }
     .Profile {
       margin-left: 12px;
       h5 {
