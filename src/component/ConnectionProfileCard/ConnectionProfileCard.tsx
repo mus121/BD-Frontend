@@ -15,7 +15,6 @@ interface ProfileProps {
 
 function ConnectionProfileCard({ profile }: ProfileProps) {
   const { firstName, lastName, headline, profilePicture, location } = profile;
-
   return (
     <div className={styles.Cardcontainer}>
       <div className={styles.Userprofile}>
@@ -28,7 +27,14 @@ function ConnectionProfileCard({ profile }: ProfileProps) {
         />
         <div className={styles.Profile}>
           <h5>{`${firstName} ${lastName}`}</h5>
-          <p>{headline}</p>
+          <p>
+            {headline
+              ? headline.length > 50
+                ? `${headline.slice(0, 80)}...`
+                : headline
+              : 'No headline available'}
+          </p>
+
           {/* <div className={styles.Local}>
             <span className={styles.Location}>
               <Location size={24} />

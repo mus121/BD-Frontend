@@ -6,6 +6,7 @@ import SecondaryButton from '../shared/button/SecondaryButton';
 import SearchProfile from '../shared/search/Search';
 import ConnectionProfileCard from '../ConnectionProfileCard';
 import { getMutualConnections } from '../../hooks/useExtension';
+import Pagination from '../Pagination/index';
 
 function FollowProfile() {
   const [mutualConnections, setMutualConnections] = useState(null);
@@ -13,9 +14,8 @@ function FollowProfile() {
   useEffect(() => {
     getMutualConnections(setMutualConnections);
   }, []);
-  console.log('Mutual Connections', mutualConnections);
   if (mutualConnections === null) {
-    return <div className={styles.contactCard}>No Connections</div>;
+    return <div className={styles.contactCard}>Loading.....</div>;
   }
 
   return (
@@ -47,6 +47,7 @@ function FollowProfile() {
         {mutualConnections?.response.elements?.map((connection, index) => (
           <div
             className={styles.connectioncolumn}
+            // eslint-disable-next-line react/no-array-index-key
             key={index}
           >
             <ConnectionProfileCard
@@ -67,6 +68,15 @@ function FollowProfile() {
           </div>
         ))}
       </div>
+
+      <Pagination
+        totalItems={0}
+        itemsPerPage={0}
+        currentPage={1}
+        onPageChange={function (page: number): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
     </div>
   );
 }

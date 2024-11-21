@@ -2,6 +2,13 @@
 @import '../../styles/mixin';
 @import '../../styles/fonts';
 
+.contactCard {
+  @include center-flex();
+  color: $gray-600;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 50px;
+}
 .Profiletop {
   box-sizing: border-box;
   margin-top: 32px;

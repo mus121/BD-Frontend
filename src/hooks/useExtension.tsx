@@ -3,7 +3,6 @@ import { sendextensionmessage, sendlinkedinprofile, sendconnectionProfile } from
 import { useAppDispatch, useAppSelector } from './rtk';
 import { setIsExtensionInstalled } from '../store/slices/appslice';
 import { setMiniProfile } from '../store/slices/miniProfilesSlice';
-import { setConnectionProfile } from '../store/slices/profileConnections';
 
 const useExtension = () => {
   const dispatch = useAppDispatch();
@@ -28,14 +27,6 @@ const useExtension = () => {
     }
   }, []);
 
-  // Profile Connections
-  const pollCallbackProfile = useCallback((res: { response: any }) => {
-    if (res?.response) {
-      console.log('LinkedIn Connection Profile Data:', res.response);
-      dispatch(setConnectionProfile(res.response));
-    }
-  }, []);
-
   const handleCheckExtension = useCallback(() => {
     sendextensionmessage<{ signal: boolean }>('MESSAGE', pollCallback);
   }, [pollCallback]);
@@ -44,16 +35,10 @@ const useExtension = () => {
     sendlinkedinprofile<{ response: any }>('LINKEDINPROFILE', pollCallbackData);
   }, [pollCallbackData]);
 
-  // Linkedin Connections
-  const handleLinkedinConnections = useCallback(() => {
-    sendconnectionProfile<{ response: any }>('LINKEDCONNECTION', pollCallbackProfile);
-  }, [pollCallbackProfile]);
-
   useEffect(() => {
     if (intervalRef.current === null) {
       handleCheckExtension();
       handleLinkedProfile();
-      handleLinkedinConnections();
       const newIntervalId = window.setInterval(handleCheckExtension, 5000);
       intervalRef.current = newIntervalId;
     }
@@ -63,12 +48,12 @@ const useExtension = () => {
         intervalRef.current = null;
       }
     };
-  }, [handleCheckExtension, handleLinkedProfile, handleLinkedinConnections]);
+  }, [handleCheckExtension, handleLinkedProfile]);
 };
 export default useExtension;
 
 export const getMutualConnections = (setState: any) => {
-  sendlinkedinprofile<{ response: any }>('LINKEDCONNECTION', response => {
+  sendconnectionProfile<{ response: any }>('LINKEDCONNECTION', response => {
     setState(response);
   });
 };

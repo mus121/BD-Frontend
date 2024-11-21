@@ -1,0 +1,63 @@
+@import '../../styles/colors';
+@import '../../styles/fonts';
+@import '../../styles/mixin';
+
+.Paginationcontainer {
+  @include space-between();
+  height: 36px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: $gray-25;
+}
+
+// .Rangedisplay {
+//   font-size: 1rem;
+// }
+
+.paginationControls {
+  @include center-flex();
+  border-radius: 8px;
+}
+
+.Paginationbutton {
+  background: $gray-800;
+  border: 1px $gray-700;
+  color: $gray-100;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover:not(:disabled) {
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+.pageNumberButton {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    color 0.3s;
+  border-radius: 4px;
+
+  &:hover {
+    background: #6f42c1;
+    color: #ffffff;
+  }
+
+  &.activePage {
+    background: #6f42c1;
+    color: #ffffff;
+  }
+}
