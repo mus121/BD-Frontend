@@ -16,6 +16,7 @@ function FollowProfile() {
   const [mutualConnections, setMutualConnections] = useState(null);
   const [connectionCount, setConnectionCount] = useState(null);
   const [currentPage, setcurrentPage] = useState(0);
+  const [profiles, setProfiles] = useState<any>(null);
   useEffect(() => {
     getMutualConnections(setMutualConnections, currentPage);
     getTotalConnections(setConnectionCount);
@@ -24,6 +25,7 @@ function FollowProfile() {
   if (mutualConnections === null) {
     return <div className={styles.contactCard}>Loading.....</div>;
   }
+  console.log('Profilessss', profiles);
   const onPageChange = (Page: number) => {
     getMutualConnections(setMutualConnections, Page);
     setcurrentPage(Page);
@@ -48,53 +50,84 @@ function FollowProfile() {
       <div className={styles.Contacttop}>
         <div className={styles.Conatctprofile}>
           <h5>Your Connections</h5>
-          <SearchProfile />
+          <SearchProfile setProfiles={setProfiles} />
         </div>
         {/* Map mutualConnections */}
         <div className={styles.connectionsrid}>
-          {mutualConnections?.response.elements?.map(
-            (
-              connection: {
-                connectedMemberResolutionResult: {
-                  firstName: string;
-                  lastName: string;
-                  headline: string;
-                  profilePicture: {
-                    displayImageReference: {
-                      vectorImage: {
-                        rootUrl: any;
-                        artifacts: { fileIdentifyingUrlPathSegment: any }[];
+          {profiles !== null
+            ? profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
+                (element: any, index: Key | null | undefined) => {
+                  const lockup = element?.entityLockupView;
+                  const profilePictureDetails = lockup?.image?.attributes[0]?.detailData;
+                  const profilePicture =
+                    profilePictureDetails?.nonEntityProfilePicture?.vectorImage?.artifacts[0]
+                      ?.fileIdentifyingUrlPathSegment || '';
+                  const title = lockup?.title?.text || '';
+                  const [firstName, lastName] = title.split(' ') || ['', ''];
+                  const headline = lockup?.subtitle?.text || '';
+                  console.log('Profile', profilePictureDetails);
+                  return (
+                    <div
+                      className={styles.connectioncolumn}
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={index}
+                    >
+                      <ConnectionProfileCard
+                        profile={{
+                          firstName: firstName || '',
+                          lastName: lastName || '',
+                          headline,
+                          profilePicture,
+                          location: '', // Default to empty
+                        }}
+                      />
+                    </div>
+                  );
+                },
+              )
+            : mutualConnections?.response.elements?.map(
+                (
+                  connection: {
+                    connectedMemberResolutionResult: {
+                      firstName: string;
+                      lastName: string;
+                      headline: string;
+                      profilePicture: {
+                        displayImageReference: {
+                          vectorImage: {
+                            rootUrl: any;
+                            artifacts: { fileIdentifyingUrlPathSegment: any }[];
+                          };
+                        };
                       };
                     };
-                  };
-                };
-              },
-              index: Key | null | undefined,
-            ) => (
-              <div
-                className={styles.connectioncolumn}
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-              >
-                <ConnectionProfileCard
-                  profile={{
-                    firstName: connection?.connectedMemberResolutionResult?.firstName || '',
-                    lastName: connection?.connectedMemberResolutionResult?.lastName,
-                    headline: connection?.connectedMemberResolutionResult?.headline,
-                    profilePicture:
-                      // eslint-disable-next-line no-unsafe-optional-chaining
-                      connection?.connectedMemberResolutionResult?.profilePicture
-                        ?.displayImageReference?.vectorImage?.rootUrl +
-                        // eslint-disable-next-line no-unsafe-optional-chaining
-                        connection?.connectedMemberResolutionResult?.profilePicture
-                          ?.displayImageReference?.vectorImage?.artifacts[2]
-                          ?.fileIdentifyingUrlPathSegment || '',
-                    location: '',
-                  }}
-                />
-              </div>
-            ),
-          )}
+                  },
+                  index: Key | null | undefined,
+                ) => (
+                  <div
+                    className={styles.connectioncolumn}
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index}
+                  >
+                    <ConnectionProfileCard
+                      profile={{
+                        firstName: connection?.connectedMemberResolutionResult?.firstName || '',
+                        lastName: connection?.connectedMemberResolutionResult?.lastName,
+                        headline: connection?.connectedMemberResolutionResult?.headline,
+                        profilePicture:
+                          // eslint-disable-next-line no-unsafe-optional-chaining
+                          connection?.connectedMemberResolutionResult?.profilePicture
+                            ?.displayImageReference?.vectorImage?.rootUrl +
+                            // eslint-disable-next-line no-unsafe-optional-chaining
+                            connection?.connectedMemberResolutionResult?.profilePicture
+                              ?.displayImageReference?.vectorImage?.artifacts[2]
+                              ?.fileIdentifyingUrlPathSegment || '',
+                        location: '',
+                      }}
+                    />
+                  </div>
+                ),
+              )}
         </div>
       </div>
       <Pagination
