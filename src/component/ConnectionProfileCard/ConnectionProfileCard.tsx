@@ -30,7 +30,7 @@ function ConnectionProfileCard({ profile }: ProfileProps) {
           <p>
             {headline
               ? headline.length > 50
-                ? `${headline.slice(0, 80)}...`
+                ? `${headline.slice(0, 70)}...`
                 : headline
               : 'No headline available'}
           </p>

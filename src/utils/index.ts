@@ -26,7 +26,6 @@ export const sendconnectionProfile = <T>(
   if (chrome.runtime) {
     if (callback) {
       chrome.runtime.sendMessage(extensionId, { type, start }, response => {
-        console.log('Connection Response:', type, start, 'Response received:', response);
         if (callback) callback(response);
       });
     }
@@ -37,9 +36,30 @@ export const sendtotalconnection = <T>(type: string, callback?: (response: T) =>
   if (chrome.runtime) {
     if (callback) {
       chrome.runtime.sendMessage(extensionId, { type }, response => {
-        console.log('Connection Total Response:', type, 'Response received:', response);
         if (callback) callback(response);
       });
     }
   }
 };
+
+// export const sendProfileSearch = <T>(
+//   type: string,
+//   searchTerm?: string,
+//   callback?: (response: T) => void,
+// ) => {
+//   if (chrome.runtime) {
+//     const message: { type: string; searchTerm?: string } = { type };
+
+//     // Include searchTerm if provided
+//     if (searchTerm) {
+//       message.searchTerm = searchTerm;
+//     }
+
+//     if (callback) {
+//       chrome.runtime.sendMessage(extensionId, message, response => {
+//         console.log('Response', response);
+//         if (callback) callback(response);
+//       });
+//     }
+//   }
+// };

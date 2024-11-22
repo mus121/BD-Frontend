@@ -1,0 +1,28 @@
+@import '../../../styles/colors';
+
+.Searchbarcontainer {
+  position: relative;
+  width: 283px;
+  // display: contents;
+  .Searchbar {
+    display: flex;
+    align-items: center;
+    width: 283px;
+    height: 40px;
+    padding: 10px 16px;
+    border: 1px solid $gray-600;
+    border-radius: 8px;
+    background-color: $gray-800;
+    .Searchinput {
+      margin-left: 10px;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 400;
+      color: $gray-100;
+      background: none;
+      border: none;
+      width: 100%;
+      outline: none;
+    }
+  }
+}

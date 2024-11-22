@@ -4,6 +4,7 @@ import {
   sendlinkedinprofile,
   sendconnectionProfile,
   sendtotalconnection,
+  // sendProfileSearch,
 } from '../utils/index';
 import { useAppDispatch, useAppSelector } from './rtk';
 import { setIsExtensionInstalled } from '../store/slices/appslice';
@@ -59,12 +60,21 @@ export default useExtension;
 
 export const getMutualConnections = (setState: any, start: number = 0) => {
   sendconnectionProfile<{ response: any }>('LINKEDCONNECTION', start, response => {
+    console.log('Lined ', response);
     setState(response);
   });
 };
 
 export const getTotalConnections = (setState: any) => {
   sendtotalconnection<{ response: any }>('LINKEDTOTALCONNECTION', response => {
+    console.log('Response ', response);
     setState(response);
   });
 };
+
+// export const getProfileSearch = (searchTerm: string, setState: (response: any) => void) => {
+//   sendProfileSearch<{ response: any }>('SEARCHPROFILE', searchTerm, response => {
+//     console.log('Search Response', response);
+//     setState(response);
+//   });
+// };
