@@ -1,23 +1,28 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Key } from 'react';
 import styles from './styles.module.scss';
 import SecondaryButton from '../shared/button/SecondaryButton';
 import SearchProfile from '../shared/search/Search';
 import ConnectionProfileCard from '../ConnectionProfileCard';
-import { getMutualConnections } from '../../hooks/useExtension';
+import { getMutualConnections, getTotalConnections } from '../../hooks/useExtension';
 import Pagination from '../Pagination/index';
 
 function FollowProfile() {
   const [mutualConnections, setMutualConnections] = useState(null);
-
+  const [connectionCount, setConnectionCount] = useState(null);
+  const [currentPage, setcurrentPage] = useState(0);
   useEffect(() => {
-    getMutualConnections(setMutualConnections);
+    getMutualConnections(setMutualConnections, currentPage);
+    getTotalConnections(setConnectionCount);
   }, []);
   if (mutualConnections === null) {
     return <div className={styles.contactCard}>Loading.....</div>;
   }
-
+  const onPageChange = (Page: number) => {
+    getMutualConnections(setMutualConnections, Page);
+    setcurrentPage(Page);
+  };
   return (
     <div className={styles.Profiletop}>
       <div className={styles.Profilefollow}>
@@ -35,7 +40,6 @@ function FollowProfile() {
           Follow at least 5 profiles from your network to help us tailor recommendations to you.
         </p>
       </div>
-
       <div className={styles.Contacttop}>
         <div className={styles.Conatctprofile}>
           <h5>Your Connections</h5>
@@ -44,41 +48,57 @@ function FollowProfile() {
       </div>
       {/* Map mutualConnections */}
       <div className={styles.connectionsrid}>
-        {mutualConnections?.response.elements?.map((connection, index) => (
-          <div
-            className={styles.connectioncolumn}
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-          >
-            <ConnectionProfileCard
-              profile={{
-                firstName: connection.connectedMemberResolutionResult.firstName,
-                lastName: connection.connectedMemberResolutionResult.lastName,
-                headline: connection.connectedMemberResolutionResult.headline,
-                profilePicture:
-                  // eslint-disable-next-line no-unsafe-optional-chaining
-                  connection.connectedMemberResolutionResult.profilePicture?.displayImageReference
-                    ?.vectorImage?.rootUrl +
+        {mutualConnections?.response.elements?.map(
+          (
+            connection: {
+              connectedMemberResolutionResult: {
+                firstName: any;
+                lastName: any;
+                headline: any;
+                profilePicture: {
+                  displayImageReference: {
+                    vectorImage: {
+                      rootUrl: any;
+                      artifacts: { fileIdentifyingUrlPathSegment: any }[];
+                    };
+                  };
+                };
+              };
+            },
+            index: Key | null | undefined,
+          ) => (
+            <div
+              className={styles.connectioncolumn}
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+            >
+              <ConnectionProfileCard
+                profile={{
+                  firstName: connection?.connectedMemberResolutionResult?.firstName || '',
+                  lastName: connection?.connectedMemberResolutionResult?.lastName,
+                  headline: connection?.connectedMemberResolutionResult?.headline,
+                  profilePicture:
                     // eslint-disable-next-line no-unsafe-optional-chaining
-                    connection.connectedMemberResolutionResult.profilePicture?.displayImageReference
-                      ?.vectorImage?.artifacts[2]?.fileIdentifyingUrlPathSegment || '',
-                location: '',
-              }}
-            />
-          </div>
-        ))}
+                    connection?.connectedMemberResolutionResult?.profilePicture
+                      ?.displayImageReference?.vectorImage?.rootUrl +
+                      // eslint-disable-next-line no-unsafe-optional-chaining
+                      connection?.connectedMemberResolutionResult?.profilePicture
+                        ?.displayImageReference?.vectorImage?.artifacts[2]
+                        ?.fileIdentifyingUrlPathSegment || '',
+                  location: '',
+                }}
+              />
+            </div>
+          ),
+        )}
       </div>
-
       <Pagination
-        totalItems={0}
-        itemsPerPage={0}
-        currentPage={1}
-        onPageChange={function (page: number): void {
-          throw new Error('Function not implemented.');
-        }}
+        totalItems={connectionCount?.response.metadata.totalResultCount}
+        itemsPerPage={10}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
       />
     </div>
   );
 }
-
 export default FollowProfile;

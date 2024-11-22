@@ -11,17 +11,17 @@ interface PaginationProps {
 }
 
 function Pagination({
-  totalItems = 0,
+  totalItems = 10,
   itemsPerPage = 1,
-  currentPage,
+  currentPage = 1,
   onPageChange,
 }: PaginationProps) {
-  const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage)); // Ensure at least 1 page
-  const startItem = (currentPage - 1) * itemsPerPage + 1;
-  const endItem = Math.min(currentPage * itemsPerPage, totalItems);
+  const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
+  const startItem = currentPage * itemsPerPage + 1;
+  const endItem = Math.min((currentPage + 1) * itemsPerPage, totalItems);
 
   const handlePageClick = (page: number) => {
-    if (page >= 1 && page <= totalPages) {
+    if (page >= 0 && page <= totalPages) {
       onPageChange(page);
     }
   };
@@ -37,15 +37,15 @@ function Pagination({
       <div className={styles.paginationControls}>
         {/* Previous Button */}
         <button
-          className={`${styles.Paginationbutton} ${currentPage === 1 ? styles.disabled : ''}`}
+          className={`${styles.Paginationbutton} ${currentPage === 0 ? styles.disabled : ''}`}
           onClick={() => handlePageClick(currentPage - 1)}
-          disabled={currentPage === 1}
+          disabled={currentPage === 0}
         >
           Previous
         </button>
 
         {/* Page Numbers */}
-        {Array.from({ length: totalPages }, (_, index) => {
+        {/* {Array.from({ length: totalPages }, (_, index) => {
           const page = index + 1;
           return (
             <button
@@ -58,7 +58,7 @@ function Pagination({
               {page}
             </button>
           );
-        })}
+        })} */}
 
         {/* Next Button */}
         <button
