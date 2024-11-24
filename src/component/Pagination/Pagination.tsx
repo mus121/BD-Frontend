@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
 
 interface PaginationProps {
@@ -57,8 +57,7 @@ function Pagination({
             >
               {page}
             </button>
-          );
-        })} */}
+          ))}
 
         {/* Next Button */}
         <button

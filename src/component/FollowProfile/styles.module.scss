@@ -15,7 +15,7 @@
   flex-direction: column;
   display: flex;
   gap: 24px;
-  width: 1000px;
+  width: 1020px;
   margin-left: auto;
   margin-right: auto;
   // height: 888px;
@@ -32,6 +32,10 @@
       background-color: $gray-800;
       color: $gray-300;
       width: 240px;
+      &.suggested {
+        background-color: $orange-400;
+        color: black;
+      }
     }
   }
   .Profiledescription {
@@ -67,6 +71,10 @@
   gap: 16px; // Spacing between cards
   justify-content: space-between;
   margin-top: 16px;
+  max-height: 585px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 30px;
   .connectioncolumn {
     flex: 1 1 calc(50% - 16px); // Ensure two columns
     max-width: calc(50% - 16px); // Maintain two cards per row

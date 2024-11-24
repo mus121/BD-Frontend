@@ -60,4 +60,10 @@
 .Followaccount {
   width: 72px;
   height: 34px;
+  &.followed {
+    width: 103px;
+    height: 32px;
+    border-color: rgba(255, 141, 78, 1);
+    color: rgba(255, 141, 78, 1);
+  }
 }

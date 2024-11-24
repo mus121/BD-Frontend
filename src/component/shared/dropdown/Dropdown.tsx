@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './styles.module.scss';
+import Enter from '../../common/svg/Enter';
 
 interface DropdownProps {
   searchQuery: string;
@@ -28,6 +29,9 @@ const Dropdown: React.FC<DropdownProps> = ({ searchQuery }) => {
             className={styles.Item}
           >
             <p>{item}</p>
+            <span className={styles.Enter}>
+              <Enter size={24} />
+            </span>
           </div>
         ))}
       </div>

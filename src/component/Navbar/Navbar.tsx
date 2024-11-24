@@ -5,10 +5,7 @@ import styles from './styles.module.scss';
 function Navbar() {
   return (
     <nav className={styles.Navbar}>
-      <Link
-        href='/'
-        passHref
-      >
+      <Link href='/'>
         <Image
           src='/assets/images/Logo.png'
           alt='BD APP'

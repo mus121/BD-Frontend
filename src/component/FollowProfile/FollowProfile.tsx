@@ -5,11 +5,7 @@ import styles from './styles.module.scss';
 import SecondaryButton from '../shared/button/SecondaryButton';
 import SearchProfile from '../shared/search/Search';
 import ConnectionProfileCard from '../ConnectionProfileCard';
-import {
-  getMutualConnections,
-  getTotalConnections,
-  // getProfileSearch,
-} from '../../hooks/useExtension';
+import { getMutualConnections, getTotalConnections } from '../../hooks/useExtension';
 import Pagination from '../Pagination/index';
 
 function FollowProfile() {
@@ -17,15 +13,14 @@ function FollowProfile() {
   const [connectionCount, setConnectionCount] = useState(null);
   const [currentPage, setcurrentPage] = useState(0);
   const [profiles, setProfiles] = useState<any>(null);
+  const [followprofile, setFollowprofile] = useState<string[]>([]);
   useEffect(() => {
     getMutualConnections(setMutualConnections, currentPage);
     getTotalConnections(setConnectionCount);
-    // getProfileSearch();
   }, []);
   if (mutualConnections === null) {
     return <div className={styles.contactCard}>Loading.....</div>;
   }
-  console.log('Profilessss', profiles);
   const onPageChange = (Page: number) => {
     getMutualConnections(setMutualConnections, Page);
     setcurrentPage(Page);
@@ -36,10 +31,14 @@ function FollowProfile() {
         <h5>Connect with Your Network</h5>
         <SecondaryButton
           colorVariant='lightGray'
-          text='Follow 5 profiles'
+          text={
+            5 - followprofile.length <= 0
+              ? 'Suggested Profiles'
+              : `Follow ${5 - followprofile.length} profiles`
+          }
           type='button'
           sizeVariant='base'
-          secondaryButtonClassName={styles.Followbutton}
+          secondaryButtonClassName={`${styles.Followbutton} ${5 - followprofile.length <= 0 && styles.suggested}`}
         />
       </div>
       <div className={styles.Profiledescription}>
@@ -65,7 +64,6 @@ function FollowProfile() {
                   const title = lockup?.title?.text || '';
                   const [firstName, lastName] = title.split(' ') || ['', ''];
                   const headline = lockup?.subtitle?.text || '';
-                  console.log('Profile', profilePictureDetails);
                   return (
                     <div
                       className={styles.connectioncolumn}
@@ -78,7 +76,6 @@ function FollowProfile() {
                           lastName: lastName || '',
                           headline,
                           profilePicture,
-                          location: '', // Default to empty
                         }}
                       />
                     </div>
@@ -110,7 +107,10 @@ function FollowProfile() {
                     key={index}
                   >
                     <ConnectionProfileCard
+                      key={connection?.connectedMemberResolutionResult?.publicIdentifier}
                       profile={{
+                        publicIdentifier:
+                          connection?.connectedMemberResolutionResult?.publicIdentifier,
                         firstName: connection?.connectedMemberResolutionResult?.firstName || '',
                         lastName: connection?.connectedMemberResolutionResult?.lastName,
                         headline: connection?.connectedMemberResolutionResult?.headline,
@@ -122,8 +122,9 @@ function FollowProfile() {
                             connection?.connectedMemberResolutionResult?.profilePicture
                               ?.displayImageReference?.vectorImage?.artifacts[2]
                               ?.fileIdentifyingUrlPathSegment || '',
-                        location: '',
                       }}
+                      followprofile={followprofile}
+                      setFollowprofile={setFollowprofile}
                     />
                   </div>
                 ),

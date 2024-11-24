@@ -1,3 +1,5 @@
+@import './colors';
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,6 +19,7 @@
 }
 
 body {
+  height: 100vh;
   color: var(--foreground);
   background: linear-gradient(248.66deg, #020103 0%, #000000 49.48%, #161229 100%);
   font-family: Arial, Helvetica, sans-serif;
@@ -26,4 +29,27 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $gray-600 $gray-800;
+}
+/* chrome */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 5px;
+}
+*::-webkit-scrollbar-corner {
+  background: $gray-800;
+}
+*::-webkit-scrollbar-thumb {
+  // background-color: $tableScrollbar;
+  border-radius: 14px;
+  // border: 2px solid $tableScrollbar;
 }
