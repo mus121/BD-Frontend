@@ -1,6 +1,3 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
 
 interface PaginationProps {
@@ -10,32 +7,87 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-function Pagination({
-  totalItems = 10,
-  itemsPerPage = 1,
-  currentPage = 1,
-  onPageChange,
-}: PaginationProps) {
+function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: PaginationProps) {
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
-  const startItem = currentPage * itemsPerPage + 1;
-  const endItem = Math.min((currentPage + 1) * itemsPerPage, totalItems);
+
+  const startItem = currentPage * itemsPerPage;
+  const endItem = Math.min(startItem + itemsPerPage, totalItems);
 
   const handlePageClick = (page: number) => {
-    if (page >= 0 && page <= totalPages) {
+    if (page >= 0 && page < totalPages) {
       onPageChange(page);
     }
   };
 
+  const getVisiblePages = (): (number | string)[] => {
+    const pages: (number | string)[] = [];
+    // const totalVisiblePages = 4;
+
+    const showEllipsisBefore = currentPage > 2;
+    const showEllipsisAfter = currentPage < totalPages - 3;
+
+    pages.push(0);
+
+    if (showEllipsisBefore) {
+      pages.push('...');
+    }
+
+    let startPage = Math.max(1, currentPage - 1);
+    let endPage = Math.min(currentPage + 1, totalPages - 2);
+
+    if (currentPage <= 1) {
+      startPage = 1;
+      endPage = 3;
+    } else if (currentPage >= totalPages - 2) {
+      startPage = totalPages - 4;
+      endPage = totalPages - 2;
+    }
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+
+    if (showEllipsisAfter) {
+      pages.push('...');
+    }
+
+    if (totalPages > 1) {
+      pages.push(totalPages - 1);
+    }
+
+    return pages;
+  };
+
+  const renderPageItem = (page: number | string, index: number) => {
+    if (typeof page === 'number') {
+      return (
+        <button
+          key={index}
+          className={`${styles.pageNumberButton} ${currentPage === page ? styles.activePage : ''}`}
+          onClick={() => handlePageClick(page)}
+        >
+          {page + 1}
+        </button>
+      );
+    }
+    return (
+      <span
+        key={index}
+        className={styles.ellipsis}
+      >
+        {page}
+      </span>
+    );
+  };
+
   return (
     <div className={styles.Paginationcontainer}>
-      {/* Range display */}
       <div className={styles.Rangedisplay}>
-        {startItem} - {endItem} of {totalItems}
+        {startItem + 1} - {endItem} of {totalItems}
       </div>
 
-      {/* Pagination controls */}
       <div className={styles.paginationControls}>
-        {/* Previous Button */}
         <button
           className={`${styles.Paginationbutton} ${currentPage === 0 ? styles.disabled : ''}`}
           onClick={() => handlePageClick(currentPage - 1)}
@@ -44,28 +96,14 @@ function Pagination({
           Previous
         </button>
 
-        {/* Page Numbers */}
-        {/* {Array.from({ length: totalPages }, (_, index) => {
-          const page = index + 1;
-          return (
-            <button
-              key={page}
-              className={`${styles.pageNumberButton} ${
-                currentPage === page ? styles.activePage : ''
-              }`}
-              onClick={() => handlePageClick(page)}
-            >
-              {page}
-            </button>
-          ))}
+        {getVisiblePages().map(renderPageItem)}
 
-        {/* Next Button */}
         <button
           className={`${styles.Paginationbutton} ${
-            currentPage === totalPages ? styles.disabled : ''
+            currentPage === totalPages - 1 ? styles.disabled : ''
           }`}
           onClick={() => handlePageClick(currentPage + 1)}
-          disabled={currentPage === totalPages}
+          disabled={currentPage === totalPages - 1}
         >
           Next
         </button>

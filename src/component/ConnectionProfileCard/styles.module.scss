@@ -61,9 +61,11 @@
   width: 72px;
   height: 34px;
   &.followed {
+    @include justify-space-between();
     width: 103px;
     height: 32px;
-    border-color: rgba(255, 141, 78, 1);
-    color: rgba(255, 141, 78, 1);
+    border-color: $Orange-500;
+    color: $Orange-500;
+    background: none;
   }
 }

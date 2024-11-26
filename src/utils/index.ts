@@ -49,15 +49,12 @@ export const sendProfileSearch = <T>(
 ) => {
   if (chrome.runtime) {
     const message: { type: string; searchTerm?: string } = { type };
-
-    // Include searchTerm if provided
     if (searchTerm) {
       message.searchTerm = searchTerm;
     }
 
     if (callback) {
       chrome.runtime.sendMessage(extensionId, message, response => {
-        console.log('Response', response);
         if (callback) callback(response);
       });
     }

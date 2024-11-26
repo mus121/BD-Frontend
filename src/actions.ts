@@ -14,8 +14,8 @@ export async function name() {
   return user;
 }
 
-export async function userImg() {
-  const img = await cookies();
-  const userimg = await img.get('user_image');
-  return userimg;
+export async function id() {
+  const userid = await cookies();
+  const userss = await userid.get('user_id');
+  return userss;
 }

@@ -7,6 +7,7 @@ import SearchProfile from '../shared/search/Search';
 import ConnectionProfileCard from '../ConnectionProfileCard';
 import { getMutualConnections, getTotalConnections } from '../../hooks/useExtension';
 import Pagination from '../Pagination/index';
+import { getsubmitData } from '../../api/Followinglinkedinprofile';
 
 function FollowProfile() {
   const [mutualConnections, setMutualConnections] = useState(null);
@@ -14,17 +15,29 @@ function FollowProfile() {
   const [currentPage, setcurrentPage] = useState(0);
   const [profiles, setProfiles] = useState<any>(null);
   const [followprofile, setFollowprofile] = useState<string[]>([]);
+
   useEffect(() => {
-    getMutualConnections(setMutualConnections, currentPage);
-    getTotalConnections(setConnectionCount);
+    const fetchData = async () => {
+      getMutualConnections(setMutualConnections, currentPage);
+      getTotalConnections(setConnectionCount);
+      const response = await getsubmitData();
+      console.log('Res', response);
+      const uniqueProfiles = [...new Set(response)];
+      setFollowprofile(uniqueProfiles);
+    };
+    fetchData();
   }, []);
+
+  const onPageChange = (Page: number) => {
+    setcurrentPage(Page);
+    getMutualConnections(setMutualConnections, Page);
+  };
+
+  // Return loading state
   if (mutualConnections === null) {
     return <div className={styles.contactCard}>Loading.....</div>;
   }
-  const onPageChange = (Page: number) => {
-    getMutualConnections(setMutualConnections, Page);
-    setcurrentPage(Page);
-  };
+
   return (
     <div className={styles.Profiletop}>
       <div className={styles.Profilefollow}>
@@ -33,12 +46,13 @@ function FollowProfile() {
           colorVariant='lightGray'
           text={
             5 - followprofile.length <= 0
-              ? 'Suggested Profiles'
+              ? 'Suggest Profiles'
               : `Follow ${5 - followprofile.length} profiles`
           }
           type='button'
           sizeVariant='base'
-          secondaryButtonClassName={`${styles.Followbutton} ${5 - followprofile.length <= 0 && styles.suggested}`}
+          secondaryButtonClassName={`${styles.Followbutton}
+          ${5 - followprofile.length <= 0 && styles.suggested}`}
         />
       </div>
       <div className={styles.Profiledescription}>
@@ -51,7 +65,6 @@ function FollowProfile() {
           <h5>Your Connections</h5>
           <SearchProfile setProfiles={setProfiles} />
         </div>
-        {/* Map mutualConnections */}
         <div className={styles.connectionsrid}>
           {profiles !== null
             ? profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
@@ -67,7 +80,6 @@ function FollowProfile() {
                   return (
                     <div
                       className={styles.connectioncolumn}
-                      // eslint-disable-next-line react/no-array-index-key
                       key={index}
                     >
                       <ConnectionProfileCard
@@ -77,6 +89,8 @@ function FollowProfile() {
                           headline,
                           profilePicture,
                         }}
+                        followprofile={followprofile}
+                        setFollowprofile={setFollowprofile}
                       />
                     </div>
                   );
@@ -86,6 +100,9 @@ function FollowProfile() {
                 (
                   connection: {
                     connectedMemberResolutionResult: {
+                      entityUrn: string;
+                      memorialized: any;
+                      publicIdentifier: string;
                       firstName: string;
                       lastName: string;
                       headline: string;
@@ -103,15 +120,15 @@ function FollowProfile() {
                 ) => (
                   <div
                     className={styles.connectioncolumn}
-                    // eslint-disable-next-line react/no-array-index-key
                     key={index}
                   >
                     <ConnectionProfileCard
                       key={connection?.connectedMemberResolutionResult?.publicIdentifier}
                       profile={{
+                        entityUrn: connection?.connectedMemberResolutionResult?.entityUrn,
                         publicIdentifier:
                           connection?.connectedMemberResolutionResult?.publicIdentifier,
-                        firstName: connection?.connectedMemberResolutionResult?.firstName || '',
+                        firstName: connection?.connectedMemberResolutionResult?.firstName,
                         lastName: connection?.connectedMemberResolutionResult?.lastName,
                         headline: connection?.connectedMemberResolutionResult?.headline,
                         profilePicture:
@@ -131,13 +148,16 @@ function FollowProfile() {
               )}
         </div>
       </div>
-      <Pagination
-        totalItems={connectionCount?.response.metadata.totalResultCount}
-        itemsPerPage={10}
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-      />
+      {profiles === null && (
+        <Pagination
+          totalItems={connectionCount?.response.metadata.totalResultCount}
+          itemsPerPage={10}
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+        />
+      )}
     </div>
   );
 }
+
 export default FollowProfile;

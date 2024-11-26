@@ -1,6 +1,5 @@
 import Providers from '../../store/Providers';
 import QueryProvider from '../QueryProvider';
-// import Navbar from '../../component/Navbar';
 
 export default function RootLayout({
   children,
@@ -11,10 +10,7 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <QueryProvider>
-          <Providers>
-            {/* <Navbar /> */}
-            {children}
-          </Providers>
+          <Providers>{children}</Providers>
         </QueryProvider>
       </body>
     </html>
