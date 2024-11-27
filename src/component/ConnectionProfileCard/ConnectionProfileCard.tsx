@@ -2,8 +2,7 @@ import Image from 'next/image';
 import styles from './styles.module.scss';
 import TertiaryButton from '../shared/button/TertiaryButton';
 import Followingcheck from '../common/svg/Followingcheck';
-import { submitData } from '../../api/Followlinkedinprofile';
-// import { getsubmitData } from '../../api/Followinglinkedinprofile';
+import { submitData } from '../../app/api/Followlinkedinprofile';
 
 type ProfileProps = {
   profile: {
@@ -21,14 +20,11 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
   const isFollowed = followprofile.includes(publicIdentifier);
 
-  const onClick = () => {
-    submitData(publicIdentifier, entityUrn, true);
-    if (!setFollowprofile) return;
-    if (isFollowed) {
-      setFollowprofile(prev => prev.filter(value => value !== publicIdentifier));
-    } else {
-      setFollowprofile(prev => [...prev, publicIdentifier]);
-    }
+  const onClick = async () => {
+    setFollowprofile(prev =>
+      isFollowed ? prev.filter(value => value !== publicIdentifier) : [...prev, publicIdentifier],
+    );
+    submitData(publicIdentifier, entityUrn, !isFollowed);
   };
 
   return (

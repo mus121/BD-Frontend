@@ -7,7 +7,7 @@ import SearchProfile from '../shared/search/Search';
 import ConnectionProfileCard from '../ConnectionProfileCard';
 import { getMutualConnections, getTotalConnections } from '../../hooks/useExtension';
 import Pagination from '../Pagination/index';
-import { getsubmitData } from '../../api/Followinglinkedinprofile';
+import { getsubmitData } from '../../app/api/Followinglinkedinprofile';
 
 function FollowProfile() {
   const [mutualConnections, setMutualConnections] = useState(null);
@@ -21,7 +21,6 @@ function FollowProfile() {
       getMutualConnections(setMutualConnections, currentPage);
       getTotalConnections(setConnectionCount);
       const response = await getsubmitData();
-      console.log('Res', response);
       const uniqueProfiles = [...new Set(response)];
       setFollowprofile(uniqueProfiles);
     };

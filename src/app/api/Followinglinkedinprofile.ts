@@ -20,12 +20,12 @@ const postApi = async (url: string): Promise<any> => {
   }
 };
 
+// eslint-disable-next-line consistent-return
 export const getsubmitData = async () => {
   const apiUrl = 'http://localhost:8000/api/linkedinProfile';
   try {
     const response = await postApi(apiUrl);
     return response.profiles.map(({ publicIdentifier }) => publicIdentifier);
-    console.log('API Response:', response);
   } catch (error) {
     console.error('Failed to submit data:', error);
   }
