@@ -1,18 +1,21 @@
 @import '../../../styles/colors';
+@import '../../../styles/mixin';
+@import '../../../styles/fonts';
 
 .Dropdown {
   position: absolute;
   top: 100%;
   left: 0;
   width: 283px;
-  height: auto;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: $gray-800;
   border: 1px solid $gray-700;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-top: 8px;
   z-index: 10;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
   .Section {
     .Sectiontitle {
       padding: 8px 16px;
@@ -23,59 +26,116 @@
         color: $gray-25;
       }
     }
-
-    .Item {
-      padding: 8px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .Profileitem {
+      @include space-between();
+      padding: 10px;
       border-radius: 4px;
-      cursor: pointer;
-      width: 283px;
-      height: 40px;
-      gap: 12px;
+      transition: background-color 0.3s ease;
 
-      p {
-        font-size: 14px;
-        line-height: 21px;
-        font-weight: 600;
-        color: $gray-25;
-      }
+      // &:hover {
+      //   background-color: $gray-25;
+      // }
+    }
+    .Enter {
+      visibility: hidden;
+    }
+    &:hover {
+      background: $gray-700;
       .Enter {
-        visibility: hidden;
-      }
-      &:hover {
-        background: $gray-700;
-        .Enter {
-          visibility: visible;
-        }
+        visibility: visible;
       }
     }
   }
-
-  .NoResults {
-    padding: 8px 16px;
-    font-size: 12px;
-    color: $gray-400;
-  }
 }
 
-.Contactname {
+//   .Section {
+//     .Sectiontitle {
+//       padding: 8px 16px;
+//       p {
+//         font-size: 12px;
+//         font-weight: 300;
+//         line-height: 18px;
+//         color: $gray-25;
+//       }
+//     }
+
+//     .Item {
+//       padding: 8px 16px;
+//       display: flex;
+//       align-items: center;
+//       justify-content: space-between;
+//       border-radius: 4px;
+//       cursor: pointer;
+//       width: 283px;
+//       height: 40px;
+//       gap: 12px;
+
+//       p {
+//         font-size: 14px;
+//         line-height: 21px;
+//         font-weight: 600;
+//         color: $gray-25;
+//       }
+//       .Enter {
+//         visibility: hidden;
+//       }
+//       &:hover {
+//         background: $gray-700;
+//         .Enter {
+//           visibility: visible;
+//         }
+//       }
+//     }
+//   }
+
+//   .NoResults {
+//     padding: 8px 16px;
+//     font-size: 12px;
+//     color: $gray-400;
+//   }
+// }
+
+// .Contactname {
+//   font-size: 14px;
+//   font-weight: 600;
+//   line-height: 21px;
+//   color: $gray-25;
+// }
+
+// .Contactrole {
+//   font-size: 12px;
+//   color: $gray-400;
+//   padding-left: 10px;
+// }
+
+// .hr {
+//   margin: 0;
+//   border: none;
+//   height: 1px;
+//   background-color: $gray-600;
+// }
+
+.ProfileImage {
+  margin-right: 12px;
+}
+
+.ProfileImg {
+  border-radius: 50%;
+}
+
+.ProfileDetails {
+  flex-grow: 1;
+}
+
+.ContactName {
+  display: block;
   font-size: 14px;
-  font-weight: 600;
-  line-height: 21px;
-  color: $gray-25;
+  font-weight: 500;
+  color: $gray-100;
 }
 
-.Contactrole {
+.ContactRole {
+  display: block;
   font-size: 12px;
-  color: $gray-400;
-  padding-left: 10px;
-}
-
-.hr {
-  margin: 0;
-  border: none;
-  height: 1px;
-  background-color: $gray-600;
+  color: $gray-100;
 }

@@ -26,7 +26,7 @@ export const submitData = async (
   entityUrn: string,
   isConnected: boolean,
 ) => {
-  const apiUrl = 'http://localhost:8000/api/linkedinProfile';
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/linkedinProfile`;
   const requestBody = {
     publicIdentifier,
     entityUrn,

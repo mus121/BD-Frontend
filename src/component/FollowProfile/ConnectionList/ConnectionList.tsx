@@ -26,6 +26,7 @@ function ConnectionList({
               const headline = lockup?.subtitle?.text || '';
               return (
                 <ProfileCard
+                  // eslint-disable-next-line react/no-array-index-key
                   key={index}
                   profile={{ firstName, lastName, headline, profilePicture }}
                   followprofile={followprofile}

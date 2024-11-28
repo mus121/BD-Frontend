@@ -1,11 +1,11 @@
 import styles from './styles.module.scss';
 
-interface PaginationProps {
+type PaginationProps = {
   totalItems: number;
   itemsPerPage: number;
   currentPage: number;
   onPageChange: (page: number) => void;
-}
+};
 
 function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: PaginationProps) {
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));

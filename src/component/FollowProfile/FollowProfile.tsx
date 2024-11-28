@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, Key } from 'react';
+import { useState, useEffect } from 'react';
+// import { useQuery, useQueryClient } from '@tanstack/react-query';
 import styles from './styles.module.scss';
 import SecondaryButton from '../shared/button/SecondaryButton';
 import SearchProfile from '../shared/search/Search';

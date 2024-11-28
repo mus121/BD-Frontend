@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useMutation } from '@tanstack/react-query';
 import styles from './styles.module.scss';
 import TertiaryButton from '../shared/button/TertiaryButton';
 import Followingcheck from '../common/svg/Followingcheck';
@@ -16,16 +17,47 @@ type ProfileProps = {
   followprofile: string[];
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>;
 };
+
+const truncateHeadline = (headline: string, maxLength: number = 70): string => {
+  if (!headline) return 'No headline available';
+  return headline.length > maxLength ? `${headline.slice(0, maxLength)}...` : headline;
+};
+
+const followMutationFn = async (action: {
+  follow: boolean;
+  identifier: string;
+  entityUrn: string;
+}) => submitData(action.identifier, action.entityUrn, action.follow);
+
 function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }: ProfileProps) {
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
+
   const isFollowed = followprofile.includes(publicIdentifier);
 
-  const onClick = async () => {
-    setFollowprofile(prev =>
-      isFollowed ? prev.filter(value => value !== publicIdentifier) : [...prev, publicIdentifier],
-    );
-    submitData(publicIdentifier, entityUrn, !isFollowed);
+  const mutation = useMutation({
+    mutationFn: followMutationFn,
+    onSuccess: (data, variables) => {
+      setFollowprofile(prev =>
+        variables.follow
+          ? [...prev, variables.identifier]
+          : prev.filter(value => value !== variables.identifier),
+      );
+    },
+    onError: error => {
+      console.error('Error following/unfollowing:', error);
+    },
+  });
+
+  // Toggle follow/unfollow state
+  const handleFollowToggle = () => {
+    mutation.mutate({
+      follow: !isFollowed,
+      identifier: publicIdentifier,
+      entityUrn,
+    });
   };
+
+  const headlineText = truncateHeadline(headline);
 
   return (
     <div className={styles.Cardcontainer}>
@@ -39,14 +71,7 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
         />
         <div className={styles.Profile}>
           <h5>{`${firstName} ${lastName}`}</h5>
-          <p title={headline}>
-            {(() => {
-              if (!headline) {
-                return 'No headline available';
-              }
-              return headline.length > 50 ? `${headline.slice(0, 70)}...` : headline;
-            })()}
-          </p>
+          <p title={headline}>{headlineText}</p>
         </div>
       </div>
       <TertiaryButton
@@ -63,7 +88,8 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
         }
         tertiaryButtonClassName={`${styles.Followaccount} ${isFollowed && styles.followed}`}
         sizeVariant='base'
-        onClick={onClick}
+        onClick={handleFollowToggle}
+        disabled={mutation.isLoading}
       />
     </div>
   );

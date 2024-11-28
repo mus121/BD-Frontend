@@ -60,14 +60,12 @@ export default useExtension;
 
 export const getMutualConnections = (setState: any, start: number = 0) => {
   sendconnectionProfile<{ response: any }>('LINKEDCONNECTION', start, response => {
-    console.log('Lined ', response);
     setState(response);
   });
 };
 
 export const getTotalConnections = (setState: any) => {
   sendtotalconnection<{ response: any }>('LINKEDTOTALCONNECTION', response => {
-    console.log('Response ', response);
     setState(response);
   });
 };
@@ -77,7 +75,6 @@ export const getProfileSearch = (searchTerm: string, setState: (response: any) =
     if (response.error) {
       return setState(null);
     }
-    console.log('Search Response', response);
     return setState(response);
   });
 };
