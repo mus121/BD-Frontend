@@ -1,0 +1,48 @@
+@import '../../../../styles/colors';
+@import '../../../../styles//fonts';
+@import '../../../../styles/mixin';
+
+.Eventimpact {
+  margin-top: 24px;
+  h5 {
+    @include fontAlpha();
+    display: flex;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: $gray-100;
+  }
+  .Impact {
+    margin-top: 8px;
+    width: 625px;
+    height: 97px;
+    border: 1px $Gradient-Grey-Black;
+    border-radius: 8px;
+    padding: 16px 12px;
+    background: $Gradient-Grey-Black;
+    h5 {
+      @include fontAlpha();
+      display: flex;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      color: $gray-100;
+    }
+    .Scoreterm {
+      @include justify-space-between();
+      .Score {
+        margin-top: 8px;
+        span {
+          @include fontAlpha();
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 21px;
+          margin-right: 135px;
+          position: relative;
+          top: 8px;
+          color: $gray-100;
+        }
+      }
+    }
+  }
+}

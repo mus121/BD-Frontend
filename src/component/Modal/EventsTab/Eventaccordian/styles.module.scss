@@ -1,0 +1,19 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.Eventaccordian {
+  margin-top: 8px;
+  width: 625px;
+  border: 1px solid $Gradient-Grey-Black;
+  border-radius: 8px;
+  padding: 16px 12px;
+  background: $Gradient-Grey-Black;
+  h5 {
+    @include fontAlpha();
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: $gray-100;
+  }
+}

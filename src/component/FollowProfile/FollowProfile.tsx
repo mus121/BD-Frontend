@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 // import { useQuery, useQueryClient } from '@tanstack/react-query';
 import styles from './styles.module.scss';
 import SecondaryButton from '../shared/button/SecondaryButton';
-import SearchProfile from '../shared/search/Search';
+import SearchProfile from '../SearchProfile/Search';
 import ConnectionProfileCard from '../ConnectionProfileCard';
 import { getMutualConnections, getTotalConnections } from '../../hooks/useExtension';
 import Pagination from '../Pagination/index';
@@ -16,6 +17,7 @@ function FollowProfile() {
   const [currentPage, setcurrentPage] = useState(0);
   const [profiles, setProfiles] = useState<any>(null);
   const [followprofile, setFollowprofile] = useState<string[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,10 +40,17 @@ function FollowProfile() {
     return <div className={styles.contactCard}>Loading.....</div>;
   }
 
+  const handleButtonClick = () => {
+    if (5 - followprofile.length <= 0) {
+      // Navigate to the desired page
+      router.push('/home');
+    }
+  };
+
   return (
     <div className={styles.Profiletop}>
       <div className={styles.Profilefollow}>
-        <h5>Connect with Your Network</h5>
+        <h5>Follow Important Profiles</h5>
         <SecondaryButton
           colorVariant='lightGray'
           text={
@@ -52,7 +61,8 @@ function FollowProfile() {
           type='button'
           sizeVariant='base'
           secondaryButtonClassName={`${styles.Followbutton}
-          ${5 - followprofile.length <= 0 && styles.suggested}`}
+        ${5 - followprofile.length <= 0 && styles.suggested}`}
+          onClick={handleButtonClick} // Add click handler
         />
       </div>
       <div className={styles.Profiledescription}>
@@ -83,6 +93,9 @@ function FollowProfile() {
                       key={index}
                     >
                       <ConnectionProfileCard
+                        // key={profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
+                        //   element?.entityLockupView?.trackingId,
+                        // )}
                         profile={{
                           firstName: firstName || '',
                           lastName: lastName || '',

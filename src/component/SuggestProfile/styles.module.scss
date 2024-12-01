@@ -1,0 +1,48 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+@import '../../styles/fonts';
+
+.Suggestprofile {
+  box-sizing: border-box;
+  margin-top: 32px;
+  flex-direction: column;
+  display: flex;
+  gap: 24px;
+  width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+  .Suggestheading {
+    @include space-between();
+    h5 {
+      @include fontAlpha();
+      font-size: 30px;
+      line-height: 45px;
+      color: $gray-10;
+      font-weight: 600;
+    }
+  }
+  .Suggestedescription {
+    p {
+      @include fontAlpha();
+      width: fit-content;
+      color: $gray-100;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  .Suggesttop {
+    // margin-top: 24px;
+    .Suggestconnection {
+      @include space-between();
+
+      h5 {
+        @include fontAlpha();
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 600;
+        color: $gray-10;
+      }
+    }
+  }
+}

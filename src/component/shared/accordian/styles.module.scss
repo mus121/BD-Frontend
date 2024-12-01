@@ -1,0 +1,64 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.Accordion {
+  width: 601px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.Accordionitem {
+  border-bottom: 1px solid $gray-700;
+  border-radius: 8px;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.Accordionheader {
+  @include fontAlpha();
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  background: none;
+  width: 601px;
+  border: none;
+  color: $gray-25;
+  &.active {
+    // background-color: #e0e0e0;
+  }
+}
+
+.Chevron {
+  transition: transform 0.3s ease;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.Accordioncontent {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+
+  &.open {
+    max-height: 150px; 
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-100;
+    padding: 12px 8px;
+    display: flex;
+    text-align: left;
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.Searchbar {
+  display: flex;
+  align-items: center;
+  width: 283px;
+  height: 40px;
+  padding: 10px 16px;
+  border: 1px solid $gray-600;
+  border-radius: 8px;
+  background-color: $gray-800;
+  .Searchinput {
+    margin-left: 10px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    color: $gray-100;
+    background: none;
+    border: none;
+    width: 100%;
+    outline: none;
+  }
+}
+
+.Clearbutton {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  color: $gray-25;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  &:hover {
+    background-color: $gray-700;
+  }
+}

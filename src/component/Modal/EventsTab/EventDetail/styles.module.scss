@@ -1,0 +1,184 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.Eventdetail {
+  width: 657px;
+  border: 1px solid $gray-800;
+  border-radius: 8px;
+  background: $Gradient-Grey-Black;
+  padding: 20px 16px;
+  margin-top: 16px;
+
+  // News Style
+  .Eventnews {
+    @include justify-space-between();
+    .Newshead {
+      width: 413px;
+      height: 21px;
+      display: flex;
+      h5 {
+        @include fontAlpha();
+        font-size: 14px;
+        line-height: 21px;
+        font-weight: 400;
+        color: $gray-100;
+      }
+    }
+    .Eventdates {
+      width: 196px;
+      height: 21px;
+      gap: 8px;
+      display: flex;
+      h5 {
+        @include fontAlpha();
+        font-size: 11px;
+        line-height: 18px;
+        font-weight: 400;
+        color: $gray-300;
+        position: relative;
+        left: 15px;
+      }
+      .Borderline {
+        border-left: 1px solid $gray-500;
+        width: 12px;
+        height: 12px;
+        position: relative;
+        left: 15px;
+        top: 3px;
+      }
+      .Readnow {
+        @include fontAlpha();
+        background: none;
+        border: none;
+        color: $blue-500;
+        font-size: 12px;
+        line-height: 21px;
+        font-weight: 400;
+        padding: 0px;
+        position: relative;
+        bottom: 8px;
+      }
+    }
+  }
+  .Eventsheading {
+    h5 {
+      @include fontAlpha();
+      display: flex;
+      font-size: 18px;
+      line-height: 27px;
+      font-weight: 400;
+      color: $gray-10;
+      margin-top: 8px;
+    }
+    p {
+      @include fontAlpha();
+      text-align: left;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      color: $gray-100;
+      margin-top: 8px;
+    }
+    .Partnership {
+      @include fontAlpha();
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+      color: $orange-700;
+      text-align: left;
+      display: flex;
+      margin-top: 6px;
+    }
+  }
+  .Seprator {
+    margin-top: 20px;
+    width: 625px;
+    border: 1px solid $gray-600;
+  }
+
+  // LeaderShip Style
+  .Eventleader {
+    @include justify-space-between();
+    margin-top: 20px;
+    .Leaderhead {
+      width: 364px;
+      height: 21px;
+      display: flex;
+      h5 {
+        @include fontAlpha();
+        font-size: 14px;
+        line-height: 21px;
+        font-weight: 400;
+        color: $gray-100;
+      }
+    }
+    .Leaderdates {
+      width: 245px;
+      height: 21px;
+      gap: 8px;
+      display: flex;
+      justify-content: space-around;
+      h5 {
+        @include fontAlpha();
+        font-size: 11px;
+        line-height: 18px;
+        font-weight: 400;
+        color: $gray-300;
+        position: relative;
+        left: 15px;
+      }
+      .Borderline {
+        border-left: 1px solid $gray-500;
+        width: 12px;
+        height: 12px;
+        position: relative;
+        left: 15px;
+        top: 3px;
+      }
+      .Linkedin {
+        @include fontAlpha();
+        background: none;
+        border: none;
+        color: $blue-500;
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 400;
+        padding: 0px;
+        position: relative;
+        bottom: 8px;
+        display: contents;
+      }
+    }
+  }
+  .Eventsleader {
+    h5 {
+      @include fontAlpha();
+      display: flex;
+      font-size: 18px;
+      line-height: 27px;
+      font-weight: 400;
+      color: $gray-10;
+      margin-top: 8px;
+    }
+    p {
+      @include fontAlpha();
+      text-align: left;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      color: $gray-100;
+      margin-top: 8px;
+    }
+    .Leadership {
+      @include fontAlpha();
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+      color: $orange-700;
+      text-align: left;
+      display: flex;
+      margin-top: 6px;
+    }
+  }
+}

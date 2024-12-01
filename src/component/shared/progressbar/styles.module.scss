@@ -1,0 +1,20 @@
+@import '../../../styles/colors';
+
+.Progressbar {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 212px;
+  margin: 20px auto;
+  height: 4px;
+  .Segment {
+    width: 17.6px;
+    height: 4px;
+    background-color: $gray-700;
+    border-radius: 4px;
+  }
+  .Active {
+    background-color: $blue-800;
+  }
+}

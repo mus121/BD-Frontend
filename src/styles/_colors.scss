@@ -152,6 +152,7 @@ $Cyan-900: #011a1c;
 $Cyan-950: #091515;
 
 // Gradient Colors
+$Dropdown-Gradient: rgba(0, 0, 0, 0.5);
 $Gradient-Profile: linear-gradient(248.66deg, #020103 0%, #000000 49.48%, #161229 100%);
 $Gradient-Pop: linear-gradient(249.78deg, #19182a 0%, #0f0f0f 100%);
 $Gradient-Close: linear-gradient(364.44deg, #19182a 1.04%, #0f0f0f 100%);
@@ -357,4 +358,5 @@ $Gradient-bottom-Nav: rgba(255, 141, 78, 0.1);
   gradientreddislike: $Gradient-Red-Dislike;
   gradientmainbackground: $Gradient-Main-background;
   gradientcyanblack: $Gradient-Cyan-Black;
+  dropdown: $Dropdown-Gradient;
 }
