@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
 import Downchevron from '@/component/common/svg/Downchevron';
-
+import Upperchevron from '@/component/common/svg/Upperchevron';
 type AccordionItem = {
   label: string; //Accordion Heading
   content: string; //Accordion Content
@@ -37,7 +37,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
                 [styles.open]: activeIndex === index,
               })}
             >
-              {activeIndex === index ? '▲' : '▼'}
+              {activeIndex === index ? <Upperchevron size={16} /> : '▼'}
             </span>
           </button>
           <div

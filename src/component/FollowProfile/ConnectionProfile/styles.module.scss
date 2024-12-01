@@ -1,0 +1,5 @@
+.Connectioncolumn {
+  flex: 1 1 calc(50% - 16px); // Ensure two columns
+  max-width: calc(50% - 16px); // Maintain two cards per row
+  box-sizing: border-box;
+}

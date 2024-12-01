@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 // import { useQuery, useQueryClient } from '@tanstack/react-query';
 import styles from './styles.module.scss';
-import SecondaryButton from '../shared/button/SecondaryButton';
 import SearchProfile from '../SearchProfile/Search';
-import ConnectionProfileCard from '../ConnectionProfileCard';
 import { getMutualConnections, getTotalConnections } from '../../hooks/useExtension';
 import Pagination from '../Pagination/index';
-import { getsubmitData } from '../../app/api/Followinglinkedinprofile';
+import { getsubmitData } from '../../services/Followinglinkedinprofile';
+import SuggestButton from './SuugestButton';
+import ProfilesList from './ConnectionProfile/index';
 
 function FollowProfile() {
   const [mutualConnections, setMutualConnections] = useState(null);
@@ -37,7 +37,7 @@ function FollowProfile() {
 
   // Return loading state
   if (mutualConnections === null) {
-    return <div className={styles.contactCard}>Loading.....</div>;
+    return <div className={styles.ContactCard}>...</div>;
   }
 
   const handleButtonClick = () => {
@@ -51,18 +51,9 @@ function FollowProfile() {
     <div className={styles.Profiletop}>
       <div className={styles.Profilefollow}>
         <h5>Follow Important Profiles</h5>
-        <SecondaryButton
-          colorVariant='lightGray'
-          text={
-            5 - followprofile.length <= 0
-              ? 'Suggest Profiles'
-              : `Follow ${5 - followprofile.length} profiles`
-          }
-          type='button'
-          sizeVariant='base'
-          secondaryButtonClassName={`${styles.Followbutton}
-        ${5 - followprofile.length <= 0 && styles.suggested}`}
-          onClick={handleButtonClick} // Add click handler
+        <SuggestButton
+          followprofile={followprofile}
+          handleButtonClick={handleButtonClick}
         />
       </div>
       <div className={styles.Profiledescription}>
@@ -76,89 +67,12 @@ function FollowProfile() {
           <SearchProfile setProfiles={setProfiles} />
         </div>
         <div className={styles.connectionsrid}>
-          {profiles !== null
-            ? profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
-                (element: any, index: Key | null | undefined) => {
-                  const lockup = element?.entityLockupView;
-                  const profilePictureDetails = lockup?.image?.attributes[0]?.detailData;
-                  const profilePicture =
-                    profilePictureDetails?.nonEntityProfilePicture?.vectorImage?.artifacts[0]
-                      ?.fileIdentifyingUrlPathSegment || '';
-                  const title = lockup?.title?.text || '';
-                  const [firstName, lastName] = title.split(' ') || ['', ''];
-                  const headline = lockup?.subtitle?.text || '';
-                  return (
-                    <div
-                      className={styles.connectioncolumn}
-                      key={index}
-                    >
-                      <ConnectionProfileCard
-                        // key={profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
-                        //   element?.entityLockupView?.trackingId,
-                        // )}
-                        profile={{
-                          firstName: firstName || '',
-                          lastName: lastName || '',
-                          headline,
-                          profilePicture,
-                        }}
-                        followprofile={followprofile}
-                        setFollowprofile={setFollowprofile}
-                      />
-                    </div>
-                  );
-                },
-              )
-            : mutualConnections?.response.elements?.map(
-                (
-                  connection: {
-                    connectedMemberResolutionResult: {
-                      entityUrn: string;
-                      memorialized: any;
-                      publicIdentifier: string;
-                      firstName: string;
-                      lastName: string;
-                      headline: string;
-                      profilePicture: {
-                        displayImageReference: {
-                          vectorImage: {
-                            rootUrl: any;
-                            artifacts: { fileIdentifyingUrlPathSegment: any }[];
-                          };
-                        };
-                      };
-                    };
-                  },
-                  index: Key | null | undefined,
-                ) => (
-                  <div
-                    className={styles.connectioncolumn}
-                    key={index}
-                  >
-                    <ConnectionProfileCard
-                      key={connection?.connectedMemberResolutionResult?.publicIdentifier}
-                      profile={{
-                        entityUrn: connection?.connectedMemberResolutionResult?.entityUrn,
-                        publicIdentifier:
-                          connection?.connectedMemberResolutionResult?.publicIdentifier,
-                        firstName: connection?.connectedMemberResolutionResult?.firstName,
-                        lastName: connection?.connectedMemberResolutionResult?.lastName,
-                        headline: connection?.connectedMemberResolutionResult?.headline,
-                        profilePicture:
-                          // eslint-disable-next-line no-unsafe-optional-chaining
-                          connection?.connectedMemberResolutionResult?.profilePicture
-                            ?.displayImageReference?.vectorImage?.rootUrl +
-                            // eslint-disable-next-line no-unsafe-optional-chaining
-                            connection?.connectedMemberResolutionResult?.profilePicture
-                              ?.displayImageReference?.vectorImage?.artifacts[2]
-                              ?.fileIdentifyingUrlPathSegment || '',
-                      }}
-                      followprofile={followprofile}
-                      setFollowprofile={setFollowprofile}
-                    />
-                  </div>
-                ),
-              )}
+          <ProfilesList
+            profiles={profiles}
+            mutualConnections={mutualConnections}
+            followprofile={followprofile}
+            setFollowprofile={setFollowprofile}
+          />
         </div>
       </div>
       {profiles === null && (

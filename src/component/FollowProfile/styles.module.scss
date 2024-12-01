@@ -2,12 +2,13 @@
 @import '../../styles/mixin';
 @import '../../styles/fonts';
 
-.contactCard {
+.ContactCard {
   @include center-flex();
-  color: $gray-600;
-  font-size: 20px;
+  color: $orange-400;
+  font-size: 60px;
   font-weight: 500;
   margin-top: 50px;
+  border-radius: 100px;
 }
 .Profiletop {
   box-sizing: border-box;
@@ -75,9 +76,4 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 30px;
-  .connectioncolumn {
-    flex: 1 1 calc(50% - 16px); // Ensure two columns
-    max-width: calc(50% - 16px); // Maintain two cards per row
-    box-sizing: border-box;
-  }
 }

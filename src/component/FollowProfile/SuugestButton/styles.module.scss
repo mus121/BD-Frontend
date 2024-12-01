@@ -1,0 +1,13 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.Followbutton {
+  background-color: $gray-800;
+  color: $gray-300;
+  width: 240px;
+  &.suggested {
+    background-color: $orange-400;
+    color: black;
+  }
+}

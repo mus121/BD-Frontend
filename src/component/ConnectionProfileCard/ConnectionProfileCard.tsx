@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import styles from './styles.module.scss';
 import TertiaryButton from '../shared/button/TertiaryButton';
 import Followingcheck from '../common/svg/Followingcheck';
-import { submitData } from '../../app/api/Followlinkedinprofile';
+import { submitData } from '../../services/Followlinkedinprofile';
 
 type ProfileProps = {
   profile: {
