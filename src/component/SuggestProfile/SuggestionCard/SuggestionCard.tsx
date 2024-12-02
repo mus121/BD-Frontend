@@ -2,13 +2,13 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import Followingcheck from '@/component/common/svg/Followingcheck';
 import styles from './styles.module.scss';
 import TertiaryButton from '../../shared/button/TertiaryButton';
 import Location from '../../common/svg/Location';
-import Modal from '../../Modal/index'; // Assuming you have a reusable Modal component
-import Tooltip from '@/component/shared/tooltip';
-import ProgressBar from '@/component/shared/progressbar/ProgressBar';
-import Followingcheck from '@/component/common/svg/Followingcheck';
+import Modal from '../../Modal/index';
+import BussinessImpact from './BussinessImpact/index';
+import Progress from './Progress';
 
 function ConnectionProfileCard() {
   const [isFollowed, setIsFollowed] = useState(false);
@@ -36,7 +36,6 @@ function ConnectionProfileCard() {
         className={styles.Cardcontainer}
         onClick={handleCardClick}
       >
-        {/* Card_Section_1 Start */}
         <div className={styles.Userprofile}>
           <div className={styles.Usercard}>
             <Image
@@ -73,44 +72,21 @@ function ConnectionProfileCard() {
             tertiaryButtonClassName={`${styles.Followaccount} ${isFollowed && styles.followed}`}
             sizeVariant='base'
             onClick={e => {
-              e.stopPropagation(); // Prevent triggering card click
+              e.stopPropagation();
               handleFollowToggle();
             }}
           />
         </div>
         <hr className={styles.Separator} />
-        {/* Card_Section_1 End */}
-
-        {/* Card_Section_2 Start */}
-        <div className={styles.Bussinessimpact}>
-          <div className={styles.Impacttitle}>
-            <div className={styles.Bussinessalert}>
-              <h5> BUSINESS IMPACT SCORE</h5>
-              <Tooltip />
-            </div>
-            <p>Average Impact</p>
-          </div>
-        </div>
-        {/* Card_Section_2 End */}
-
-        {/* Short&Long Term Start */}
-        <div className={styles.Scores}>
-          <div className={styles.Score}>
-            <span>Short Term</span>
-            <ProgressBar />
-          </div>
-          <div className={styles.Score}>
-            <span>Long Term</span>
-            <ProgressBar />
-          </div>
-        </div>
+        <BussinessImpact />
+        <Progress />
       </div>
 
       {/* Modal */}
       {isModalOpen && (
         <Modal
           onClose={handleModalClose}
-          isOpen={true}
+          isOpen
         >
           <div className={styles.ModalContent}>
             <h3>Profile Details</h3>

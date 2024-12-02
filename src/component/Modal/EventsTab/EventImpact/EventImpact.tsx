@@ -2,7 +2,7 @@ import ProgressBar from '@/component/shared/progressbar/ProgressBar';
 import styles from './styles.module.scss';
 import Eventaccordian from '../Eventaccordian';
 
-const EventImapct = () => {
+function EventImapct() {
   return (
     <div className={styles.Eventimpact}>
       <h5>IMPLICATION DETAILS</h5>
@@ -25,5 +25,5 @@ const EventImapct = () => {
       <Eventaccordian />
     </div>
   );
-};
+}
 export default EventImapct;

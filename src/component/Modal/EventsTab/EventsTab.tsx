@@ -9,7 +9,7 @@ const tabs = [
   { label: 'Experience', value: 'experience' },
 ];
 
-const EventsTab: React.FC = () => {
+function EventsTab() {
   const [activeTab, setActiveTab] = useState('events');
 
   const handleTabChange = (value: string) => {
@@ -22,16 +22,16 @@ const EventsTab: React.FC = () => {
         activeTab={activeTab}
         onTabChange={handleTabChange}
       />
-      <div className={styles.Tabnav}>
-        {activeTab === 'summary' && <p></p>}
+      <div className={styles.tabNav}>
+        {activeTab === 'summary' && <p />}
         {activeTab === 'events' && (
           <p>
             <EventDetail />
           </p>
         )}
-        {activeTab === 'experience' && <p></p>}
+        {activeTab === 'experience' && <p />}
       </div>
     </div>
   );
-};
+}
 export default EventsTab;

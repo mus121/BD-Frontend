@@ -16,26 +16,26 @@ function AuthenticationButton() {
     dispatch(openPopup());
   };
 
-  const closePopupHandler = () => {
-    dispatch(closePopup());
-  };
+  // const closePopupHandler = () => {
+  //   dispatch(closePopup());
+  // };
   return (
     <>
-      <div className={`${styles.Authbutton} ${isPopupOpen ? styles.blurred : ''}`}>
+      <div className={`${styles.authButton} ${isPopupOpen ? styles.blurred : ''}`}>
         <PrimaryButton
           text='submit'
           type='button'
           sizeVariant='xs'
           colorVariant='orange'
           onClick={handleButtonClick}
-          primaryButtonClassName={styles.Google}
+          primaryButtonClassName={styles.google}
         >
           <Image
             src='/assets/images/Google - Original.png'
             width={17}
             height={17}
             alt='Google'
-            className={styles.Googleimg}
+            className={styles.googleImg}
           />
           <span>Continue with Google</span>
         </PrimaryButton>
@@ -44,7 +44,7 @@ function AuthenticationButton() {
           type='button'
           sizeVariant='xs'
           colorVariant='orange'
-          primaryButtonClassName={styles.Buttonoutlook}
+          primaryButtonClassName={styles.buttonOutlook}
           onClick={handleButtonClick}
           disabled
         >
@@ -53,7 +53,7 @@ function AuthenticationButton() {
             width={17}
             height={17}
             alt='Outlook'
-            className={styles.Googleimg}
+            className={styles.googleImg}
           />
           <span>Continue with Outlook</span>
         </PrimaryButton>

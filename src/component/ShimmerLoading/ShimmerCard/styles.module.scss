@@ -1,0 +1,11 @@
+.card {
+  flex: 1;
+  background: #2c2c2c; // Card background
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}

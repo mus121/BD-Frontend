@@ -82,14 +82,14 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
   };
 
   return (
-    <div className={styles.Paginationcontainer}>
+    <div className={styles.paginationContainer}>
       <div className={styles.Rangedisplay}>
         {startItem + 1} - {endItem} of {totalItems}
       </div>
 
       <div className={styles.paginationControls}>
         <button
-          className={`${styles.Paginationbutton} ${currentPage === 0 ? styles.disabled : ''}`}
+          className={`${styles.paginationButton} ${currentPage === 0 ? styles.disabled : ''}`}
           onClick={() => handlePageClick(currentPage - 1)}
           disabled={currentPage === 0}
         >
@@ -99,7 +99,7 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
         {getVisiblePages().map(renderPageItem)}
 
         <button
-          className={`${styles.Paginationbutton} ${
+          className={`${styles.paginationButton} ${
             currentPage === totalPages - 1 ? styles.disabled : ''
           }`}
           onClick={() => handlePageClick(currentPage + 1)}

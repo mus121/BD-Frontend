@@ -1,0 +1,26 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.Impacttitle {
+  @include space-between();
+  .Bussinessalert {
+    display: flex;
+    justify-content: space-between;
+    width: 205px;
+    h5 {
+      @include font-sm();
+      color: $gray-100;
+    }
+  }
+  p {
+    @include fontAlpha();
+    background-color: $gray-700;
+    color: $blue-400;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    padding: 2px 10px;
+    border-radius: 80px;
+  }
+}

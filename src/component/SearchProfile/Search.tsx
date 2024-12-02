@@ -11,10 +11,11 @@ function SearchProfile({ setProfiles }: { setProfiles: Dispatch<SetStateAction<n
   };
 
   return (
-    <div className={styles.Searchbarcontainer}>
+    <div className={styles.searchBarContainer}>
       <SearchBar
         placeholder='Search profiles (e.g., John Doe)'
         onSearch={handleSearch}
+        setProfiles={setProfiles}
       />
     </div>
   );

@@ -1,0 +1,68 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.linkedinCard {
+  border: 1px solid $gray-700;
+  border-radius: 16px;
+  padding: 32px;
+  margin-top: 40px;
+  .userProfile {
+    border-radius: 50px;
+  }
+  .linkedin {
+    display: flex;
+    .linkedHeading {
+      @include fontAlpha();
+      font-size: 16px;
+      line-height: 20px;
+      margin-left: 4px;
+      color: $gray-100;
+      font-weight: 400;
+      position: relative;
+      bottom: 2px;
+    }
+  }
+  .cardData {
+    display: flex;
+    margin-top: 24px;
+    .head {
+      margin-left: 10px;
+      h5 {
+        @include fontAlpha();
+        font-size: 24px;
+        list-style: 30px;
+        color: $gray-10;
+        font-weight: 600px;
+      }
+      span {
+        @include font-normal-sm();
+        color: $gray-25;
+      }
+    }
+  }
+}
+.cardLocation {
+  @include space-between();
+  margin-top: 24px;
+  .location {
+    display: flex;
+    h5 {
+      @include font-normal();
+      color: $gray-300;
+      margin-left: 8px;
+    }
+  }
+  .university {
+    display: flex;
+    .Home {
+      position: relative;
+      top: 2px;
+    }
+    h5 {
+      @include font-normal();
+      color: $gray-300;
+      margin-left: 8px;
+    }
+  }
+}

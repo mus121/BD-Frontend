@@ -38,9 +38,11 @@
 
 .Chevron {
   transition: transform 0.3s ease;
+  // transform: rotate(0deg);
 
   &.open {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
   }
 }
 
@@ -50,7 +52,7 @@
   transition: max-height 0.3s ease;
 
   &.open {
-    max-height: 150px; 
+    max-height: 150px;
   }
 
   p {

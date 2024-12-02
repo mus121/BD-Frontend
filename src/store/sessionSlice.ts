@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface SessionState {
+type SessionState = {
   email: string | null;
   name: string | null;
-}
+};
 
 const initialState: SessionState = {
   email: null,

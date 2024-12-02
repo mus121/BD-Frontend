@@ -2,23 +2,23 @@
 @import '../../styles/mixin';
 @import '../../styles/fonts';
 
-.Popupoverlay {
+.popUpOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   @include center-flex;
-  .Popup {
+  .popUp {
     background: $Gradient-Pop;
     width: 873px;
     text-align: center;
     @include border-radius();
     border: 1px solid $gray-800;
-    .Closeback {
+    .closeBack {
       background: $Gradient-Close;
       height: 48px;
-      .Clossebutton {
+      .closeButton {
         @include button-style($gray-700, $gray-25);
         @include center-flex();
         position: relative;
@@ -26,11 +26,11 @@
         left: 810px;
       }
     }
-    .Popcontent {
+    .popContent {
       @include space-evenly;
       padding: 32px 32px 40px 32px;
 
-      .Head {
+      .head {
         width: 353px;
         height: 270px;
         text-align: left;
@@ -48,11 +48,11 @@
           }
         }
       }
-      .Bdappright {
+      .bdAppRight {
         width: 380px;
         text-align: left;
 
-        .Bdallow {
+        .bdAllow {
           h5 {
             @include fontAlpha();
             font-size: 20px;
@@ -61,11 +61,11 @@
             line-height: 30px;
           }
         }
-        .Permissioncontainer {
+        .permissionContainer {
           color: $gray-15;
           margin-top: 25px;
         }
-        .Makehead {
+        .makeHead {
           margin-top: 24px;
           width: 324px;
           h5 {
@@ -75,13 +75,11 @@
             color: $gray-15;
             line-height: 30px;
           }
-          .Textpara {
+          .textPara {
             margin-top: 12px;
             p {
               @include fontAlpha();
-              font-size: 14px;
-              font-weight: 400;
-              line-height: 21px;
+              @include font-sm();
               color: $gray-200;
             }
           }

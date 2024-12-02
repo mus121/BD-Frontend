@@ -2,7 +2,7 @@
 @import '../../../../styles/fonts';
 @import '../../../../styles/mixin';
 
-.Eventdetail {
+.eventDetail {
   width: 657px;
   border: 1px solid $gray-800;
   border-radius: 8px;
@@ -11,21 +11,18 @@
   margin-top: 16px;
 
   // News Style
-  .Eventnews {
+  .eventNews {
     @include justify-space-between();
-    .Newshead {
+    .newsHead {
       width: 413px;
       height: 21px;
       display: flex;
       h5 {
-        @include fontAlpha();
-        font-size: 14px;
-        line-height: 21px;
-        font-weight: 400;
+        @include font-sm();
         color: $gray-100;
       }
     }
-    .Eventdates {
+    .eventDates {
       width: 196px;
       height: 21px;
       gap: 8px;
@@ -39,7 +36,7 @@
         position: relative;
         left: 15px;
       }
-      .Borderline {
+      .borderLine {
         border-left: 1px solid $gray-500;
         width: 12px;
         height: 12px;
@@ -47,7 +44,7 @@
         left: 15px;
         top: 3px;
       }
-      .Readnow {
+      .readNow {
         @include fontAlpha();
         background: none;
         border: none;
@@ -61,7 +58,7 @@
       }
     }
   }
-  .Eventsheading {
+  .eventHeadings {
     h5 {
       @include fontAlpha();
       display: flex;
@@ -72,48 +69,39 @@
       margin-top: 8px;
     }
     p {
-      @include fontAlpha();
+      @include font-normal();
       text-align: left;
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: 400;
       color: $gray-100;
       margin-top: 8px;
     }
-    .Partnership {
-      @include fontAlpha();
-      font-size: 14px;
-      line-height: 21px;
-      font-weight: 500;
-      color: $orange-700;
+    .partnerShip {
+      @include font-sm();
+      color: $Orange-700;
       text-align: left;
       display: flex;
       margin-top: 6px;
     }
   }
-  .Seprator {
+  .seprator {
     margin-top: 20px;
     width: 625px;
     border: 1px solid $gray-600;
   }
 
   // LeaderShip Style
-  .Eventleader {
+  .eventLeader {
     @include justify-space-between();
     margin-top: 20px;
-    .Leaderhead {
+    .leaderHead {
       width: 364px;
       height: 21px;
       display: flex;
       h5 {
-        @include fontAlpha();
-        font-size: 14px;
-        line-height: 21px;
-        font-weight: 400;
+        @include font-sm();
         color: $gray-100;
       }
     }
-    .Leaderdates {
+    .leaderDates {
       width: 245px;
       height: 21px;
       gap: 8px;
@@ -128,7 +116,7 @@
         position: relative;
         left: 15px;
       }
-      .Borderline {
+      .borderLine {
         border-left: 1px solid $gray-500;
         width: 12px;
         height: 12px;
@@ -136,7 +124,7 @@
         left: 15px;
         top: 3px;
       }
-      .Linkedin {
+      .linkedIn {
         @include fontAlpha();
         background: none;
         border: none;
@@ -151,7 +139,7 @@
       }
     }
   }
-  .Eventsleader {
+  .eventsLeader {
     h5 {
       @include fontAlpha();
       display: flex;
@@ -162,20 +150,14 @@
       margin-top: 8px;
     }
     p {
-      @include fontAlpha();
+      @include font-normal();
       text-align: left;
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: 400;
       color: $gray-100;
       margin-top: 8px;
     }
-    .Leadership {
-      @include fontAlpha();
-      font-size: 14px;
-      line-height: 21px;
-      font-weight: 500;
-      color: $orange-700;
+    .leaderShip {
+      @include font-sm();
+      color: $Orange-700;
       text-align: left;
       display: flex;
       margin-top: 6px;

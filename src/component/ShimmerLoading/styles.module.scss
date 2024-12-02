@@ -1,0 +1,113 @@
+@import '../../styles/colors';
+@import '../../styles/fonts';
+@import '../../styles/mixin';
+
+.shimmerHead {
+  box-sizing: border-box;
+  margin-top: 32px;
+  flex-direction: column;
+  display: flex;
+  gap: 24px;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .heading {
+    @include space-between();
+    .topHeadLeft {
+      width: 364px;
+      height: 44px;
+      border-radius: 8px;
+      background: $gray-800;
+      @include shimmerAnimation();
+    }
+    .topRight {
+      width: 240px;
+      height: 44px;
+      border-radius: 8px;
+      background: $gray-800;
+      @include shimmerAnimation();
+    }
+  }
+  .leftHeading {
+    width: 793px;
+    height: 24px;
+    border-radius: 8px;
+    background: $gray-800;
+    @include shimmerAnimation();
+  }
+  .profileHead {
+    .yourProfiles {
+      @include space-between();
+      .profileLeft {
+        width: 173px;
+        height: 30px;
+        border-radius: 8px;
+        background: $gray-800;
+        @include shimmerAnimation();
+      }
+      .cardFilter {
+        width: 487px;
+        height: 40px;
+        gap: 16px;
+        @include space-between();
+        .profileRight {
+          width: 331px;
+          height: 40px;
+          border-radius: 8px;
+          background: $gray-800;
+          @include shimmerAnimation();
+        }
+        .filter {
+          width: 140px;
+          height: 40px;
+          border-radius: 8px;
+          background: $gray-800;
+          @include shimmerAnimation();
+        }
+      }
+    }
+    .profileCardHead {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); // Two cards per row
+      gap: 16px;
+      padding: 0px;
+      margin-top: 16px;
+      .profileCard {
+        width: 488px;
+        height: 116px;
+        border-radius: 16px;
+        background: $gray-800;
+        @include shimmerAnimation();
+      }
+    }
+  }
+  .footerHead {
+    @include space-between();
+    margin-top: -2px;
+    .leftFoot {
+      width: 173px;
+      height: 30px;
+      border-radius: 8px;
+      background: $gray-800;
+      @include shimmerAnimation();
+    }
+    .rightFoot {
+      width: 331px;
+      height: 40px;
+      border-radius: 8px;
+      background: $gray-800;
+      @include shimmerAnimation();
+    }
+  }
+}
+
+// Shimmer animation definition
+@keyframes shimmer {
+  0% {
+    background-position: -1500px 0;
+  }
+  100% {
+    background-position: 1500px 0;
+  }
+}

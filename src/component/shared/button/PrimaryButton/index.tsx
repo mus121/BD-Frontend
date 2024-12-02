@@ -14,7 +14,7 @@ interface PrimaryButtonProps extends ComponentPropsWithoutRef<'button'> {
 }
 
 // eslint-disable-next-line react/function-component-definition
-const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+const PrimaryButton = ({
   type = 'button',
   text = 'Button text',
   primaryButtonClassName = '',
@@ -22,7 +22,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   colorVariant = 'orange',
   children,
   ...props
-}) => {
+}: PrimaryButtonProps) => {
   const className = clsx(
     'primaryButtonGeneric',
     `${sizeVariant}Size--PrimaryButton`,

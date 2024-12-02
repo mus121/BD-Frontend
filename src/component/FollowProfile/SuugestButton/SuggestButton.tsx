@@ -6,7 +6,7 @@ type SuggestButtonProps = {
   handleButtonClick: () => void;
 };
 
-const SuggestButton: React.FC<SuggestButtonProps> = ({ followprofile, handleButtonClick }) => {
+function SuggestButton({ followprofile, handleButtonClick }: SuggestButtonProps) {
   return (
     <SecondaryButton
       colorVariant='lightGray'
@@ -17,10 +17,10 @@ const SuggestButton: React.FC<SuggestButtonProps> = ({ followprofile, handleButt
       }
       type='button'
       sizeVariant='base'
-      secondaryButtonClassName={`${styles.Followbutton}
+      secondaryButtonClassName={`${styles.followButton}
         ${5 - followprofile.length <= 0 && styles.suggested}`}
       onClick={handleButtonClick}
     />
   );
-};
+}
 export default SuggestButton;

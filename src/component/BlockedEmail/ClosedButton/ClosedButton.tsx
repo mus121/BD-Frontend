@@ -1,8 +1,8 @@
 import styles from './styles.module.scss';
 
-interface CustomCloseButtonProps {
+type CustomCloseButtonProps = {
   closeToast: () => void;
-}
+};
 
 export default function CustomCloseButton({ closeToast }: CustomCloseButtonProps) {
   return (

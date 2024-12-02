@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import styles from './styles.module.scss';
 import Downchevron from '@/component/common/svg/Downchevron';
 import Upperchevron from '@/component/common/svg/Upperchevron';
+import styles from './styles.module.scss';
+
 type AccordionItem = {
-  label: string; //Accordion Heading
-  content: string; //Accordion Content
+  label: string;
+  content: string;
 };
 
 type AccordionProps = {
   items: AccordionItem[]; // List of accordion items
 };
 
+// eslint-disable-next-line react/function-component-definition
 const Accordion: React.FC<AccordionProps> = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -22,6 +24,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
     <div className={styles.Accordion}>
       {items.map((item, index) => (
         <div
+          // eslint-disable-next-line react/no-array-index-key
           key={index}
           className={styles.Accordionitem}
         >
@@ -37,7 +40,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
                 [styles.open]: activeIndex === index,
               })}
             >
-              {activeIndex === index ? <Upperchevron size={16} /> : '▼'}
+              {activeIndex === index ? <Upperchevron size={20} /> : <Downchevron size={20} />}
             </span>
           </button>
           <div

@@ -2,78 +2,55 @@
 @import '../../styles/mixin';
 @import '../../styles/fonts';
 
-.ContactCard {
-  @include center-flex();
-  color: $orange-400;
-  font-size: 60px;
-  font-weight: 500;
-  margin-top: 50px;
-  border-radius: 100px;
-}
-.Profiletop {
+.profileTop {
   box-sizing: border-box;
   margin-top: 32px;
   flex-direction: column;
   display: flex;
   gap: 24px;
-  width: 1020px;
+  width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  // height: 888px;
-  .Profilefollow {
+  .profileFollow {
     @include space-between();
     h5 {
-      @include fontAlpha();
-      font-size: 30px;
-      line-height: 45px;
+      @include font-semibold-3xl();
       color: $gray-10;
-      font-weight: 600;
-    }
-    .Followbutton {
-      background-color: $gray-800;
-      color: $gray-300;
-      width: 240px;
-      &.suggested {
-        background-color: $orange-400;
-        color: black;
-      }
     }
   }
-  .Profiledescription {
-    // margin-top: 16px;
+  .profileDescription {
     p {
-      @include fontAlpha();
       width: fit-content;
       color: $gray-100;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
+      @include font-normal();
     }
   }
-  .Contacttop {
-    // margin-top: 24px;
-    .Conatctprofile {
+  .contactTop {
+    .contactProfile {
       @include space-between();
-
       h5 {
-        @include fontAlpha();
-        font-size: 20px;
-        line-height: 30px;
-        font-weight: 600;
+        @include font-semibold-xl();
         color: $gray-10;
       }
+      .yourConnection {
+        width: 497px;
+      }
+      .searchAndfilters {
+        width: 483px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .connectionColumn {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      margin-top: 16px;
+      // max-height: 585px;
+      // overflow-y: auto;
+      // overflow-x: hidden;
+      // padding-right: 30px;
     }
   }
-}
-
-.connectionsrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px; // Spacing between cards
-  justify-content: space-between;
-  margin-top: 16px;
-  max-height: 585px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 30px;
 }

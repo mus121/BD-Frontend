@@ -1,5 +1,5 @@
-import { getsubmitData } from '@/app/api/Followinglinkedinprofile';
 import { useQuery } from '@tanstack/react-query';
+import { getsubmitData } from '../services/Followinglinkedinprofile';
 
 const useLinkedInProfiles = () =>
   useQuery({

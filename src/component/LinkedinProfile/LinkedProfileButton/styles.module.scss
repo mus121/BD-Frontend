@@ -1,0 +1,15 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.buttons {
+  @include center-flex;
+  margin-top: 40px;
+  gap: 24px;
+  .notProfile {
+    width: 240px;
+  }
+  .confirmButton {
+    width: 240px;
+  }
+}

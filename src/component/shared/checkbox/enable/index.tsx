@@ -1,11 +1,10 @@
-import React from 'react';
 import styles from './Enable.module.scss';
 
-interface CheckProps {
+type CheckProps = {
   checked: boolean;
   onChange: () => void;
   disabled?: boolean;
-}
+};
 
 function Check({ checked, onChange, disabled = false }: CheckProps) {
   return (
@@ -18,7 +17,6 @@ function Check({ checked, onChange, disabled = false }: CheckProps) {
         id='customCheckbox'
         checked={checked}
         onChange={onChange}
-        // disabled={disabled}
         aria-label='Enable'
       />
       <span className={styles.customCheckbox} />

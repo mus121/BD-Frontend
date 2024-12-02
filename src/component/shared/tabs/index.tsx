@@ -3,17 +3,17 @@ import clsx from 'clsx';
 import styles from './styles.module.scss';
 
 type Tabs = {
-  label: string; //Tab Name
-  value: string; //Tab identifier
+  label: string; // Tab Name
+  value: string; // Tab identifier
 };
 
 type TabsComponentProps = {
-  tabs: Tabs[]; //Array of tab items
+  tabs: Tabs[]; // Array of tab items
   activeTab: string; // Currently selected tab
-  onTabChange: (value: string) => void; //Callback to handle Tab Change
+  onTabChange: (value: string) => void; // Callback to handle Tab Change
 };
 
-const TabComponent: React.FC<TabsComponentProps> = ({ tabs, activeTab, onTabChange }) => {
+function TabComponent({ tabs, activeTab, onTabChange }: TabsComponentProps) {
   return (
     <div className={styles.Tabcomponent}>
       {tabs.map(tab => (
@@ -35,6 +35,6 @@ const TabComponent: React.FC<TabsComponentProps> = ({ tabs, activeTab, onTabChan
       />
     </div>
   );
-};
+}
 
 export default TabComponent;

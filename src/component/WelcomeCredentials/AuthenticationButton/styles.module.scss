@@ -2,18 +2,18 @@
 @import '../../../styles/mixin';
 @import '../../../styles/fonts';
 
-.Authbutton {
+.authButton {
   @include center-flex();
   gap: 24px;
   margin-top: 32px;
 }
-.Googleimg {
+.googleImg {
   margin-right: 5px;
 }
-.Buttonoutlook {
+.buttonOutlook {
   opacity: 50%;
   width: 290.5px;
 }
-.Google {
+.google {
   width: 290.5px;
 }

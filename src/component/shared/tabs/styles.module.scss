@@ -40,11 +40,12 @@
       background-color 0.3s ease;
     position: absolute;
     bottom: 0;
-    left: 5px;
-    height: 4px;
-    background-color: $orange-400;
+    left: 0;
+    height: 2px;
+    background-color: #ff8a4c;
     border-radius: 32px;
-    width: calc(100% / 3 - 4px);
-    transform: translateX(calc(var(--active-index, 0) * 100%));
+    width: calc(33.3333333333% - 0px);
+    /* transform: translateX(calc(var(--active-index, 0)* 100%)); */
+    top: 32px;
   }
 }

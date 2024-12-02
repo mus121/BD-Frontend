@@ -2,74 +2,59 @@
 @import '../../styles/fonts';
 @import '../../styles/mixin';
 
-.Paginationcontainer {
+.paginationContainer {
   @include space-between();
   height: 36px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
   border-radius: 4px;
   color: $gray-25;
-  @include fontAlpha();
-}
+  @include font-sm();
 
-.paginationControls {
-  @include center-flex();
-  background: $gray-800;
-  height: 36px;
-  border: 1px $gray-700;
-  border-radius: 4px;
-  @include fontAlpha();
-}
-
-.Paginationbutton {
-  background: $gray-800;
-  border: 1px $gray-700;
-  color: $gray-100;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  @include fontAlpha();
-
-  &:hover:not(:disabled) {
-  }
-
-  &.disabled {
-    cursor: not-allowed;
-  }
-}
-
-.pageNumberButton {
-  @include fontAlpha();
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 6px 12px;
-  line-height: 24px;
-  border-radius: 4px;
-  border-left: 1px solid $gray-700;
-  border-right: 1px solid $gray-700;
-  cursor: pointer;
-
-  // &:hover {
-  //   @include fontAlpha();
-  //   background: $gray-500;
-  //   color: #ffffff;
-  // }
-
-  &.activePage {
-    @include fontAlpha();
+  .paginationControls {
+    @include center-flex();
+    background: $gray-800;
+    height: 36px;
     border: 1px $gray-700;
-    background: $gray-500;
-    color: white;
+    border-radius: 4px;
+    @include fontAlpha();
   }
-}
 
-.ellipsis {
-  color: #a0a0a0;
-  padding: 5px;
+  .paginationButton {
+    background: $gray-800;
+    border: 1px $gray-700;
+    color: $gray-100;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    @include font-sm();
+
+    &:hover:not(:disabled) {
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .pageNumberButton {
+    @include font-normal();
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border-left: 1px solid $gray-700;
+    border-right: 1px solid $gray-700;
+    cursor: pointer;
+
+    &.activePage {
+      @include fontAlpha();
+      border: 1px $gray-700;
+      background: $gray-500;
+      color: white;
+    }
+  }
+  .ellipsis {
+    color: #a0a0a0;
+    padding: 5px;
+  }
 }

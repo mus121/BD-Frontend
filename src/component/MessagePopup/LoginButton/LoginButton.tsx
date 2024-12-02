@@ -13,17 +13,17 @@ function LoginButton() {
     window.location.href = process.env.NEXT_GOOGLE_API_LOGIN!;
   };
   return (
-    <div className={styles.Button}>
+    <div className={styles.button}>
       <button
         type='button'
-        className={styles.Cancel}
+        className={styles.cancel}
         onClick={closePopupHandler}
       >
         <span>Cancel</span>
       </button>
       <button
         type='button'
-        className={styles.Allow}
+        className={styles.allow}
         onClick={handleGoogleLogin}
       >
         <span>Allow</span>

@@ -34,7 +34,7 @@ const accordionItems = [
   },
 ];
 
-const Eventaccordian = () => {
+function Eventaccordian() {
   return (
     <div className={styles.Eventaccordian}>
       <h5>What the new Strategic Partnerships means for you</h5>
@@ -42,5 +42,5 @@ const Eventaccordian = () => {
       <Accordion items={accordionItems} />
     </div>
   );
-};
+}
 export default Eventaccordian;

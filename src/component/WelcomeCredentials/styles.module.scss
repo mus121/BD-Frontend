@@ -2,18 +2,18 @@
 @import '../../styles/mixin';
 @import '../../styles/fonts';
 
-.Wrapper {
+.wrapper {
   @include center-flex;
   height: 95vh;
   padding: 20px;
 
-  .Welcome {
+  .welcome {
     padding: 100px 120px;
     border: 1px solid $gray-700;
     border-radius: 16px;
     @include center-flex();
 
-    .Hold {
+    .hold {
       text-align: justify;
       display: flex;
       flex-direction: column;
@@ -21,7 +21,7 @@
       width: 550px;
     }
 
-    .Title {
+    .title {
       @include fontAlpha();
       color: $white-color;
       font-size: 32px;
@@ -30,12 +30,10 @@
       margin: 0;
       letter-spacing: 0px;
     }
-    .Description {
+    .description {
       @include fontAlpha();
+      @include font-sm();
       color: $gray-100;
-      font-size: 14px;
-      line-height: 21px;
-      font-weight: 400;
       margin: 0;
     }
   }

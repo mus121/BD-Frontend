@@ -40,8 +40,7 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
       setFollowprofile(prev =>
         variables.follow
           ? [...prev, variables.identifier]
-          : prev.filter(value => value !== variables.identifier),
-      );
+          : prev.filter(value => value !== variables.identifier),);
     },
     onError: error => {
       console.error('Error following/unfollowing:', error);
@@ -60,16 +59,16 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
   const headlineText = truncateHeadline(headline);
 
   return (
-    <div className={styles.Cardcontainer}>
-      <div className={styles.Userprofile}>
+    <div className={styles.cardContainer}>
+      <div className={styles.userProfile}>
         <Image
           src={profilePicture || '/assets/images/Avatar.png'}
           alt={`${firstName} ${lastName}`}
           width={48}
           height={48}
-          className={styles.Profileimg}
+          className={styles.profileImg}
         />
-        <div className={styles.Profile}>
+        <div className={styles.profile}>
           <h5>{`${firstName} ${lastName}`}</h5>
           <p title={headline}>{headlineText}</p>
         </div>
@@ -86,7 +85,7 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
             'Follow'
           )
         }
-        tertiaryButtonClassName={`${styles.Followaccount} ${isFollowed && styles.followed}`}
+        tertiaryButtonClassName={`${styles.followAccount} ${isFollowed && styles.followed}`}
         sizeVariant='base'
         onClick={handleFollowToggle}
         disabled={mutation.isLoading}

@@ -1,3 +1,60 @@
+@import './fonts';
+
+// Font Sizes Mixin
+@mixin font-normal {
+  @include fontAlpha();
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+@mixin font-normal-sm {
+  @include fontAlpha();
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+}
+@mixin font-sm {
+  @include fontAlpha();
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+}
+@mixin font-medium-4xl {
+  @include fontAlpha();
+  font-size: 36px;
+  line-height: 54px;
+  font-weight: 500;
+}
+@mixin font-semibold {
+  @include fontAlpha();
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+@mixin font-semibold-sm {
+  @include fontAlpha();
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+}
+@mixin font-semibold-xl {
+  @include fontAlpha();
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+}
+@mixin font-semibold-3xl {
+  @include fontAlpha();
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 600;
+}
+// @mixin font-normal {
+//   font-size: 16px;
+//   line-height: 24px;
+//   font-weight: 400;
+// }
+
 @mixin center-flex {
   display: flex;
   justify-content: center;
@@ -55,4 +112,10 @@
   cursor: pointer;
   background: none;
   @include border-radius();
+}
+
+@mixin shimmerAnimation() {
+  animation: shimmer 3s linear infinite;
+  background: linear-gradient(to right, #2b2a2a 8%, #494949 18%, #2b2a2a 33%);
+  background-size: 1500px 100%;
 }

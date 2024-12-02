@@ -4,18 +4,18 @@ import SuggestionCard from './SuggestionCard/index';
 
 function SuggestProfile() {
   return (
-    <div className={styles.Suggestprofile}>
-      <div className={styles.Suggestheading}>
+    <div className={styles.suggestProfile}>
+      <div className={styles.suggestHeading}>
         <h5>Expand Your Network</h5>
       </div>
-      <div className={styles.Suggestedescription}>
+      <div className={styles.suggestDescription}>
         <p>
           Boost your business development by connecting with industry leaders and relevant
           professionals tailored to your interests.
         </p>
       </div>
-      <div className={styles.Suggesttop}>
-        <div className={styles.Suggestconnection}>
+      <div className={styles.suggestTop}>
+        <div className={styles.suggestConnection}>
           <h5>Suggested Profiles</h5>
           <SearchProfile />
         </div>

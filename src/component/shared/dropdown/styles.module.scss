@@ -2,11 +2,11 @@
 @import '../../../styles/mixin';
 @import '../../../styles/fonts';
 
-.Dropdown {
+.dropDown {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 283px;
+  width: 331px;
   max-height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -16,9 +16,10 @@
   margin-top: 8px;
   z-index: 10;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  .Section {
-    .Sectiontitle {
-      padding: 8px 16px;
+  padding: 8px 8px;
+  .section {
+    .sectionTitle {
+      padding: 8px 12px;
       p {
         font-size: 12px;
         font-weight: 300;
@@ -26,115 +27,43 @@
         color: $gray-25;
       }
     }
-    .Profileitem {
+    .profileItem {
       @include space-between();
-      padding: 10px;
+      padding: 8px 16px;
       border-radius: 4px;
       transition: background-color 0.3s ease;
-
-      // &:hover {
-      //   background-color: $gray-25;
-      // }
-    }
-    .Enter {
-      visibility: hidden;
-    }
-    &:hover {
-      background: $gray-700;
-      .Enter {
-        visibility: visible;
+      gap: 12px;
+      cursor: pointer;
+      .enetrIcon {
+        visibility: hidden;
+      }
+      &:hover {
+        background-color: $gray-700;
+        .enetrIcon {
+          visibility: visible;
+          background: $gray-700;
+        }
       }
     }
   }
 }
-
-//   .Section {
-//     .Sectiontitle {
-//       padding: 8px 16px;
-//       p {
-//         font-size: 12px;
-//         font-weight: 300;
-//         line-height: 18px;
-//         color: $gray-25;
-//       }
-//     }
-
-//     .Item {
-//       padding: 8px 16px;
-//       display: flex;
-//       align-items: center;
-//       justify-content: space-between;
-//       border-radius: 4px;
-//       cursor: pointer;
-//       width: 283px;
-//       height: 40px;
-//       gap: 12px;
-
-//       p {
-//         font-size: 14px;
-//         line-height: 21px;
-//         font-weight: 600;
-//         color: $gray-25;
-//       }
-//       .Enter {
-//         visibility: hidden;
-//       }
-//       &:hover {
-//         background: $gray-700;
-//         .Enter {
-//           visibility: visible;
-//         }
-//       }
-//     }
-//   }
-
-//   .NoResults {
-//     padding: 8px 16px;
-//     font-size: 12px;
-//     color: $gray-400;
-//   }
-// }
-
-// .Contactname {
-//   font-size: 14px;
-//   font-weight: 600;
-//   line-height: 21px;
-//   color: $gray-25;
-// }
-
-// .Contactrole {
-//   font-size: 12px;
-//   color: $gray-400;
-//   padding-left: 10px;
-// }
-
-// .hr {
-//   margin: 0;
-//   border: none;
-//   height: 1px;
-//   background-color: $gray-600;
-// }
-
-.ProfileImage {
-  margin-right: 12px;
-}
-
-.ProfileImg {
+.profileImg {
   border-radius: 50%;
 }
 
-.ProfileDetails {
+.profileDetails {
   flex-grow: 1;
 }
 
-.ContactName {
+.contactName {
   display: block;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 21px;
   color: $gray-100;
 }
 
-.ContactRole {
+.contactRole {
   display: block;
   font-size: 12px;
   color: $gray-100;

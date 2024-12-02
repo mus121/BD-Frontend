@@ -2,7 +2,7 @@
 @import '../../styles/fonts';
 @import '../../styles/mixin';
 
-.Cardcontainer {
+.cardContainer {
   @include justify-space-between();
   width: 488px;
   height: 118px;
@@ -11,44 +11,35 @@
   border-radius: 16px;
   gap: 12px;
   margin-top: 10px;
-  .Userprofile {
+  .userProfile {
     width: 341px;
     display: flex;
-    .Profileimg {
+    .profileImg {
       width: 48px;
       height: 48px;
       border-radius: 100px;
     }
-    .Profile {
+    .profile {
       margin-left: 12px;
       h5 {
-        @include fontAlpha();
-        font-size: 16px;
-        line-height: 20px;
-        font-weight: 600;
+        @include font-semibold-sm();
         color: $gray-10;
       }
       p {
-        @include fontAlpha();
+        @include font-sm();
         margin-top: 8px;
-        font-size: 14px;
-        line-height: 21px;
-        font-weight: 400;
         margin-left: 2px;
         color: $gray-50;
       }
-      .Local {
+      .local {
         display: flex;
         .Location {
           position: relative;
           bottom: 4px;
         }
         span {
-          @include fontAlpha();
+          @include font-sm();
           margin-top: 8px;
-          font-size: 14px;
-          line-height: 21px;
-          font-weight: 400;
           margin-left: 2px;
           color: $gray-50;
           margin-left: 2px;
@@ -56,16 +47,16 @@
       }
     }
   }
-}
-.Followaccount {
-  width: 72px;
-  height: 34px;
-  &.followed {
-    @include justify-space-between();
-    width: 103px;
-    height: 32px;
-    border-color: $Orange-500;
-    color: $Orange-500;
-    background: none;
+  .followAccount {
+    width: 72px;
+    height: 34px;
+    &.followed {
+      @include justify-space-between();
+      width: 103px;
+      height: 32px;
+      border-color: $Orange-500;
+      color: $Orange-500;
+      background: none;
+    }
   }
 }

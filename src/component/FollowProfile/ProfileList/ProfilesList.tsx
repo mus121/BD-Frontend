@@ -18,12 +18,12 @@ type ProfilesListProps = {
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-const ProfilesList: React.FC<ProfilesListProps> = ({
+const ProfilesList = ({
   profiles,
   mutualConnections,
   followprofile,
   setFollowprofile,
-}) => {
+}: ProfilesListProps) => {
   const renderProfileCard = (profile: Profile, index: React.Key | null | undefined) => (
     <div
       className={styles.Connectioncolumn}
@@ -38,6 +38,17 @@ const ProfilesList: React.FC<ProfilesListProps> = ({
   );
 
   if (profiles !== null) {
+    if (profiles?.suggestionType) {
+      const lockup = profiles?.entityLockupView;
+      const profilePictureDetails = lockup?.image?.attributes[0]?.detailData;
+      const profilePicture =
+        profilePictureDetails?.nonEntityProfilePicture?.vectorImage?.artifacts[0]
+          ?.fileIdentifyingUrlPathSegment || '';
+      const title = lockup?.title?.text || '';
+      const [firstName, lastName] = title.split(' ') || ['', ''];
+      const headline = lockup?.subtitle?.text || '';
+      return renderProfileCard({ firstName, lastName, headline, profilePicture }, 0);
+    }
     return profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
       (element: any, index: React.Key | null | undefined) => {
         const lockup = element?.entityLockupView;
@@ -77,7 +88,9 @@ const ProfilesList: React.FC<ProfilesListProps> = ({
     ) => {
       const profileData = connection.connectedMemberResolutionResult;
       const profilePicture =
+        // eslint-disable-next-line no-unsafe-optional-chaining
         profileData?.profilePicture?.displayImageReference?.vectorImage?.rootUrl +
+          // eslint-disable-next-line no-unsafe-optional-chaining
           profileData?.profilePicture?.displayImageReference?.vectorImage?.artifacts[2]
             ?.fileIdentifyingUrlPathSegment || '';
 

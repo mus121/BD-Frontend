@@ -14,7 +14,7 @@ interface SecondaryButtonProps extends ComponentPropsWithoutRef<'button'> {
 }
 
 // eslint-disable-next-line react/function-component-definition
-const SecondaryButton: React.FC<SecondaryButtonProps> = ({
+const SecondaryButton = ({
   type = 'button',
   text = 'Button text',
   secondaryButtonClassName = '',
@@ -22,7 +22,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   colorVariant = 'orange',
   children,
   ...props
-}) => {
+}: SecondaryButtonProps) => {
   const className = clsx(
     'secondaryButtonGeneric',
     `${sizeVariant}Size--SecondaryButton`,

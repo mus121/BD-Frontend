@@ -2,15 +2,15 @@
 @import '../../../styles/mixin';
 @import '../../../styles/fonts';
 
-.Button {
+.button {
   @include space-between();
   margin-top: 24px;
-  .Cancel {
+  .cancel {
     @include center-flex;
     @include Cancel-Allow(12px, 180px, 34px, $Orange-400, $Orange-400, 8px, 500);
     @include fontAlpha();
   }
-  .Allow {
+  .allow {
     @include center-flex;
     @include Cancel-Allow(12px, 180px, 34px, $Orange-1000, $Orange-400, 8px, 500);
     @include fontAlpha();

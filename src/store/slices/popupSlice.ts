@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface PopupState {
+type PopupState = {
   isOpen: boolean;
-}
+};
 
 const initialState: PopupState = {
   isOpen: false,

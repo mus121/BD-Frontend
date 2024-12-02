@@ -1,7 +1,7 @@
-import styles from './styles.module.scss';
 import Alertcircle from '@/component/common/svg/Alertcircle';
+import styles from './styles.module.scss';
 
-const Tooltip = () => {
+function Tooltip() {
   return (
     <div className={styles.Tool}>
       <span className={styles.Infoicon}>
@@ -13,6 +13,6 @@ const Tooltip = () => {
       </span>
     </div>
   );
-};
+}
 
 export default Tooltip;

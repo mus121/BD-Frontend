@@ -2,7 +2,7 @@
 @import '../../styles/mixin';
 @import '../../styles/fonts';
 
-.Suggestprofile {
+.suggestProfile {
   box-sizing: border-box;
   margin-top: 32px;
   flex-direction: column;
@@ -11,36 +11,26 @@
   width: 1020px;
   margin-left: auto;
   margin-right: auto;
-  .Suggestheading {
+  .suggestHeading {
     @include space-between();
     h5 {
-      @include fontAlpha();
-      font-size: 30px;
-      line-height: 45px;
+      @include font-semibold-3xl();
       color: $gray-10;
-      font-weight: 600;
     }
   }
-  .Suggestedescription {
+  .suggestDescription {
     p {
-      @include fontAlpha();
       width: fit-content;
       color: $gray-100;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
+      @include font-normal();
     }
   }
-  .Suggesttop {
-    // margin-top: 24px;
-    .Suggestconnection {
+  .suggestTop {
+    .suggestConnection {
       @include space-between();
 
       h5 {
-        @include fontAlpha();
-        font-size: 20px;
-        line-height: 30px;
-        font-weight: 600;
+        @include font-semibold-xl();
         color: $gray-10;
       }
     }
