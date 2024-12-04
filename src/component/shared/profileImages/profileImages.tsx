@@ -21,15 +21,28 @@ function ProfileImage({
   fallbackSrc = '/assets/images/Avatar.png',
   className = '',
 }: ProfileImageProps) {
-  const [imgSrc, setImgSrc] = useState(src);
+  const [hasError, setHasError] = useState(false);
 
   const handleError = () => {
-    setImgSrc(fallbackSrc);
+    setHasError(true);
   };
+
+  if (hasError) {
+    return (
+      <img
+        src={fallbackSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        className={`${styles.profileImg} ${className}`}
+        loading='lazy'
+      />
+    );
+  }
 
   return (
     <Image
-      src={imgSrc}
+      src={src}
       alt={alt}
       width={width}
       height={height}

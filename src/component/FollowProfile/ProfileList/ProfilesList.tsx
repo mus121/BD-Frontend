@@ -13,10 +13,7 @@ const ProfilesList: React.FC<ProfilesListProps> = ({
   setFollowprofile,
 }) => (
   <div className={styles.profileListContainer}>
-    {/* Render suggestion profiles only if profiles exist */}
     {profiles && renderSuggestionProfiles(profiles, followprofile, setFollowprofile)}
-
-    {/* Render mutual connections only if profiles are not being searched */}
     {!profiles && renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
   </div>
 );

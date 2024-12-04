@@ -1,0 +1,26 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+@import '../../styles/fonts';
+
+.dropDown {
+  position: absolute;
+  max-height: 345px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: $gray-800;
+  border: 1px solid $gray-700;
+  border-radius: 8px;
+  margin-top: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  .section {
+    .sectionTitle {
+      padding: 8px 16px;
+      p {
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 18px;
+        color: $gray-25;
+      }
+    }
+  }
+}

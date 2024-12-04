@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Dropdown from '@/component/shared/dropdown';
+import Dropdown from '../../Dropdown/index';
 import styles from './styles.module.scss';
 import Search from '../../common/svg/Search';
 import Close from '../../common/svg/Close';
@@ -24,10 +24,6 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  // useEffect(() => {
-  //   onSearch(debouncedSearchQuery);
-  // }, [debouncedSearchQuery, onSearch]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     setIsDropdownOpen(true);
@@ -46,9 +42,9 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
     setIsDropdownOpen(false); // Close dropdown on clear
   };
 
-  // const handleBlur = () => {
-  //   setTimeout(() => setIsDropdownOpen(false), 200); // Delay to allow clicking dropdown items
-  // };
+  const handleBlur = () => {
+    setTimeout(() => setIsDropdownOpen(false), 200); // Delay to allow clicking dropdown items
+  };
 
   return (
     <div className={styles.searchBarWrapper}>
@@ -62,7 +58,7 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           onFocus={() => setIsDropdownOpen(true)} // Open dropdown on focus
-          // onBlur={handleBlur} // Close dropdown when focus is lost
+          onBlur={handleBlur} // Close dropdown when focus is lost
         />
         {searchQuery && (
           <button

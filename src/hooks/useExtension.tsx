@@ -1,8 +1,5 @@
 import { useCallback, useRef, useEffect } from 'react';
-import {
-  sendextensionmessage,
-  sendlinkedinprofile,
-} from '../utils/index';
+import { sendextensionmessage, sendlinkedinprofile } from '../utils/index'; // Updated path for sendMessage utilities
 import { useAppDispatch, useAppSelector } from './rtk';
 import { setIsExtensionInstalled } from '../store/slices/appslice';
 import { setMiniProfile } from '../store/slices/miniProfilesSlice';
@@ -12,45 +9,49 @@ const useExtension = () => {
   const { isExtensionInstalled } = useAppSelector(state => state.app.extension);
   const intervalRef = useRef<number | null>(null);
 
-  // Check Extension Install Or Not
-  const pollCallback = useCallback(
-    (res: { signal: boolean }) => {
-      if (res && res.signal && !isExtensionInstalled) {
+  // Check Extension Install or Not
+  const pollExtensionStatus = useCallback(async () => {
+    try {
+      const res = await sendextensionmessage<{ signal: boolean }>('MESSAGE');
+      if (res?.signal && !isExtensionInstalled) {
         dispatch(setIsExtensionInstalled(true));
-      } else if (!res && isExtensionInstalled) {
+      } else if (!res?.signal && isExtensionInstalled) {
         dispatch(setIsExtensionInstalled(false));
       }
-    },
-    [isExtensionInstalled, dispatch],
-  );
-  // Response Fetch Profile
-  const pollCallbackData = useCallback((res: { response: any }) => {
-    if (res?.response) {
-      dispatch(setMiniProfile(res.response));
+    } catch (error) {
+      console.error('Error checking extension status:', error);
     }
-  }, []);
+  }, [isExtensionInstalled, dispatch]);
 
-  const handleCheckExtension = useCallback(() => {
-    sendextensionmessage<{ signal: boolean }>('MESSAGE', pollCallback);
-  }, [pollCallback]);
-
-  const handleLinkedProfile = useCallback(() => {
-    sendlinkedinprofile<{ response: any }>('LINKEDINPROFILE', pollCallbackData);
-  }, [pollCallbackData]);
+  // Fetch Profile Data
+  const fetchLinkedProfile = useCallback(async () => {
+    try {
+      const res = await sendlinkedinprofile<{ response: any }>('LINKEDINPROFILE');
+      if (res?.response) {
+        dispatch(setMiniProfile(res.response));
+      }
+    } catch (error) {
+      console.error('Error fetching LinkedIn profile:', error);
+    }
+  }, [dispatch]);
 
   useEffect(() => {
+    // Initialize polling for extension status and LinkedIn profile
     if (intervalRef.current === null) {
-      handleCheckExtension();
-      handleLinkedProfile();
-      const newIntervalId = window.setInterval(handleCheckExtension, 5000);
+      pollExtensionStatus();
+      fetchLinkedProfile();
+      const newIntervalId = window.setInterval(pollExtensionStatus, 5000);
       intervalRef.current = newIntervalId;
     }
+
+    // Cleanup on component unmount
     return () => {
       if (intervalRef.current !== null) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
     };
-  }, [handleCheckExtension, handleLinkedProfile]);
+  }, [pollExtensionStatus, fetchLinkedProfile]);
 };
+
 export default useExtension;
