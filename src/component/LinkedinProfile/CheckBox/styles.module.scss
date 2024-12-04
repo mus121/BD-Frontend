@@ -8,9 +8,10 @@
   box-sizing: border-box;
   padding: 5px 10px;
   margin-top: 24px;
-  h5 {
+  .checkDescription {
     @include font-sm();
     color: $gray-15;
     margin-left: 5px;
+    margin-top: -2px;
   }
 }

@@ -3,7 +3,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import styles from './styles.module.scss';
 import SearchBar from './SearchBar/index';
-import { getProfileSearch } from '../../hooks/useExtension';
+import { getProfileSearch } from '../../hooks/getProfileSearch';
 
 function SearchProfile({ setProfiles }: { setProfiles: Dispatch<SetStateAction<null>> }) {
   const handleSearch = (searchTerm: string) => {

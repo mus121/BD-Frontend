@@ -1,0 +1,14 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.closeBack {
+  height: 48px;
+  .closeButton {
+    @include button-style($gray-700, $gray-25);
+    @include center-flex();
+    position: relative;
+    top: 15px;
+    left: 810px;
+  }
+}

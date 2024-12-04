@@ -13,13 +13,13 @@
   margin-right: auto;
   .profileFollow {
     @include space-between();
-    h5 {
+    .profileHaeding {
       @include font-semibold-3xl();
       color: $gray-10;
     }
   }
   .profileDescription {
-    p {
+    .profileDesc {
       width: fit-content;
       color: $gray-100;
       @include font-normal();
@@ -28,12 +28,9 @@
   .contactTop {
     .contactProfile {
       @include space-between();
-      h5 {
+      .profile {
         @include font-semibold-xl();
         color: $gray-10;
-      }
-      .yourConnection {
-        width: 497px;
       }
       .searchAndfilters {
         width: 483px;
@@ -41,7 +38,7 @@
         justify-content: space-between;
       }
     }
-    .connectionColumn {
+    .connectionGrid {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;

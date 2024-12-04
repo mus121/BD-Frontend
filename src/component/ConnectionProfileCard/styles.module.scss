@@ -11,52 +11,37 @@
   border-radius: 16px;
   gap: 12px;
   margin-top: 10px;
+
   .userProfile {
     width: 341px;
     display: flex;
     .profileImg {
-      width: 48px;
-      height: 48px;
       border-radius: 100px;
     }
     .profile {
       margin-left: 12px;
-      h5 {
+      .profileName {
         @include font-semibold-sm();
         color: $gray-10;
       }
-      p {
+      .headline {
         @include font-sm();
         margin-top: 8px;
         margin-left: 2px;
         color: $gray-50;
       }
-      .local {
-        display: flex;
-        .Location {
-          position: relative;
-          bottom: 4px;
-        }
-        span {
-          @include font-sm();
-          margin-top: 8px;
-          margin-left: 2px;
-          color: $gray-50;
-          margin-left: 2px;
-        }
-      }
     }
   }
-  .followAccount {
-    width: 72px;
-    height: 34px;
-    &.followed {
-      @include justify-space-between();
-      width: 103px;
-      height: 32px;
-      border-color: $Orange-500;
-      color: $Orange-500;
-      background: none;
-    }
+}
+.followAccount {
+  width: 72px;
+  height: 34px;
+  &.followed {
+    @include justify-space-between();
+    width: 103px;
+    height: 32px;
+    border-color: $Orange-500;
+    color: $Orange-500;
+    background: none;
   }
 }

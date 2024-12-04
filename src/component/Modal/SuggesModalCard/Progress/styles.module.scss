@@ -2,16 +2,6 @@
 @import '../../../../styles/fonts';
 @import '../../../../styles/mixin';
 
-.scores {
+.scoresContainer {
   @include justify-space-between();
-  .score {
-    margin-top: 4px;
-    span {
-      @include font-sm();
-      margin-right: 135px;
-      position: relative;
-      top: 8px;
-      color: $gray-100;
-    }
-  }
 }

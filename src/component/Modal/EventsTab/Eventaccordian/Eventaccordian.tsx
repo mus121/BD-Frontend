@@ -36,8 +36,8 @@ const accordionItems = [
 
 function Eventaccordian() {
   return (
-    <div className={styles.Eventaccordian}>
-      <h5>What the new Strategic Partnerships means for you</h5>
+    <div className={styles.eventAccordion}>
+      <h5 className={styles.eventHeading}>WHAT THE NEW STRATEGIC PARTNERSHIP MEANS FOR YOU</h5>
 
       <Accordion items={accordionItems} />
     </div>

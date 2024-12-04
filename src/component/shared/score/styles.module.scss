@@ -1,0 +1,17 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.score {
+  margin-top: 8px;
+  .scoreTerm {
+    @include fontAlpha();
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    margin-right: 135px;
+    position: relative;
+    top: 8px;
+    color: $gray-100;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.head {
+  width: 353px;
+  height: 270px;
+  text-align: left;
+
+  .bdHeading {
+    @include font-medium-4xl();
+    color: $gray-10;
+    .bd {
+      color: $Orange-400;
+    }
+  }
+}

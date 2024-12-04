@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './styles.module.scss';
 import SearchProfile from '../SearchProfile/Search';
-import { getMutualConnections, getTotalConnections } from '../../hooks/useExtension';
+import { getMutualConnections } from '../../hooks/getMutualConnections';
+import { getTotalConnections } from '../../hooks/getTotalConnections';
 import Pagination from '../Pagination/index';
 import { getsubmitData } from '../../services/Followinglinkedinprofile';
 import SuggestButton from './SuugestButton';
@@ -18,13 +19,13 @@ function FollowProfile() {
   const [currentPage, setcurrentPage] = useState(0);
   const [profiles, setProfiles] = useState<any>(null);
   const [followprofile, setFollowprofile] = useState<string[]>([]);
-  const [isPageLoading, setIsPageLoading] = useState(true); // Ensure shimmer starts by default
+  const [isPageLoading, setIsPageLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsPageLoading(true); // Start shimmer on page load
-      const startTime = Date.now(); // Track fetch start time
+      setIsPageLoading(true);
+      const startTime = Date.now();
 
       // Fetch data
       const [mutualData, totalConnectionsData, response] = await Promise.all([
@@ -50,7 +51,7 @@ function FollowProfile() {
   }, [currentPage]);
 
   const onPageChange = (Page: number) => {
-    setIsPageLoading(true); // Start shimmer on pagination
+    setIsPageLoading(true);
     setcurrentPage(Page);
   };
 
@@ -68,28 +69,26 @@ function FollowProfile() {
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
-        <h5>Follow Important Profiles</h5>
+        <h5 className={styles.profileHaeding}>Follow Important Profiles</h5>
         <SuggestButton
           followprofile={followprofile}
           handleButtonClick={handleButtonClick}
         />
       </div>
       <div className={styles.profileDescription}>
-        <p>
+        <p className={styles.profileDesc}>
           Follow at least 5 profiles from your network to help us tailor recommendations to you.
         </p>
       </div>
       <div className={styles.contactTop}>
         <div className={styles.contactProfile}>
-          <div className={styles.yourConnection}>
-            <h5>Your Connections</h5>
-          </div>
+          <h5 className={styles.profile}>Profiles</h5>
           <div className={styles.searchAndfilters}>
             <SearchProfile setProfiles={setProfiles} />
             <Filters />
           </div>
         </div>
-        <div className={styles.connectionColumn}>
+        <div className={styles.connectionGrid}>
           <ProfilesList
             profiles={profiles}
             mutualConnections={mutualConnections}

@@ -6,35 +6,9 @@
   @include center-flex;
   height: 95vh;
   padding: 20px;
-
   .welcome {
     padding: 100px 120px;
     border: 1px solid $gray-700;
     border-radius: 16px;
-    @include center-flex();
-
-    .hold {
-      text-align: justify;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      width: 550px;
-    }
-
-    .title {
-      @include fontAlpha();
-      color: $white-color;
-      font-size: 32px;
-      line-height: 54px;
-      font-weight: 500;
-      margin: 0;
-      letter-spacing: 0px;
-    }
-    .description {
-      @include fontAlpha();
-      @include font-sm();
-      color: $gray-100;
-      margin: 0;
-    }
   }
 }

@@ -46,9 +46,9 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
     setIsDropdownOpen(false); // Close dropdown on clear
   };
 
-  const handleBlur = () => {
-    setTimeout(() => setIsDropdownOpen(false), 200); // Delay to allow clicking dropdown items
-  };
+  // const handleBlur = () => {
+  //   setTimeout(() => setIsDropdownOpen(false), 200); // Delay to allow clicking dropdown items
+  // };
 
   return (
     <div className={styles.searchBarWrapper}>
@@ -62,7 +62,7 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           onFocus={() => setIsDropdownOpen(true)} // Open dropdown on focus
-          onBlur={handleBlur} // Close dropdown when focus is lost
+          // onBlur={handleBlur} // Close dropdown when focus is lost
         />
         {searchQuery && (
           <button

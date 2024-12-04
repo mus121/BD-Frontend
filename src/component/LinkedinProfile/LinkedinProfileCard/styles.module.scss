@@ -28,14 +28,14 @@
     margin-top: 24px;
     .head {
       margin-left: 10px;
-      h5 {
+      .headName {
         @include fontAlpha();
         font-size: 24px;
         list-style: 30px;
         color: $gray-10;
         font-weight: 600px;
       }
-      span {
+      .occupation {
         @include font-normal-sm();
         color: $gray-25;
       }
@@ -47,7 +47,7 @@
   margin-top: 24px;
   .location {
     display: flex;
-    h5 {
+    .location {
       @include font-normal();
       color: $gray-300;
       margin-left: 8px;
@@ -55,11 +55,11 @@
   }
   .university {
     display: flex;
-    .Home {
+    .home {
       position: relative;
       top: 2px;
     }
-    h5 {
+    .education {
       @include font-normal();
       color: $gray-300;
       margin-left: 8px;

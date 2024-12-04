@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type TMiniProfile = {
+  response: any;
   miniProfile: {
     anti_abuse_metadata: {
       anti_abuse_uuid: string | null;

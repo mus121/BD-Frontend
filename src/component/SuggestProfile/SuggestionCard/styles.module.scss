@@ -2,8 +2,7 @@
 @import '../../../styles/fonts';
 @import '../../../styles/mixin';
 
-.Cardcontainer {
-  //   @include justify-space-between();
+.cardContainer {
   width: 488px;
   height: 240px;
   padding: 20px 24px;
@@ -16,66 +15,10 @@
   &:hover {
     background-color: $gray-800;
   }
-  .Userprofile {
-    display: flex;
-    justify-content: space-between;
-    .Usercard {
-      display: flex;
-      .Profileimg {
-        border-radius: 100px;
-      }
-      .Profile {
-        margin-left: 12px;
-        h5 {
-          @include fontAlpha();
-          font-size: 20px;
-          line-height: 30px;
-          font-weight: 500;
-          color: $gray-10;
-        }
-        p {
-          @include fontAlpha();
-          margin-top: 4px;
-          font-size: 16px;
-          line-height: 24px;
-          font-weight: 400;
-          margin-left: 2px;
-          color: $gray-25;
-        }
-        .Locationchange {
-          @include fontAlpha();
-          font-size: 16px;
-          line-height: 24px;
-          font-weight: 400;
-          margin-left: 10px;
-          color: $gray-100;
-          margin-top: 4px;
-          .Location {
-            position: relative;
-            top: 3px;
-            right: 5px;
-          }
-        }
-      }
-    }
-  }
   .Separator {
     margin: 16px 0;
     border: none;
     height: 1px;
     background-color: $gray-800;
-  }
-}
-
-.Followaccount {
-  width: 72px;
-  height: 34px;
-  &.followed {
-    @include justify-space-between();
-    width: 103px;
-    height: 32px;
-    border-color: $Orange-500;
-    color: $Orange-500;
-    background: none;
   }
 }

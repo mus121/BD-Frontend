@@ -4,22 +4,17 @@
 
 .dropDown {
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 331px;
-  max-height: 300px;
+  max-height: 345px;
   overflow-y: auto;
   overflow-x: hidden;
   background: $gray-800;
   border: 1px solid $gray-700;
-  border-radius: 4px;
+  border-radius: 8px;
   margin-top: 8px;
-  z-index: 10;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 8px 8px;
   .section {
     .sectionTitle {
-      padding: 8px 12px;
+      padding: 8px 16px;
       p {
         font-size: 12px;
         font-weight: 300;
@@ -47,19 +42,13 @@
     }
   }
 }
-.profileImg {
-  border-radius: 50%;
-}
-
 .profileDetails {
   flex-grow: 1;
 }
 
 .contactName {
   display: block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 21px;
+  @include font-sm();
   color: $gray-100;
 }
 
@@ -67,4 +56,8 @@
   display: block;
   font-size: 12px;
   color: $gray-100;
+}
+
+.profileImg {
+  border-radius: 100px;
 }

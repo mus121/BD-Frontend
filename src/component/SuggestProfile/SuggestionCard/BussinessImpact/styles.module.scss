@@ -2,31 +2,30 @@
 @import '../../../../styles/fonts';
 @import '../../../../styles/mixin';
 
- .bussinessImpact {
-    margin-top: 16px;
-    .impactTitle{
-      @include space-between();
-      .bussinessAlert {
-        display: flex;
-        justify-content: space-between;
-        width: 205px;
-        h5 {
-          @include fontAlpha();
-          font-size: 14px;
-          color: $gray-100;
-          line-height: 21px;
-          font-weight: 400;
-        }
-      }
-      p {
-        @include fontAlpha();
-        background-color: $gray-700;
-        color: $blue-400;
-        font-size: 12px;
-        line-height: 18px;
-        font-weight: 400;
-        padding: 2px 10px;
-        border-radius: 80px;
+.bussinessImpact {
+  margin-top: 16px;
+  .impactTitle {
+    @include space-between();
+    .bussinessAlert {
+      display: flex;
+      justify-content: space-between;
+      width: 205px;
+      .impactHeading {
+        @include font-sm();
+        color: $gray-100;
       }
     }
+    .average {
+      @include fontAlpha();
+      background-color: $gray-700;
+      color: $blue-400;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 400;
+      padding: 2px 10px;
+      border-radius: 80px;
+      border: none;
+      cursor: pointer;
+    }
   }
+}

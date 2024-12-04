@@ -1,0 +1,28 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.eventDetails {
+  .eventTitle {
+    @include fontAlpha();
+    display: flex;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: $gray-10;
+    margin-top: 8px;
+  }
+  .eventDescription {
+    @include font-normal();
+    text-align: left;
+    color: $gray-100;
+    margin-top: 8px;
+  }
+  .partnerShip {
+    @include font-sm();
+    color: $Orange-700;
+    text-align: left;
+    display: flex;
+    margin-top: 6px;
+  }
+}

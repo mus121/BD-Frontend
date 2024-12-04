@@ -22,16 +22,24 @@ function Filters() {
         onClick={toggleDropdown}
       >
         {selectedOption}{' '}
-        <span>
+        <span className={styles.downChevron}>
           <Downchevron size={24} />
         </span>
       </button>
       {isOpen && (
         <ul className={styles.dropdownMenu}>
-          <li onClick={() => handleOptionClick('All')}>
+          <li
+            onClick={() => handleOptionClick('All')}
+            className={styles.li}
+          >
             <span className={styles.all}>All</span>
           </li>
-          <li onClick={() => handleOptionClick('Following')}>Following</li>
+          <li
+            onClick={() => handleOptionClick('Following')}
+            className={styles.li}
+          >
+            <span className={styles.all}>Following</span>
+          </li>
         </ul>
       )}
     </div>

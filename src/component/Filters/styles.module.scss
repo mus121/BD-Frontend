@@ -17,14 +17,14 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 10px;
-    width: 140px;
+    width: 125px;
     background: none;
     color: $gray-50;
     border: none;
     cursor: pointer;
     @include space-between();
 
-    span {
+    .downChevron {
       margin-right: 10px;
     }
   }
@@ -43,7 +43,7 @@
     border: 1px solid $gray-600;
     border-radius: 8px;
 
-    li {
+    .li {
       padding: 10px 20px;
       cursor: pointer;
       &:hover {

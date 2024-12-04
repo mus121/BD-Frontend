@@ -2,9 +2,9 @@
 @import '../../../../styles/fonts';
 @import '../../../../styles/mixin';
 
-.Impacttitle {
+.impactTitle {
   @include space-between();
-  .Bussinessalert {
+  .bussinessAlert {
     display: flex;
     justify-content: space-between;
     width: 205px;
@@ -13,7 +13,7 @@
       color: $gray-100;
     }
   }
-  p {
+  .average {
     @include fontAlpha();
     background-color: $gray-700;
     color: $blue-400;
@@ -22,5 +22,6 @@
     font-weight: 400;
     padding: 2px 10px;
     border-radius: 80px;
+    border: none;
   }
 }

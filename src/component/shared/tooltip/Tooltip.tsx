@@ -1,15 +1,17 @@
 import Alertcircle from '@/component/common/svg/Alertcircle';
 import styles from './styles.module.scss';
 
-function Tooltip() {
+type TooltipProps = {
+  content: string;
+  iconSize?: number;
+};
+
+function Tooltip({ content, iconSize = 16 }: TooltipProps) {
   return (
-    <div className={styles.Tool}>
-      <span className={styles.Infoicon}>
-        <Alertcircle size={16} />
-        <span className={styles.Tooltip}>
-          The Business Impact Score show the potential immediate (short-term) and lasting
-          (long-term) impact on your business growth from connecting with this person.
-        </span>
+    <div className={styles.tool}>
+      <span className={styles.infoIcon}>
+        <Alertcircle size={iconSize} />
+        <span className={styles.tooltip}>{content}</span>
       </span>
     </div>
   );

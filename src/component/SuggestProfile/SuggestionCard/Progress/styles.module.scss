@@ -4,11 +4,4 @@
 
 .scores {
   @include space-between();
-  margin-top: 16px;
-  .score {
-    span {
-      @include font-sm();
-      color: $gray-100;
-    }
-  }
 }

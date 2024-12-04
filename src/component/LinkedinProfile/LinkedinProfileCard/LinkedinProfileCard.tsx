@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/hooks/rtk';
-import Image from 'next/image';
+import ProfileImage from '@/component/shared/profileImages/profileImages';
 import Location from '@/component/common/svg/Location';
 import Home from '@/component/common/svg/Home';
 import styles from './styles.module.scss';
@@ -13,7 +13,7 @@ function LinkedProfileCard() {
   return (
     <div className={styles.linkedinCard}>
       <div className={styles.linkedin}>
-        <Image
+        <ProfileImage
           src='/assets/images/linkedIn.png'
           width={16}
           height={16}
@@ -24,32 +24,32 @@ function LinkedProfileCard() {
       <div className={styles.cardData}>
         <div className={styles.userImg}>
           {imgUrl && (
-            <Image
+            <ProfileImage
               src={imgUrl}
               width={48}
               height={48}
-              alt='User'
+              alt='Linkedin Profile User'
               className={styles.userProfile}
             />
           )}
         </div>
         <div className={styles.head}>
-          <h5>
+          <h5 className={styles.headName}>
             {miniProfile.firstName} {miniProfile.lastName}
           </h5>
-          <span>{miniProfile.occupation}</span>
+          <span className={styles.occupation}>{miniProfile.occupation}</span>
         </div>
       </div>
       <div className={styles.cardLocation}>
         <div className={styles.location}>
           <Location size={24} />
-          <h5>Islamabad, Pakistan</h5>
+          <h5 className={styles.location}>Islamabad, Pakistan</h5>
         </div>
         <div className={styles.university}>
           <span className={styles.home}>
             <Home size={18} />
           </span>
-          <h5>University of Calicut</h5>
+          <h5 className={styles.education}>University of Calicut</h5>
         </div>
       </div>
     </div>

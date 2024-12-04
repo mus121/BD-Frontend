@@ -4,7 +4,7 @@ import { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 interface TertiaryButtonProps extends ComponentPropsWithoutRef<'button'> {
   type?: 'button' | 'submit' | 'reset';
-  text?: string | null;
+  text?: React.ReactNode;
   tertiaryButtonClassName?: string;
   sizeVariant?: 'xs' | 'sm' | 'base';
   colorVariant: 'orange' | 'black' | 'gray' | 'lightGray';

@@ -1,0 +1,33 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/primaryButton';
+@import '../../../../styles/mixin';
+
+.impactButtonGeneric {
+  @include center-flex();
+  @include fontAlpha();
+  background-color: $gray-700;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  padding: 2px 10px;
+  border-radius: 80px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Apply size variants */
+.xsSize--ImpactButton {
+  @include size-variant(12px, 8px 12px);
+}
+
+.smSize--ImpactButton {
+  @include size-variant(14px, 10px 12px);
+}
+
+.baseSize--ImpactButton {
+  @include size-variant(16px, 8px 12px);
+}
+
+.orange--ImpactButton {
+  @include color-variant(unset, $Orange-400);
+}

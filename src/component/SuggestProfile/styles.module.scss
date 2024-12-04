@@ -13,13 +13,13 @@
   margin-right: auto;
   .suggestHeading {
     @include space-between();
-    h5 {
+    .networkHeading {
       @include font-semibold-3xl();
       color: $gray-10;
     }
   }
   .suggestDescription {
-    p {
+    .networkDescription {
       width: fit-content;
       color: $gray-100;
       @include font-normal();
@@ -29,7 +29,7 @@
     .suggestConnection {
       @include space-between();
 
-      h5 {
+      .profileHead {
         @include font-semibold-xl();
         color: $gray-10;
       }

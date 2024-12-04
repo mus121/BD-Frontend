@@ -6,9 +6,10 @@ import EventsTab from './EventsTab';
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  children?: React.ReactNode;
 };
 
-function Modal({ isOpen, onClose }: ModalProps) {
+function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
   return (

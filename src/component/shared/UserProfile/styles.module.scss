@@ -1,0 +1,58 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.userProfile {
+  display: flex;
+  justify-content: space-between;
+  .userCard {
+    display: flex;
+    height: 81px;
+    .profileImg {
+      border-radius: 100px;
+    }
+    .profile {
+      margin-left: 12px;
+      .profileName {
+        @include fontAlpha();
+        font-size: 18px;
+        line-height: 27px;
+        font-weight: 600;
+        color: $gray-10;
+        margin-right: 77px;
+      }
+      .profileTitle {
+        @include font-sm();
+        margin-top: 6px;
+        margin-right: 15px;
+        color: $gray-25;
+      }
+      .locationContainer {
+        @include font-sm();
+        color: $gray-100;
+        position: relative;
+        bottom: 15px;
+        // margin-left: 8px;
+        margin-top: 20px;
+
+        .location {
+          position: relative;
+          right: 4px;
+          top: 3px;
+        }
+      }
+    }
+  }
+  .followAccount {
+    width: 72px;
+    height: 34px;
+    &.followed {
+      @include justify-space-between();
+      width: 103px;
+      height: 32px;
+      border-color: $Orange-500;
+      color: $Orange-500;
+      background: none;
+    }
+  }
+}

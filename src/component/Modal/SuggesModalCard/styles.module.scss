@@ -12,60 +12,14 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   background-color: $Gradient-Grey-Black;
-  .userProfile {
-    display: flex;
-    justify-content: space-between;
-    .userCard {
-      display: flex;
-      width: 508px;
-      height: 81px;
-      .profileImg {
-        border-radius: 100px;
-      }
-      .profile {
-        margin-left: 12px;
-        h5 {
-          @include fontAlpha();
-          font-size: 18px;
-          line-height: 27px;
-          font-weight: 600;
-          color: $gray-10;
-          margin-right: 77px;
-        }
-        p {
-          @include font-sm();
-          margin-top: 6px;
-          margin-right: 15px;
-          color: $gray-25;
-        }
-        .locationChange {
-          @include font-sm();
-          color: $gray-100;
-          position: relative;
-          bottom: 15px;
-          margin-left: 8px;
-          margin-top: 20px;
-
-          .location {
-            position: relative;
-            top: 3px;
-            right: 5px;
-          }
-        }
-      }
-    }
-    .followAccount {
-      margin-right: 40px;
-    }
-  }
-  .Separator {
+  .separator {
     margin: 16px 0;
     border: none;
     height: 1px;
     background-color: $gray-800;
   }
 
-  .Bussinessimpact {
+  .bussinessImpact {
     margin-top: 16px;
   }
 }

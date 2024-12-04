@@ -2,9 +2,6 @@ import { useCallback, useRef, useEffect } from 'react';
 import {
   sendextensionmessage,
   sendlinkedinprofile,
-  sendconnectionProfile,
-  sendtotalconnection,
-  sendProfileSearch,
 } from '../utils/index';
 import { useAppDispatch, useAppSelector } from './rtk';
 import { setIsExtensionInstalled } from '../store/slices/appslice';
@@ -57,24 +54,3 @@ const useExtension = () => {
   }, [handleCheckExtension, handleLinkedProfile]);
 };
 export default useExtension;
-
-export const getMutualConnections = (setState: any, start: number = 0) => {
-  sendconnectionProfile<{ response: any }>('LINKEDCONNECTION', start, response => {
-    setState(response);
-  });
-};
-
-export const getTotalConnections = (setState: any) => {
-  sendtotalconnection<{ response: any }>('LINKEDTOTALCONNECTION', response => {
-    setState(response);
-  });
-};
-
-export const getProfileSearch = (searchTerm: string, setState: (response: any) => void) => {
-  sendProfileSearch<{ response: any }>('SEARCHPROFILE', searchTerm, response => {
-    if (response.error) {
-      return setState(null);
-    }
-    return setState(response);
-  });
-};

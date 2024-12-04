@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
+import ProfileImage from '@/component/shared/profileImages/profileImages';
 import { openPopup, closePopup } from '../../../store/slices/popupSlice';
 import styles from './styles.module.scss';
 import MessagePopup from '../../MessagePopup/index';
@@ -30,7 +30,7 @@ function AuthenticationButton() {
           onClick={handleButtonClick}
           primaryButtonClassName={styles.google}
         >
-          <Image
+          <ProfileImage
             src='/assets/images/Google - Original.png'
             width={17}
             height={17}
@@ -48,7 +48,7 @@ function AuthenticationButton() {
           onClick={handleButtonClick}
           disabled
         >
-          <Image
+          <ProfileImage
             src='/assets/images/outlook_icon.png'
             width={17}
             height={17}

@@ -1,17 +1,16 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import ProfileImage from '../shared/profileImages/profileImages';
 import styles from './styles.module.scss';
 
 function Navbar() {
   return (
-    <nav className={styles.Navbar}>
+    <nav className={styles.navbar}>
       <Link href='/'>
-        <Image
+        <ProfileImage
           src='/assets/images/Logo.png'
           alt='BD APP'
           width={32}
           height={32}
-          priority
         />
       </Link>
     </nav>

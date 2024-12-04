@@ -1,29 +1,20 @@
-import ProgressBar from '@/component/shared/progressbar/ProgressBar';
+import ImpactScore from '@/component/shared/score';
 import styles from './styles.module.scss';
-import Eventaccordian from '../Eventaccordian';
+import Eventaccordian from '../Eventaccordian/index';
 
-function EventImapct() {
+function EventImpact() {
   return (
-    <div className={styles.Eventimpact}>
-      <h5>IMPLICATION DETAILS</h5>
-      <div className={styles.Impact}>
-        <h5>IMPACT SCORE</h5>
-        <div className={styles.Impactscore}>
-          <div className={styles.Scoreterm}>
-            <div className={styles.Score}>
-              <span>Short Term</span>
-              <ProgressBar />
-            </div>
-            <div className={styles.Score}>
-              <span>Long Term</span>
-              <ProgressBar />
-            </div>
-          </div>
+    <div className={styles.eventImpact}>
+      <h5 className={styles.impactDetails}>IMPACT DETAILS</h5>
+      <div className={styles.impact}>
+        <h5 className={styles.impactHaeding}>IMPACT SCORE</h5>
+        <div className={styles.scoreTerm}>
+          <ImpactScore term='Short Term' />
+          <ImpactScore term='Long Term' />
         </div>
       </div>
-
       <Eventaccordian />
     </div>
   );
 }
-export default EventImapct;
+export default EventImpact;

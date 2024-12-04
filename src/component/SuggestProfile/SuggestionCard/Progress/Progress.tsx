@@ -1,17 +1,11 @@
-import ProgressBar from '@/component/shared/progressbar/ProgressBar';
+import ImpactScore from '@/component/shared/score';
 import styles from './styles.module.scss';
 
 function Progress() {
   return (
     <div className={styles.scores}>
-      <div className={styles.score}>
-        <span>Short Term</span>
-        <ProgressBar />
-      </div>
-      <div className={styles.score}>
-        <span>Long Term</span>
-        <ProgressBar />
-      </div>
+      <ImpactScore term='Short Term' />
+      <ImpactScore term='Long Term' />
     </div>
   );
 }

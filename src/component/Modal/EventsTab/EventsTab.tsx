@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import TabsComponent from '../../shared/tabs/index';
-import EventDetail from './EventDetail';
+import EventDetailContainer from './EventDetailContainer/index';
 
 const tabs = [
   { label: 'Summary', value: 'summary' },
@@ -26,7 +26,7 @@ function EventsTab() {
         {activeTab === 'summary' && <p />}
         {activeTab === 'events' && (
           <p>
-            <EventDetail />
+            <EventDetailContainer />
           </p>
         )}
         {activeTab === 'experience' && <p />}

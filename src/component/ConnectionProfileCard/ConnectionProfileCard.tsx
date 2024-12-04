@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import { useMutation } from '@tanstack/react-query';
+import useFollowProfile from '@/hooks/useFollowProfile';
 import styles from './styles.module.scss';
 import TertiaryButton from '../shared/button/TertiaryButton';
 import Followingcheck from '../common/svg/Followingcheck';
-import { submitData } from '../../services/Followlinkedinprofile';
 
 type ProfileProps = {
   profile: {
@@ -20,32 +19,20 @@ type ProfileProps = {
 
 const truncateHeadline = (headline: string, maxLength: number = 70): string => {
   if (!headline) return 'No headline available';
-  return headline.length > maxLength ? `${headline.slice(0, maxLength)}...` : headline;
-};
 
-const followMutationFn = async (action: {
-  follow: boolean;
-  identifier: string;
-  entityUrn: string;
-}) => submitData(action.identifier, action.entityUrn, action.follow);
+  const parts = headline.split('•');
+  const lastPart = parts[parts.length - 1]?.trim() || '';
+
+  return lastPart.length > maxLength ? `${lastPart.slice(0, maxLength)}...` : lastPart;
+};
 
 function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }: ProfileProps) {
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
 
   const isFollowed = followprofile.includes(publicIdentifier);
 
-  const mutation = useMutation({
-    mutationFn: followMutationFn,
-    onSuccess: (data, variables) => {
-      setFollowprofile(prev =>
-        variables.follow
-          ? [...prev, variables.identifier]
-          : prev.filter(value => value !== variables.identifier),);
-    },
-    onError: error => {
-      console.error('Error following/unfollowing:', error);
-    },
-  });
+  // Use the custom hook for follow/unfollow mutation
+  const mutation = useFollowProfile(setFollowprofile);
 
   // Toggle follow/unfollow state
   const handleFollowToggle = () => {
@@ -58,6 +45,13 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
 
   const headlineText = truncateHeadline(headline);
 
+  const followButton = isFollowed ? (
+    <>
+      <Followingcheck size={11.9} /> Following
+    </>
+  ) : (
+    'Follow'
+  );
   return (
     <div className={styles.cardContainer}>
       <div className={styles.userProfile}>
@@ -69,26 +63,23 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
           className={styles.profileImg}
         />
         <div className={styles.profile}>
-          <h5>{`${firstName} ${lastName}`}</h5>
-          <p title={headline}>{headlineText}</p>
+          <h5 className={styles.profileName}>{`${firstName} ${lastName}`}</h5>
+          <p
+            title={headline}
+            className={styles.headline}
+          >
+            {headlineText}
+          </p>
         </div>
       </div>
       <TertiaryButton
         colorVariant='lightGray'
         type='button'
-        text={
-          isFollowed ? (
-            <>
-              <Followingcheck size={11.9} /> Following
-            </>
-          ) : (
-            'Follow'
-          )
-        }
+        text={followButton}
         tertiaryButtonClassName={`${styles.followAccount} ${isFollowed && styles.followed}`}
         sizeVariant='base'
         onClick={handleFollowToggle}
-        disabled={mutation.isLoading}
+        // disabled={mutation.isLoading}
       />
     </div>
   );

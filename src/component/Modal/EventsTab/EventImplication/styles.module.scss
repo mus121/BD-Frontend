@@ -1,0 +1,35 @@
+@import '../../../../styles/colors';
+@import '../../../../styles//fonts';
+@import '../../../../styles/mixin';
+
+.eventImpact {
+  margin-top: 24px;
+  .impactDetails {
+    @include fontAlpha();
+    display: flex;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: $gray-100;
+  }
+  .impact {
+    margin-top: 8px;
+    width: 625px;
+    height: 97px;
+    border: 1px $Gradient-Grey-Black;
+    border-radius: 8px;
+    padding: 16px 12px;
+    background: $Gradient-Grey-Black;
+    .impactHaeding {
+      @include fontAlpha();
+      display: flex;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      color: $gray-100;
+    }
+    .scoreTerm {
+      @include justify-space-between();
+    }
+  }
+}
