@@ -1,4 +1,4 @@
-const postApi = async (url: string): Promise<any> => {
+const getApi = async (url: string): Promise<any> => {
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -24,7 +24,7 @@ const postApi = async (url: string): Promise<any> => {
 export const getsubmitData = async () => {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/linkedinProfile`;
   try {
-    const response = await postApi(apiUrl);
+    const response = await getApi(apiUrl);
     return response.profiles.map(({ publicIdentifier }) => publicIdentifier);
   } catch (error) {
     console.error('Failed to submit data:', error);

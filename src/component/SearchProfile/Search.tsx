@@ -7,7 +7,7 @@ import { getProfileSearch } from '../../hooks/getProfileSearch';
 
 function SearchProfile({ setProfiles }: { setProfiles: Dispatch<SetStateAction<null>> }) {
   const handleSearch = (searchTerm: string) => {
-    getProfileSearch(searchTerm, setProfiles);
+    getProfileSearch(searchTerm);
   };
 
   return (

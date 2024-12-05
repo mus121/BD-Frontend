@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
 import { submitData } from '@/services/Followlinkedinprofile';
 
 const useFollowProfile = (setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>) => {
@@ -8,6 +8,7 @@ const useFollowProfile = (setFollowprofile: React.Dispatch<React.SetStateAction<
     entityUrn: string;
   }) => submitData(action.identifier, action.entityUrn, action.follow);
 
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: followMutationFn,
     onSuccess: (data, variables) => {
@@ -18,6 +19,7 @@ const useFollowProfile = (setFollowprofile: React.Dispatch<React.SetStateAction<
             : prev.filter(value => value !== variables.identifier),
         // eslint-disable-next-line function-paren-newline
       );
+      queryClient.invalidateQueries({ queryKey: ['submitData'] });
     },
     onError: error => {
       // eslint-disable-next-line no-console

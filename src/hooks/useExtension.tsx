@@ -1,5 +1,5 @@
 import { useCallback, useRef, useEffect } from 'react';
-import { sendextensionmessage, sendlinkedinprofile } from '../utils/index'; // Updated path for sendMessage utilities
+import { sendextensionmessage, sendlinkedinprofile } from '../utils/index';
 import { useAppDispatch, useAppSelector } from './rtk';
 import { setIsExtensionInstalled } from '../store/slices/appslice';
 import { setMiniProfile } from '../store/slices/miniProfilesSlice';

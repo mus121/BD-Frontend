@@ -1,21 +1,20 @@
 import React from 'react';
 import { ProfilesListProps } from '@/types/ProfileList';
+import { renderSuggestionProfiles, renderMutualConnections } from '@/utils/renderCard';
 import styles from './styles.module.scss';
-import {
-  renderSuggestionProfiles,
-  renderMutualConnections,
-} from './ProfileCardRenderer/ProfileCardRenderer';
 
-const ProfilesList: React.FC<ProfilesListProps> = ({
+function ProfilesList({
   profiles,
   mutualConnections,
   followprofile,
   setFollowprofile,
-}) => (
-  <div className={styles.profileListContainer}>
-    {profiles && renderSuggestionProfiles(profiles, followprofile, setFollowprofile)}
-    {!profiles && renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
-  </div>
-);
+}: ProfilesListProps) {
+  return (
+    <div className={styles.profileListContainer}>
+      {profiles && renderSuggestionProfiles(profiles, followprofile, setFollowprofile)}
+      {!profiles && renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
+    </div>
+  );
+}
 
 export default ProfilesList;

@@ -47,23 +47,21 @@ export const renderSuggestionProfiles = (
     );
   }
 
-  return profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
-    (element, index) => {
-      const lockup = element?.entityLockupView;
-      const profilePicture = extractProfilePicture(lockup?.image);
-      const title = lockup?.title?.text || '';
-      const camelCaseName = toCamelCase(title);
-      const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
-      const headline = lockup?.subtitle?.text || '';
+  return profiles?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map((element, index) => {
+    const lockup = element?.entityLockupView;
+    const profilePicture = extractProfilePicture(lockup?.image);
+    const title = lockup?.title?.text || '';
+    const camelCaseName = toCamelCase(title);
+    const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
+    const headline = lockup?.subtitle?.text || '';
 
-      return renderProfileCard(
-        { firstName, lastName, headline, profilePicture },
-        index,
-        followprofile,
-        setFollowprofile,
-      );
-    },
-  );
+    return renderProfileCard(
+      { firstName, lastName, headline, profilePicture },
+      index,
+      followprofile,
+      setFollowprofile,
+    );
+  });
 };
 
 export const renderMutualConnections = (
@@ -73,7 +71,7 @@ export const renderMutualConnections = (
 ) => {
   if (!mutualConnections) return null;
 
-  return mutualConnections.response.elements
+  return mutualConnections?.elements
     .filter(
       connection =>
         connection?.connectedMemberResolutionResult?.firstName ||

@@ -20,31 +20,26 @@ const sendMessage = <T>(type: string, payload?: object): Promise<MessageResponse
   });
 
 // Exported utility functions
-export const sendextensionmessage = <T>(type: string): Promise<MessageResponse<T>> => {
-  return sendMessage<T>(type);
+export const sendextensionmessage = <T>(type: string): Promise<MessageResponse<T>> =>
+  sendMessage<T>(type);
+
+export const sendlinkedinprofile = <T>(type: string): Promise<MessageResponse<T>> =>
+  sendMessage<T>(type);
+
+export const sendconnectionProfile = <T>(
+  type: string,
+  start?: number,
+): Promise<MessageResponse<T>> => sendMessage<T>(type, { start });
+
+export const sendtotalconnection = <T>(type: string): Promise<MessageResponse<T>> =>
+  sendMessage<T>(type);
+
+export const sendProfileSearch = <T>(
+  type: string,
+  searchTerm?: string,
+): Promise<MessageResponse<T>> => {
+  return sendMessage<T>(type, { searchTerm });
 };
-
-export const sendlinkedinprofile = <T>(type: string): Promise<MessageResponse<T>> => {
-  return sendMessage<T>(type);
-};
-
-// export const sendconnectionProfile = <T>(
-//   type: string,
-//   start?: number,
-// ): Promise<MessageResponse<T>> => {
-//   return sendMessage<T>(type, { start });
-// };
-
-// export const sendtotalconnection = <T>(type: string): Promise<MessageResponse<T>> => {
-//   return sendMessage<T>(type);
-// };
-
-// export const sendProfileSearch = <T>(
-//   type: string,
-//   searchTerm?: string,
-// ): Promise<MessageResponse<T>> => {
-//   return sendMessage<T>(type, { searchTerm });
-// };
 
 // start
 
@@ -66,45 +61,45 @@ export const sendlinkedinprofile = <T>(type: string): Promise<MessageResponse<T>
 //   }
 // };
 
-export const sendconnectionProfile = <T>(
-  type: string,
-  start?: number,
-  callback?: (response: T) => void,
-) => {
-  if (chrome.runtime) {
-    if (callback) {
-      chrome.runtime.sendMessage(extensionId, { type, start }, response => {
-        if (callback) callback(response);
-      });
-    }
-  }
-};
+// export const sendconnectionProfile = <T>(
+//   type: string,
+//   start?: number,
+//   callback?: (response: T) => void,
+// ) => {
+//   if (chrome.runtime) {
+//     if (callback) {
+//       chrome.runtime.sendMessage(extensionId, { type, start }, response => {
+//         if (callback) callback(response);
+//       });
+//     }
+//   }
+// };
 
-export const sendtotalconnection = <T>(type: string, callback?: (response: T) => void) => {
-  if (chrome.runtime) {
-    if (callback) {
-      chrome.runtime.sendMessage(extensionId, { type }, response => {
-        if (callback) callback(response);
-      });
-    }
-  }
-};
+// export const sendtotalconnection = <T>(type: string, callback?: (response: T) => void) => {
+//   if (chrome.runtime) {
+//     if (callback) {
+//       chrome.runtime.sendMessage(extensionId, { type }, response => {
+//         if (callback) callback(response);
+//       });
+//     }
+//   }
+// };
 
-export const sendProfileSearch = <T>(
-  type: string,
-  searchTerm?: string,
-  callback?: (response: T) => void,
-) => {
-  if (chrome.runtime) {
-    const message: { type: string; searchTerm?: string } = { type };
-    if (searchTerm) {
-      message.searchTerm = searchTerm;
-    }
+// export const sendProfileSearch = <T>(
+//   type: string,
+//   searchTerm?: string,
+//   callback?: (response: T) => void,
+// ) => {
+//   if (chrome.runtime) {
+//     const message: { type: string; searchTerm?: string } = { type };
+//     if (searchTerm) {
+//       message.searchTerm = searchTerm;
+//     }
 
-    if (callback) {
-      chrome.runtime.sendMessage(extensionId, message, response => {
-        if (callback) callback(response);
-      });
-    }
-  }
-};
+//     if (callback) {
+//       chrome.runtime.sendMessage(extensionId, message, response => {
+//         if (callback) callback(response);
+//       });
+//     }
+//   }
+// };
