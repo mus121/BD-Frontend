@@ -28,16 +28,19 @@ export const renderSuggestionProfiles = (
   profiles: SuggestionProfiles | null,
   followprofile: string[],
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
-) => {
+): JSX.Element | null => {
+  console.log('Profiles Mustafa', profiles);
+
   if (!profiles) return null;
 
+  // Suggestion Type Profiles
   if (profiles?.suggestionType && profiles?.entityLockupView) {
     const lockup = profiles.entityLockupView;
-    const profilePicture = extractProfilePicture(lockup?.image);
-    const title = lockup?.title?.text || '';
+    const profilePicture = extractProfilePicture(lockup?.image || null);
+    const title = lockup?.title?.text || 'Unknown';
     const camelCaseName = toCamelCase(title);
     const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
-    const headline = lockup?.subtitle?.text || '';
+    const headline = lockup?.subtitle?.text || 'No headline available';
 
     return renderProfileCard(
       { firstName, lastName, headline, profilePicture },
@@ -47,13 +50,19 @@ export const renderSuggestionProfiles = (
     );
   }
 
-  return profiles?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map((element, index) => {
+  // Response-based Profiles
+  const elements = profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements;
+  if (!elements || elements.length === 0) {
+    return <div>No profiles found</div>;
+  }
+
+  return elements.map((element, index) => {
     const lockup = element?.entityLockupView;
-    const profilePicture = extractProfilePicture(lockup?.image);
-    const title = lockup?.title?.text || '';
+    const profilePicture = extractProfilePicture(lockup?.image || null);
+    const title = lockup?.title?.text || 'Unknown';
     const camelCaseName = toCamelCase(title);
     const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
-    const headline = lockup?.subtitle?.text || '';
+    const headline = lockup?.subtitle?.text || 'No headline available';
 
     return renderProfileCard(
       { firstName, lastName, headline, profilePicture },

@@ -39,11 +39,11 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
   const handleClearInput = () => {
     setSearchQuery('');
     onSearch('');
-    setIsDropdownOpen(false); // Close dropdown on clear
+    setIsDropdownOpen(false);
   };
 
   const handleBlur = () => {
-    setTimeout(() => setIsDropdownOpen(false), 200); // Delay to allow clicking dropdown items
+    setTimeout(() => setIsDropdownOpen(false), 200);
   };
 
   return (

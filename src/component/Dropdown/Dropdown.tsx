@@ -13,7 +13,7 @@ function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
     queryFn: () => getProfileSearch(searchQuery),
   });
 
-  console.log('Seafbcdh', data);
+  console.log('Global Profile', data);
   useEffect(() => {
     if (searchQuery.trim()) {
       setProfiles(data?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements || []);

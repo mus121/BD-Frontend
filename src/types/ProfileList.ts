@@ -15,6 +15,7 @@ export type ProfilesListProps = {
 };
 
 export type SuggestionProfiles = {
+  data: any;
   suggestionType?: boolean;
   entityLockupView?: {
     title?: { text: string };

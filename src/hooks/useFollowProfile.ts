@@ -19,7 +19,8 @@ const useFollowProfile = (setFollowprofile: React.Dispatch<React.SetStateAction<
             : prev.filter(value => value !== variables.identifier),
         // eslint-disable-next-line function-paren-newline
       );
-      queryClient.invalidateQueries({ queryKey: ['submitData'] });
+      // queryClient.invalidateQueries({ queryKey: ['submitData'] });
+      queryClient.resetQueries({ queryKey: ['submitData'] });
     },
     onError: error => {
       // eslint-disable-next-line no-console

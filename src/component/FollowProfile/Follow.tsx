@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { getsubmitData } from '@/services/Followinglinkedinprofile';
@@ -17,7 +17,8 @@ import ShimmerLoading from '../ShimmerLoading';
 function FollowProfile() {
   const [currentPage, setcurrentPage] = useState(0);
   const [followprofile, setFollowprofile] = useState<string[]>([]);
-  const [searchprofile, setSearchprofile] = useState<string[]>([]);
+  //   const [searchprofile, setSearchprofile] = useState<string[]>([]);
+  const [profiles, setProfiles] = useState<any>(null);
   const router = useRouter();
 
   const handlePageChange = (page: number) => {
@@ -27,6 +28,7 @@ function FollowProfile() {
   const { isLoading, error, data } = useQuery({
     queryKey: ['mutualConnections', currentPage],
     queryFn: () => getMutualConnections(currentPage),
+    // staleTime: 0,
   });
 
   const { data: totalconnectiondata } = useQuery({
@@ -39,11 +41,9 @@ function FollowProfile() {
     queryFn: getsubmitData,
   });
 
-  console.log('Search Profile', searchprofile);
   if (isLoading) {
     return (
       <div>
-        {' '}
         <ShimmerLoading />
       </div>
     );
@@ -59,12 +59,13 @@ function FollowProfile() {
     }
   };
 
+  console.log('Bosss', profiles);
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
         <h5 className={styles.profileHaeding}>Follow Important Profiles</h5>
         <SuggestButton
-          followprofile={getSubmitData}
+          followprofile={Array.isArray(getSubmitData) ? getSubmitData : []}
           handleButtonClick={handleButtonClick}
         />
       </div>
@@ -77,14 +78,14 @@ function FollowProfile() {
         <div className={styles.contactProfile}>
           <h5 className={styles.profile}>Profiles</h5>
           <div className={styles.searchAndfilters}>
-            <SearchProfile setProfiles={setSearchprofile} />
+            <SearchProfile setProfiles={setProfiles} />
             <Filters />
           </div>
         </div>
         <div className={styles.connectionGrid}>
           <ProfilesList
             mutualConnections={data}
-            profiles={null}
+            profiles={profiles}
             setFollowprofile={setFollowprofile}
             followprofile={getSubmitData}
           />
@@ -95,10 +96,11 @@ function FollowProfile() {
           totalItems={totalconnectiondata?.metadata?.totalResultCount || 0}
           itemsPerPage={10}
           currentPage={currentPage}
-          onPageChange={handlePageChange} // Pass the handler function
+          onPageChange={handlePageChange}
         />
       )}
     </div>
   );
 }
+
 export default FollowProfile;
