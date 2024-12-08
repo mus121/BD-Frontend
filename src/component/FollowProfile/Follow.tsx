@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { getsubmitData } from '@/services/Followinglinkedinprofile';
@@ -28,7 +28,6 @@ function FollowProfile() {
   const { isLoading, error, data } = useQuery({
     queryKey: ['mutualConnections', currentPage],
     queryFn: () => getMutualConnections(currentPage),
-    // staleTime: 0,
   });
 
   const { data: totalconnectiondata } = useQuery({
