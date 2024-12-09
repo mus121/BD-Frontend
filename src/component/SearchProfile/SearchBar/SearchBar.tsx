@@ -32,7 +32,7 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       onSearch(searchQuery);
-      setIsDropdownOpen(false); // Close dropdown on enter
+      setIsDropdownOpen(false);
     }
   };
 
@@ -57,7 +57,7 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
           value={searchQuery}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          onFocus={() => setIsDropdownOpen(true)}
+          onFocus={() => setIsDropdownOpen(true)} 
           onBlur={handleBlur}
         />
         {searchQuery && (

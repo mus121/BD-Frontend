@@ -8,7 +8,7 @@ export type Profile = {
 };
 
 export type ProfilesListProps = {
-  profiles: SuggestionProfiles | null;
+  globalProfiles: SuggestionProfiles | null;
   mutualConnections: MutualConnectionResponse | null;
   followprofile: string[];
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>;

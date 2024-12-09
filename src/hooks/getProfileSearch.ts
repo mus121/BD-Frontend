@@ -17,6 +17,6 @@ export const getProfileSearch = async (
     return result;
   } catch (error) {
     console.error('Error fetching profile search:', error);
-    return undefined; // Return undefined in case of error
+    return undefined;
   }
 };

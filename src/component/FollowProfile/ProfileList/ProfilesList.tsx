@@ -4,15 +4,16 @@ import { renderSuggestionProfiles, renderMutualConnections } from '@/utils/rende
 import styles from './styles.module.scss';
 
 function ProfilesList({
-  profiles,
+  globalProfiles,
   mutualConnections,
   followprofile,
   setFollowprofile,
 }: ProfilesListProps) {
   return (
     <div className={styles.profileListContainer}>
-      {profiles && renderSuggestionProfiles(profiles, followprofile, setFollowprofile)}
-      {!profiles && renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
+      {globalProfiles && renderSuggestionProfiles(globalProfiles, followprofile, setFollowprofile)}
+      {!globalProfiles &&
+        renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
     </div>
   );
 }

@@ -1,11 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { getsubmitData } from '@/services/Followinglinkedinprofile';
-import { getMutualConnections } from '@/hooks/getMutualConnections';
-import { getTotalConnections } from '@/hooks/getTotalConnections';
+import { useMutualConnections } from '@/services/useMutualConnections';
+import { useTotalConnections } from '@/services/useTotalConnections';
+import { useSubmitData } from '@/services/useSubmitData';
 import styles from './styles.module.scss';
 import SuggestButton from './SuugestButton';
 import SearchProfile from '../SearchProfile';
@@ -17,38 +16,19 @@ import ShimmerLoading from '../ShimmerLoading';
 function FollowProfile() {
   const [currentPage, setcurrentPage] = useState(0);
   const [followprofile, setFollowprofile] = useState<string[]>([]);
-  const [profiles, setProfiles] = useState<any>(null);
+  const [golbalProfiles, setGolbalProfiles] = useState<any>(null);
   const router = useRouter();
 
   const handlePageChange = (page: number) => {
     setcurrentPage(page);
   };
 
-  const {
-    isLoading,
-    error,
-    data: connections,
-  } = useQuery({
-    queryKey: ['mutualConnections', currentPage],
-    queryFn: () => getMutualConnections(currentPage),
-  });
-
-  const { data: totalconnectiondata } = useQuery({
-    queryKey: ['totalConnections'],
-    queryFn: getTotalConnections,
-  });
-
-  const { data: getSubmitData } = useQuery({
-    queryKey: ['submitData'],
-    queryFn: getsubmitData,
-  });
+  const { isLoading, error, data: connections } = useMutualConnections(currentPage);
+  const { data: totalconnectiondata } = useTotalConnections();
+  const { data: getSubmitData } = useSubmitData();
 
   if (isLoading) {
-    return (
-      <div>
-        <ShimmerLoading />
-      </div>
-    );
+    return <ShimmerLoading />;
   }
 
   if (error instanceof Error) {
@@ -79,20 +59,20 @@ function FollowProfile() {
         <div className={styles.contactProfile}>
           <h5 className={styles.profile}>Profiles</h5>
           <div className={styles.searchAndfilters}>
-            <SearchProfile setProfiles={setProfiles} />
+            <SearchProfile setProfiles={setGolbalProfiles} />
             <Filters />
           </div>
         </div>
         <div className={styles.connectionGrid}>
           <ProfilesList
             mutualConnections={connections}
-            profiles={profiles}
+            globalProfiles={golbalProfiles}
             setFollowprofile={setFollowprofile}
             followprofile={getSubmitData}
           />
         </div>
       </div>
-      {connections !== null && (
+      {golbalProfiles === null && (
         <Pagination
           totalItems={totalconnectiondata?.metadata?.totalResultCount || 0}
           itemsPerPage={10}

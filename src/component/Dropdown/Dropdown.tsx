@@ -19,7 +19,7 @@ function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
     } else {
       setProfiles([]);
     }
-  }, [searchQuery, data]); // Add `data` as a dependency
+  }, [searchQuery, data]);
 
   if (!searchQuery.trim()) return null;
 
