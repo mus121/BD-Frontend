@@ -17,7 +17,6 @@ import ShimmerLoading from '../ShimmerLoading';
 function FollowProfile() {
   const [currentPage, setcurrentPage] = useState(0);
   const [followprofile, setFollowprofile] = useState<string[]>([]);
-  //   const [searchprofile, setSearchprofile] = useState<string[]>([]);
   const [profiles, setProfiles] = useState<any>(null);
   const router = useRouter();
 
@@ -25,7 +24,11 @@ function FollowProfile() {
     setcurrentPage(page);
   };
 
-  const { isLoading, error, data } = useQuery({
+  const {
+    isLoading,
+    error,
+    data: connections,
+  } = useQuery({
     queryKey: ['mutualConnections', currentPage],
     queryFn: () => getMutualConnections(currentPage),
   });
@@ -82,14 +85,14 @@ function FollowProfile() {
         </div>
         <div className={styles.connectionGrid}>
           <ProfilesList
-            mutualConnections={data}
+            mutualConnections={connections}
             profiles={profiles}
             setFollowprofile={setFollowprofile}
             followprofile={getSubmitData}
           />
         </div>
       </div>
-      {data !== null && (
+      {connections !== null && (
         <Pagination
           totalItems={totalconnectiondata?.metadata?.totalResultCount || 0}
           itemsPerPage={10}

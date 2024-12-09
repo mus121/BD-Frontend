@@ -9,19 +9,10 @@ function ProfilesList({
   followprofile,
   setFollowprofile,
 }: ProfilesListProps) {
-  // Check to render profiles or mutual connections
-  const hasProfiles =
-    profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.length > 0;
-
-  const handleSelectProfile = (profile: any) => {
-    setFollowprofile(profile);
-  };
-
   return (
     <div className={styles.profileListContainer}>
-      {hasProfiles
-        ? renderSuggestionProfiles(profiles, followprofile, handleSelectProfile)
-        : renderMutualConnections(mutualConnections, followprofile, handleSelectProfile)}
+      {profiles && renderSuggestionProfiles(profiles, followprofile, setFollowprofile)}
+      {!profiles && renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
     </div>
   );
 }
