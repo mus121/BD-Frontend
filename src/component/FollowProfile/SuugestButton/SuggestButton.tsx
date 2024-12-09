@@ -6,8 +6,7 @@ type SuggestButtonProps = {
   handleButtonClick: () => void;
 };
 
-function SuggestButton({ followprofile=[], handleButtonClick }: SuggestButtonProps) {
-  console.log('Profilessss', followprofile);
+function SuggestButton({ followprofile = [], handleButtonClick }: SuggestButtonProps) {
   return (
     <SecondaryButton
       colorVariant='lightGray'

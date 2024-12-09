@@ -22,7 +22,7 @@ function FollowProfile() {
   const router = useRouter();
 
   const handlePageChange = (page: number) => {
-    setcurrentPage(page); // Update the currentPage state
+    setcurrentPage(page);
   };
 
   const { isLoading, error, data } = useQuery({
@@ -53,18 +53,17 @@ function FollowProfile() {
   }
 
   const handleButtonClick = () => {
-    if (5 - followprofile.length <= 0) {
+    if (5 - getSubmitData.length <= 0) {
       router.push('/home');
     }
   };
 
-  console.log('Bosss', profiles);
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
         <h5 className={styles.profileHaeding}>Follow Important Profiles</h5>
         <SuggestButton
-          followprofile={Array.isArray(getSubmitData) ? getSubmitData : []}
+          followprofile={getSubmitData}
           handleButtonClick={handleButtonClick}
         />
       </div>

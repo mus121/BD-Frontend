@@ -29,8 +29,6 @@ export const renderSuggestionProfiles = (
   followprofile: string[],
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
 ): JSX.Element | null => {
-  console.log('Profiles Mustafa', profiles);
-
   if (!profiles) return null;
 
   // Suggestion Type Profiles
@@ -56,7 +54,7 @@ export const renderSuggestionProfiles = (
     return <div>No profiles found</div>;
   }
 
-  return elements.map((element, index) => {
+  return elements?.map((element, index) => {
     const lockup = element?.entityLockupView;
     const profilePicture = extractProfilePicture(lockup?.image || null);
     const title = lockup?.title?.text || 'Unknown';

@@ -57,8 +57,8 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
           value={searchQuery}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          onFocus={() => setIsDropdownOpen(true)} // Open dropdown on focus
-          onBlur={handleBlur} // Close dropdown when focus is lost
+          onFocus={() => setIsDropdownOpen(true)}
+          onBlur={handleBlur}
         />
         {searchQuery && (
           <button

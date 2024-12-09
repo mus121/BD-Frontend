@@ -17,7 +17,7 @@ function SearchProfile({
       setProfiles(profiles);
     } catch (error) {
       console.error('Error fetching profiles:', error);
-      setProfiles(null); // Optionally reset on error.
+      setProfiles(null);
     }
   };
 
@@ -26,7 +26,7 @@ function SearchProfile({
       <SearchBar
         placeholder='Search profiles (e.g., John Doe)'
         onSearch={handleSearch}
-        setProfiles={undefined}
+        setProfiles={setProfiles}
       />
     </div>
   );
