@@ -73,7 +73,7 @@ export const renderMutualConnections = (
 ) => {
   if (!mutualConnections) return null;
 
-  return mutualConnections.elements
+  return mutualConnections.response.elements
     .filter(
       connection =>
         connection?.connectedMemberResolutionResult?.firstName ||
