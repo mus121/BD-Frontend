@@ -12,7 +12,7 @@ function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
     queryKey: ['profileSearch', searchQuery],
     queryFn: () => getProfileSearch(searchQuery),
   });
-  
+
   useEffect(() => {
     if (searchQuery.trim()) {
       setProfiles(data?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements || []);

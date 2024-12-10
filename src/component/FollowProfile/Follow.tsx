@@ -67,7 +67,7 @@ function FollowProfile() {
           <ProfilesList
             mutualConnections={connections}
             globalProfiles={golbalProfiles}
-            setFollowprofile={setFollowprofile}
+            setFollowprofile={setGolbalProfiles}
             followprofile={getSubmitData}
           />
         </div>

@@ -20,7 +20,6 @@ function SearchProfile({
       setProfiles(null);
     }
   };
-
   return (
     <div className={styles.searchBarContainer}>
       <SearchBar

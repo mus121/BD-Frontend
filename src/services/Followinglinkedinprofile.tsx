@@ -25,7 +25,9 @@ export const getsubmitData = async () => {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/linkedinProfile`;
   try {
     const response = await getApi(apiUrl);
-    return response.profiles.map(({ publicIdentifier }) => publicIdentifier);
+    if (response.profiles)
+      return response?.profiles.map(({ publicIdentifier }) => publicIdentifier);
+    return [];
   } catch (error) {
     console.error('Failed to submit data:', error);
   }

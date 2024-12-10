@@ -9,42 +9,47 @@ import ProfileImage from '../shared/profileImages/index';
 function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }: ProfileProps) {
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
 
+  // Check if the profile is already followed
   const isFollowed = followprofile.includes(publicIdentifier);
 
-  const mutation = useFollowProfile(setFollowprofile);
+  // Mutation for toggling follow status
+  const { mutate: toggleFollow } = useFollowProfile(setFollowprofile);
 
+  // Handler for toggling follow state
   const handleFollowToggle = () => {
-    mutation.mutate({ follow: !isFollowed, identifier: publicIdentifier, entityUrn });
+    toggleFollow({ follow: !isFollowed, identifier: publicIdentifier, entityUrn });
   };
 
   return (
     <div className={styles.cardContainer}>
-      <div className={styles.userProfile}>
+      {/* Profile Info Section */}
+      <div className={styles.profileInfo}>
         <ProfileImage
           src={profilePicture || '/assets/images/Avatar.png'}
           alt={`${firstName} ${lastName}`}
           width={48}
           height={48}
-          className={styles.profileImg}
+          className={styles.profileImage}
         />
-        <div className={styles.profile}>
+        <div className={styles.textInfo}>
           <h5 className={styles.profileName}>{`${firstName} ${lastName}`}</h5>
           <p
+            className={styles.profileHeadline}
             title={headline}
-            className={styles.headline}
           >
             {truncateHeadline(headline)}
           </p>
         </div>
       </div>
+
+      {/* Follow Button Section */}
       <TertiaryButton
         colorVariant='lightGray'
         type='button'
         text={<FollowText isFollowed={isFollowed} />}
-        tertiaryButtonClassName={`${styles.followAccount} ${isFollowed && styles.followed}`}
         sizeVariant='base'
         onClick={handleFollowToggle}
-        // disabled={mutation.isLoading}
+        tertiaryButtonClassName={`${styles.followButton} ${isFollowed && styles.followed}`}
       />
     </div>
   );
