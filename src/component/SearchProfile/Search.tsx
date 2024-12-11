@@ -3,7 +3,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import styles from './styles.module.scss';
 import SearchBar from './SearchBar/index';
-import { getProfileSearch } from '../../hooks/getProfileSearch';
+import { getProfileSearch } from '../../api/getProfileSearch';
 import { Profile } from '../../types/ProfileList';
 
 function SearchProfile({

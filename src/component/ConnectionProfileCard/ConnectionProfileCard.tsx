@@ -1,6 +1,6 @@
-import useFollowProfile from '@/hooks/useFollowProfile';
 import { truncateHeadline } from '@/utils/stringUtils';
 import { ProfileProps } from '@/types/profileCard';
+import useFollowAndFollowing from '@/hooks/useFollowAndFollowing';
 import styles from './styles.module.scss';
 import FollowText from '../shared/followText';
 import TertiaryButton from '../shared/button/TertiaryButton';
@@ -13,7 +13,7 @@ function ConnectionProfileCard({ profile, followprofile = [], setFollowprofile }
   const isFollowed = followprofile.includes(publicIdentifier);
 
   // Mutation for toggling follow status
-  const { mutate: toggleFollow } = useFollowProfile(setFollowprofile);
+  const { mutate: toggleFollow } = useFollowAndFollowing(setFollowprofile);
 
   // Handler for toggling follow state
   const handleFollowToggle = () => {

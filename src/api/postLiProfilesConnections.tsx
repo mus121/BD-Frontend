@@ -1,10 +1,11 @@
-const getApi = async (url: string): Promise<any> => {
+const postApi = async (url: string, body: any): Promise<any> => {
   try {
     const response = await fetch(url, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(body),
       credentials: 'include',
     });
 
@@ -20,14 +21,21 @@ const getApi = async (url: string): Promise<any> => {
   }
 };
 
-// eslint-disable-next-line consistent-return
-export const getsubmitData = async () => {
+export const liProfileData = async (
+  publicIdentifier: string,
+  entityUrn: string,
+  isConnected: boolean,
+) => {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/linkedinProfile`;
+  const requestBody = {
+    publicIdentifier,
+    entityUrn,
+    isConnected,
+  };
+
   try {
-    const response = await getApi(apiUrl);
-    if (response.profiles)
-      return response?.profiles.map(({ publicIdentifier }) => publicIdentifier);
-    return [];
+    const response = await postApi(apiUrl, requestBody);
+    console.log('API Response:', response);
   } catch (error) {
     console.error('Failed to submit data:', error);
   }

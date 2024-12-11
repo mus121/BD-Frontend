@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getProfileSearch } from '@/hooks/getProfileSearch';
+import { getProfileSearch } from '@/api/getProfileSearch';
 import { useQuery } from '@tanstack/react-query';
 import { Profile, DropdownProps } from '@/types/dropdownProfile';
 import ProfileItem from './ProfileItem/ProfileItem';

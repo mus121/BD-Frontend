@@ -1,12 +1,15 @@
-import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
-import { submitData } from '@/services/Followlinkedinprofile';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { liProfileData } from '@/api/postLiProfilesConnections';
+import { FOLLOW_QUERY_KEYS } from '@/constants/query/processLi';
 
-const useFollowProfile = (setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>) => {
+const useFollowAndFollowing = (
+  setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
+) => {
   const followMutationFn = async (action: {
     follow: boolean;
     identifier: string;
     entityUrn: string;
-  }) => submitData(action.identifier, action.entityUrn, action.follow);
+  }) => liProfileData(action.identifier, action.entityUrn, action.follow);
 
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -19,7 +22,7 @@ const useFollowProfile = (setFollowprofile: React.Dispatch<React.SetStateAction<
             : prev.filter(value => value !== variables.identifier),
         // eslint-disable-next-line function-paren-newline
       );
-      queryClient.invalidateQueries({ queryKey: ['submitData'] });
+      queryClient.invalidateQueries({ queryKey: FOLLOW_QUERY_KEYS.FollowProfile() });
       // queryClient.resetQueries({ queryKey: ['submitData'] });
     },
     onError: error => {
@@ -30,4 +33,4 @@ const useFollowProfile = (setFollowprofile: React.Dispatch<React.SetStateAction<
 
   return mutation;
 };
-export default useFollowProfile;
+export default useFollowAndFollowing;

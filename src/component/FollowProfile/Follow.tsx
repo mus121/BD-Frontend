@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useMutualConnections } from '@/services/useMutualConnections';
-import { useTotalConnections } from '@/services/useTotalConnections';
-import { useSubmitData } from '@/services/useSubmitData';
+import { useMutualConnections } from '@/hooks/useMutualConnections';
+import { useTotalConnections } from '@/hooks/useTotalConnections';
+import { useFollow } from '@/hooks/useFollow';
 import styles from './styles.module.scss';
 import SuggestButton from './SuugestButton';
 import SearchProfile from '../SearchProfile';
@@ -25,7 +25,7 @@ function FollowProfile() {
 
   const { isLoading, error, data: connections } = useMutualConnections(currentPage);
   const { data: totalconnectiondata } = useTotalConnections();
-  const { data: getSubmitData } = useSubmitData();
+  const { data: getSubmitData } = useFollow();
 
   if (isLoading) {
     return <ShimmerLoading />;
@@ -67,7 +67,7 @@ function FollowProfile() {
           <ProfilesList
             mutualConnections={connections}
             globalProfiles={golbalProfiles}
-            setFollowprofile={setGolbalProfiles}
+            setFollowprofile={setFollowprofile}
             followprofile={getSubmitData}
           />
         </div>
