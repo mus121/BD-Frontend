@@ -2,6 +2,8 @@ import { useAppSelector } from '@/hooks/rtk';
 import ProfileImage from '@/component/shared/profileImages/profileImages';
 import Location from '@/component/common/svg/Location';
 import Home from '@/component/common/svg/Home';
+import { useLiUserLocation } from '@/hooks/useLiUserLocation';
+import { extractLocation } from '@/utils/extractLocation';
 import styles from './styles.module.scss';
 
 function LinkedProfileCard() {
@@ -10,6 +12,7 @@ function LinkedProfileCard() {
     ? `${miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl}${miniProfile.picture['com.linkedin.common.VectorImage'].artifacts[0]?.fileIdentifyingUrlPathSegment}`
     : '';
 
+  const location = extractLocation();
   return (
     <div className={styles.linkedinCard}>
       <div className={styles.linkedin}>
@@ -43,7 +46,7 @@ function LinkedProfileCard() {
       <div className={styles.cardLocation}>
         <div className={styles.location}>
           <Location size={24} />
-          <h5 className={styles.location}>Islamabad, Pakistan</h5>
+          <h5 className={styles.location}>{location || 'Location not available'}</h5>
         </div>
         <div className={styles.university}>
           <span className={styles.home}>

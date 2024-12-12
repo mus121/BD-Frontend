@@ -22,7 +22,7 @@ const useFollowAndFollowing = (
             : prev.filter(value => value !== variables.identifier),
         // eslint-disable-next-line function-paren-newline
       );
-      queryClient.invalidateQueries({ queryKey: FOLLOW_QUERY_KEYS.FollowProfile() });
+      queryClient.invalidateQueries({ queryKey: FOLLOW_QUERY_KEYS.followProfiles });
       // queryClient.resetQueries({ queryKey: ['submitData'] });
     },
     onError: error => {

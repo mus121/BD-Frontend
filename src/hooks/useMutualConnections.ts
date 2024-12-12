@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { getMutualConnections } from '@/api/getMutualConnections';
+import { getLiMutualConnections } from '@/api/getMutualConnections';
 import { LI_QUERY_KEYS } from '@/constants/query/linkedin';
 
-export const useMutualConnections = (currentPage: number) => {
+export const useLiMutualConnections = (currentPage: number) => {
   const query = useQuery({
-    queryKey: LI_QUERY_KEYS.getMutualConnections(currentPage),
-    queryFn: () => getMutualConnections(currentPage),
+    queryKey: LI_QUERY_KEYS.getLiMutualConnections(currentPage),
+    queryFn: () => getLiMutualConnections(currentPage),
   });
 
   return query;

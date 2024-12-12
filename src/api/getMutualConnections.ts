@@ -1,13 +1,13 @@
-import { ExternalLiConnection } from '@/constants/common';
-import { connectionProfile } from '@/services/connectionsProfile';
+import { ExternalMessageEnum } from '@/constants/common';
+import { connectionProfile } from '@/utils/index';
 import { MutualConnectionsResponse } from '@/types/MutualConnectionsResponse';
 
-export const getMutualConnections = async (
+export const getLiMutualConnections = async (
   start: number = 0,
 ): Promise<MutualConnectionsResponse> => {
   try {
     const result = await connectionProfile<MutualConnectionsResponse>(
-      ExternalLiConnection.LI_CONNECTION,
+      ExternalMessageEnum.LI_CONNECTION,
       start,
     );
 

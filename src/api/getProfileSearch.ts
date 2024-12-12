@@ -1,5 +1,5 @@
-import { ExternalLiSearchProfile } from '@/constants/common';
-import { profileSearch } from '@/services/profileSearch';
+import { ExternalMessageEnum } from '@/constants/common';
+import { profileSearch } from '@/utils/index';
 import { ProfileSearchResponse } from '@/types/ProfileSearchResponse';
 
 export const getProfileSearch = async (
@@ -7,7 +7,7 @@ export const getProfileSearch = async (
 ): Promise<ProfileSearchResponse | undefined> => {
   try {
     const result = await profileSearch<ProfileSearchResponse>(
-      ExternalLiSearchProfile.LI_GLOBAL_SEARCH,
+      ExternalMessageEnum.LI_GLOBAL_SEARCH,
       searchTerm,
     );
     return result;

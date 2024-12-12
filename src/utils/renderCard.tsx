@@ -2,6 +2,7 @@ import ConnectionProfileCard from '@/component/ConnectionProfileCard';
 import { extractProfilePicture } from '@/utils/extractProfilePicture';
 import { toCamelCase } from '@/utils/camelcase';
 import { Profile, SuggestionProfiles, MutualConnectionResponse } from '@/types/ProfileList';
+import { useLiUserLocation } from '@/hooks/useLiUserLocation';
 
 export const renderProfileCard = (
   profile: Profile,

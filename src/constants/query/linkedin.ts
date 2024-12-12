@@ -1,4 +1,5 @@
 export const LI_QUERY_KEYS = {
-  getMutualConnections: (currentPage: number) => ['getMutualConnections', currentPage],
-  getTotalConnections: () => ['totalConnections'],
+  getLiMutualConnections: (currentPage: number) => ['getMutualConnections', currentPage],
+  getLiUserLocation: (publicIdentifier: string) => ['getLiUserLocation', publicIdentifier],
+  getLiTotalConnections: ['totalConnections'],
 };

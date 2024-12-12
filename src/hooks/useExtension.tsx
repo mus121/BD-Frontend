@@ -1,7 +1,7 @@
 import { useCallback, useRef, useEffect } from 'react';
-import { ExternalLiProfile, ExternalMessageEnum } from '@/constants/common';
-import { extensionMessage } from '@/services/extensionMessage';
-import { liProfile } from '@/services/liProfile';
+import { ExternalMessageEnum } from '@/constants/common';
+import { extensionMessage, liProfile } from '@/utils/index';
+import { TMiniProfile } from '@/types/TMiniprofile';
 import { useAppDispatch, useAppSelector } from './rtk';
 import { setIsExtensionInstalled } from '../store/slices/appslice';
 import { setMiniProfile } from '../store/slices/miniProfilesSlice';
@@ -28,7 +28,8 @@ const useExtension = () => {
   // Fetch LinkedIn Profile Data
   const fetchLinkedProfile = useCallback(async () => {
     try {
-      const response = await liProfile<{ response: any }>(ExternalLiProfile.LI_PROFILE);
+      const response = await liProfile<TMiniProfile>(ExternalMessageEnum.LI_PROFILE);
+      console.log('Mini', response);
       if (response?.response) {
         dispatch(setMiniProfile(response.response));
       }

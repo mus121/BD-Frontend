@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useMutualConnections } from '@/hooks/useMutualConnections';
-import { useTotalConnections } from '@/hooks/useTotalConnections';
-import { useFollow } from '@/hooks/useFollow';
+import { useLiMutualConnections } from '@/hooks/useMutualConnections';
+import { useLiTotalConnections } from '@/hooks/useTotalConnections';
+import { useFollowedProfiles } from '@/hooks/useGetFollowProfiles';
 import styles from './styles.module.scss';
 import SuggestButton from './SuugestButton';
 import SearchProfile from '../SearchProfile';
@@ -12,6 +12,7 @@ import Filters from '../Filters';
 import ProfilesList from './ProfileList';
 import Pagination from '../Pagination';
 import ShimmerLoading from '../ShimmerLoading';
+import { getAiProfileSuggestions } from '@/api/getAiProfileSuggestions';
 
 function FollowProfile() {
   const [currentPage, setcurrentPage] = useState(0);
@@ -23,9 +24,9 @@ function FollowProfile() {
     setcurrentPage(page);
   };
 
-  const { isLoading, error, data: connections } = useMutualConnections(currentPage);
-  const { data: totalconnectiondata } = useTotalConnections();
-  const { data: getSubmitData } = useFollow();
+  const { isLoading, error, data: connections } = useLiMutualConnections(currentPage);
+  const { data: totalconnectiondata } = useLiTotalConnections();
+  const { data: fetchProfileData } = useFollowedProfiles();
 
   if (isLoading) {
     return <ShimmerLoading />;
@@ -36,18 +37,17 @@ function FollowProfile() {
   }
 
   const handleButtonClick = () => {
-    if (5 - getSubmitData.length <= 0) {
+    if (5 - fetchProfileData.length <= 0) {
       router.push('/home');
     }
   };
-
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
         <h5 className={styles.profileHaeding}>Follow Important Profiles</h5>
         <SuggestButton
-          followprofile={getSubmitData}
-          handleButtonClick={handleButtonClick}
+          followprofile={fetchProfileData}
+          handleButtonClick={getAiProfileSuggestions}
         />
       </div>
       <div className={styles.profileDescription}>
@@ -68,7 +68,7 @@ function FollowProfile() {
             mutualConnections={connections}
             globalProfiles={golbalProfiles}
             setFollowprofile={setFollowprofile}
-            followprofile={getSubmitData}
+            followprofile={fetchProfileData}
           />
         </div>
       </div>

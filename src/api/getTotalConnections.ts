@@ -1,11 +1,11 @@
-import { ExternalLiTotalConnection } from '@/constants/common';
-import { totalConnection } from '@/services/totalConnection';
+import { ExternalMessageEnum } from '@/constants/common';
+import { totalConnection } from '@/utils/index';
 import { TotalConnectionsResponse } from '@/types/TotalConnectionsResponse';
 
-export const getTotalConnections = async (): Promise<TotalConnectionsResponse | undefined> => {
+export const getLiTotalConnections = async (): Promise<TotalConnectionsResponse | undefined> => {
   try {
     const result = await totalConnection<TotalConnectionsResponse>(
-      ExternalLiTotalConnection.LI_TOTAL_CONNECTION,
+      ExternalMessageEnum.LI_TOTAL_CONNECTION,
     );
 
     // Adjust based on the actual structure of the result

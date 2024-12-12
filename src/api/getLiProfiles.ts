@@ -21,7 +21,7 @@ const getApi = async (url: string): Promise<any> => {
 };
 
 // eslint-disable-next-line consistent-return
-export const getFollow = async () => {
+export const fetchFollowedProfiles = async () => {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/linkedinProfile`;
   try {
     const response = await getApi(apiUrl);

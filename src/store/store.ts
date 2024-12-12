@@ -3,6 +3,7 @@ import popupReducer from './slices/popupSlice';
 import sessionReducer from './sessionSlice';
 import appReducer from './slices/appslice';
 import miniProfileReducer from './slices/miniProfilesSlice';
+import followedProfilesReducer from './slices/followedProfiles';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     profile: miniProfileReducer,
     popup: popupReducer,
     session: sessionReducer,
+    followedProfiles: followedProfilesReducer,
   },
 });
 export const selectMiniProfile = (state: RootState) => state.profile.response.miniProfile;

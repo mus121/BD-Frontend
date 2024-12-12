@@ -17,3 +17,22 @@ export const sendMessage = <T>(type: string, payload?: object): Promise<MessageR
       reject(new Error('Chrome runtime not available'));
     }
   });
+
+export const extensionMessage = <T>(type: string): Promise<MessageResponse<T>> =>
+  sendMessage<T>(type);
+
+export const liProfile = <T>(type: string): Promise<MessageResponse<T>> => sendMessage<T>(type);
+
+export const connectionProfile = <T>(type: string, start?: number): Promise<MessageResponse<T>> =>
+  sendMessage<T>(type, { start });
+
+export const profileSearch = <T>(type: string, searchTerm?: string): Promise<MessageResponse<T>> =>
+  sendMessage<T>(type, { searchTerm });
+
+export const totalConnection = <T>(type: string): Promise<MessageResponse<T>> =>
+  sendMessage<T>(type);
+
+export const liuserlocation = <T>(
+  type: string,
+  publicIdentifier: string,
+): Promise<MessageResponse<T>> => sendMessage<T>(type, { publicIdentifier });

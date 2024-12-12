@@ -1,6 +1,6 @@
 import { truncateHeadline } from '@/utils/stringUtils';
 import { ProfileProps } from '@/types/profileCard';
-import useFollowAndFollowing from '@/hooks/useFollowAndFollowing';
+import useFollowAndFollowing from '@/hooks/usePostFollowAndFollowing';
 import styles from './styles.module.scss';
 import FollowText from '../shared/followText';
 import TertiaryButton from '../shared/button/TertiaryButton';

@@ -58,23 +58,21 @@ export type SuggestionProfiles = {
 };
 
 export type MutualConnectionResponse = {
-  response: {
-    elements: Array<{
-      connectedMemberResolutionResult: {
-        entityUrn: string;
-        publicIdentifier: string;
-        firstName: string;
-        lastName: string;
-        headline: string;
-        profilePicture: {
-          displayImageReference: {
-            vectorImage: {
-              rootUrl: string;
-              artifacts: Array<{ fileIdentifyingUrlPathSegment: string }>;
-            };
+  elements?: {
+    connectedMemberResolutionResult?: {
+      firstName?: string;
+      lastName?: string;
+      headline?: string;
+      publicIdentifier?: string;
+      entityUrn?: string;
+      profilePicture?: {
+        displayImageReference?: {
+          vectorImage?: {
+            rootUrl?: string;
+            artifacts?: { fileIdentifyingUrlPathSegment?: string }[];
           };
         };
       };
-    }>;
-  };
+    };
+  }[];
 };
