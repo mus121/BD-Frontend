@@ -5,7 +5,7 @@ import ProfileImage from '@/component/shared/profileImages/profileImages';
 import Followingcheck from '../../common/svg/Followingcheck';
 import styles from './styles.module.scss';
 
-function UserProfile() {
+function UserProfile({ personTitle, personCompany }) {
   const [isFollowed, setIsFollowed] = useState(false);
 
   const handleFollowToggle = () => {
@@ -31,8 +31,10 @@ function UserProfile() {
           className={styles.profileImg}
         />
         <div className={styles.profile}>
-          <h5 className={styles.profileName}>Bilal Kazmi</h5>
-          <p className={styles.profileTitle}>UX Designer @ Google</p>
+          <h5 className={styles.profileName}>Mustafa kamal</h5>
+          <p className={styles.profileTitle}>
+            {personTitle} @ {personCompany}
+          </p>
           <p className={styles.locationContainer}>
             <span className={styles.location}>
               <Location size={16} />

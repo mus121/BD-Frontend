@@ -1,11 +1,14 @@
 import ImpactScore from '@/component/shared/score';
 import styles from './styles.module.scss';
 
-function Progress() {
+function Progress({ score }) {
   return (
     <div className={styles.scores}>
-      <ImpactScore term='Short Term' />
-      <ImpactScore term='Long Term' />
+      <ImpactScore
+        term={'Progress Score'}
+        score={score}
+      />
+      {/* <ImpactScore term='Long Term' /> */}
     </div>
   );
 }

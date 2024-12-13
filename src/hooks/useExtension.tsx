@@ -29,7 +29,6 @@ const useExtension = () => {
   const fetchLinkedProfile = useCallback(async () => {
     try {
       const response = await liProfile<TMiniProfile>(ExternalMessageEnum.LI_PROFILE);
-      console.log('Mini', response);
       if (response?.response) {
         dispatch(setMiniProfile(response.response));
       }

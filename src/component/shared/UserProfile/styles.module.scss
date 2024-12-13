@@ -15,11 +15,11 @@
       margin-left: 12px;
       .profileName {
         @include fontAlpha();
-        font-size: 18px;
-        line-height: 27px;
-        font-weight: 600;
+        font-size: 16px;
+        // line-height: 27px;
+        // font-weight: 600;
         color: $gray-10;
-        margin-right: 77px;
+        // margin-right: 77px;
       }
       .profileTitle {
         @include font-sm();

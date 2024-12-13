@@ -5,11 +5,12 @@ type ImpactScoreProps = {
   term: string; // The term (e.g., "Short Term" or "Long Term")
 };
 
-function ImpactScore({ term }: ImpactScoreProps) {
+function ImpactScore({ term, score }: ImpactScoreProps) {
   return (
     <div className={styles.score}>
       <span className={styles.scoreTerm}>{term}</span>
-      <ProgressBar />
+      <span className={styles.scoreFound}>{score}</span>
+      <ProgressBar score={score}/>
     </div>
   );
 }

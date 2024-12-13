@@ -12,7 +12,7 @@ import Filters from '../Filters';
 import ProfilesList from './ProfileList';
 import Pagination from '../Pagination';
 import ShimmerLoading from '../ShimmerLoading';
-import { getAiProfileSuggestions } from '@/api/getAiProfileSuggestions';
+import { postAiProfileSuggestions } from '@/api/postAiProfileSuggestions';
 
 function FollowProfile() {
   const [currentPage, setcurrentPage] = useState(0);
@@ -41,13 +41,14 @@ function FollowProfile() {
       router.push('/home');
     }
   };
+
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
         <h5 className={styles.profileHaeding}>Follow Important Profiles</h5>
         <SuggestButton
           followprofile={fetchProfileData}
-          handleButtonClick={getAiProfileSuggestions}
+          handleButtonClick={handleButtonClick}
         />
       </div>
       <div className={styles.profileDescription}>

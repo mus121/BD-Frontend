@@ -3,17 +3,26 @@
 @import '../../../styles/mixin';
 
 .cardContainer {
-  width: 488px;
-  height: 240px;
-  padding: 20px 24px;
-  border: 1px solid $gray-700;
-  border-radius: 16px;
   gap: 24px;
   margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: $gray-800;
+  // cursor: pointer;
+  // transition: background-color 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  // &:hover {
+  //   background-color: $gray-800;
+  // }
+  .profileCard {
+    width: 488px;
+    height: 240px;
+    border-radius: 16px;
+    padding: 20px 24px;
+    border: 1px solid $gray-700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: $gray-800;
+    }
   }
   .Separator {
     margin: 16px 0;

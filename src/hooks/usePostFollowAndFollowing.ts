@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { liProfileData } from '@/api/postLiProfilesConnections';
 import { FOLLOW_QUERY_KEYS } from '@/constants/query/processLi';
 
-const useFollowAndFollowing = (
+const usePostFollowAndFollowing = (
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
 ) => {
   const followMutationFn = async (action: {
@@ -33,4 +33,4 @@ const useFollowAndFollowing = (
 
   return mutation;
 };
-export default useFollowAndFollowing;
+export default usePostFollowAndFollowing;

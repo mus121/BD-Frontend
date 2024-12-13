@@ -1,20 +1,20 @@
 @import '../../../styles/colors';
 
-.Progressbar {
+.progressBar {
   display: flex;
   gap: 5px;
   justify-content: center;
   align-items: center;
   width: 212px;
-  margin: 20px auto;
+  margin-top: 24px;
   height: 4px;
-  .Segment {
+  .segment {
     width: 17.6px;
     height: 4px;
     background-color: $gray-700;
     border-radius: 4px;
   }
-  .Active {
+  .active {
     background-color: $blue-800;
   }
 }
