@@ -1,0 +1,42 @@
+name: Vercel Deployment
+on:
+  push:
+    branches: [main, staging, development]
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, staging, development]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set Environment Variables
+        id: env
+        run: |
+          if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
+            echo "PRODUCTION=true" >> $GITHUB_ENV
+            echo "GH_DEPLOYMENT_ENV=Production" >> $GITHUB_ENV
+          elif [[ $GITHUB_REF == 'refs/heads/staging' ]]; then
+            echo "PRODUCTION=false" >> $GITHUB_ENV
+            echo "GH_DEPLOYMENT_ENV=Staging" >> $GITHUB_ENV
+          elif [[ $GITHUB_REF == 'refs/heads/development' ]]; then
+            echo "PRODUCTION=false" >> $GITHUB_ENV
+            echo "GH_DEPLOYMENT_ENV=Development" >> $GITHUB_ENV
+          else
+            echo "PRODUCTION=false" >> $GITHUB_ENV
+            echo "GH_DEPLOYMENT_ENV=Preview" >> $GITHUB_ENV
+          fi
+      - name: Deploy to Vercel Action
+        uses: shehroze-1122/deploy-to-vercel-action@v2.0.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          PRODUCTION: ${{ env.PRODUCTION }}
+          GITHUB_DEPLOYMENT_ENV: ${{ env.GH_DEPLOYMENT_ENV }}
+
+          
