@@ -6,10 +6,13 @@ import EventsTab from './EventsTab';
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  personTitle: string;
+  personCompany: string;
+  score: number;
   children?: React.ReactNode;
 };
 
-function Modal({ isOpen, onClose, children }: ModalProps) {
+function Modal({ isOpen, onClose, personTitle, personCompany, score, children }: ModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -23,8 +26,14 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
             <Close size={24} />
           </button>
         </div>
-        <SuggestModalCard />
+        {/* SuggestModalCard */}
+        <SuggestModalCard
+          personTitle={personTitle}
+          personCompany={personCompany}
+          score={score}
+        />
         <EventsTab />
+        {children}
       </div>
     </div>
   );

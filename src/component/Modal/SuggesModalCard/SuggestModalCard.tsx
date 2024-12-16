@@ -1,16 +1,27 @@
 import styles from './styles.module.scss';
-import BussinessImpact from './BussinessImpact/index';
+import BussinessImpact from '@/component/shared/BussinessImpact';
 import Progress from './Progress/index';
-import UserProfile from '../../shared/UserProfile/UserProfile';
+import AiProfiles from '../../shared/AiProfiles/AiProfiles';
 
-function SuggestModalCard() {
+function SuggestModalCard({
+  personTitle,
+  personCompany,
+  score,
+}: {
+  personTitle: string;
+  personCompany: string;
+  score: number;
+}) {
   return (
     <div className={styles.cardContainer}>
-      <UserProfile />
+      <AiProfiles
+        personTitle={personTitle}
+        personCompany={personCompany}
+      />
       <hr className={styles.separator} />
       <div className={styles.bussinessImpact}>
-        <BussinessImpact />
-        <Progress />
+        <BussinessImpact score={score} />
+        <Progress score={score} />
       </div>
     </div>
   );

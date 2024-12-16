@@ -1,4 +1,3 @@
-import ProgressBar from '../progressbar/ProgressBar';
 import styles from './styles.module.scss';
 
 type ImpactScoreProps = {
@@ -10,7 +9,6 @@ function ImpactScore({ term, score }: ImpactScoreProps) {
     <div className={styles.score}>
       <span className={styles.scoreTerm}>{term}</span>
       <span className={styles.scoreFound}>{score}</span>
-      <ProgressBar score={score}/>
     </div>
   );
 }

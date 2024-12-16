@@ -1,5 +1,5 @@
-import ProfileCard from '@/component/LinkedinProfile/LinkedinProfile';
+import LiProfile from '@/component/LiProfile/index';
 
 export default function Home() {
-  return <ProfileCard />;
+  return <LiProfile />;
 }

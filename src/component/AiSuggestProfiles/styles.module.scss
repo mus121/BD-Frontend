@@ -1,0 +1,44 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+@import '../../styles/fonts';
+
+.suggestProfile {
+  box-sizing: border-box;
+  margin-top: 32px;
+  flex-direction: column;
+  display: flex;
+  gap: 24px;
+  width: 1020px;
+  margin-left: auto;
+  margin-right: auto;
+  .suggestHeading {
+    @include space-between();
+    .networkHeading {
+      @include font-semibold-3xl();
+      color: $gray-10;
+    }
+  }
+  .suggestDescription {
+    .networkDescription {
+      width: fit-content;
+      color: $gray-100;
+      @include font-normal();
+    }
+  }
+  .suggestTop {
+    .suggestConnection {
+      @include space-between();
+
+      .profileHead {
+        @include font-semibold-xl();
+        color: $gray-10;
+      }
+    }
+  }
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 10px;
+  }
+}

@@ -1,12 +1,12 @@
 import { lazy, Suspense } from 'react';
-import ShimmerLoading from '@/component/ShimmerLoading';
+import ConnectionShimmerLoading from '@/component/shared/LiConnectionShimmerLoading/index';
 
-const FollowProfile = lazy(() => import('@/component/FollowProfile/index'));
+const LiConnectionProfile = lazy(() => import('@/component/LiConnectionProfile/index'));
 
 export default function FollowProfiles() {
   return (
-    <Suspense fallback={<ShimmerLoading />}>
-      <FollowProfile />
+    <Suspense fallback={<ConnectionShimmerLoading />}>
+      <LiConnectionProfile />
     </Suspense>
   );
 }
