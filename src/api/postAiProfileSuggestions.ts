@@ -14,8 +14,20 @@ export const postAiProfileSuggestions = async () => {
 
     // Make the POST request with the first publicIdentifier
     const response = await axios.post('http://localhost:8000/api/aiService', {
-      entity_urn: '',
-      public_identifier: firstPublicIdentifier,
+      identifiers: [
+        {
+          entity_urn: '',
+          public_identifier: 'luca-maestri-082238',
+        },
+        {
+          entity_urn: '',
+          public_identifier: 'satyanadella',
+        },
+        {
+          entity_urn: '',
+          public_identifier: 'tahira-nazir-a4b5c6',
+        },
+      ],
     });
 
     return response.data;
