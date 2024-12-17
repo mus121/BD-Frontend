@@ -3,6 +3,7 @@ import { extractProfilePicture } from '@/utils/extractProfilePicture';
 import { toCamelCase } from '@/utils/camelcase';
 import { Profile, SuggestionProfiles, MutualConnectionResponse } from '@/types/ProfileList';
 import { useLiUserLocation } from '@/hooks/useLiUserLocation';
+import { Key } from 'react';
 
 export const renderProfileCard = (
   profile: Profile,
@@ -65,6 +66,36 @@ export const renderSuggestionProfiles = (
       );
     },
   );
+};
+export const renderGlobalProfiles = (
+  profiles: any,
+  followprofile: string[],
+  setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
+) => {
+  // Ensure profiles is an array or return null
+  if (!profiles || !Array.isArray(profiles)) {
+    console.warn('profiles is not an array', profiles);
+    return null;
+  }
+
+  return profiles.map((element: any, index: React.Key) => {
+    const lockup = element;
+    const Picture = lockup?.imageUrl || '';
+    const title = lockup?.name || '';
+    const firstName = title;
+    const lastName = title;
+    const headline = lockup?.headline || '';
+    const isValidUrl = (url: string) => /^https?:\/\//.test(url);
+
+    // Fallback image if the URL is invalid
+    const profilePicture = isValidUrl(Picture) ? Picture : '/assets/images/Avatar.png';
+    return renderProfileCard(
+      { firstName, lastName, headline, profilePicture },
+      index,
+      followprofile,
+      setFollowprofile,
+    );
+  });
 };
 
 export const renderMutualConnections = (

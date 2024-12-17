@@ -36,3 +36,9 @@ export const liuserlocation = <T>(
   type: string,
   publicIdentifier: string,
 ): Promise<MessageResponse<T>> => sendMessage<T>(type, { publicIdentifier });
+
+export const globalProfilesResult = <T>(
+  type: string,
+  query: string,
+  page: number,
+): Promise<MessageResponse<T>> => sendMessage<T>(type, { searchTerm: query, page });

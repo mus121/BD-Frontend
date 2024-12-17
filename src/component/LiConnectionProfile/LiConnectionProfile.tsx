@@ -12,6 +12,8 @@ import Filters from '../Filters';
 import ProfilesList from './ProfileList';
 import Pagination from '../Pagination';
 import LiConnectionShimmerLoading from '../shared/LiConnectionShimmerLoading';
+import { useGetGlobalProfiles } from '@/hooks/useGetGlobalProfiles';
+import { globalProfiles } from '@/utils';
 
 function LiConnectionProfile() {
   const [currentPage, setcurrentPage] = useState(0);
@@ -26,7 +28,7 @@ function LiConnectionProfile() {
   const { isLoading, error, data: connections } = useLiMutualConnections(currentPage);
   const { data: totalconnectiondata } = useLiTotalConnections();
   const { data: fetchProfileData } = useFollowedProfiles();
-
+  const { data: totalCount } = useGetGlobalProfiles();
   if (isLoading) {
     return <LiConnectionShimmerLoading />;
   }
@@ -40,7 +42,8 @@ function LiConnectionProfile() {
       router.push('/home');
     }
   };
-
+  console.log(totalCount?.response[0]?.totalcount.total, 'toltal count is');
+  console.log(connections, 'connstcion are');
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
@@ -75,6 +78,14 @@ function LiConnectionProfile() {
       {golbalProfiles === null && (
         <Pagination
           totalItems={totalconnectiondata?.metadata?.totalResultCount || 0}
+          itemsPerPage={10}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      )}
+      {connections !== null && (
+        <Pagination
+          totalItems={totalCount?.response[0]?.totalcount.total || 0}
           itemsPerPage={10}
           currentPage={currentPage}
           onPageChange={handlePageChange}

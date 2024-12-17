@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
+// import GlobalSearch from '@/component/GlobalSearch';
 import Dropdown from '../../Dropdown/index';
 import styles from './styles.module.scss';
 import Search from '../../common/svg/Search';
 import Close from '../../common/svg/Close';
+import SearchProfile from '../Search';
+import { ExternalMessageEnum } from '@/constants/common';
+import { useQueryClient } from '@tanstack/react-query';
 
 type SearchBarProps = {
   placeholder?: string;
@@ -14,12 +18,15 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showGlobalSearch, setShowGlobalSearch] = useState(false);
+  const queryClient = useQueryClient();
+
   // Debounce the search query
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchQuery(searchQuery);
     }, 2000);
-    // Open dropdown on input change
+
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
@@ -30,8 +37,10 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
+      console.log('search query is', searchQuery);
       onSearch(searchQuery);
-      setIsDropdownOpen(false); // Close dropdown on enter
+      setShowGlobalSearch(true); // Show GlobalSearch on Enter key
+      setIsDropdownOpen(false); // Close dropdown on Enter key
     }
   };
 
@@ -39,11 +48,11 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
     setSearchQuery('');
     onSearch('');
     setIsDropdownOpen(false);
-    // setProfiles(
-    //   queryClient.invalidateQueries({
-    //     predicate: query => query.queryKey.includes('mutualConnections'),
-    //   }),
-    // );
+    setProfiles(
+      queryClient.invalidateQueries({
+        predicate: query => query.queryKey.includes(ExternalMessageEnum.LI_CONNECTION),
+      }),
+    );
   };
 
   const handleBlur = () => {

@@ -1,6 +1,10 @@
 import React from 'react';
 import { ProfilesListProps } from '@/types/ProfileList';
-import { renderSuggestionProfiles, renderMutualConnections } from '@/utils/renderCard';
+import {
+  renderSuggestionProfiles,
+  renderMutualConnections,
+  renderGlobalProfiles,
+} from '@/utils/renderCard';
 import styles from './styles.module.scss';
 
 function ProfilesList({
@@ -9,10 +13,12 @@ function ProfilesList({
   followprofile,
   setFollowprofile,
 }: ProfilesListProps) {
+  console.log({ globalProfiles }, 'iojgriojgro');
   return (
     <div className={styles.profileListContainer}>
-      {globalProfiles && renderSuggestionProfiles(globalProfiles, followprofile, setFollowprofile)}
-      {!globalProfiles &&
+      {globalProfiles?.response &&
+        renderGlobalProfiles(globalProfiles?.response, followprofile, setFollowprofile)}
+      {!globalProfiles?.response &&
         renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
     </div>
   );
