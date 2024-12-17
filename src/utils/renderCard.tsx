@@ -1,8 +1,7 @@
-import ConnectionProfileCard from '@/component/ConnectionProfileCard';
+import ConnectionProfileCard from '@/component/LiMutualAndGlobalConnection';
 import { extractProfilePicture } from '@/utils/extractProfilePicture';
 import { toCamelCase } from '@/utils/camelcase';
 import { Profile, SuggestionProfiles, MutualConnectionResponse } from '@/types/ProfileList';
-import { useLiUserLocation } from '@/hooks/useLiUserLocation';
 
 export const renderProfileCard = (
   profile: Profile,
