@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 
-function ProgressBar({ score }: { score: string }) {
+function ProgressBar({ score }: { score: number }) {
   const segments = Array.from({ length: 10 }, (_, index) => index + 1);
 
   return (
@@ -8,7 +8,7 @@ function ProgressBar({ score }: { score: string }) {
       {segments.map(val => (
         <div
           key={val}
-          className={`${styles.segment} ${val <= parseInt(score, 10) ? styles.active : ''}`}
+          className={`${styles.segment} ${val <= score ? styles.active : ''}`}
         />
       ))}
     </div>

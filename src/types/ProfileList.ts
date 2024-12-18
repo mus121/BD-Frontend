@@ -1,15 +1,15 @@
 export type Profile = {
-  firstName: string;
-  lastName: string;
-  headline: string;
-  profilePicture: string;
+  firstName?: string;
+  lastName?: string;
+  headline?: string;
+  profilePicture?: string;
   entityUrn?: string;
   publicIdentifier?: string;
 };
 
 export type ProfilesListProps = {
   globalProfiles: SuggestionProfiles | null;
-  mutualConnections: MutualConnectionResponse | null;
+  mutualConnections: MutualConnectionResponse;
   followprofile: string[];
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>;
 };
@@ -58,6 +58,7 @@ export type SuggestionProfiles = {
 };
 
 export type MutualConnectionResponse = {
+  response?: any;
   elements?: {
     connectedMemberResolutionResult?: {
       firstName?: string;

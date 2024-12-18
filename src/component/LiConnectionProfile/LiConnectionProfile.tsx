@@ -64,12 +64,14 @@ function LiConnectionProfile() {
           </div>
         </div>
         <div className={styles.connectionGrid}>
-          <ProfilesList
-            mutualConnections={connections}
-            globalProfiles={golbalProfiles}
-            setFollowprofile={setFollowprofile}
-            followprofile={fetchProfileData}
-          />
+          {connections && (
+            <ProfilesList
+              mutualConnections={connections}
+              globalProfiles={golbalProfiles}
+              setFollowprofile={setFollowprofile}
+              followprofile={fetchProfileData}
+            />
+          )}
         </div>
       </div>
       {golbalProfiles === null && (

@@ -12,7 +12,7 @@ function AiSuggestCard() {
             <div className={styles.profileLocation} />
           </div>
         </div>
-        <div className={styles.profileButton}></div>
+        <div className={styles.profileButton} />
       </div>
       <hr className={styles.seprator} />
 

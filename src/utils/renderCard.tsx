@@ -10,13 +10,24 @@ export const renderProfileCard = (
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
 ) => {
   const { firstName, lastName, headline, profilePicture } = profile;
-  const publicIdentifier = profile.publicIdentifier || '';
-  const entityUrn = profile.entityUrn || '';
+  const publicIdentifier = profile.publicIdentifier ?? '';
+  const entityUrn = profile.entityUrn ?? '';
+  const firstNameSafe = firstName ?? '';
+  const lastNameSafe = lastName ?? '';
+  const headlineSafe = headline ?? '';
+  const profilePic = profilePicture ?? '';
 
   return (
     <div key={index}>
       <ConnectionProfileCard
-        profile={{ firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn }}
+        profile={{
+          firstName: firstNameSafe,
+          lastName: lastNameSafe,
+          headline: headlineSafe,
+          profilePicture: profilePic,
+          publicIdentifier,
+          entityUrn,
+        }}
         followprofile={followprofile}
         setFollowprofile={setFollowprofile}
       />
@@ -67,11 +78,11 @@ export const renderSuggestionProfiles = (
 };
 
 export const renderMutualConnections = (
-  mutualConnections: MutualConnectionResponse | null,
+  mutualConnections: MutualConnectionResponse | null | undefined,
   followprofile: string[],
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
 ) => {
-  if (!mutualConnections) return null;
+  if (!mutualConnections || !mutualConnections.elements) return null;
 
   return mutualConnections.elements
     .filter(
@@ -81,10 +92,12 @@ export const renderMutualConnections = (
     )
     .map((connection, index) => {
       const profileData = connection.connectedMemberResolutionResult;
-      const profilePicture =
-        profileData?.profilePicture?.displayImageReference?.vectorImage?.rootUrl +
-        profileData?.profilePicture?.displayImageReference?.vectorImage?.artifacts?.[2]
-          ?.fileIdentifyingUrlPathSegment;
+
+      // Safely build the profile picture URL
+      const profilePicture = profileData?.profilePicture?.displayImageReference?.vectorImage;
+      const rootUrl = profilePicture?.rootUrl || '';
+      const artifact = profilePicture?.artifacts?.[2]?.fileIdentifyingUrlPathSegment || '';
+      const completeProfilePicture = rootUrl && artifact ? `${rootUrl}${artifact}` : '';
 
       return renderProfileCard(
         {
@@ -93,7 +106,7 @@ export const renderMutualConnections = (
           firstName: profileData?.firstName,
           lastName: profileData?.lastName,
           headline: profileData?.headline,
-          profilePicture,
+          profilePicture: completeProfilePicture,
         },
         index,
         followprofile,

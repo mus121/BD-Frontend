@@ -28,17 +28,23 @@ function Filters() {
       </button>
       {isOpen && (
         <ul className={styles.dropdownMenu}>
-          <li
-            onClick={() => handleOptionClick('All')}
-            className={styles.li}
-          >
-            <span className={styles.all}>All</span>
+          <li className={styles.li}>
+            <button
+              type='button'
+              onClick={() => handleOptionClick('All')}
+              className={styles.optionButton}
+            >
+              All
+            </button>
           </li>
-          <li
-            onClick={() => handleOptionClick('Following')}
-            className={styles.li}
-          >
-            <span className={styles.all}>Following</span>
+          <li className={styles.li}>
+            <button
+              type='button'
+              onClick={() => handleOptionClick('Following')}
+              className={styles.optionButton}
+            >
+              Following
+            </button>
           </li>
         </ul>
       )}

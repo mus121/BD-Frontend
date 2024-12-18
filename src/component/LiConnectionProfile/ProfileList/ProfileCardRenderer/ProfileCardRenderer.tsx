@@ -1,7 +1,8 @@
-import ConnectionProfileCard from '@/component/LiMutualAndGlobalConnection';
 import { extractProfilePicture } from '@/utils/extractProfilePicture';
 import { toCamelCase } from '@/utils/camelcase';
 import { Profile, SuggestionProfiles, MutualConnectionResponse } from '@/types/ProfileList';
+import { Key } from 'react';
+import ConnectionProfileCard from '../../../LiMutualAndGlobalConnection/index';
 
 export const renderProfileCard = (
   profile: Profile,
@@ -10,13 +11,26 @@ export const renderProfileCard = (
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
 ) => {
   const { firstName, lastName, headline, profilePicture } = profile;
-  const publicIdentifier = profile.publicIdentifier || '';
-  const entityUrn = profile.entityUrn || '';
+
+  // Ensure the properties are always strings (default to empty strings if undefined)
+  const publicIdentifier = profile.publicIdentifier ?? ''; // default to '' if undefined
+  const entityUrn = profile.entityUrn ?? ''; // default to '' if undefined
+  const firstNameSafe = firstName ?? ''; // default to '' if undefined
+  const lastNameSafe = lastName ?? ''; // default to '' if undefined
+  const headlineSafe = headline ?? ''; // default to '' if undefined
+  const profilePic = profilePicture ?? '';
 
   return (
     <div key={index}>
       <ConnectionProfileCard
-        profile={{ firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn }}
+        profile={{
+          firstName: firstNameSafe,
+          lastName: lastNameSafe,
+          headline: headlineSafe,
+          profilePicture: profilePic,
+          publicIdentifier,
+          entityUrn,
+        }}
         followprofile={followprofile}
         setFollowprofile={setFollowprofile}
       />
@@ -75,16 +89,21 @@ export const renderMutualConnections = (
 
   return mutualConnections.response.elements
     .filter(
-      connection =>
+      (connection: { connectedMemberResolutionResult: { firstName: any; lastName: any } }) =>
         connection?.connectedMemberResolutionResult?.firstName ||
         connection?.connectedMemberResolutionResult?.lastName,
     )
-    .map((connection, index) => {
+    .map((connection: { connectedMemberResolutionResult: any }, index: Key | null | undefined) => {
       const profileData = connection.connectedMemberResolutionResult;
-      const profilePicture =
-        profileData?.profilePicture?.displayImageReference?.vectorImage?.rootUrl +
-        profileData?.profilePicture?.displayImageReference?.vectorImage?.artifacts?.[2]
-          ?.fileIdentifyingUrlPathSegment;
+
+      // Ensure safe fallback for vectorImage data
+      const rootUrl =
+        profileData?.profilePicture?.displayImageReference?.vectorImage?.rootUrl || '';
+      const artifacts =
+        profileData?.profilePicture?.displayImageReference?.vectorImage?.artifacts || [];
+      const fileSegment = artifacts[2]?.fileIdentifyingUrlPathSegment || '';
+
+      const profilePicture = rootUrl + fileSegment;
 
       return renderProfileCard(
         {

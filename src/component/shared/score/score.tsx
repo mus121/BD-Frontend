@@ -1,7 +1,8 @@
 import styles from './styles.module.scss';
 
 type ImpactScoreProps = {
-  term: string; // The term (e.g., "Short Term" or "Long Term")
+  term: string;
+  score: number;
 };
 
 function ImpactScore({ term, score }: ImpactScoreProps) {

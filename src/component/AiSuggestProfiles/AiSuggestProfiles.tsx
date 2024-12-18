@@ -1,12 +1,21 @@
 'use client';
 
-import SearchProfile from '../SearchProfile/Search';
+import { useAiProfileSuggestions } from '@/hooks/useAiProfileSuggestions';
 import styles from './styles.module.scss';
 import AiSuggestionCard from './AiSuggestionCard/index';
-import { useAiProfileSuggestions } from '@/hooks/useAiProfileSuggestions';
 import AiProfileShimmerLoading from '../shared/AiProfileShimmerLoading/index';
 
+// Define the type for each profile suggestion
+type SuggestProfile = {
+  person_company: string;
+  person_id: string;
+  person_title: string;
+  // score: number;
+  company_score: any;
+};
+
 function AiSuggestProfiles() {
+  // Explicitly typing SuggestProfileData as SuggestProfile[]
   const { data: SuggestProfileData, isError, isLoading } = useAiProfileSuggestions();
 
   if (isLoading) {
@@ -16,7 +25,9 @@ function AiSuggestProfiles() {
   if (isError) {
     return <p>Error loading profiles. Please try again later.</p>;
   }
+
   console.log('Profiles', SuggestProfileData);
+
   return (
     <div className={styles.suggestProfile}>
       {/* Static Heading and Description */}
@@ -32,19 +43,18 @@ function AiSuggestProfiles() {
       <div className={styles.suggestTop}>
         <div className={styles.suggestConnection}>
           <h5 className={styles.profileHead}>Suggested Profiles</h5>
-          <SearchProfile />
         </div>
       </div>
 
       {/* Dynamic Profile Cards */}
       <div className={styles.cardContainer}>
         {SuggestProfileData?.map(
-          ({ person_company, person_id, person_title, Score, company_score }) => (
+          ({ person_company, person_id, person_title, company_score }: SuggestProfile) => (
             <AiSuggestionCard
               key={person_id}
               personTitle={person_title}
               personCompany={person_company}
-              score={Score}
+              // score={score}
               companyScore={company_score}
             />
           ),

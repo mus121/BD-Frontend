@@ -31,11 +31,11 @@ function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
             <p>SEARCH RESULTS</p>
           </div>
           {profiles
-            .filter(profile => profile.entityLockupView?.subtitle?.text)
-            .map((profile, index) => (
+            .filter(item => item.entityLockupView?.subtitle?.text)
+            .map((item, index) => (
               <ProfileItem
-                key={profile.id || index}
-                profile={profile}
+                key={item.id || index}
+                profile={item}
                 onClick={profile => setSearchProfile(profile)}
               />
             ))}

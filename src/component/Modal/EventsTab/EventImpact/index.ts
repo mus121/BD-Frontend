@@ -1,3 +1,3 @@
-import EventImpact from './EventImpact';
+// import EventImpact from './EventImpact';
 
-export default EventImpact;
+// export default EventImpact;

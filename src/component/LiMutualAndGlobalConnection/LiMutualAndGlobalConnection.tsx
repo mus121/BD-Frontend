@@ -6,7 +6,11 @@ import FollowText from '../shared/followText';
 import TertiaryButton from '../shared/button/TertiaryButton';
 import ProfileImage from '../shared/profileImages/index';
 
-function LiMutualAndGlobalConnection({ profile, followprofile = [], setFollowprofile }: ProfileProps) {
+function LiMutualAndGlobalConnection({
+  profile,
+  followprofile = [],
+  setFollowprofile,
+}: ProfileProps) {
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
 
   // Check if the profile is already followed

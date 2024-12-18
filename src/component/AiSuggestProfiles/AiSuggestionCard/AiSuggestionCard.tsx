@@ -7,16 +7,14 @@ import AiProgressBar from '@/component/shared/progressbar/ProgressBar';
 import styles from './styles.module.scss';
 import Modal from '../../Modal/index';
 
-function AiSuggestionCard({
-  personTitle,
-  personCompany,
-  companyScore,
-}: {
+type AiSuggestionCardProps = {
   personTitle: string;
   personCompany: string;
-  score: string;
-  companyScore: { [key: string]: { score: number | null } } | null;
-}) {
+  // score: number;
+  companyScore: any;
+};
+
+function AiSuggestionCard({ personTitle, personCompany, companyScore }: AiSuggestionCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCardClick = () => {

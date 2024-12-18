@@ -20,13 +20,14 @@ const getApi = async (url: string): Promise<any> => {
   }
 };
 
-// eslint-disable-next-line consistent-return
 export const fetchFollowedProfiles = async () => {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/linkedinProfile`;
   try {
     const response = await getApi(apiUrl);
     if (response.profiles)
-      return response?.profiles.map(({ publicIdentifier }) => publicIdentifier);
+      return response?.profiles.map(
+        ({ publicIdentifier }: { publicIdentifier: string }) => publicIdentifier,
+      );
     return [];
   } catch (error) {
     return null;

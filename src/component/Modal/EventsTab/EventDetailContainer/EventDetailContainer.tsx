@@ -1,10 +1,10 @@
 import News from '@/component/shared/modalcomponents/News';
 import EventDetails from '@/component/shared/modalcomponents/EventsDetails';
 import styles from './styles.module.scss';
-import EventImapct from '../EventImpact/index';
+// import EventImapct from '../EventImpact/index';
 import EventImplication from '../EventImplication/index';
 
-function EventDetailContainer() {
+function EventDetailContainer({ score }: { score: number }) {
   return (
     <div className={styles.eventDetail}>
       <News
@@ -19,7 +19,7 @@ function EventDetailContainer() {
          suggesting they’re looking to scale rapidly.'
         tag='Strategic Partnerships'
       />
-      <EventImapct />
+      {/* <EventImapct /> */}
       <hr className={styles.separator} />
 
       <News
@@ -34,7 +34,7 @@ function EventDetailContainer() {
          Growth as CEO of New AI Company.'
         tag='Leadership and People'
       />
-      <EventImplication />
+      <EventImplication score={score} />
     </div>
   );
 }

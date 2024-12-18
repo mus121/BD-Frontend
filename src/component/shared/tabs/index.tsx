@@ -21,7 +21,7 @@ function TabComponent({ tabs, activeTab, onTabChange }: TabsComponentProps) {
           key={tab.value}
           className={clsx(styles.Tabbutton, { [styles.active]: activeTab === tab.value })}
           onClick={() => onTabChange(tab.value)}
-          aria-selected={activeTab === tab.value}
+          aria-pressed={activeTab === tab.value}
         >
           {tab.label}
         </button>

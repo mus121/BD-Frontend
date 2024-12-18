@@ -1,3 +1,6 @@
 export type TotalConnectionsResponse = {
-  response: any;
+  response?: any;
+  metadata?: {
+    totalResultCount: number;
+  };
 };

@@ -3,7 +3,7 @@ import ProfileImage from '@/component/shared/profileImages/profileImages';
 import Location from '@/component/common/svg/Location';
 import Home from '@/component/common/svg/Home';
 import { useLiUserLocation } from '@/hooks/useLiUserLocation';
-import { extractLocation } from '@/utils/extractLocation';
+import { useExtractLocation } from '@/utils/extractLocation';
 import styles from './styles.module.scss';
 
 function LiProfileCard() {
@@ -12,7 +12,7 @@ function LiProfileCard() {
     ? `${miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl}${miniProfile.picture['com.linkedin.common.VectorImage'].artifacts[0]?.fileIdentifyingUrlPathSegment}`
     : '';
 
-  const location = extractLocation();
+  const location = useExtractLocation();
   return (
     <div className={styles.linkedinCard}>
       <div className={styles.linkedin}>
@@ -45,12 +45,12 @@ function LiProfileCard() {
       </div>
       <div className={styles.cardLocation}>
         <div className={styles.location}>
-          <Location size={24} />
+          <Location size={20} />
           <h5 className={styles.location}>{location || 'Location not available'}</h5>
         </div>
         <div className={styles.university}>
           <span className={styles.home}>
-            <Home size={18} />
+            <Home size={16} />
           </span>
           <h5 className={styles.education}>University of Calicut</h5>
         </div>

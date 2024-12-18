@@ -36,7 +36,7 @@
         font-weight: 600px;
       }
       .occupation {
-        @include font-normal-sm();
+        @include font-sm();
         color: $gray-25;
       }
     }
@@ -48,9 +48,9 @@
   .location {
     display: flex;
     .location {
-      @include font-normal();
+      @include font-sm();
       color: $gray-300;
-      margin-left: 8px;
+      margin-left: 4px;
     }
   }
   .university {
@@ -60,7 +60,7 @@
       top: 2px;
     }
     .education {
-      @include font-normal();
+      @include font-sm();
       color: $gray-300;
       margin-left: 8px;
     }

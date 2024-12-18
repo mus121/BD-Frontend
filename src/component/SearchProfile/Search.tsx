@@ -14,7 +14,7 @@ function SearchProfile({
   const handleSearch = async (searchTerm: string) => {
     try {
       const profiles = await getProfileSearch(searchTerm);
-      setProfiles(profiles);
+      setProfiles(profiles as unknown as Profile[]);
     } catch (error) {
       console.error('Error fetching profiles:', error);
       setProfiles(null);

@@ -1,5 +1,5 @@
-import styles from './styles.module.scss';
 import BussinessImpact from '@/component/shared/BussinessImpact';
+import styles from './styles.module.scss';
 import Progress from './Progress/index';
 import AiProfiles from '../../shared/AiProfiles/AiProfiles';
 

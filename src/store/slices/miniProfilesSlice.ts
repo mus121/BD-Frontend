@@ -37,9 +37,8 @@ const miniProfileSlice = createSlice({
   name: 'miniProfile',
   initialState,
   reducers: {
-    setMiniProfile(state, action: PayloadAction<TMiniProfile>) {
-      // eslint-disable-next-line prefer-destructuring
-      const payload: TMiniProfile = action.payload;
+    setMiniProfile(state, { payload }: PayloadAction<TMiniProfile>) {
+      // Destructure action.payload
       return {
         plainId: payload.plainId,
         premiumSubscriber: payload.premiumSubscriber,
@@ -71,6 +70,7 @@ const miniProfileSlice = createSlice({
           publicIdentifier: payload.miniProfile?.publicIdentifier ?? null,
           trackingId: payload.miniProfile?.trackingId ?? null,
         },
+        response: payload.response ?? undefined, // Include the response field
       };
     },
     resetMiniProfile() {

@@ -32,7 +32,7 @@ function Modal({ isOpen, onClose, personTitle, personCompany, score, children }:
           personCompany={personCompany}
           score={score}
         />
-        <EventsTab />
+        <EventsTab score={score} />
         {children}
       </div>
     </div>

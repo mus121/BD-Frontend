@@ -1,11 +1,13 @@
 import { useAppSelector } from '@/hooks/rtk';
 import { useLiUserLocation } from '@/hooks/useLiUserLocation';
+import { LocationResponse } from '@/types/Location';
 
-export function extractLocation() {
+export function useExtractLocation() {
   const miniProfile = useAppSelector(state => state.profile.miniProfile);
   const { data: fetchLiUserLocation } = useLiUserLocation(`${miniProfile.publicIdentifier}`);
+
   return (
-    fetchLiUserLocation?.data?.identityDashProfilesByMemberIdentity?.elements?.[0]?.geoLocation?.geo
-      ?.defaultLocalizedName || ''
+    (fetchLiUserLocation as LocationResponse)?.data?.identityDashProfilesByMemberIdentity
+      ?.elements?.[0]?.geoLocation?.geo?.defaultLocalizedName || ''
   );
 }
