@@ -10,7 +10,7 @@ function LoginButton() {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = process.env.NEXT_GOOGLE_API_LOGIN!;
+    window.location.href = process.env.NEXT_PUBLIC_GOOGLE_API_LOGIN!;
   };
   return (
     <div className={styles.button}>

@@ -9,12 +9,12 @@
   transition: background-color 0.3s ease;
   gap: 12px;
   cursor: pointer;
-  .enetrIcon {
+  .enterIcon {
     visibility: hidden;
   }
   &:hover {
     background-color: $gray-700;
-    .enetrIcon {
+    .enterIcon {
       visibility: visible;
       background: $gray-700;
     }

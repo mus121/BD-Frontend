@@ -119,3 +119,11 @@
   background: linear-gradient(to right, #2b2a2a 8%, #494949 18%, #2b2a2a 33%);
   background-size: 1500px 100%;
 }
+@keyframes shimmer {
+  0% {
+    background-position: -1500px 0;
+  }
+  100% {
+    background-position: 1500px 0;
+  }
+}

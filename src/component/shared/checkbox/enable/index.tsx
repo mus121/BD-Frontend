@@ -6,22 +6,25 @@ type CheckProps = {
   disabled?: boolean;
 };
 
-function Check({ checked, onChange, disabled = false }: CheckProps) {
+function CustomCheckbox({ checked, onChange, disabled = false }: CheckProps) {
+  const uniqueId = `customCheckbox-${Math.random().toString(36).substr(2, 9)}`;
+
   return (
     <label
-      htmlFor='customCheckbox'
+      htmlFor={uniqueId}
       className={styles.customCheckboxContainer}
     >
       <input
         type='checkbox'
-        id='customCheckbox'
+        id={uniqueId}
         checked={checked}
         onChange={onChange}
         aria-label='Enable'
+        disabled={disabled}
       />
       <span className={styles.customCheckbox} />
     </label>
   );
 }
 
-export default Check;
+export default CustomCheckbox;
