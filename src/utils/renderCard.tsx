@@ -26,47 +26,47 @@ export const renderProfileCard = (
   );
 };
 
-export const renderSuggestionProfiles = (
-  profiles: SuggestionProfiles | null,
-  followprofile: string[],
-  setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
-) => {
-  if (!profiles) return null;
+// export const renderSuggestionProfiles = (
+//   profiles: SuggestionProfiles | null,
+//   followprofile: string[],
+//   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
+// ) => {
+//   if (!profiles) return null;
 
-  if (profiles?.suggestionType && profiles?.entityLockupView) {
-    const lockup = profiles.entityLockupView;
-    const profilePicture = extractProfilePicture(lockup?.image);
-    const title = lockup?.title?.text || '';
-    const camelCaseName = toCamelCase(title);
-    const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
-    const headline = lockup?.subtitle?.text || '';
+//   if (profiles?.suggestionType && profiles?.entityLockupView) {
+//     const lockup = profiles.entityLockupView;
+//     const profilePicture = extractProfilePicture(lockup?.image);
+//     const title = lockup?.title?.text || '';
+//     const camelCaseName = toCamelCase(title);
+//     const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
+//     const headline = lockup?.subtitle?.text || '';
 
-    return renderProfileCard(
-      { firstName, lastName, headline, profilePicture },
-      0,
-      followprofile,
-      setFollowprofile,
-    );
-  }
+//     return renderProfileCard(
+//       { firstName, lastName, headline, profilePicture },
+//       0,
+//       followprofile,
+//       setFollowprofile,
+//     );
+//   }
 
-  return profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
-    (element, index) => {
-      const lockup = element?.entityLockupView;
-      const profilePicture = extractProfilePicture(lockup?.image);
-      const title = lockup?.title?.text || '';
-      const camelCaseName = toCamelCase(title);
-      const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
-      const headline = lockup?.subtitle?.text || '';
+//   return profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
+//     (element, index) => {
+//       const lockup = element?.entityLockupView;
+//       const profilePicture = extractProfilePicture(lockup?.image);
+//       const title = lockup?.title?.text || '';
+//       const camelCaseName = toCamelCase(title);
+//       const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
+//       const headline = lockup?.subtitle?.text || '';
 
-      return renderProfileCard(
-        { firstName, lastName, headline, profilePicture },
-        index,
-        followprofile,
-        setFollowprofile,
-      );
-    },
-  );
-};
+//       return renderProfileCard(
+//         { firstName, lastName, headline, profilePicture },
+//         index,
+//         followprofile,
+//         setFollowprofile,
+//       );
+//     },
+//   );
+// };
 export const renderGlobalProfiles = (
   profiles: any,
   followprofile: string[],
@@ -83,7 +83,7 @@ export const renderGlobalProfiles = (
     const Picture = lockup?.imageUrl || '';
     const title = lockup?.name || '';
     const firstName = title;
-    const lastName = title;
+    const lastName = '';
     const headline = lockup?.headline || '';
     const isValidUrl = (url: string) => /^https?:\/\//.test(url);
 

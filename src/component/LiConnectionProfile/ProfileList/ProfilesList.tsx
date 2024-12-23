@@ -13,7 +13,6 @@ function ProfilesList({
   followprofile,
   setFollowprofile,
 }: ProfilesListProps) {
-  console.log({ globalProfiles }, 'iojgriojgro');
   return (
     <div className={styles.profileListContainer}>
       {globalProfiles?.response &&

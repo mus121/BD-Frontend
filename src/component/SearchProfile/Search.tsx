@@ -10,15 +10,20 @@ import { Profile } from '../../types/ProfileList';
 
 function SearchProfile({
   setProfiles,
+  searchQuery,
+  setSearchQuery,
+  setcurrentPage,
 }: {
   setProfiles: Dispatch<SetStateAction<Profile[] | null>>;
+  searchQuery: any;
+  setSearchQuery: any;
+  setcurrentPage: number;
 }) {
   const handleSearch = async (searchTerm: string) => {
     try {
       const GlobalProfiles = await getGlobalProfileSearch(searchTerm);
-      // const profiles = await getProfileSearch(searchTerm);
       setProfiles(GlobalProfiles);
-      console.log('serachterm is ', searchTerm);
+      // console.log('serachterm is ', searchTerm);
       // console.log({ profiles });
       // console.log({ data }, 'my data ');
     } catch (error) {
@@ -27,13 +32,16 @@ function SearchProfile({
     }
   };
 
-  console.log({ setProfiles }, 'total profiles');
+  // console.log({ setProfiles }, 'total profiles');
   return (
     <div className={styles.searchBarContainer}>
       <SearchBar
         placeholder='Search profiles (e.g., John Doe)'
         onSearch={handleSearch}
         setProfiles={setProfiles}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        setcurrentPage={setcurrentPage}
       />
     </div>
   );

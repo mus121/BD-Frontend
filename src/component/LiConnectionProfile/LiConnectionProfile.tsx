@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLiMutualConnections } from '@/hooks/useMutualConnections';
 import { useLiTotalConnections } from '@/hooks/useTotalConnections';
@@ -13,9 +13,9 @@ import ProfilesList from './ProfileList';
 import Pagination from '../Pagination';
 import LiConnectionShimmerLoading from '../shared/LiConnectionShimmerLoading';
 import { useGetGlobalProfiles } from '@/hooks/useGetGlobalProfiles';
-import { globalProfiles } from '@/utils';
 
 function LiConnectionProfile() {
+  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setcurrentPage] = useState(0);
   const [followprofile, setFollowprofile] = useState<string[]>([]);
   const [golbalProfiles, setGolbalProfiles] = useState<any>(null);
@@ -28,7 +28,12 @@ function LiConnectionProfile() {
   const { isLoading, error, data: connections } = useLiMutualConnections(currentPage);
   const { data: totalconnectiondata } = useLiTotalConnections();
   const { data: fetchProfileData } = useFollowedProfiles();
-  const { data: totalCount } = useGetGlobalProfiles();
+  const { data: GlobalSearchProfileData } = useGetGlobalProfiles(searchQuery, currentPage);
+
+  useEffect(() => {
+    setGolbalProfiles(GlobalSearchProfileData);
+  }, [GlobalSearchProfileData]);
+
   if (isLoading) {
     return <LiConnectionShimmerLoading />;
   }
@@ -42,8 +47,6 @@ function LiConnectionProfile() {
       router.push('/home');
     }
   };
-  console.log(totalCount?.response[0]?.totalcount.total, 'toltal count is');
-  console.log(connections, 'connstcion are');
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
@@ -62,7 +65,12 @@ function LiConnectionProfile() {
         <div className={styles.contactProfile}>
           <h5 className={styles.profile}>Profiles</h5>
           <div className={styles.searchAndfilters}>
-            <SearchProfile setProfiles={setGolbalProfiles} />
+            <SearchProfile
+              setProfiles={setGolbalProfiles}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              setcurrentPage={setcurrentPage}
+            />
             <Filters />
           </div>
         </div>
@@ -75,17 +83,24 @@ function LiConnectionProfile() {
           />
         </div>
       </div>
-      {golbalProfiles === null && (
+      {/* {connections != null && (
         <Pagination
           totalItems={totalconnectiondata?.metadata?.totalResultCount || 0}
           itemsPerPage={10}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
-      )}
-      {connections !== null && (
+      )} */}
+      {golbalProfiles != null ? (
         <Pagination
-          totalItems={totalCount?.response[0]?.totalcount.total || 0}
+          totalItems={GlobalSearchProfileData?.response?.[0]?.totalcount.total || 0}
+          itemsPerPage={10}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      ) : (
+        <Pagination
+          totalItems={totalconnectiondata?.metadata?.totalResultCount || 0}
           itemsPerPage={10}
           currentPage={currentPage}
           onPageChange={handlePageChange}
