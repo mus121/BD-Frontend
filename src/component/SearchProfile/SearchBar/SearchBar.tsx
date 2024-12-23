@@ -27,16 +27,15 @@ function SearchBar({
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showGlobalSearch, setShowGlobalSearch] = useState(false);
-  const queryClient = useQueryClient();
 
   // Debounce the search query
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearchQuery(searchQuery);
-    }, 2000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setDebouncedSearchQuery(searchQuery);
+  //   }, 2000);
 
-    return () => clearTimeout(timer);
-  }, [searchQuery]);
+  //   return () => clearTimeout(timer);
+  // }, [searchQuery]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -45,10 +44,9 @@ function SearchBar({
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      console.log('search query is', searchQuery);
       onSearch(searchQuery);
-      setShowGlobalSearch(true); // Show GlobalSearch on Enter key
-      setIsDropdownOpen(false); // Close dropdown on Enter key
+      setShowGlobalSearch(true);
+      setIsDropdownOpen(false);
     }
   };
 

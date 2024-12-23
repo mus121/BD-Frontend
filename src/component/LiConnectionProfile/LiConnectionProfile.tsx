@@ -26,7 +26,7 @@ function LiConnectionProfile() {
   };
 
   const { isLoading, error, data: connections } = useLiMutualConnections(currentPage);
-  const { data: totalconnectiondata } = useLiTotalConnections();
+  const { isLoading: Total, data: totalconnectiondata } = useLiTotalConnections();
   const { data: fetchProfileData } = useFollowedProfiles();
   const { data: GlobalSearchProfileData } = useGetGlobalProfiles(searchQuery, currentPage);
 
@@ -47,6 +47,14 @@ function LiConnectionProfile() {
       router.push('/home');
     }
   };
+  console.log(
+    'Toal',
+    totalconnectiondata?.metadata?.totalResultCount,
+    'Global Profiles',
+    golbalProfiles,
+    'Toalalala',
+    GlobalSearchProfileData?.response?.[0]?.totalcount.total,
+  );
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
@@ -91,7 +99,7 @@ function LiConnectionProfile() {
           onPageChange={handlePageChange}
         />
       )} */}
-      {golbalProfiles != null ? (
+      {golbalProfiles != null && !golbalProfiles.error ? (
         <Pagination
           totalItems={GlobalSearchProfileData?.response?.[0]?.totalcount.total || 0}
           itemsPerPage={10}

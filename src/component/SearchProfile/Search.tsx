@@ -23,9 +23,6 @@ function SearchProfile({
     try {
       const GlobalProfiles = await getGlobalProfileSearch(searchTerm);
       setProfiles(GlobalProfiles);
-      // console.log('serachterm is ', searchTerm);
-      // console.log({ profiles });
-      // console.log({ data }, 'my data ');
     } catch (error) {
       console.error('Error fetching profiles:', error);
       setProfiles(null);
