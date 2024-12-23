@@ -1,25 +1,40 @@
 import { useState, useEffect } from 'react';
+// import GlobalSearch from '@/component/GlobalSearch';
 import Dropdown from '../../Dropdown/index';
 import styles from './styles.module.scss';
 import Search from '../../common/svg/Search';
 import Close from '../../common/svg/Close';
+import { useQueryClient } from '@tanstack/react-query';
 
 type SearchBarProps = {
   placeholder?: string;
   onSearch: (query: string) => void;
   setProfiles: any;
+  searchQuery: any;
+  setSearchQuery: any;
+  setcurrentPage: number;
 };
 
-function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchBarProps) {
-  const [searchQuery, setSearchQuery] = useState('');
+function SearchBar({
+  placeholder = 'Search...',
+  onSearch,
+  setProfiles,
+  searchQuery,
+  setSearchQuery,
+  setcurrentPage,
+}: SearchBarProps) {
+  // const [searchQuery, setSearchQuery] = useState('');
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showGlobalSearch, setShowGlobalSearch] = useState(false);
+  const queryClient = useQueryClient();
+
   // Debounce the search query
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchQuery(searchQuery);
     }, 2000);
-    // Open dropdown on input change
+
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
@@ -30,8 +45,10 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
+      console.log('search query is', searchQuery);
       onSearch(searchQuery);
-      setIsDropdownOpen(false); // Close dropdown on enter
+      setShowGlobalSearch(true); // Show GlobalSearch on Enter key
+      setIsDropdownOpen(false); // Close dropdown on Enter key
     }
   };
 
@@ -39,11 +56,8 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
     setSearchQuery('');
     onSearch('');
     setIsDropdownOpen(false);
-    // setProfiles(
-    //   queryClient.invalidateQueries({
-    //     predicate: query => query.queryKey.includes('mutualConnections'),
-    //   }),
-    // );
+    setProfiles(null);
+    setcurrentPage(0);
   };
 
   const handleBlur = () => {

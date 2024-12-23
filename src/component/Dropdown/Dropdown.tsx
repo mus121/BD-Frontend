@@ -36,7 +36,7 @@ function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
               <ProfileItem
                 key={item.id || index}
                 profile={item}
-                onClick={profile => setSearchProfile(profile)}
+                onClick={() => setSearchProfile(item)}
               />
             ))}
         </div>
