@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useLiMutualConnections } from '@/hooks/useMutualConnections';
 import { useLiTotalConnections } from '@/hooks/useTotalConnections';
 import { useFollowedProfiles } from '@/hooks/useGetFollowProfiles';
+import { useGetGlobalProfiles } from '@/hooks/useGetGlobalProfiles';
 import styles from './styles.module.scss';
 import SuggestButton from './SuugestButton';
 import SearchProfile from '../SearchProfile';
@@ -12,9 +13,9 @@ import Filters from '../Filters';
 import ProfilesList from './ProfileList';
 import Pagination from '../Pagination';
 import LiConnectionShimmerLoading from '../shared/LiConnectionShimmerLoading';
-import { useGetGlobalProfiles } from '@/hooks/useGetGlobalProfiles';
 
 function LiConnectionProfile() {
+  const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setcurrentPage] = useState(0);
   const [followprofile, setFollowprofile] = useState<string[]>([]);
@@ -26,9 +27,13 @@ function LiConnectionProfile() {
   };
 
   const { isLoading, error, data: connections } = useLiMutualConnections(currentPage);
-  const { isLoading: Total, data: totalconnectiondata } = useLiTotalConnections();
+  const { data: totalconnectiondata } = useLiTotalConnections();
   const { data: fetchProfileData } = useFollowedProfiles();
-  const { data: GlobalSearchProfileData } = useGetGlobalProfiles(searchQuery, currentPage);
+  const { data: GlobalSearchProfileData } = useGetGlobalProfiles(
+    searchQuery,
+    currentPage,
+    isSearchActive,
+  );
 
   useEffect(() => {
     setGolbalProfiles(GlobalSearchProfileData);
@@ -47,14 +52,6 @@ function LiConnectionProfile() {
       router.push('/home');
     }
   };
-  console.log(
-    'Toal',
-    totalconnectiondata?.metadata?.totalResultCount,
-    'Global Profiles',
-    golbalProfiles,
-    'Toalalala',
-    GlobalSearchProfileData?.response?.[0]?.totalcount.total,
-  );
   return (
     <div className={styles.profileTop}>
       <div className={styles.profileFollow}>
@@ -78,6 +75,7 @@ function LiConnectionProfile() {
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
               setcurrentPage={setcurrentPage}
+              setIsSearchActive={setIsSearchActive}
             />
             <Filters />
           </div>

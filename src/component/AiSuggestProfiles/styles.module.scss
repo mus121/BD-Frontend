@@ -38,7 +38,10 @@
   .cardContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 14px;
     margin-top: 10px;
+    max-height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }

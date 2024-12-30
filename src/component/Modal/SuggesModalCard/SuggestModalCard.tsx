@@ -4,10 +4,14 @@ import Progress from './Progress/index';
 import AiProfiles from '../../shared/AiProfiles/AiProfiles';
 
 function SuggestModalCard({
+  personName,
+  personLocation,
   personTitle,
   personCompany,
   score,
 }: {
+  personName: string;
+  personLocation: string;
   personTitle: string;
   personCompany: string;
   score: number;
@@ -15,6 +19,8 @@ function SuggestModalCard({
   return (
     <div className={styles.cardContainer}>
       <AiProfiles
+        personName={personName}
+        personLocation={personLocation}
         personTitle={personTitle}
         personCompany={personCompany}
       />

@@ -1,10 +1,18 @@
 import News from '@/component/shared/modalcomponents/News';
 import EventDetails from '@/component/shared/modalcomponents/EventsDetails';
 import styles from './styles.module.scss';
-// import EventImapct from '../EventImpact/index';
+import EventImapct from '../EventImpact/index';
 import EventImplication from '../EventImplication/index';
 
-function EventDetailContainer({ score }: { score: number }) {
+function EventDetailContainer({
+  score,
+  roleDescription,
+  reasoning,
+}: {
+  score: number;
+  roleDescription: any;
+  reasoning: any;
+}) {
   return (
     <div className={styles.eventDetail}>
       <News
@@ -19,7 +27,7 @@ function EventDetailContainer({ score }: { score: number }) {
          suggesting they’re looking to scale rapidly.'
         tag='Strategic Partnerships'
       />
-      {/* <EventImapct /> */}
+      <EventImapct score={score} />
       <hr className={styles.separator} />
 
       <News
@@ -29,12 +37,14 @@ function EventDetailContainer({ score }: { score: number }) {
         // onButtonClick={() => console.log('Read Now clicked')}
       />
       <EventDetails
-        title='Appointed as CEO of New AI Venture - QLU.ai'
-        description='Exciting Leadership Change: To Drive Innovation and
-         Growth as CEO of New AI Company.'
+        title={roleDescription?.Heading}
+        description={roleDescription?.Summary}
         tag='Leadership and People'
       />
-      <EventImplication score={score} />
+      <EventImplication
+        score={score}
+        reasoning={reasoning}
+      />
     </div>
   );
 }

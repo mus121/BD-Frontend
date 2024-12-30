@@ -8,11 +8,26 @@ type ModalProps = {
   onClose: () => void;
   personTitle: string;
   personCompany: string;
+  personName: string;
+  personLocation: string;
   score: number;
+  roleDescription: any;
+  reasoning: any;
   children?: React.ReactNode;
 };
 
-function Modal({ isOpen, onClose, personTitle, personCompany, score, children }: ModalProps) {
+function Modal({
+  isOpen,
+  onClose,
+  personName,
+  personLocation,
+  personTitle,
+  personCompany,
+  score,
+  roleDescription,
+  reasoning,
+  children,
+}: ModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -28,11 +43,17 @@ function Modal({ isOpen, onClose, personTitle, personCompany, score, children }:
         </div>
         {/* SuggestModalCard */}
         <SuggestModalCard
+          personName={personName}
+          personLocation={personLocation}
           personTitle={personTitle}
           personCompany={personCompany}
           score={score}
         />
-        <EventsTab score={score} />
+        <EventsTab
+          score={score}
+          roleDescription={roleDescription}
+          reasoning={reasoning}
+        />
         {children}
       </div>
     </div>

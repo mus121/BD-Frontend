@@ -1,12 +1,12 @@
-import ImpactScore from '@/component/shared/score';
+// import ImpactScore from '@/component/shared/score';
 import styles from './styles.module.scss';
 import Eventaccordian from '../Eventaccordian/index';
 
-function EventImplication({ score }: { score: number }) {
+function EventImplication({ score, reasoning }: { score: number; reasoning: any }) {
   return (
     <div className={styles.eventImpact}>
       <h5 className={styles.impactDetails}>IMPLICATION DETAILS</h5>
-      <div className={styles.impact}>
+      {/* <div className={styles.impact}>
         <h5 className={styles.impactHaeding}>IMPACT SCORE</h5>
         <div className={styles.impactScore}>
           <div className={styles.scoreTerm}>
@@ -20,8 +20,8 @@ function EventImplication({ score }: { score: number }) {
             />
           </div>
         </div>
-      </div>
-      <Eventaccordian />
+      </div> */}
+      <Eventaccordian reasoning={reasoning} />
     </div>
   );
 }

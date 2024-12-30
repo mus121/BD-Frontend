@@ -1,9 +1,5 @@
 import ConnectionProfileCard from '@/component/LiMutualAndGlobalConnection';
-import { extractProfilePicture } from '@/utils/extractProfilePicture';
-import { toCamelCase } from '@/utils/camelcase';
-import { Profile, SuggestionProfiles, MutualConnectionResponse } from '@/types/ProfileList';
-import { useLiUserLocation } from '@/hooks/useLiUserLocation';
-import { Key } from 'react';
+import { Profile, MutualConnectionResponse, GlobalProfiles } from '@/types/ProfileList';
 
 export const renderProfileCard = (
   profile: Profile,
@@ -37,71 +33,40 @@ export const renderProfileCard = (
   );
 };
 
-// export const renderSuggestionProfiles = (
-//   profiles: SuggestionProfiles | null,
-//   followprofile: string[],
-//   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
-// ) => {
-//   if (!profiles) return null;
-
-//   if (profiles?.suggestionType && profiles?.entityLockupView) {
-//     const lockup = profiles.entityLockupView;
-//     const profilePicture = extractProfilePicture(lockup?.image);
-//     const title = lockup?.title?.text || '';
-//     const camelCaseName = toCamelCase(title);
-//     const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
-//     const headline = lockup?.subtitle?.text || '';
-
-//     return renderProfileCard(
-//       { firstName, lastName, headline, profilePicture },
-//       0,
-//       followprofile,
-//       setFollowprofile,
-//     );
-//   }
-
-//   return profiles?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements?.map(
-//     (element, index) => {
-//       const lockup = element?.entityLockupView;
-//       const profilePicture = extractProfilePicture(lockup?.image);
-//       const title = lockup?.title?.text || '';
-//       const camelCaseName = toCamelCase(title);
-//       const [firstName, lastName] = camelCaseName.split(/(?=[A-Z])/);
-//       const headline = lockup?.subtitle?.text || '';
-
-//       return renderProfileCard(
-//         { firstName, lastName, headline, profilePicture },
-//         index,
-//         followprofile,
-//         setFollowprofile,
-//       );
-//     },
-//   );
-// };
 export const renderGlobalProfiles = (
-  profiles: any,
+  profiles: GlobalProfiles[],
   followprofile: string[],
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
 ) => {
-  // Ensure profiles is an array or return null
-  if (!profiles || !Array.isArray(profiles)) {
-    console.warn('profiles is not an array', profiles);
+  if (!Array.isArray(profiles)) {
     return null;
   }
 
-  return profiles.map((element: any, index: React.Key) => {
-    const lockup = element;
-    const Picture = lockup?.imageUrl || '';
-    const title = lockup?.name || '';
-    const firstName = title;
-    const lastName = '';
-    const headline = lockup?.headline || '';
-    const isValidUrl = (url: string) => /^https?:\/\//.test(url);
+  const isValidUrl = (url: string) => /^https?:\/\//.test(url);
 
-    // Fallback image if the URL is invalid
-    const profilePicture = isValidUrl(Picture) ? Picture : '/assets/images/Avatar.png';
+  return profiles.map((profile: GlobalProfiles, index) => {
+    // Validate and handle profile picture
+    const profilePicture = isValidUrl(profile.imageUrl || '')
+      ? profile.imageUrl
+      : '/assets/images/Avatar.png';
+
+    let identifier = '';
+    if (profile.public_Identifier) {
+      const parts = profile.public_Identifier.split('ww.linkedin.com/in/');
+      if (parts.length > 1) {
+        // eslint-disable-next-line prefer-destructuring
+        identifier = parts[1].split(/[?#]/)[0];
+      }
+    }
     return renderProfileCard(
-      { firstName, lastName, headline, profilePicture },
+      {
+        firstName: profile?.name || '',
+        lastName: '',
+        headline: profile.headline || '',
+        profilePicture,
+        publicIdentifier: identifier,
+        entityUrn: profile?.entityUrn,
+      },
       index,
       followprofile,
       setFollowprofile,

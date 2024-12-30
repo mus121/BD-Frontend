@@ -1,12 +1,12 @@
 import { ExternalMessageEnum } from '@/constants/common';
-import { profileSearch } from '@/utils/index';
-import { ProfileSearchResponse } from '@/types/ProfileSearchResponse';
+import { dropDownSearch } from '@/utils/index';
+import { ProfileSearchResponse } from '@/types/dropdownProfile';
 
-export const getProfileSearch = async (
+export const getDropdownSearch = async (
   searchTerm: string,
 ): Promise<ProfileSearchResponse | undefined> => {
   try {
-    const result = await profileSearch<ProfileSearchResponse>(
+    const result = await dropDownSearch<ProfileSearchResponse>(
       ExternalMessageEnum.LI_GLOBAL_SEARCH,
       searchTerm,
     );

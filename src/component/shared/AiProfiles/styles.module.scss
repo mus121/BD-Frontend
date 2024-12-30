@@ -5,21 +5,46 @@
 .userProfile {
   display: flex;
   justify-content: space-between;
+
   .userCard {
     display: flex;
     height: 81px;
+    width: 335px;
+
     .profileImg {
       border-radius: 100px;
     }
+
     .profile {
       margin-left: 12px;
+
+      .tooltip {
+        width: 335px;
+        position: relative;
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        .tooltipText {
+          @include tooltip();
+        }
+        &:hover .tooltipText {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      .profileElispse {
+        @include elipse();
+        &:hover {
+          opacity: 0.3;
+        }
+      }
       .profileName {
-        // @include fontAlpha();
         font-size: 20px;
         line-height: 20px;
         font-weight: 600;
         color: $gray-10;
-        display: flex;
       }
       .profileTitle {
         @include font-sm();
@@ -27,6 +52,7 @@
         margin-right: 15px;
         color: $gray-25;
       }
+
       .locationContainer {
         display: flex;
         @include font-sm();
@@ -34,6 +60,7 @@
         position: relative;
         bottom: 15px;
         margin-top: 20px;
+
         .location {
           position: relative;
           right: 4px;
@@ -42,9 +69,11 @@
       }
     }
   }
+
   .followAccount {
     width: 72px;
     height: 34px;
+
     &.followed {
       @include justify-space-between();
       width: 103px;

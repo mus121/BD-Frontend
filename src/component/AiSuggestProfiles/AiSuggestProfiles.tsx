@@ -1,22 +1,43 @@
 'use client';
 
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+import { SuggestProfile } from '@/types/AiSuggesProfiles';
+import { useMiniProfilePublicIdentifier } from '@/hooks/useMiniProfilePublicIdentifier';
 import { useAiProfileSuggestions } from '@/hooks/useAiProfileSuggestions';
-import styles from './styles.module.scss';
-import AiSuggestionCard from './AiSuggestionCard/index';
 import AiProfileShimmerLoading from '../shared/AiProfileShimmerLoading/index';
-
-// Define the type for each profile suggestion
-type SuggestProfile = {
-  person_company: string;
-  person_id: string;
-  person_title: string;
-  // score: number;
-  company_score: any;
-};
+import AiSuggestionCard from './AiSuggestionCard/index';
+import styles from './styles.module.scss';
 
 function AiSuggestProfiles() {
-  // Explicitly typing SuggestProfileData as SuggestProfile[]
-  const { data: SuggestProfileData, isError, isLoading } = useAiProfileSuggestions();
+  const isLoadingFromRedux = useSelector(
+    (state: any) => state.aiFindSuggestProfiles.isFirstProfileLoading,
+  );
+  const ProfileData = useSelector((state: any) => state.aiFindSuggestProfiles.setProfiles);
+
+  const queryClient = useQueryClient();
+  const [profiles, setProfiles] = useState<SuggestProfile[]>([]);
+  const publicIdentifier = useMiniProfilePublicIdentifier();
+
+  const {
+    data: SuggestProfileData,
+    isError,
+    isLoading: isQueryLoading,
+  } = useAiProfileSuggestions();
+
+  useEffect(() => {
+    if (!isLoadingFromRedux) {
+      const cachedData = ProfileData;
+      if (cachedData) {
+        setProfiles(cachedData);
+      } else {
+        setProfiles([]);
+      }
+    }
+  }, [isLoadingFromRedux, queryClient, publicIdentifier, ProfileData]);
+
+  const isLoading = isQueryLoading;
 
   if (isLoading) {
     return <AiProfileShimmerLoading />;
@@ -26,18 +47,18 @@ function AiSuggestProfiles() {
     return <p>Error loading profiles. Please try again later.</p>;
   }
 
-  console.log('Profiles', SuggestProfileData);
+  // Combine cached and fresh data
+  const displayedProfiles = [...(profiles || []), ...(SuggestProfileData || [])];
 
   return (
     <div className={styles.suggestProfile}>
-      {/* Static Heading and Description */}
       <div className={styles.suggestHeading}>
         <h5 className={styles.networkHeading}>Expand Your Network</h5>
       </div>
       <div className={styles.suggestDescription}>
         <p className={styles.networkDescription}>
           Boost your business development by connecting with industry leaders and relevant
-          professionals tailored to your interests.
+          professionals.
         </p>
       </div>
       <div className={styles.suggestTop}>
@@ -45,20 +66,36 @@ function AiSuggestProfiles() {
           <h5 className={styles.profileHead}>Suggested Profiles</h5>
         </div>
       </div>
-
-      {/* Dynamic Profile Cards */}
       <div className={styles.cardContainer}>
-        {SuggestProfileData?.map(
-          ({ person_company, person_id, person_title, company_score }: SuggestProfile) => (
-            <AiSuggestionCard
-              key={person_id}
-              personTitle={person_title}
-              personCompany={person_company}
-              // score={score}
-              companyScore={company_score}
-            />
-          ),
-        )}
+        {displayedProfiles
+          ?.filter(
+            (profile: SuggestProfile) =>
+              profile.company_score?.['Domain Alignment score']?.score !== undefined &&
+              profile.company_score?.['Domain Alignment score']?.score !== null,
+          )
+          .map(
+            ({
+              full_name,
+              location,
+              company,
+              title,
+              person_id,
+              company_score,
+              role_description,
+              reasoning,
+            }: SuggestProfile) => (
+              <AiSuggestionCard
+                key={person_id}
+                personName={full_name}
+                personLocation={location}
+                personTitle={title}
+                personCompany={company}
+                companyScore={company_score}
+                roleDescription={role_description}
+                reasoning={reasoning}
+              />
+            ),
+          )}
       </div>
     </div>
   );

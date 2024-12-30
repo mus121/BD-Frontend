@@ -26,9 +26,6 @@ export const liProfile = <T>(type: string): Promise<MessageResponse<T>> => sendM
 export const connectionProfile = <T>(type: string, start?: number): Promise<MessageResponse<T>> =>
   sendMessage<T>(type, { start });
 
-export const profileSearch = <T>(type: string, searchTerm?: string): Promise<MessageResponse<T>> =>
-  sendMessage<T>(type, { searchTerm });
-
 export const totalConnection = <T>(type: string): Promise<MessageResponse<T>> =>
   sendMessage<T>(type);
 
@@ -36,6 +33,9 @@ export const liuserlocation = <T>(
   type: string,
   publicIdentifier: string,
 ): Promise<MessageResponse<T>> => sendMessage<T>(type, { publicIdentifier });
+
+export const dropDownSearch = <T>(type: string, searchTerm?: string): Promise<MessageResponse<T>> =>
+  sendMessage<T>(type, { searchTerm });
 
 export const globalProfilesResult = <T>(
   type: string,

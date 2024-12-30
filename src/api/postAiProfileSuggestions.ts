@@ -3,34 +3,32 @@ import { fetchFollowedProfiles } from './getLiProfiles';
 
 export const postAiProfileSuggestions = async () => {
   try {
-    // Fetch the list of followed profiles
-    const followedProfiles = await fetchFollowedProfiles();
-    // Get the first publicIdentifier
-    const firstPublicIdentifier = followedProfiles?.[0];
+    const followPublicIdentifier = await fetchFollowedProfiles();
 
-    if (!firstPublicIdentifier) {
+    if (!followPublicIdentifier || followPublicIdentifier.length === 0) {
       throw new Error('No publicIdentifier found in followed profiles.');
     }
 
-    // Make the POST request with the first publicIdentifier
-    const response = await axios.post('http://localhost:8000/api/aiService', {
-      identifiers: [
-        {
-          entity_urn: '',
-          public_identifier: 'luca-maestri-082238',
-        },
-        {
-          entity_urn: '',
-          public_identifier: 'satyanadella',
-        },
-        {
-          entity_urn: '',
-          public_identifier: 'tahira-nazir-a4b5c6',
-        },
-      ],
-    });
+    // Construct the Payload Dynamically
+    const payload = {
+      identifiers: followPublicIdentifier.map((publicIdentifier: string) => ({
+        entity_urn: '',
+        public_identifier: publicIdentifier,
+      })),
+    };
 
-    return response.data;
+    // Make the POST request
+    const response = await axios.post('http://localhost:8000/api/aiSimilarProfiles', payload);
+
+    // Consolidate the response data
+    const consolidatedArray = response.data.flatMap((entry: any) => {
+      if (Array.isArray(entry)) {
+        return entry;
+      }
+      return [entry];
+    });
+    // If no cached data, return the fresh response data
+    return consolidatedArray;
   } catch (error) {
     console.error('Error fetching AI profile suggestions:', error);
     throw error;

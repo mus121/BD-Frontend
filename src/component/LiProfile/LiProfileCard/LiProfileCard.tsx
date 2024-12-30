@@ -2,7 +2,6 @@ import { useAppSelector } from '@/hooks/rtk';
 import ProfileImage from '@/component/shared/profileImages/profileImages';
 import Location from '@/component/common/svg/Location';
 import Home from '@/component/common/svg/Home';
-import { useLiUserLocation } from '@/hooks/useLiUserLocation';
 import { useExtractLocation } from '@/utils/extractLocation';
 import styles from './styles.module.scss';
 

@@ -33,23 +33,29 @@ body {
 
 /* Firefox */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: $gray-600 $gray-800;
+  scrollbar-width: thin; /* Adjusted for Firefox */
+  scrollbar-color: $gray-600 $gray-800; /* Thumb and track colors */
 }
-/* chrome */
+
+/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
+  border-radius: 16px;
 }
+
 *::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 5px;
+  background: transparent; 
+  border-radius: 16px;
 }
+
 *::-webkit-scrollbar-corner {
   background: $gray-800;
+  border-radius: 16px;
 }
+
 *::-webkit-scrollbar-thumb {
-  // background-color: $tableScrollbar;
-  border-radius: 14px;
-  // border: 2px solid $tableScrollbar;
+  background-color: $gray-600;
+  border-radius: 16px;
+  border: 2px solid $gray-800;
 }

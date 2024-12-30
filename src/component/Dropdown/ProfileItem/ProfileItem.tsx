@@ -10,11 +10,9 @@ import {
 } from './profileUtils/profileUtils';
 
 function ProfileItem({ profile, onClick }: ProfileItemProps) {
-  // Use the utility functions to extract the profile information
   const imageUrl = getProfileImageUrl(profile);
   const title = getProfileTitle(profile);
   const headline = getProfileHeadline(profile);
-
   return (
     <div
       onClick={() => onClick(profile)}

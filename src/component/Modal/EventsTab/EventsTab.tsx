@@ -9,7 +9,15 @@ const tabs = [
   { label: 'Experience', value: 'experience' },
 ];
 
-function EventsTab({ score }: { score: number }) {
+function EventsTab({
+  score,
+  roleDescription,
+  reasoning,
+}: {
+  score: number;
+  roleDescription: any;
+  reasoning: any;
+}) {
   const [activeTab, setActiveTab] = useState('events');
 
   const handleTabChange = (value: string) => {
@@ -26,7 +34,11 @@ function EventsTab({ score }: { score: number }) {
         {activeTab === 'summary' && <p />}
         {activeTab === 'events' && (
           <p>
-            <EventDetailContainer score={score} />
+            <EventDetailContainer
+              score={score}
+              roleDescription={roleDescription}
+              reasoning={reasoning}
+            />
           </p>
         )}
         {activeTab === 'experience' && <p />}

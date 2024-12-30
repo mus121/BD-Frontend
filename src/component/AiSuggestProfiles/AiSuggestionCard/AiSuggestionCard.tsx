@@ -8,15 +8,25 @@ import styles from './styles.module.scss';
 import Modal from '../../Modal/index';
 
 type AiSuggestionCardProps = {
+  personName: string;
+  personLocation: string;
   personTitle: string;
   personCompany: string;
-  // score: number;
   companyScore: any;
+  roleDescription: any;
+  reasoning: any;
 };
 
-function AiSuggestionCard({ personTitle, personCompany, companyScore }: AiSuggestionCardProps) {
+function AiSuggestionCard({
+  personName,
+  personLocation,
+  personTitle,
+  personCompany,
+  companyScore,
+  roleDescription,
+  reasoning,
+}: AiSuggestionCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleCardClick = () => {
     setIsModalOpen(true);
   };
@@ -41,6 +51,8 @@ function AiSuggestionCard({ personTitle, personCompany, companyScore }: AiSugges
       >
         {/* Profile Details */}
         <AiProfiles
+          personName={personName}
+          personLocation={personLocation}
           personTitle={personTitle}
           personCompany={personCompany}
         />
@@ -48,17 +60,21 @@ function AiSuggestionCard({ personTitle, personCompany, companyScore }: AiSugges
         {/* Conditional Rendering */}
         {companyScore?.['Domain Alignment score']?.score !== null && (
           <>
-            <AiBussinessImpact score={companyScore['Domain Alignment score']?.score} />
-            <AiProgressBar score={companyScore['Domain Alignment score']?.score} />
+            <AiBussinessImpact score={companyScore?.['Domain Alignment score']?.score} />
+            <AiProgressBar score={companyScore?.['Domain Alignment score']?.score} />
           </>
         )}
       </div>
       {/* Modal */}
       {isModalOpen && (
         <Modal
+          personName={personName}
+          personLocation={personLocation}
           personTitle={personTitle}
           personCompany={personCompany}
-          score={companyScore?.['Domain Alignment score']?.score || 0} // Provide a fallback value if score is null
+          score={companyScore?.['Domain Alignment score']?.score || 0}
+          roleDescription={roleDescription}
+          reasoning={reasoning}
           onClose={handleModalClose}
           isOpen
         >

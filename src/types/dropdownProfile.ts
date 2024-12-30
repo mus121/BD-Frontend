@@ -1,26 +1,8 @@
 export type Profile = {
+  subtitle: any;
+  title: string;
+  image: string;
   id?: string;
-  entityLockupView?: {
-    title?: {
-      text?: string;
-    };
-    subtitle?: {
-      text?: string;
-    };
-    image?: {
-      attributes: Array<{
-        detailData: {
-          nonEntityProfilePicture: {
-            vectorImage: {
-              artifacts: Array<{
-                fileIdentifyingUrlPathSegment: string;
-              }>;
-            };
-          };
-        };
-      }>;
-    };
-  };
 };
 
 export type ProfileItemProps = {
@@ -31,4 +13,8 @@ export type ProfileItemProps = {
 export type DropdownProps = {
   searchQuery: string;
   setSearchProfile: (profile: Profile) => void;
+};
+
+export type ProfileSearchResponse = {
+  response: any;
 };

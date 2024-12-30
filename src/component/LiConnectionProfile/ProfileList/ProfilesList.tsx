@@ -1,10 +1,6 @@
 import React from 'react';
 import { ProfilesListProps } from '@/types/ProfileList';
-import {
-  renderSuggestionProfiles,
-  renderMutualConnections,
-  renderGlobalProfiles,
-} from '@/utils/renderCard';
+import { renderMutualConnections, renderGlobalProfiles } from '@/utils/renderCard';
 import styles from './styles.module.scss';
 
 function ProfilesList({

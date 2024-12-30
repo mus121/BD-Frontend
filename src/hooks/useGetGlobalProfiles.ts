@@ -1,11 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import { GLOBAL_SEARCH_PROFILE } from '@/constants/query/processLi';
+import { LI_QUERY_KEYS } from '@/constants/query/linkedin';
 import { getGlobalProfileSearch } from '@/api/getGlobalProfiles';
 
-export const useGetGlobalProfiles = (searchQuery: string, page: number) => {
+export const useGetGlobalProfiles = (
+  searchQuery: string,
+  page: number,
+  isSearchActive: boolean,
+) => {
   const query = useQuery({
-    queryKey: [GLOBAL_SEARCH_PROFILE.followProfiles, searchQuery, page],
+    queryKey: [LI_QUERY_KEYS.getGlobalProfiles, searchQuery, page],
     queryFn: () => getGlobalProfileSearch(searchQuery, page),
+    enabled: isSearchActive,
   });
   return query;
 };

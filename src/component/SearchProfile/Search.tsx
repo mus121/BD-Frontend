@@ -2,10 +2,8 @@
 
 import { Dispatch, SetStateAction } from 'react';
 import { getGlobalProfileSearch } from '@/api/getGlobalProfiles';
-import { useGetGlobalProfiles } from '@/hooks/useGetGlobalProfiles';
 import styles from './styles.module.scss';
 import SearchBar from './SearchBar/index';
-import { getProfileSearch } from '../../api/getProfileSearch';
 import { Profile } from '../../types/ProfileList';
 
 function SearchProfile({
@@ -13,11 +11,13 @@ function SearchProfile({
   searchQuery,
   setSearchQuery,
   setcurrentPage,
+  setIsSearchActive,
 }: {
   setProfiles: Dispatch<SetStateAction<Profile[] | null>>;
   searchQuery: any;
   setSearchQuery: any;
-  setcurrentPage: number;
+  setcurrentPage: any;
+  setIsSearchActive: any;
 }) {
   const handleSearch = async (searchTerm: string) => {
     try {
@@ -28,8 +28,6 @@ function SearchProfile({
       setProfiles(null);
     }
   };
-
-  // console.log({ setProfiles }, 'total profiles');
   return (
     <div className={styles.searchBarContainer}>
       <SearchBar
@@ -39,6 +37,7 @@ function SearchProfile({
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         setcurrentPage={setcurrentPage}
+        setIsSearchActive={setIsSearchActive}
       />
     </div>
   );

@@ -8,7 +8,7 @@ function BussinessImpact({ score }: { score: number }) {
       <div className={styles.impactTitle}>
         <div className={styles.bussinessAlert}>
           <h5 className={styles.impactHeading}> BUSINESS IMPACT SCORE</h5>
-          <h5 className={styles.score}>0{score}</h5>
+          <h5 className={styles.score}>{score}</h5>
           <Tooltip
             content='The Business Impact Score show the potential immediate (short-term) 
           and lasting (long-term) impact on your business growth from connecting with this person.'

@@ -8,8 +8,6 @@ export const getGlobalProfileSearch = async (query: string, page: number = 0) =>
       query,
       page,
     );
-    console.log('Page', page);
-    console.log('Result', result);
     return result;
   } catch (error) {
     console.error('Error fetching profiles:', error);

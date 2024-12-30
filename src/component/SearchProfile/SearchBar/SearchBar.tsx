@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 // import GlobalSearch from '@/component/GlobalSearch';
 import Dropdown from '../../Dropdown/index';
 import styles from './styles.module.scss';
 import Search from '../../common/svg/Search';
 import Close from '../../common/svg/Close';
-import { useQueryClient } from '@tanstack/react-query';
 
 type SearchBarProps = {
   placeholder?: string;
@@ -12,7 +11,8 @@ type SearchBarProps = {
   setProfiles: any;
   searchQuery: any;
   setSearchQuery: any;
-  setcurrentPage: number;
+  setcurrentPage: any;
+  setIsSearchActive: any;
 };
 
 function SearchBar({
@@ -22,20 +22,10 @@ function SearchBar({
   searchQuery,
   setSearchQuery,
   setcurrentPage,
+  setIsSearchActive,
 }: SearchBarProps) {
-  // const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showGlobalSearch, setShowGlobalSearch] = useState(false);
-
-  // Debounce the search query
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setDebouncedSearchQuery(searchQuery);
-  //   }, 2000);
-
-  //   return () => clearTimeout(timer);
-  // }, [searchQuery]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -47,6 +37,7 @@ function SearchBar({
       onSearch(searchQuery);
       setShowGlobalSearch(true);
       setIsDropdownOpen(false);
+      setIsSearchActive(true);
     }
   };
 
@@ -56,6 +47,7 @@ function SearchBar({
     setIsDropdownOpen(false);
     setProfiles(null);
     setcurrentPage(0);
+    setIsSearchActive(false);
   };
 
   const handleBlur = () => {
@@ -95,5 +87,4 @@ function SearchBar({
     </div>
   );
 }
-
 export default SearchBar;
