@@ -1,12 +1,17 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { useGetDropDownSearch } from '@/hooks/useGetDropDownSearch';
-import { Profile, DropdownProps, ProfileSearchResponse } from '@/types/dropdownProfile';
+import { useAppDispatch } from '@/hooks/rtk';
+import { setDropDownProfiles } from '@/store/slices/dropDownProfiles';
+import { DropdownProps, Profile, ProfileSearchResponse } from '@/types/dropdownProfile';
 import ProfileItem from './ProfileItem/ProfileItem';
 import styles from './styles.module.scss';
 
-function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
+function Dropdown({ searchQuery }: DropdownProps) {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const { data: dropDownProfiles = [] } = useGetDropDownSearch(searchQuery);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (searchQuery.trim()) {
@@ -21,6 +26,14 @@ function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
 
   if (!searchQuery.trim()) return null;
 
+  const clickProfiles = (index: any) => {
+    if (searchQuery.trim() && dropDownProfiles) {
+      const responseProfiles = Array.isArray((dropDownProfiles as ProfileSearchResponse)?.response)
+        ? (dropDownProfiles as ProfileSearchResponse).response
+        : [];
+      dispatch(setDropDownProfiles(responseProfiles[index]));
+    }
+  };
   return (
     <div className={styles.dropDown}>
       {Array.isArray(profiles) && profiles.length > 0 ? (
@@ -32,14 +45,12 @@ function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
             <ProfileItem
               key={item.id || index}
               profile={item}
-              onClick={() => setSearchProfile(item)}
+              onClick={() => clickProfiles(index)}
             />
           ))}
         </div>
       ) : (
-        <div className={styles.noResults}>
-          <p>No results found</p>
-        </div>
+        <div className={styles.noResults} />
       )}
     </div>
   );

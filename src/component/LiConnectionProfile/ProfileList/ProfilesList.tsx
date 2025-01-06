@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProfilesListProps } from '@/types/ProfileList';
 import { renderMutualConnections, renderGlobalProfiles } from '@/utils/renderCard';
+import { useSelector } from 'react-redux';
 import styles from './styles.module.scss';
 
 function ProfilesList({
@@ -9,11 +10,15 @@ function ProfilesList({
   followprofile,
   setFollowprofile,
 }: ProfilesListProps) {
+  const ProfileData = useSelector((state: any) => state.dropDownProfiles.profiles);
   return (
     <div className={styles.profileListContainer}>
-      {globalProfiles?.response &&
+      {ProfileData && renderGlobalProfiles([ProfileData], followprofile, setFollowprofile)}
+      {!ProfileData &&
+        globalProfiles?.response &&
         renderGlobalProfiles(globalProfiles?.response, followprofile, setFollowprofile)}
-      {!globalProfiles?.response &&
+      {!ProfileData &&
+        !globalProfiles?.response &&
         renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
     </div>
   );

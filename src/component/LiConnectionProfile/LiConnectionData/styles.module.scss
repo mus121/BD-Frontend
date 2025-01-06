@@ -1,0 +1,10 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+@import '../../../styles/fonts';
+
+.connectionGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 16px;
+}

@@ -6,6 +6,7 @@ export const useGetDropDownSearch = (searchQuery: string) => {
   const query = useQuery({
     queryKey: [LI_QUERY_KEYS.getDropdownProfiles, searchQuery],
     queryFn: () => getDropdownSearch(searchQuery),
+    enabled: !!searchQuery.trim(),
   });
   return query;
 };

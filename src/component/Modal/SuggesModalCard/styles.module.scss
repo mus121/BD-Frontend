@@ -4,7 +4,6 @@
 
 .cardContainer {
   width: 657px;
-  height: 227px;
   padding: 20px 16px;
   border: 1px solid $gray-700;
   border-radius: 8px;
@@ -13,12 +12,11 @@
   transition: background-color 0.3s ease;
   background-color: $Gradient-Grey-Black;
   .separator {
-    margin: 16px 0;
+    // margin: 16px 0;
     border: none;
     height: 1px;
     background-color: $gray-800;
   }
-
   .bussinessImpact {
     margin-top: 16px;
   }

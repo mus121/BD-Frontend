@@ -1,5 +1,7 @@
 export type Profile = {
-  subtitle: any;
+  publicIdentifier: string;
+  entityUrn: string;
+  subtitle: string;
   title: string;
   image: string;
   id?: string;

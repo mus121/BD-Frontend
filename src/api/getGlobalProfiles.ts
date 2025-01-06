@@ -10,7 +10,6 @@ export const getGlobalProfileSearch = async (query: string, page: number = 0) =>
     );
     return result;
   } catch (error) {
-    console.error('Error fetching profiles:', error);
     throw new Error('Failed to fetch global profiles');
   }
 };

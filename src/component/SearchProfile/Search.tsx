@@ -24,7 +24,6 @@ function SearchProfile({
       const GlobalProfiles = await getGlobalProfileSearch(searchTerm);
       setProfiles(GlobalProfiles);
     } catch (error) {
-      console.error('Error fetching profiles:', error);
       setProfiles(null);
     }
   };

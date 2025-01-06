@@ -1,8 +1,5 @@
-import { useState } from 'react';
 import Location from '@/component/common/svg/Location';
-import TertiaryButton from '@/component/shared/button/TertiaryButton';
 import ProfileImg from '@/component/common/svg/ProfileImage';
-import Followingcheck from '../../common/svg/Followingcheck';
 import styles from './styles.module.scss';
 
 function AiProfiles({
@@ -16,41 +13,19 @@ function AiProfiles({
   personTitle: string;
   personCompany: string;
 }) {
-  const [isFollowed, setIsFollowed] = useState(false);
+  const profileTitle = `${personTitle}`;
 
-  const handleFollowToggle = () => {
-    setIsFollowed(prev => !prev);
-  };
-
-  const followButton = isFollowed ? (
-    <>
-      <Followingcheck size={11.9} /> Following
-    </>
-  ) : (
-    'Follow'
-  );
-
-  const profileTitle = `${personTitle} @ ${personCompany}`;
-  const isTruncated = personName.length > 25;
   const truncatedProfileTitle =
-    profileTitle.length > 40 ? `${profileTitle.slice(0, 40)}...` : profileTitle;
+    profileTitle.length > 45 ? `${profileTitle.slice(0, 45)}...` : profileTitle;
 
   return (
     <div className={styles.userProfile}>
       <div className={styles.userCard}>
         <ProfileImg size={40} />
         <div className={styles.profile}>
-          {isTruncated ? (
-            <div className={styles.tooltip}>
-              <h5 className={`${styles.profileName} ${styles.profileElispse}`}>
-                {`${personName.slice(0, 15)}...`}
-              </h5>
-              <span className={styles.tooltipText}>{personName}</span>
-            </div>
-          ) : (
+          <div className={styles.tooltip}>
             <h5 className={styles.profileName}>{personName}</h5>
-          )}
-
+          </div>
           {/* Tooltip for profile title */}
           <div className={styles.tooltip}>
             <p
@@ -59,10 +34,10 @@ function AiProfiles({
               {truncatedProfileTitle}
             </p>
             {truncatedProfileTitle !== profileTitle && (
-              <span className={styles.tooltipText}>{profileTitle}</span>
+              <span className={styles.tooltipText}>{personTitle}</span>
             )}
+            <p className={styles.profileTitle}>@ {personCompany}</p>
           </div>
-
           <p className={styles.locationContainer}>
             <span className={styles.location}>
               <Location size={16} />
@@ -71,17 +46,6 @@ function AiProfiles({
           </p>
         </div>
       </div>
-      <TertiaryButton
-        colorVariant='lightGray'
-        type='button'
-        text={followButton}
-        tertiaryButtonClassName={`${styles.followAccount} ${isFollowed && styles.followed}`}
-        sizeVariant='base'
-        onClick={e => {
-          e.stopPropagation();
-          handleFollowToggle();
-        }}
-      />
     </div>
   );
 }

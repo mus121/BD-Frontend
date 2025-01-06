@@ -1,4 +1,4 @@
-import ConnectionProfileCard from '@/component/LiMutualAndGlobalConnection';
+import ConnectionProfileCard from '@/component/LiConnectionsCard';
 import { Profile, MutualConnectionResponse, GlobalProfiles } from '@/types/ProfileList';
 
 export const renderProfileCard = (
@@ -45,9 +45,8 @@ export const renderGlobalProfiles = (
   const isValidUrl = (url: string) => /^https?:\/\//.test(url);
 
   return profiles.map((profile: GlobalProfiles, index) => {
-    // Validate and handle profile picture
-    const profilePicture = isValidUrl(profile.imageUrl || '')
-      ? profile.imageUrl
+    const profilePicture = isValidUrl(profile.imageUrl || profile?.image || '')
+      ? profile.imageUrl || profile?.image
       : '/assets/images/Avatar.png';
 
     let identifier = '';
@@ -60,11 +59,11 @@ export const renderGlobalProfiles = (
     }
     return renderProfileCard(
       {
-        firstName: profile?.name || '',
+        firstName: profile?.name || profile?.title || 'Muhammad Shehrayar',
         lastName: '',
-        headline: profile.headline || '',
+        headline: profile.headline || profile?.subtitle || 'Qlu.ai',
         profilePicture,
-        publicIdentifier: identifier,
+        publicIdentifier: identifier || profile.publicIdentifier,
         entityUrn: profile?.entityUrn,
       },
       index,
@@ -81,33 +80,35 @@ export const renderMutualConnections = (
 ) => {
   if (!mutualConnections || !mutualConnections.elements) return null;
 
-  return mutualConnections.elements
-    .filter(
-      connection =>
-        connection?.connectedMemberResolutionResult?.firstName ||
-        connection?.connectedMemberResolutionResult?.lastName,
-    )
-    .map((connection, index) => {
-      const profileData = connection.connectedMemberResolutionResult;
+  return (
+    mutualConnections.elements
+      // .filter(connection => {
+      //   const profileData = connection?.connectedMemberResolutionResult;
 
-      // Safely build the profile picture URL
-      const profilePicture = profileData?.profilePicture?.displayImageReference?.vectorImage;
-      const rootUrl = profilePicture?.rootUrl || '';
-      const artifact = profilePicture?.artifacts?.[2]?.fileIdentifyingUrlPathSegment || '';
-      const completeProfilePicture = rootUrl && artifact ? `${rootUrl}${artifact}` : '';
+      //   // Skip connections without firstName, lastName, or profilePicture
+      //   return profileData?.firstName || profileData?.lastName || profileData?.profilePicture;
+      // })
+      .map((connection, index) => {
+        const profileData = connection.connectedMemberResolutionResult;
+        const profilePicture = profileData?.profilePicture?.displayImageReference?.vectorImage;
+        const rootUrl = profilePicture?.rootUrl || '';
+        const artifact = profilePicture?.artifacts?.[2]?.fileIdentifyingUrlPathSegment || '';
+        const completeProfilePicture = rootUrl && artifact ? `${rootUrl}${artifact}` : '';
 
-      return renderProfileCard(
-        {
-          entityUrn: profileData?.entityUrn,
-          publicIdentifier: profileData?.publicIdentifier,
-          firstName: profileData?.firstName,
-          lastName: profileData?.lastName,
-          headline: profileData?.headline,
-          profilePicture: completeProfilePicture,
-        },
-        index,
-        followprofile,
-        setFollowprofile,
-      );
-    });
+        // Pass the valid profile data to renderProfileCard
+        return renderProfileCard(
+          {
+            entityUrn: profileData?.entityUrn,
+            publicIdentifier: profileData?.publicIdentifier,
+            firstName: profileData?.firstName || 'Muhammad Shehrayar',
+            lastName: profileData?.lastName,
+            headline: profileData?.headline || 'Qlu.ai',
+            profilePicture: completeProfilePicture,
+          },
+          index,
+          followprofile,
+          setFollowprofile,
+        );
+      })
+  );
 };

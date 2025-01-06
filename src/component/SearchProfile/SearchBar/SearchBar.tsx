@@ -1,5 +1,6 @@
 import { useState } from 'react';
-// import GlobalSearch from '@/component/GlobalSearch';
+import { useAppDispatch } from '@/hooks/rtk';
+import { clearDropDownProfiles } from '@/store/slices/dropDownProfiles';
 import Dropdown from '../../Dropdown/index';
 import styles from './styles.module.scss';
 import Search from '../../common/svg/Search';
@@ -25,7 +26,8 @@ function SearchBar({
   setIsSearchActive,
 }: SearchBarProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [showGlobalSearch, setShowGlobalSearch] = useState(false);
+  const [, setShowGlobalSearch] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -38,6 +40,7 @@ function SearchBar({
       setShowGlobalSearch(true);
       setIsDropdownOpen(false);
       setIsSearchActive(true);
+      setcurrentPage(0);
     }
   };
 
@@ -48,6 +51,7 @@ function SearchBar({
     setProfiles(null);
     setcurrentPage(0);
     setIsSearchActive(false);
+    dispatch(clearDropDownProfiles());
   };
 
   const handleBlur = () => {

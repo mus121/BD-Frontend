@@ -1,9 +1,9 @@
 @import '../../../styles/colors';
 @import '../../../styles/fonts';
 @import '../../../styles/mixin';
-/* styles/Tooltip.module.scss */
 
 .tool {
+  margin-left: 8px;
   .infoIcon {
     margin-top: 2px;
     gap: 12px;
@@ -18,7 +18,7 @@
     top: 25px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: $gray-800;
+    background-color: $gray-700;
     color: white;
     padding: 8px 12px;
     border-radius: 4px;

@@ -8,6 +8,10 @@ export type Profile = {
 };
 
 export type GlobalProfiles = {
+  publicIdentifier: string;
+  subtitle: string | undefined;
+  title: string | undefined;
+  image: string | undefined;
   response: any;
   navigationUrl: string;
   imageUrl?: string;
@@ -42,47 +46,4 @@ export type MutualConnectionResponse = {
       };
     };
   }[];
-};
-
-export type SuggestionProfiles = {
-  data: any;
-  suggestionType?: boolean;
-  entityLockupView?: {
-    title?: { text: string };
-    subtitle?: { text: string };
-    image?: {
-      attributes: Array<{
-        detailData?: {
-          nonEntityProfilePicture?: {
-            vectorImage?: {
-              artifacts: Array<{ fileIdentifyingUrlPathSegment: string }>;
-            };
-          };
-        };
-      }>;
-    };
-  };
-  response?: {
-    data: {
-      searchDashTypeaheadByGlobalTypeahead: {
-        elements: Array<{
-          entityLockupView: {
-            title?: { text: string };
-            subtitle?: { text: string };
-            image?: {
-              attributes: Array<{
-                detailData?: {
-                  nonEntityProfilePicture?: {
-                    vectorImage?: {
-                      artifacts: Array<{ fileIdentifyingUrlPathSegment: string }>;
-                    };
-                  };
-                };
-              }>;
-            };
-          };
-        }>;
-      };
-    };
-  };
 };

@@ -4,24 +4,9 @@ import LiConnectionCard from './LiConnectionCard/index';
 function LiConnectionShimmerLoading() {
   return (
     <div className={styles.shimmerHead}>
-      <div className={styles.heading}>
-        <div className={styles.topHeadLeft} />
-        <div className={styles.topRight} />
-      </div>
-      <div className={styles.leftHeading} />
       <div className={styles.profileHead}>
-        <div className={styles.yourProfiles}>
-          <div className={styles.profileLeft} />
-          <div className={styles.cardFilter}>
-            <div className={styles.profileRight} />
-            <div className={styles.filter} />
-          </div>
-        </div>
-
         {/* Main Component Start */}
         <div className={styles.profileCardHead}>
-          <LiConnectionCard />
-          <LiConnectionCard />
           <LiConnectionCard />
           <LiConnectionCard />
           <LiConnectionCard />

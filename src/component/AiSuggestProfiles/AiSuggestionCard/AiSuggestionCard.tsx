@@ -49,21 +49,23 @@ function AiSuggestionCard({
         role='button'
         tabIndex={0}
       >
-        {/* Profile Details */}
-        <AiProfiles
-          personName={personName}
-          personLocation={personLocation}
-          personTitle={personTitle}
-          personCompany={personCompany}
-        />
+        <div className={styles.leftProfileCard}>
+          <AiProfiles
+            personName={personName}
+            personLocation={personLocation}
+            personTitle={personTitle}
+            personCompany={personCompany}
+          />
+        </div>
         <hr className={styles.separator} />
-        {/* Conditional Rendering */}
-        {companyScore?.['Domain Alignment score']?.score !== null && (
-          <>
-            <AiBussinessImpact score={companyScore?.['Domain Alignment score']?.score} />
-            <AiProgressBar score={companyScore?.['Domain Alignment score']?.score} />
-          </>
-        )}
+        <div className={styles.rightProfileCard}>
+          {companyScore?.['Domain Alignment score']?.score !== null && (
+            <>
+              <AiBussinessImpact score={companyScore?.['Domain Alignment score']?.score} />
+              <AiProgressBar score={companyScore?.['Domain Alignment score']?.score} />
+            </>
+          )}
+        </div>
       </div>
       {/* Modal */}
       {isModalOpen && (

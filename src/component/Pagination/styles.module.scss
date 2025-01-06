@@ -4,10 +4,11 @@
 
 .paginationContainer {
   @include space-between();
-  height: 36px;
   border-radius: 4px;
   color: $gray-25;
   @include font-sm();
+  width: 1000px;
+  margin-top: 12px;
 
   .paginationControls {
     @include center-flex();

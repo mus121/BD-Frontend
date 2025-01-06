@@ -13,20 +13,16 @@ function LiMutualAndGlobalConnection({
 }: ProfileProps) {
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
 
-  // Check if the profile is already followed
   const isFollowed = followprofile.includes(publicIdentifier);
 
-  // Mutation for toggling follow status
   const { mutate: toggleFollow } = usePostFollowAndFollowing(setFollowprofile);
 
-  // Handler for toggling follow state
   const handleFollowToggle = () => {
     toggleFollow({ follow: !isFollowed, identifier: publicIdentifier, entityUrn });
   };
 
   return (
     <div className={styles.cardContainer}>
-      {/* Profile Info Section */}
       <div className={styles.profileInfo}>
         <ProfileImage
           src={profilePicture || '/assets/images/Avatar.png'}
@@ -39,7 +35,7 @@ function LiMutualAndGlobalConnection({
           <h5 className={styles.profileName}>{`${firstName} ${lastName}`}</h5>
           <p
             className={styles.profileHeadline}
-            title={headline}
+            title={headline || 'No headline available'}
           >
             {truncateHeadline(headline)}
           </p>

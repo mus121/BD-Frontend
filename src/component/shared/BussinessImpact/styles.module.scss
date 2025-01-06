@@ -2,36 +2,35 @@
 @import '../../../styles/fonts';
 @import '../../../styles/mixin';
 
-.bussinessImpact {
+.impactTitle {
   margin-top: 16px;
-  .impactTitle {
-    @include space-between();
-    .bussinessAlert {
-      display: flex;
-      justify-content: space-between;
-      width: 231px;
-      .impactHeading {
-        @include font-sm();
-        color: $gray-100;
-      }
-      .score {
-        font-size: 16px;
-        line-height: 24px;
-        font-weight: bold;
-        color: $gray-10;
-      }
+  @include space-between();
+  .bussinessAlert {
+    display: flex;
+    .impactHeading {
+      @include font-sm();
+      color: $gray-100;
     }
-    .average {
-      @include fontAlpha();
-      background-color: $gray-700;
-      color: $blue-400;
-      font-size: 12px;
-      line-height: 18px;
-      font-weight: 400;
-      padding: 2px 10px;
-      border-radius: 80px;
-      border: none;
-      cursor: pointer;
+    .score {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: bold;
+      color: $gray-10;
+    }
+  }
+  .buttonContainer {
+    .followAccount {
+      width: 72px;
+      height: 34px;
+
+      &.followed {
+        @include justify-space-between();
+        width: 103px;
+        height: 32px;
+        border-color: $Orange-500;
+        color: $Orange-500;
+        background: none;
+      }
     }
   }
 }
