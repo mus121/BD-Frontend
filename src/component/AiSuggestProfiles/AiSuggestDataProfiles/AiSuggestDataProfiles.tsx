@@ -1,4 +1,4 @@
-import { SuggestProfile } from '@/types/AiSuggesProfiles';
+import { SuggestProfile } from '@/types/TAiSuggesProfiles';
 import Pagination from '@/component/Pagination/Pagination';
 import { useSelector } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
@@ -36,8 +36,7 @@ function AiSuggestDataProfiles() {
     }
   }, [isLoadingFromRedux, queryClient, publicIdentifier, ProfileData]);
 
-  const isLoading = isQueryLoading;
-
+  const isLoading = isLoadingFromRedux || isQueryLoading;
   if (isLoading) {
     return <AiProfileShimmerLoading />;
   }

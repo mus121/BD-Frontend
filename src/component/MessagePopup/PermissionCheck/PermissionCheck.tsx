@@ -2,8 +2,8 @@ import styles from './styles.module.scss';
 import ListUser from '../../common/svg/Listuser';
 import Calendar from '../../common/svg/Calendar';
 import Gmail from '../../common/svg/Gmail';
-import Check from '../../shared/checkbox/enable/enable';
-import CheckDisable from '../../shared/checkbox/disable/disable';
+import Check from '../../shared/Checkbox/enable/enable';
+import CheckDisable from '../../shared/Checkbox/disable/disable';
 
 function PermissionCheck() {
   return (

@@ -5,44 +5,42 @@ import { useLiMutualConnections } from '@/hooks/useMutualConnections';
 import { useLiTotalConnections } from '@/hooks/useTotalConnections';
 import { useFollowedProfiles } from '@/hooks/useGetFollowProfiles';
 import { useGetGlobalProfiles } from '@/hooks/useGetGlobalProfiles';
+import { RootState } from '@/store/store';
+import { LiConnectionDataProps } from '@/types/TLiConnectionData';
 import Pagination from '../../Pagination';
 import LiConnectionShimmerLoading from '../../shared/LiConnectionShimmerLoading';
 import styles from './styles.module.scss';
 import ProfilesList from '../ProfileList/ProfilesList';
 
 function LiConnectionData({
-  golbalProfiles,
-  setGolbalProfiles,
+  globalProfiles,
+  setGlobalProfiles,
   isSearchActive,
   searchQuery,
   currentPage,
-  setcurrentPage,
-}: {
-  golbalProfiles: any;
-  setGolbalProfiles: any;
-  isSearchActive: any;
-  searchQuery: any;
-  currentPage: any;
-  setcurrentPage: any;
-}) {
-  const [, setFollowprofile] = useState<string[]>([]);
-  const profileData = useSelector((state: any) => state.dropDownProfiles.profiles);
+  setCurrentPage,
+}: LiConnectionDataProps) {
+  const [, setFollowProfile] = useState<string[]>([]);
+  const profileData = useSelector((state: RootState) => state.dropDownProfiles.profiles);
 
   const { isLoading, error, data: connections } = useLiMutualConnections(currentPage);
-  const { data: totalconnectiondata } = useLiTotalConnections();
-  const { data: fetchProfileData } = useFollowedProfiles();
-  const { data: GlobalSearchProfileData } = useGetGlobalProfiles(
+  const { data: totalConnectionData } = useLiTotalConnections();
+  const { data: followedProfiles } = useFollowedProfiles();
+  const { data: globalSearchProfiles } = useGetGlobalProfiles(
     searchQuery,
     currentPage,
     isSearchActive,
   );
 
   const handlePageChange = (page: number) => {
-    setcurrentPage(page);
+    setCurrentPage(page);
   };
+
   useEffect(() => {
-    setGolbalProfiles(GlobalSearchProfileData);
-  }, [GlobalSearchProfileData]);
+    if (globalSearchProfiles) {
+      setGlobalProfiles(globalSearchProfiles);
+    }
+  }, [globalSearchProfiles, setGlobalProfiles]);
 
   if (isLoading) {
     return <LiConnectionShimmerLoading />;
@@ -52,27 +50,31 @@ function LiConnectionData({
     return <div>Error: {error.message}</div>;
   }
 
+  const totalItems = isSearchActive
+    ? globalSearchProfiles?.response?.[0]?.totalcount.total || 0
+    : totalConnectionData || 0;
+
   return (
     <div className={styles.connectionGrid}>
       {connections && (
         <ProfilesList
           mutualConnections={connections}
-          globalProfiles={golbalProfiles}
-          setFollowprofile={setFollowprofile}
-          followprofile={fetchProfileData}
+          globalProfiles={globalProfiles}
+          setFollowProfile={setFollowProfile}
+          followProfile={followedProfiles}
         />
       )}
       {!profileData ? (
-        golbalProfiles != null && !golbalProfiles.error ? (
+        globalProfiles !== null && !globalProfiles.error ? (
           <Pagination
-            totalItems={GlobalSearchProfileData?.response?.[0]?.totalcount.total || 0}
+            totalItems={totalItems}
             itemsPerPage={10}
             currentPage={currentPage}
             onPageChange={handlePageChange}
           />
         ) : (
           <Pagination
-            totalItems={totalconnectiondata?.metadata?.totalResultCount || 0}
+            totalItems={totalItems}
             itemsPerPage={10}
             currentPage={currentPage}
             onPageChange={handlePageChange}
@@ -82,4 +84,5 @@ function LiConnectionData({
     </div>
   );
 }
+
 export default LiConnectionData;

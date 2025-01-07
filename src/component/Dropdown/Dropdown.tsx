@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import { useGetDropDownSearch } from '@/hooks/useGetDropDownSearch';
 import { useAppDispatch } from '@/hooks/rtk';
 import { setDropDownProfiles } from '@/store/slices/dropDownProfiles';
-import { DropdownProps, Profile, ProfileSearchResponse } from '@/types/dropdownProfile';
+import { DropDownProfiles, DropdownProps, ProfileSearchResponse } from '@/types/TDropDownProfiles';
 import ProfileItem from './ProfileItem/ProfileItem';
 import styles from './styles.module.scss';
 
 function Dropdown({ searchQuery }: DropdownProps) {
-  const [profiles, setProfiles] = useState<Profile[]>([]);
+  const [profiles, setProfiles] = useState<DropDownProfiles[]>([]);
   const { data: dropDownProfiles = [] } = useGetDropDownSearch(searchQuery);
   const dispatch = useAppDispatch();
 

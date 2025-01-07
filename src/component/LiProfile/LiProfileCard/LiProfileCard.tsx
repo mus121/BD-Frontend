@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/hooks/rtk';
-import ProfileImage from '@/component/shared/profileImages/profileImages';
+import ProfileImage from '@/component/shared/ProfileImages/ProfileImages';
 import Location from '@/component/common/svg/Location';
 import Home from '@/component/common/svg/Home';
 import { useExtractLocation } from '@/utils/extractLocation';

@@ -1,10 +1,6 @@
-import SecondaryButton from '@/component/shared/button/SecondaryButton';
+import SecondaryButton from '@/component/shared/Buttons/SecondaryButton';
+import { SuggestButtonProps } from '@/types/TSuggestButtonProps';
 import styles from './styles.module.scss';
-
-type SuggestButtonProps = {
-  followprofile: string[];
-  handleButtonClick: () => void;
-};
 
 function SuggestButton({ followprofile = [], handleButtonClick }: SuggestButtonProps) {
   return (

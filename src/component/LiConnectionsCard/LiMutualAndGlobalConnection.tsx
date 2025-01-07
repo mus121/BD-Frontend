@@ -1,21 +1,21 @@
 import { truncateHeadline } from '@/utils/stringUtils';
-import { ProfileProps } from '@/types/profileCard';
+import { ProfileProps } from '@/types/TProfileCard';
 import usePostFollowAndFollowing from '@/hooks/usePostFollowAndFollowing';
 import styles from './styles.module.scss';
-import FollowText from '../shared/followText';
-import TertiaryButton from '../shared/button/TertiaryButton';
-import ProfileImage from '../shared/profileImages/index';
+import FollowCheck from '../shared/FollowCheck';
+import TertiaryButton from '../shared/Buttons/TertiaryButton';
+import ProfileImage from '../shared/ProfileImages/index';
 
 function LiMutualAndGlobalConnection({
   profile,
-  followprofile = [],
-  setFollowprofile,
+  followProfile = [],
+  setFollowProfile,
 }: ProfileProps) {
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
 
-  const isFollowed = followprofile.includes(publicIdentifier);
+  const isFollowed = followProfile.includes(publicIdentifier);
 
-  const { mutate: toggleFollow } = usePostFollowAndFollowing(setFollowprofile);
+  const { mutate: toggleFollow } = usePostFollowAndFollowing(setFollowProfile);
 
   const handleFollowToggle = () => {
     toggleFollow({ follow: !isFollowed, identifier: publicIdentifier, entityUrn });
@@ -42,11 +42,10 @@ function LiMutualAndGlobalConnection({
         </div>
       </div>
 
-      {/* Follow Button Section */}
       <TertiaryButton
         colorVariant='lightGray'
         type='button'
-        text={<FollowText isFollowed={isFollowed} />}
+        text={<FollowCheck isFollowed={isFollowed} />}
         sizeVariant='base'
         onClick={handleFollowToggle}
         tertiaryButtonClassName={`${styles.followButton} ${isFollowed && styles.followed}`}

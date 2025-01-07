@@ -1,20 +1,11 @@
 import { useState } from 'react';
 import { useAppDispatch } from '@/hooks/rtk';
 import { clearDropDownProfiles } from '@/store/slices/dropDownProfiles';
+import { SearchBarProps } from '@/types/TSearchBarProps';
 import Dropdown from '../../Dropdown/index';
 import styles from './styles.module.scss';
 import Search from '../../common/svg/Search';
 import Close from '../../common/svg/Close';
-
-type SearchBarProps = {
-  placeholder?: string;
-  onSearch: (query: string) => void;
-  setProfiles: any;
-  searchQuery: any;
-  setSearchQuery: any;
-  setcurrentPage: any;
-  setIsSearchActive: any;
-};
 
 function SearchBar({
   placeholder = 'Search...',

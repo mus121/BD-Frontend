@@ -26,10 +26,11 @@ function AiProfiles({
           <div className={styles.tooltip}>
             <h5 className={styles.profileName}>{personName}</h5>
           </div>
-          {/* Tooltip for profile title */}
           <div className={styles.tooltip}>
             <p
-              className={`${styles.profileTitle} ${truncatedProfileTitle !== profileTitle ? styles.truncatedName : ''}`}
+              className={`${styles.profileTitle} ${
+                truncatedProfileTitle !== profileTitle ? styles.truncatedName : ''
+              }`}
             >
               {truncatedProfileTitle}
             </p>

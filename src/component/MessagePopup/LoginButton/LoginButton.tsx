@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { closePopup } from '../../../store/slices/popupSlice';
+import { closePopup } from '@/store/slices/popupSlice';
 import styles from './styles.module.scss';
 
 function LoginButton() {

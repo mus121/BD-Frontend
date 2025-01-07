@@ -1,23 +1,15 @@
-import Tooltip from '@/component/shared/tooltip';
+import Tooltip from '@/component/shared/Tooltip';
 import { useState } from 'react';
-import Followingcheck from '@/component/common/svg/Followingcheck';
 import styles from './styles.module.scss';
-import TertiaryButton from '../button/TertiaryButton';
+import TertiaryButton from '../Buttons/TertiaryButton';
+import FollowCheck from '../FollowCheck';
 
-function BussinessImpact({ score }: { score: number }) {
+function BussinessImpact() {
   const [isFollowed, setIsFollowed] = useState(false);
 
   const handleFollowToggle = () => {
     setIsFollowed(prev => !prev);
   };
-
-  const followButton = isFollowed ? (
-    <>
-      <Followingcheck size={11.9} /> Following
-    </>
-  ) : (
-    'Follow'
-  );
 
   return (
     <div className={styles.impactTitle}>
@@ -29,19 +21,17 @@ function BussinessImpact({ score }: { score: number }) {
           iconSize={16}
         />
       </div>
-      <div className={styles.buttonContainer}>
-        <TertiaryButton
-          colorVariant='lightGray'
-          type='button'
-          text={followButton}
-          tertiaryButtonClassName={`${styles.followAccount} ${isFollowed && styles.followed}`}
-          sizeVariant='base'
-          onClick={e => {
-            e.stopPropagation();
-            handleFollowToggle();
-          }}
-        />
-      </div>
+      <TertiaryButton
+        colorVariant='lightGray'
+        type='button'
+        text={<FollowCheck isFollowed={isFollowed} />}
+        tertiaryButtonClassName={`${styles.followAccount} ${isFollowed && styles.followed}`}
+        sizeVariant='base'
+        onClick={e => {
+          e.stopPropagation();
+          handleFollowToggle();
+        }}
+      />
     </div>
   );
 }

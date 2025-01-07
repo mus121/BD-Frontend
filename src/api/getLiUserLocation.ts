@@ -1,5 +1,5 @@
 import { ExternalMessageEnum } from '@/constants/common';
-import { LocationResponse } from '@/types/Location';
+import { LocationResponse } from '@/types/TLiLocation';
 import { liuserlocation } from '@/utils/index';
 
 // Define the shape of the response returned by liuserlocation

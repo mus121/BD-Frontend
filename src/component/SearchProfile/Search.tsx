@@ -1,10 +1,9 @@
 'use client';
 
-import { Dispatch, SetStateAction } from 'react';
 import { getGlobalProfileSearch } from '@/api/getGlobalProfiles';
+import { SearchBarProps } from '@/types/TSearchBarProps';
 import styles from './styles.module.scss';
 import SearchBar from './SearchBar/index';
-import { Profile } from '../../types/ProfileList';
 
 function SearchProfile({
   setProfiles,
@@ -12,13 +11,7 @@ function SearchProfile({
   setSearchQuery,
   setcurrentPage,
   setIsSearchActive,
-}: {
-  setProfiles: Dispatch<SetStateAction<Profile[] | null>>;
-  searchQuery: any;
-  setSearchQuery: any;
-  setcurrentPage: any;
-  setIsSearchActive: any;
-}) {
+}: SearchBarProps) {
   const handleSearch = async (searchTerm: string) => {
     try {
       const GlobalProfiles = await getGlobalProfileSearch(searchTerm);

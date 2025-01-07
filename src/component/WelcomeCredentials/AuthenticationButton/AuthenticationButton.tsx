@@ -1,12 +1,12 @@
 'use client';
 
 import { useDispatch, useSelector } from 'react-redux';
-import ProfileImage from '@/component/shared/profileImages/profileImages';
+import ProfileImage from '@/component/shared/ProfileImages/ProfileImages';
 import { openPopup, closePopup } from '../../../store/slices/popupSlice';
 import styles from './styles.module.scss';
 import MessagePopup from '../../MessagePopup/index';
 import { RootState } from '../../../store/store';
-import PrimaryButton from '../../shared/button/PrimaryButton';
+import PrimaryButton from '../../shared/Buttons/PrimaryButton';
 
 function AuthenticationButton() {
   const dispatch = useDispatch();

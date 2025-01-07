@@ -3,19 +3,10 @@
 import { useState } from 'react';
 import AiProfiles from '@/component/shared/AiProfiles/index';
 import AiBussinessImpact from '@/component/shared/BussinessImpact/index';
-import AiProgressBar from '@/component/shared/progressbar/ProgressBar';
+import AiProgressBar from '@/component/shared/Progressbar/ProgressBar';
+import { AiSuggestionCardProps } from '@/types/TAiSuggesProfiles';
 import styles from './styles.module.scss';
 import Modal from '../../Modal/index';
-
-type AiSuggestionCardProps = {
-  personName: string;
-  personLocation: string;
-  personTitle: string;
-  personCompany: string;
-  companyScore: any;
-  roleDescription: any;
-  reasoning: any;
-};
 
 function AiSuggestionCard({
   personName,
@@ -37,7 +28,6 @@ function AiSuggestionCard({
 
   return (
     <>
-      {/* Main Card */}
       <div
         className={styles.profileCard}
         onClick={handleCardClick}
@@ -61,13 +51,13 @@ function AiSuggestionCard({
         <div className={styles.rightProfileCard}>
           {companyScore?.['Domain Alignment score']?.score !== null && (
             <>
-              <AiBussinessImpact score={companyScore?.['Domain Alignment score']?.score} />
+              <AiBussinessImpact />
               <AiProgressBar score={companyScore?.['Domain Alignment score']?.score} />
             </>
           )}
         </div>
       </div>
-      {/* Modal */}
+
       {isModalOpen && (
         <Modal
           personName={personName}

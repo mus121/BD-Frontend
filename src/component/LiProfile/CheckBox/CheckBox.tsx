@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import Check from '../../shared/checkbox/enable/enable';
+import Check from '../../shared/Checkbox/enable/enable';
 
 function CheckBox() {
   return (

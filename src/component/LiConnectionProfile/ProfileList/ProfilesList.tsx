@@ -1,25 +1,27 @@
-import React from 'react';
-import { ProfilesListProps } from '@/types/ProfileList';
-import { renderMutualConnections, renderGlobalProfiles } from '@/utils/renderCard';
+import { ProfilesListProps } from '@/types/TProfileList';
 import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
+import { renderMutualConnections } from '../Renders/renderMutualConnections';
+import { renderGlobalProfiles } from '../Renders/renderGlobalProfiles';
 import styles from './styles.module.scss';
 
 function ProfilesList({
   globalProfiles,
   mutualConnections,
-  followprofile,
-  setFollowprofile,
+  followProfile,
+  setFollowProfile,
 }: ProfilesListProps) {
-  const ProfileData = useSelector((state: any) => state.dropDownProfiles.profiles);
+  const profileData = useSelector((state: RootState) => state.dropDownProfiles.profiles);
+
   return (
     <div className={styles.profileListContainer}>
-      {ProfileData && renderGlobalProfiles([ProfileData], followprofile, setFollowprofile)}
-      {!ProfileData &&
+      {profileData && renderGlobalProfiles([profileData], followProfile, setFollowProfile)}
+      {!profileData &&
         globalProfiles?.response &&
-        renderGlobalProfiles(globalProfiles?.response, followprofile, setFollowprofile)}
-      {!ProfileData &&
+        renderGlobalProfiles(globalProfiles?.response, followProfile, setFollowProfile)}
+      {!profileData &&
         !globalProfiles?.response &&
-        renderMutualConnections(mutualConnections, followprofile, setFollowprofile)}
+        renderMutualConnections(mutualConnections, followProfile, setFollowProfile)}
     </div>
   );
 }

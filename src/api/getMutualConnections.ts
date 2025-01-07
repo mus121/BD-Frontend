@@ -1,6 +1,6 @@
 import { ExternalMessageEnum } from '@/constants/common';
 import { connectionProfile } from '@/utils/index';
-import { MutualConnectionsResponse } from '@/types/MutualConnectionsResponse';
+import { MutualConnectionResponse } from '@/types/TMutualConnections';
 
 type MessageResponse<T> = {
   response?: T;
@@ -8,9 +8,9 @@ type MessageResponse<T> = {
 
 export const getLiMutualConnections = async (
   start: number = 0,
-): Promise<MutualConnectionsResponse> => {
+): Promise<MutualConnectionResponse> => {
   try {
-    const result = await connectionProfile<MessageResponse<MutualConnectionsResponse>>(
+    const result = await connectionProfile<MessageResponse<MutualConnectionResponse>>(
       ExternalMessageEnum.LI_CONNECTION,
       start,
     );

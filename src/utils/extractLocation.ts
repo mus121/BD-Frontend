@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/hooks/rtk';
 import { useLiUserLocation } from '@/hooks/useLiUserLocation';
-import { LocationResponse } from '@/types/Location';
+import { LocationResponse } from '@/types/TLiLocation';
 
 export function useExtractLocation() {
   const miniProfile = useAppSelector(state => state.profile.miniProfile);

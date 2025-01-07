@@ -18,19 +18,17 @@
       color: $gray-10;
     }
   }
-  .buttonContainer {
-    .followAccount {
-      width: 72px;
-      height: 34px;
+  .followAccount {
+    width: 72px;
+    height: 34px;
 
-      &.followed {
-        @include justify-space-between();
-        width: 103px;
-        height: 32px;
-        border-color: $Orange-500;
-        color: $Orange-500;
-        background: none;
-      }
+    &.followed {
+      @include justify-space-between();
+      width: 103px;
+      height: 32px;
+      border-color: $Orange-500;
+      color: $Orange-500;
+      background: none;
     }
   }
 }

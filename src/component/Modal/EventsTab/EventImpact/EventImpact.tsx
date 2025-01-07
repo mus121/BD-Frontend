@@ -1,6 +1,5 @@
-import ImpactScore from '@/component/shared/score';
+import ImpactScore from '@/component/shared/Score';
 import styles from './styles.module.scss';
-// import Eventaccordian from '../Eventaccordian/index';
 
 function EventImpact({ score }: { score: number }) {
   return (
@@ -19,7 +18,6 @@ function EventImpact({ score }: { score: number }) {
           />
         </div>
       </div>
-      {/* <Eventaccordian /> */}
     </div>
   );
 }

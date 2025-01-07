@@ -46,17 +46,18 @@ function LiConnectionProfile() {
               setSearchQuery={setSearchQuery}
               setcurrentPage={setcurrentPage}
               setIsSearchActive={setIsSearchActive}
+              onSearch={() => null}
             />
             <Filters />
           </div>
         </div>
         <LiConnectionData
-          golbalProfiles={golbalProfiles}
-          setGolbalProfiles={setGolbalProfiles}
+          globalProfiles={golbalProfiles}
+          setGlobalProfiles={setGolbalProfiles}
           isSearchActive={isSearchActive}
           searchQuery={searchQuery}
           currentPage={currentPage}
-          setcurrentPage={setcurrentPage}
+          setCurrentPage={setcurrentPage}
         />
       </div>
     </div>

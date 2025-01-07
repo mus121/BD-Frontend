@@ -1,8 +1,8 @@
 import { useRouter } from 'next/navigation';
 import { useAiFindProfileSuggestions } from '@/hooks/useAiFindProfileSuggestions';
 import { useMiniProfilePublicIdentifier } from '@/hooks/useMiniProfilePublicIdentifier';
-import PrimaryButton from '../../shared/button/PrimaryButton/index';
-import SecondaryButton from '../../shared/button/SecondaryButton/index';
+import PrimaryButton from '../../shared/Buttons/PrimaryButton/index';
+import SecondaryButton from '../../shared/Buttons/SecondaryButton/index';
 import styles from './styles.module.scss';
 
 function LiProfileButton() {

@@ -3,7 +3,7 @@
 'use client';
 
 import { SetStateAction } from 'react';
-import { Profile } from '@/types/ProfileList';
+import { Profile } from '@/types/TProfiles';
 import styles from './styles.module.scss';
 import SearchProfile from '../SearchProfile';
 import Filters from '../Filters';
@@ -25,15 +25,13 @@ function AiSuggestProfiles() {
         <div className={styles.suggestConnection}>
           <h5 className={styles.profileHead}>Suggested Profiles</h5>
           <div className={styles.searchAndfilterContainer}>
-            <SearchProfile
-              setProfiles={function (value: SetStateAction<Profile[] | null>): void {
-                throw new Error('Function not implemented.');
-              }}
+            {/* <SearchProfile
+              setProfiles={null}
               searchQuery={undefined}
               setSearchQuery={undefined}
               setcurrentPage={undefined}
               setIsSearchActive={undefined}
-            />
+            /> */}
             <Filters />
           </div>
         </div>
