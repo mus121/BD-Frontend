@@ -4,7 +4,7 @@ import sessionReducer from './sessionSlice';
 import appReducer from './slices/appslice';
 import miniProfileReducer from './slices/miniProfilesSlice';
 import aiFindSuggestProfilesReducer from './slices/aiFindSuggestProfiles';
-import dropDownProfilesReducer from './slices/dropDownProfiles';
+import liConnectionProfilesReducer from './slices/liConnectionProfiles';
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +13,7 @@ export const store = configureStore({
     popup: popupReducer,
     session: sessionReducer,
     aiFindSuggestProfiles: aiFindSuggestProfilesReducer,
-    dropDownProfiles: dropDownProfilesReducer,
+    dropDownProfiles: liConnectionProfilesReducer,
   },
 });
 export const selectMiniProfile = (state: RootState) => state.profile.response.miniProfile;

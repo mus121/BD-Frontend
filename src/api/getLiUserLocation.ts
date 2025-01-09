@@ -2,19 +2,14 @@ import { ExternalMessageEnum } from '@/constants/common';
 import { LocationResponse } from '@/types/TLiLocation';
 import { liuserlocation } from '@/utils/index';
 
-// Define the shape of the response returned by liuserlocation
 type LiUserLocationResult = {
   response?: LocationResponse;
 };
-
-// Ensure that the response is of the correct type
-type MessageResponse<T> = T | undefined;
 
 export const getLiUserLocation = async (
   publicIdentifier: string,
 ): Promise<LocationResponse | undefined> => {
   try {
-    // Assuming liuserlocation fetches data and returns a response
     const result = await liuserlocation<LiUserLocationResult>(
       ExternalMessageEnum.LI_LOCATION,
       publicIdentifier,

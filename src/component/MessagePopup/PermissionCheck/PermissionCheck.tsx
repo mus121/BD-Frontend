@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
-import ListUser from '../../common/svg/Listuser';
-import Calendar from '../../common/svg/Calendar';
-import Gmail from '../../common/svg/Gmail';
+import ListUser from '../../shared/svg/Listuser';
+import Calendar from '../../shared/svg/Calendar';
+import Gmail from '../../shared/svg/Gmail';
 import Check from '../../shared/Checkbox/enable/enable';
 import CheckDisable from '../../shared/Checkbox/disable/disable';
 

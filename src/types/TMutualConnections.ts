@@ -1,20 +1,8 @@
-export type MutualConnectionResponse = {
-  response?: any;
-  elements?: {
-    connectedMemberResolutionResult?: {
-      firstName?: string;
-      lastName?: string;
-      headline?: string;
-      publicIdentifier?: string;
-      entityUrn?: string;
-      profilePicture?: {
-        displayImageReference?: {
-          vectorImage?: {
-            rootUrl?: string;
-            artifacts?: { fileIdentifyingUrlPathSegment?: string }[];
-          };
-        };
-      };
-    };
-  }[];
-};
+export type FilterMutualApiResponse = {
+  completeImageUrl: string;
+  entityUrn: string;
+  firstName: string;
+  headLine: string;
+  lastName: string;
+  publicIdentifier: string;
+}[];

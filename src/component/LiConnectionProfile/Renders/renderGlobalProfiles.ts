@@ -13,7 +13,7 @@ export const renderGlobalProfiles = (
   return profiles.map((profile, index) => {
     const profilePicture = isValidUrl(profile.imageUrl || profile?.image || '')
       ? profile.imageUrl || profile?.image
-      : '/assets/images/Avatar.png';
+      : '/assets/images/LiDefault.png';
 
     const identifier = extractPublicIdentifier(profile.public_Identifier);
 

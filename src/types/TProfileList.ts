@@ -1,9 +1,9 @@
 import { GlobalProfiles } from './TGlobalProfiles';
-import { MutualConnectionResponse } from './TMutualConnections';
+import { FilterMutualApiResponse } from './TMutualConnections';
 
 export type ProfilesListProps = {
   globalProfiles: GlobalProfiles | null;
-  mutualConnections: MutualConnectionResponse;
+  mutualConnections: FilterMutualApiResponse;
   followProfile: string[];
   setFollowProfile: React.Dispatch<React.SetStateAction<string[]>>;
 };

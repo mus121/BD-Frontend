@@ -18,7 +18,7 @@ function ProfileImage({
   alt,
   width = 80,
   height = 80,
-  fallbackSrc = '/assets/images/Avatar.png',
+  fallbackSrc = '/assets/images/LiDefault.png',
   className = '',
 }: ProfileImageProps) {
   const [hasError, setHasError] = useState(false);

@@ -12,5 +12,6 @@ export const useGetGlobalProfiles = (
     queryFn: () => getGlobalProfileSearch(searchQuery, page),
     enabled: isSearchActive,
   });
+
   return query;
 };

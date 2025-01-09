@@ -15,8 +15,6 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
 
   const getVisiblePages = (): (number | string)[] => {
     const pages: (number | string)[] = [];
-    // const totalVisiblePages = 4;
-
     const showEllipsisBefore = currentPage > 2;
     const showEllipsisAfter = currentPage < totalPages - 3;
 

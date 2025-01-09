@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react';
 import { useGetDropDownSearch } from '@/hooks/useGetDropDownSearch';
 import { useAppDispatch } from '@/hooks/rtk';
-import { setDropDownProfiles } from '@/store/slices/dropDownProfiles';
+import { setProfiles } from '@/store/slices/liConnectionProfiles';
 import { DropDownProfiles, DropdownProps, ProfileSearchResponse } from '@/types/TDropDownProfiles';
 import ProfileItem from './ProfileItem/ProfileItem';
 import styles from './styles.module.scss';
 
 function Dropdown({ searchQuery }: DropdownProps) {
-  const [profiles, setProfiles] = useState<DropDownProfiles[]>([]);
+  const [profiles, setProfile] = useState<DropDownProfiles[]>([]);
   const { data: dropDownProfiles = [] } = useGetDropDownSearch(searchQuery);
   const dispatch = useAppDispatch();
 
@@ -18,9 +18,9 @@ function Dropdown({ searchQuery }: DropdownProps) {
       const responseProfiles = Array.isArray((dropDownProfiles as ProfileSearchResponse)?.response)
         ? (dropDownProfiles as ProfileSearchResponse).response
         : [];
-      setProfiles(responseProfiles);
+      setProfile(responseProfiles);
     } else {
-      setProfiles([]);
+      setProfile([]);
     }
   }, [searchQuery, dropDownProfiles]);
 
@@ -31,7 +31,7 @@ function Dropdown({ searchQuery }: DropdownProps) {
       const responseProfiles = Array.isArray((dropDownProfiles as ProfileSearchResponse)?.response)
         ? (dropDownProfiles as ProfileSearchResponse).response
         : [];
-      dispatch(setDropDownProfiles(responseProfiles[index]));
+      dispatch(setProfiles(responseProfiles[index]));
     }
   };
   return (

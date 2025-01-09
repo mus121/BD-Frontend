@@ -1,4 +1,4 @@
-import Close from '@/component/common/svg/Close';
+import Close from '@/component/shared/svg/Close';
 import { ModalProps } from '@/types/TModal';
 import styles from './styles.module.scss';
 import ProfileSuggestionCard from './ProfileSuggestionCard/index';
@@ -13,7 +13,7 @@ function Modal({
   personCompany,
   score,
   roleDescription,
-  reasoning,
+  title_reasoning,
   children,
 }: ModalProps) {
   if (!isOpen) return null;
@@ -39,7 +39,7 @@ function Modal({
         <EventsTab
           score={score}
           roleDescription={roleDescription}
-          reasoning={reasoning}
+          title_reasoning={title_reasoning}
         />
         {children}
       </div>

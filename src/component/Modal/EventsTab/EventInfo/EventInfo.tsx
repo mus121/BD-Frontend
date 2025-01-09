@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import EventImapct from '../EventImpact/index';
 import EventImplication from '../EventImplication/index';
 
-function EventInfo({ score, roleDescription, reasoning }: EventsDetail) {
+function EventInfo({ score, roleDescription, title_reasoning }: EventsDetail) {
   return (
     <div className={styles.eventDetail}>
       <News
@@ -34,7 +34,8 @@ function EventInfo({ score, roleDescription, reasoning }: EventsDetail) {
       />
       <EventImplication
         score={score}
-        reasoning={reasoning}
+        title_reasoning={title_reasoning}
+        roleDescription={undefined}
       />
     </div>
   );

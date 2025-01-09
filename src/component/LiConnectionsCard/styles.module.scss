@@ -32,16 +32,20 @@
       }
     }
   }
-}
-.followButton {
-  width: 72px;
-  height: 34px;
-  &.followed {
-    @include justify-space-between();
-    width: 103px;
-    height: 32px;
-    border-color: $Orange-500;
-    color: $Orange-500;
-    background: none;
+  .followButton {
+    width: 72px;
+    height: 34px;
+    &.followed {
+      @include justify-space-between();
+      width: 103px;
+      height: 32px;
+      border-color: $Orange-500;
+      color: $Orange-500;
+      background: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    width: 820px;
   }
 }

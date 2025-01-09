@@ -11,7 +11,6 @@ const useExtension = () => {
   const isExtensionInstalled = useAppSelector(state => state.app.extension.isExtensionInstalled);
   const intervalRef = useRef<number | null>(null);
 
-  // Poll Extension Status
   const pollExtensionStatus = useCallback(async () => {
     try {
       const response = await extensionMessage<{ signal: boolean }>(ExternalMessageEnum.MESSAGE);
@@ -25,7 +24,6 @@ const useExtension = () => {
     }
   }, [isExtensionInstalled, dispatch]);
 
-  // Fetch LinkedIn Profile Data
   const fetchLinkedProfile = useCallback(async () => {
     try {
       const response = await liProfile<TMiniProfile>(ExternalMessageEnum.LI_PROFILE);
@@ -38,7 +36,6 @@ const useExtension = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // Start polling and fetch data
     pollExtensionStatus();
     fetchLinkedProfile();
 
@@ -46,7 +43,6 @@ const useExtension = () => {
       intervalRef.current = window.setInterval(pollExtensionStatus, 5000);
     }
 
-    // Cleanup on unmount
     return () => {
       if (intervalRef.current !== null) {
         clearInterval(intervalRef.current);

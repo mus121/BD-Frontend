@@ -1,6 +1,6 @@
 'use client';
 
-import Error from '@/component/common/svg/Error';
+import Error from '@/component/shared/svg/Error';
 import PrimaryButton from '@/component/shared/Buttons/PrimaryButton';
 import styles from './error.module.scss';
 

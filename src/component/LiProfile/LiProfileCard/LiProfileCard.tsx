@@ -1,17 +1,16 @@
 import { useAppSelector } from '@/hooks/rtk';
 import ProfileImage from '@/component/shared/ProfileImages/ProfileImages';
-import Location from '@/component/common/svg/Location';
-import Home from '@/component/common/svg/Home';
-import { useExtractLocation } from '@/utils/extractLocation';
+import Location from '@/component/shared/svg/Location';
+import Home from '@/component/shared/svg/Home';
+import { useLiUserLocation } from '@/hooks/useLiUserLocation';
 import styles from './styles.module.scss';
 
 function LiProfileCard() {
   const miniProfile = useAppSelector(state => state.profile.miniProfile);
+  const { data: fetchLiUserLocation } = useLiUserLocation(`${miniProfile.publicIdentifier}`);
   const imgUrl = miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl
     ? `${miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl}${miniProfile.picture['com.linkedin.common.VectorImage'].artifacts[0]?.fileIdentifyingUrlPathSegment}`
     : '';
-
-  const location = useExtractLocation();
   return (
     <div className={styles.linkedinCard}>
       <div className={styles.linkedin}>
@@ -45,7 +44,7 @@ function LiProfileCard() {
       <div className={styles.cardLocation}>
         <div className={styles.location}>
           <Location size={20} />
-          <h5 className={styles.location}>{location || 'Location not available'}</h5>
+          <h5 className={styles.location}>{fetchLiUserLocation || 'Location not available'}</h5>
         </div>
         <div className={styles.university}>
           <span className={styles.home}>

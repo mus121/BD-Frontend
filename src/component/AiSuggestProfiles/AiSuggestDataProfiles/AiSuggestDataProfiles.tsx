@@ -1,7 +1,6 @@
-import { SuggestProfile } from '@/types/TAiSuggesProfiles';
+import { SuggestProfile, PersonInfo } from '@/types/TAiSuggesProfiles';
 import Pagination from '@/component/Pagination/Pagination';
 import { useSelector } from 'react-redux';
-import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { useMiniProfilePublicIdentifier } from '@/hooks/useMiniProfilePublicIdentifier';
 import { useAiProfileSuggestions } from '@/hooks/useAiSimilarProfileSuggestions';
@@ -15,8 +14,7 @@ function AiSuggestDataProfiles() {
   );
   const ProfileData = useSelector((state: any) => state.aiFindSuggestProfiles.setProfiles);
 
-  const queryClient = useQueryClient();
-  const [profiles, setProfiles] = useState<SuggestProfile[]>([]);
+  const [profiles, setProfiles] = useState<PersonInfo[]>([]);
   const publicIdentifier = useMiniProfilePublicIdentifier();
 
   const {
@@ -34,7 +32,7 @@ function AiSuggestDataProfiles() {
         setProfiles([]);
       }
     }
-  }, [isLoadingFromRedux, queryClient, publicIdentifier, ProfileData]);
+  }, [isLoadingFromRedux, publicIdentifier, ProfileData]);
 
   const isLoading = isLoadingFromRedux || isQueryLoading;
   if (isLoading) {
@@ -46,20 +44,20 @@ function AiSuggestDataProfiles() {
   }
 
   // Combine cached and fresh data
-  const displayedProfiles = [...(profiles || []), ...(SuggestProfileData || [])];
+  const displayedProfiles = [...(profiles.person_info || []), ...(SuggestProfileData || [])];
   return (
     <>
       <div className={styles.cardContainer}>
         {displayedProfiles
           ?.filter(
-            (profile: SuggestProfile) =>
+            (profile: PersonInfo) =>
               profile.full_name &&
               profile.location &&
               profile.company &&
-              profile.reasoning &&
+              profile.title_reasoning &&
               profile.role_description &&
-              profile.company_score?.['Domain Alignment score']?.score !== undefined &&
-              profile.company_score?.['Domain Alignment score']?.score !== null,
+              profile.company_score !== undefined &&
+              profile.company_score !== null,
           )
           .map(
             ({
@@ -70,7 +68,7 @@ function AiSuggestDataProfiles() {
               person_id,
               company_score,
               role_description,
-              reasoning,
+              title_reasoning,
             }: SuggestProfile) => (
               <AiSuggestionCard
                 key={person_id}
@@ -80,7 +78,7 @@ function AiSuggestDataProfiles() {
                 personCompany={company}
                 companyScore={company_score}
                 roleDescription={role_description}
-                reasoning={reasoning}
+                title_reasoning={title_reasoning}
               />
             ),
           )}

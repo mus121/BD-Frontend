@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useAppDispatch } from '@/hooks/rtk';
-import { setFollowedFilterEnable } from '@/store/slices/dropDownProfiles';
+import { toggleFollowedFilter } from '@/store/slices/liConnectionProfiles';
 import styles from './styles.module.scss';
-import Downchevron from '../common/svg/Downchevron';
+import Downchevron from '../shared/svg/Downchevron';
 
 function Filters() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,7 @@ function Filters() {
   const handleOptionClick = (option: string) => {
     setSelectedOption(option);
     setIsOpen(false);
-    dispatch(setFollowedFilterEnable(option === 'Following'));
+    dispatch(toggleFollowedFilter(option === 'Following'));
   };
 
   return (

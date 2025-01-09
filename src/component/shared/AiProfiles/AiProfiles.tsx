@@ -1,18 +1,9 @@
-import Location from '@/component/common/svg/Location';
-import ProfileImg from '@/component/common/svg/ProfileImage';
+import Location from '@/component/shared/svg/Location';
+import ProfileImg from '@/component/shared/svg/ProfileImage';
+import { AiProfilesProp } from '@/types/TAiSuggesProfiles';
 import styles from './styles.module.scss';
 
-function AiProfiles({
-  personName,
-  personLocation,
-  personTitle,
-  personCompany,
-}: {
-  personName: string;
-  personLocation: string;
-  personTitle: string;
-  personCompany: string;
-}) {
+function AiProfiles({ personName, personLocation, personTitle, personCompany }: AiProfilesProp) {
   const profileTitle = `${personTitle}`;
 
   const truncatedProfileTitle =

@@ -5,7 +5,6 @@ function LiConnectionShimmerLoading() {
   return (
     <div className={styles.shimmerHead}>
       <div className={styles.profileHead}>
-        {/* Main Component Start */}
         <div className={styles.profileCardHead}>
           <LiConnectionCard />
           <LiConnectionCard />
@@ -16,15 +15,11 @@ function LiConnectionShimmerLoading() {
           <LiConnectionCard />
           <LiConnectionCard />
         </div>
-        {/* Main Component End */}
       </div>
-
-      {/* Footer Start */}
       <div className={styles.footerHead}>
         <div className={styles.leftFoot} />
         <div className={styles.rightFoot} />
       </div>
-      {/* Footer End */}
     </div>
   );
 }

@@ -23,42 +23,44 @@ function LiConnectionProfile() {
     }
   };
   return (
-    <div className={styles.profileTop}>
-      <div className={styles.profileFollow}>
-        <h5 className={styles.profileHaeding}>Follow Important Profiles</h5>
-        <SuggestButton
-          followprofile={fetchProfileData}
-          handleButtonClick={handleButtonClick}
-        />
-      </div>
-      <div className={styles.profileDescription}>
-        <p className={styles.profileDesc}>
-          Follow at least 5 profiles from your network to help us tailor recommendations to you.
-        </p>
-      </div>
-      <div className={styles.contactTop}>
-        <div className={styles.contactProfile}>
-          <h5 className={styles.profile}>Profiles</h5>
-          <div className={styles.searchAndfilters}>
-            <SearchProfile
-              setProfiles={setGolbalProfiles}
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-              setcurrentPage={setcurrentPage}
-              setIsSearchActive={setIsSearchActive}
-              onSearch={() => null}
-            />
-            <Filters />
-          </div>
+    <div className={styles.container}>
+      <div className={styles.profileTop}>
+        <div className={styles.profileFollow}>
+          <h5 className={styles.profileHaeding}>Follow Important Profiles</h5>
+          <SuggestButton
+            followprofile={fetchProfileData}
+            handleButtonClick={handleButtonClick}
+          />
         </div>
-        <LiConnectionData
-          globalProfiles={golbalProfiles}
-          setGlobalProfiles={setGolbalProfiles}
-          isSearchActive={isSearchActive}
-          searchQuery={searchQuery}
-          currentPage={currentPage}
-          setCurrentPage={setcurrentPage}
-        />
+        <div className={styles.profileDescription}>
+          <p className={styles.profileDesc}>
+            Follow at least 5 profiles from your network to help us tailor recommendations to you.
+          </p>
+        </div>
+        <div className={styles.contactTop}>
+          <div className={styles.contactProfile}>
+            <h5 className={styles.profile}>Profiles</h5>
+            <div className={styles.searchAndfilters}>
+              <SearchProfile
+                setProfiles={setGolbalProfiles}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                setcurrentPage={setcurrentPage}
+                setIsSearchActive={setIsSearchActive}
+                onSearch={() => null}
+              />
+              <Filters />
+            </div>
+          </div>
+          <LiConnectionData
+            globalProfiles={golbalProfiles}
+            setGlobalProfiles={setGolbalProfiles}
+            isSearchActive={isSearchActive}
+            searchQuery={searchQuery}
+            currentPage={currentPage}
+            setCurrentPage={setcurrentPage}
+          />
+        </div>
       </div>
     </div>
   );

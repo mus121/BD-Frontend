@@ -13,19 +13,27 @@ function LiMutualAndGlobalConnection({
 }: ProfileProps) {
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
 
-  const isFollowed = followProfile.includes(publicIdentifier);
+  const isFollowed = followProfile.includes(publicIdentifier || '');
 
   const { mutate: toggleFollow } = usePostFollowAndFollowing(setFollowProfile);
 
   const handleFollowToggle = () => {
-    toggleFollow({ follow: !isFollowed, identifier: publicIdentifier, entityUrn });
+    if (!publicIdentifier || !entityUrn) {
+      return;
+    }
+
+    toggleFollow({
+      follow: !isFollowed,
+      identifier: publicIdentifier,
+      entityUrn,
+    });
   };
 
   return (
     <div className={styles.cardContainer}>
       <div className={styles.profileInfo}>
         <ProfileImage
-          src={profilePicture || '/assets/images/Avatar.png'}
+          src={profilePicture || '/assets/images/LiDefault.png'}
           alt={`${firstName} ${lastName}`}
           width={48}
           height={48}

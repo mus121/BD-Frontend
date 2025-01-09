@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import Downchevron from '@/component/common/svg/Downchevron';
-import Upperchevron from '@/component/common/svg/Upperchevron';
+import Downchevron from '@/component/shared/svg/Downchevron';
+import Upperchevron from '@/component/shared/svg/Upperchevron';
 import styles from './styles.module.scss';
 
 type AccordionItem = {

@@ -15,7 +15,7 @@ function AiSuggestionCard({
   personCompany,
   companyScore,
   roleDescription,
-  reasoning,
+  title_reasoning,
 }: AiSuggestionCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleCardClick = () => {
@@ -49,10 +49,10 @@ function AiSuggestionCard({
         </div>
         <hr className={styles.separator} />
         <div className={styles.rightProfileCard}>
-          {companyScore?.['Domain Alignment score']?.score !== null && (
+          {companyScore !== null && (
             <>
               <AiBussinessImpact />
-              <AiProgressBar score={companyScore?.['Domain Alignment score']?.score} />
+              <AiProgressBar score={companyScore} />
             </>
           )}
         </div>
@@ -64,9 +64,9 @@ function AiSuggestionCard({
           personLocation={personLocation}
           personTitle={personTitle}
           personCompany={personCompany}
-          score={companyScore?.['Domain Alignment score']?.score || 0}
+          score={companyScore || 0}
           roleDescription={roleDescription}
-          reasoning={reasoning}
+          title_reasoning={title_reasoning}
           onClose={handleModalClose}
           isOpen
         >

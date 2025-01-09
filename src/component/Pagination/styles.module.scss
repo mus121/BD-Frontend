@@ -58,4 +58,8 @@
     color: #a0a0a0;
     padding: 5px;
   }
+
+  @media (max-width: 1024px) {
+    width: 850px;
+  }
 }

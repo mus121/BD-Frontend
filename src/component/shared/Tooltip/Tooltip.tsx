@@ -1,4 +1,4 @@
-import Alertcircle from '@/component/common/svg/Alertcircle';
+import Alertcircle from '@/component/shared/svg/Alertcircle';
 import styles from './styles.module.scss';
 
 type TooltipProps = {

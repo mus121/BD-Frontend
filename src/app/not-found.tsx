@@ -1,4 +1,4 @@
-import PageNotFound from '@/component/common/svg/PageNotFound';
+import PageNotFound from '@/component/shared/svg/PageNotFound';
 
 function NotFound() {
   return (

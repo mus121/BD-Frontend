@@ -23,7 +23,7 @@ function LiConnectionData({
   const [, setFollowProfile] = useState<string[]>([]);
   const profileData = useSelector((state: RootState) => state.dropDownProfiles.profiles);
 
-  const { isLoading, error, data: connections } = useLiMutualConnections(currentPage);
+  const { isLoading, error, data: mutualConnections } = useLiMutualConnections(currentPage);
   const { data: totalConnectionData } = useLiTotalConnections();
   const { data: followedProfiles } = useFollowedProfiles();
   const { data: globalSearchProfiles } = useGetGlobalProfiles(
@@ -31,7 +31,6 @@ function LiConnectionData({
     currentPage,
     isSearchActive,
   );
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -55,10 +54,10 @@ function LiConnectionData({
     : totalConnectionData || 0;
 
   return (
-    <div className={styles.connectionGrid}>
-      {connections && (
+    <div className={styles.container}>
+      {mutualConnections && (
         <ProfilesList
-          mutualConnections={connections}
+          mutualConnections={mutualConnections}
           globalProfiles={globalProfiles}
           setFollowProfile={setFollowProfile}
           followProfile={followedProfiles}

@@ -4,6 +4,6 @@ export type Profile = {
   lastName?: string;
   headline: string;
   profilePicture: string | undefined | null;
-  entityUrn: string;
-  publicIdentifier: string;
+  entityUrn: string | undefined;
+  publicIdentifier: string | undefined | null;
 };

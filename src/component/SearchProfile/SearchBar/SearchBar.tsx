@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useAppDispatch } from '@/hooks/rtk';
-import { clearDropDownProfiles } from '@/store/slices/dropDownProfiles';
+import { clearProfiles } from '@/store/slices/liConnectionProfiles';
 import { SearchBarProps } from '@/types/TSearchBarProps';
 import Dropdown from '../../Dropdown/index';
 import styles from './styles.module.scss';
-import Search from '../../common/svg/Search';
-import Close from '../../common/svg/Close';
+import Search from '../../shared/svg/Search';
+import Close from '../../shared/svg/Close';
 
 function SearchBar({
   placeholder = 'Search...',
@@ -42,7 +42,7 @@ function SearchBar({
     setProfiles(null);
     setcurrentPage(0);
     setIsSearchActive(false);
-    dispatch(clearDropDownProfiles());
+    dispatch(clearProfiles());
   };
 
   const handleBlur = () => {

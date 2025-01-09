@@ -1,4 +1,4 @@
-import Followingcheck from '@/component/common/svg/Followingcheck';
+import Followingcheck from '@/component/shared/svg/Followingcheck';
 
 function FollowCheck({ isFollowed }: { isFollowed: boolean }) {
   return isFollowed ? (

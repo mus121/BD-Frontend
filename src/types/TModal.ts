@@ -20,7 +20,7 @@ export type ModalProps = {
   personLocation: string;
   score: number;
   roleDescription: any;
-  reasoning: any;
+  title_reasoning: any;
   children?: React.ReactNode;
 };
 
@@ -35,5 +35,5 @@ export type ModalCard = {
 export type EventsDetail = {
   score: number;
   roleDescription: Array<string> | any;
-  reasoning: Array<string>;
+  title_reasoning: Array<string>;
 };

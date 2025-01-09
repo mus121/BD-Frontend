@@ -1,7 +1,7 @@
 import { DropDownProfiles } from '@/types/TDropDownProfiles';
 
 export const getProfileImageUrl = (profile: DropDownProfiles): string =>
-  profile?.image || '/assets/images/Avatar.png';
+  profile?.image || '/assets/images/LiDefault.png';
 
 export const getProfileTitle = (profile: DropDownProfiles): string => profile?.title || 'No Title';
 

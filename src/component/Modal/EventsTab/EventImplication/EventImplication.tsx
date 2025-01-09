@@ -3,7 +3,7 @@ import { EventsDetail } from '@/types/TModal';
 import styles from './styles.module.scss';
 import EventAccordion from '../EventAccordion/index';
 
-function EventImplication({ reasoning }: EventsDetail) {
+function EventImplication({ title_reasoning }: EventsDetail) {
   return (
     <div className={styles.eventImpact}>
       <h5 className={styles.impactDetails}>IMPLICATION DETAILS</h5>
@@ -23,7 +23,7 @@ function EventImplication({ reasoning }: EventsDetail) {
         </div>
       </div> */}
       <EventAccordion
-        reasoning={reasoning}
+        title_reasoning={title_reasoning}
         score={0}
         roleDescription={undefined}
       />

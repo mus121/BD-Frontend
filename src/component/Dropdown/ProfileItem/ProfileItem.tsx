@@ -2,7 +2,7 @@ import { ProfileItemProps } from '@/types/TDropDownProfiles';
 import { toCamelCase } from '@/utils/camelCase';
 import { getProfileImageUrl, getProfileTitle, getProfileHeadline } from '@/utils/dropdownProfiles';
 import ProfileImage from '../../shared/ProfileImages/index';
-import Enter from '../../common/svg/Enter';
+import Enter from '../../shared/svg/Enter';
 import styles from './styles.module.scss';
 
 function ProfileItem({ profile, onClick }: ProfileItemProps) {
