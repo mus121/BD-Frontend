@@ -1,32 +1,12 @@
-const getApi = async (url: string): Promise<any> => {
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-    });
+import { getApi } from '@/utils/apis';
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error in POST API:', error);
-    throw error;
-  }
-};
-
-export const fetchFollowedProfiles = async () => {
-  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/linkedinProfile`;
+export const fetchFollowedProfiles = async (userId: string) => {
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/private/linkedin/connection?userId=${userId}`;
   try {
     const response = await getApi(apiUrl);
-    if (response.profiles)
-      return response?.profiles.map(
-        ({ publicIdentifier }: { publicIdentifier: string }) => publicIdentifier,
+    if (response.data)
+      return response?.data.map(
+        ({ public_identifier }: { public_identifier: string }) => public_identifier,
       );
     return [];
   } catch (error) {

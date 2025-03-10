@@ -11,4 +11,10 @@
     top: 15px;
     left: 810px;
   }
+
+  @media (max-width: 768px) {
+    .closeButton {
+      left: 640px;
+    }
+  }
 }

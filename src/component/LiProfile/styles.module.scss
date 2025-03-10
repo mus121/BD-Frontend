@@ -5,7 +5,7 @@
 .profileCard {
   @include center-flex;
   height: 95vh;
-  padding: 20px;
+  width: 100%;
 
   .profileContent {
     padding: 80px 100px;

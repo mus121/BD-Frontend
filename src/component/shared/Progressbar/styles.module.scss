@@ -1,0 +1,47 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.buttonImpact {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  .totalScores {
+    @include font-sm();
+    color: $gray-100;
+    .score {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: bold;
+      color: $gray-10;
+      margin-left: 8px;
+    }
+  }
+  .average {
+    @include fontAlpha();
+    background-color: $gray-700;
+    color: $blue-400;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    padding: 2px 10px;
+    border-radius: 80px;
+    border: none;
+    cursor: pointer;
+  }
+}
+.progressBar {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  margin-top: 16px;
+  height: 4px;
+  .segment {
+    width: 36.2px;
+    height: 4px;
+    background-color: $gray-700;
+    border-radius: 4px;
+  }
+  .active {
+    background-color: $blue-800;
+  }
+}

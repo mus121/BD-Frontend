@@ -8,7 +8,6 @@ export const getLiTotalConnections = async (): Promise<TotalConnectionsResponse 
       ExternalMessageEnum.LI_TOTAL_CONNECTION,
     );
 
-    // Adjust based on the actual structure of the result
     const { response } = result as any;
 
     if (!response) {

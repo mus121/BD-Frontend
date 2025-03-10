@@ -5,16 +5,60 @@
 .userProfile {
   display: flex;
   justify-content: space-between;
+
   .userCard {
     display: flex;
-    height: 81px;
+    height: 118px;
+    width: 446px;
+
     .profileImg {
       border-radius: 100px;
     }
+
     .profile {
       margin-left: 12px;
+
+      .tooltip {
+        width: 335px;
+        position: relative;
+        // display: contents;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        .tooltipText {
+          visibility: hidden;
+          opacity: 0;
+          position: absolute;
+          top: 25px;
+          left: 48%;
+          transform: translateX(-50%);
+          background-color: $gray-700;
+          color: $gray-10;
+          padding: 8px 12px;
+          border-radius: 4px;
+          width: 100%;
+          height: auto;
+          word-wrap: break-word;
+          text-align: left;
+          font-size: 14px;
+          line-height: 21px;
+          font-weight: 400;
+          z-index: 1000;
+          transition: opacity 0.3s ease;
+        }
+        &:hover .tooltipText {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      .profileElispse {
+        @include elipse();
+        &:hover {
+          opacity: 0.3;
+        }
+      }
       .profileName {
-        // @include fontAlpha();
         font-size: 20px;
         line-height: 20px;
         font-weight: 600;
@@ -24,9 +68,10 @@
       .profileTitle {
         @include font-sm();
         margin-top: 6px;
-        margin-right: 15px;
         color: $gray-25;
+        display: flex;
       }
+
       .locationContainer {
         display: flex;
         @include font-sm();
@@ -34,24 +79,13 @@
         position: relative;
         bottom: 15px;
         margin-top: 20px;
+
         .location {
           position: relative;
           right: 4px;
           top: 3px;
         }
       }
-    }
-  }
-  .followAccount {
-    width: 72px;
-    height: 34px;
-    &.followed {
-      @include justify-space-between();
-      width: 103px;
-      height: 32px;
-      border-color: $Orange-500;
-      color: $Orange-500;
-      background: none;
     }
   }
 }

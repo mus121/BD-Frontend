@@ -2,47 +2,81 @@
 @import '../../styles/mixin';
 @import '../../styles/fonts';
 
-.profileTop {
-  box-sizing: border-box;
-  margin-top: 32px;
-  flex-direction: column;
-  display: flex;
-  gap: 24px;
-  width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  .profileFollow {
-    @include space-between();
-    .profileHaeding {
-      @include font-semibold-3xl();
-      color: $gray-10;
-    }
-  }
-  .profileDescription {
-    .profileDesc {
-      width: fit-content;
-      color: $gray-100;
-      @include font-normal();
-    }
-  }
-  .contactTop {
-    .contactProfile {
-      @include space-between();
-      .profile {
-        @include font-semibold-xl();
+.container {
+  width: 100%;
+  height: 100%;
+
+  > .profileTop {
+    box-sizing: border-box;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 1000px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    > .profileFollow {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      > .profileHaeding {
+        @include font-semibold-3xl();
         color: $gray-10;
-      }
-      .searchAndfilters {
-        width: 483px;
-        display: flex;
-        justify-content: space-between;
+        flex: 1 1 auto;
+        min-width: 300px;
       }
     }
-    .connectionGrid {
+
+    > .profileDescription {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      margin-top: 16px;
+      gap: 12px;
+
+      > .profileDesc {
+        width: fit-content;
+        color: $gray-100;
+        @include font-normal();
+        flex: 1 1 auto;
+        text-align: justify;
+      }
+    }
+
+    > .contactTop {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      > .contactProfile {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+
+        > .profile {
+          @include font-semibold-xl();
+          color: $gray-10;
+          flex: 1 1 auto;
+          min-width: 200px;
+        }
+
+        > .searchAndfilters {
+          width: 100%;
+          max-width: 483px;
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+      }
+    }
+  }
+  @media (max-width: 1024px) {
+    > .profileTop {
+      max-width: 850px;
     }
   }
 }

@@ -16,4 +16,13 @@
     @include fontAlpha();
     background-color: $Orange-400;
   }
+
+  @media (max-width: 768px) {
+    .cancel {
+      width: 160px;
+    }
+    .allow {
+      width: 160px;
+    }
+  }
 }

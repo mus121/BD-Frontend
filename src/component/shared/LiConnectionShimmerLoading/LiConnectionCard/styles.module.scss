@@ -49,4 +49,8 @@
     border-radius: 8px;
     @include shimmerAnimation();
   }
+
+  @media (max-width: 1024px) {
+    max-width: 630px;
+  }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import SecondaryButton from '@/component/shared/button/SecondaryButton';
+import SecondaryButton from '@/component/shared/Buttons/SecondaryButton';
 import { useRouter } from 'next/navigation';
 import styles from './styles.module.scss';
 import { useAppSelector } from '../../hooks/rtk';
