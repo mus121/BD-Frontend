@@ -1,18 +1,23 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { liProfileData } from '@/api/postLiProfilesConnections';
 import { FOLLOW_QUERY_KEYS } from '@/constants/query/processLi';
+import { liConnection } from '@/api/postLiConnections';
+import { useUserId } from './useMe';
 
 const usePostFollowAndFollowing = (
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
 ) => {
   const queryClient = useQueryClient();
-
+  const { userId } = useUserId();
   const followMutationFn = async (action: {
     follow: boolean;
     identifier: string;
     entityUrn: string;
-  }) => liProfileData(action.identifier, action.entityUrn, action.follow);
-
+  }) => {
+    if (userId) {
+      return liConnection(userId, action.identifier, action.entityUrn, action.follow);
+    }
+    throw new Error('User ID is null');
+  };
   const mutation = useMutation({
     mutationFn: followMutationFn,
 

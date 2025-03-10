@@ -1,6 +1,6 @@
 import { truncateHeadline } from '@/utils/stringUtils';
 import { ProfileProps } from '@/types/TProfileCard';
-import usePostFollowAndFollowing from '@/hooks/usePostFollowAndFollowing';
+import usePostFollowAndFollowing from '@/hooks/useConnection';
 import styles from './styles.module.scss';
 import FollowCheck from '../shared/FollowCheck';
 import TertiaryButton from '../shared/Buttons/TertiaryButton';
@@ -15,14 +15,13 @@ function LiMutualAndGlobalConnection({
 
   const isFollowed = followProfile.includes(publicIdentifier || '');
 
-  const { mutate: toggleFollow } = usePostFollowAndFollowing(setFollowProfile);
+  const { mutateAsync: toggleFollow } = usePostFollowAndFollowing(setFollowProfile);
 
-  const handleFollowToggle = () => {
+  const handleFollowToggle = async (): Promise<void> => {
     if (!publicIdentifier || !entityUrn) {
       return;
     }
-
-    toggleFollow({
+    await toggleFollow({
       follow: !isFollowed,
       identifier: publicIdentifier,
       entityUrn,

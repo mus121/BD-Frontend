@@ -15,10 +15,6 @@ function AuthenticationButton() {
   const handleButtonClick = () => {
     dispatch(openPopup());
   };
-
-  // const closePopupHandler = () => {
-  //   dispatch(closePopup());
-  // };
   return (
     <>
       <div className={`${styles.authButton} ${isPopupOpen ? styles.blurred : ''}`}>

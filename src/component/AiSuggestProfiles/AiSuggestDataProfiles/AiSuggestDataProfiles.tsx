@@ -44,7 +44,7 @@ function AiSuggestDataProfiles() {
   }
 
   // Combine cached and fresh data
-  const displayedProfiles = [...(profiles.person_info || []), ...(SuggestProfileData || [])];
+  const displayedProfiles = [...(profiles || []), ...(SuggestProfileData || [])];
   return (
     <>
       <div className={styles.cardContainer}>

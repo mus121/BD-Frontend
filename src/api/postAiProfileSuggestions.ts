@@ -1,9 +1,11 @@
 import axios from 'axios';
+// import { useUserId } from '@/hooks/useMe';
 import { fetchFollowedProfiles } from './getLiProfiles';
 
-export const postAiProfileSuggestions = async () => {
+export const postAiProfileSuggestions = async (userId: string) => {
+  // const { userId } = useUserId();
   try {
-    const followPublicIdentifier = await fetchFollowedProfiles();
+    const followPublicIdentifier = await (userId ? fetchFollowedProfiles(userId) : 'Not');
 
     if (!followPublicIdentifier || followPublicIdentifier.length === 0) {
       throw new Error('No publicIdentifier found in followed profiles.');
@@ -27,7 +29,7 @@ export const postAiProfileSuggestions = async () => {
       }
       return [entry];
     });
-    // If no cached data, return the fresh response data
+
     return consolidatedArray;
   } catch (error) {
     console.error('Error fetching AI profile suggestions:', error);

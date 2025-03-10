@@ -44,7 +44,11 @@ function LiProfileCard() {
       <div className={styles.cardLocation}>
         <div className={styles.location}>
           <Location size={20} />
-          <h5 className={styles.location}>{fetchLiUserLocation || 'Location not available'}</h5>
+          <h5 className={styles.location}>
+            {typeof fetchLiUserLocation === 'string'
+              ? fetchLiUserLocation
+              : 'Location not available'}
+          </h5>
         </div>
         <div className={styles.university}>
           <span className={styles.home}>
