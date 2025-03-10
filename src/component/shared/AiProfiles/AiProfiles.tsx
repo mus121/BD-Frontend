@@ -1,65 +1,43 @@
-import { useState } from 'react';
-import Location from '@/component/common/svg/Location';
-import TertiaryButton from '@/component/shared/button/TertiaryButton';
-import ProfileImage from '@/component/shared/profileImages/profileImages';
-import Followingcheck from '../../common/svg/Followingcheck';
+import Location from '@/component/shared/svg/Location';
+import ProfileImg from '@/component/shared/svg/ProfileImage';
+import { AiProfilesProp } from '@/types/TAiSuggesProfiles';
 import styles from './styles.module.scss';
 
-function AiProfiles({
-  personTitle,
-  personCompany,
-}: {
-  personTitle: string;
-  personCompany: string;
-}) {
-  const [isFollowed, setIsFollowed] = useState(false);
+function AiProfiles({ personName, personLocation, personTitle, personCompany }: AiProfilesProp) {
+  const profileTitle = `${personTitle}`;
 
-  const handleFollowToggle = () => {
-    setIsFollowed(prev => !prev);
-  };
-
-  const followButton = isFollowed ? (
-    <>
-      <Followingcheck size={11.9} /> Following
-    </>
-  ) : (
-    'Follow'
-  );
+  const truncatedProfileTitle =
+    profileTitle.length > 45 ? `${profileTitle.slice(0, 45)}...` : profileTitle;
 
   return (
     <div className={styles.userProfile}>
       <div className={styles.userCard}>
-        <ProfileImage
-          src='/assets/images/Suggest.png'
-          alt='Profile picture of Bilal Kazmi'
-          width={80}
-          height={80}
-          className={styles.profileImg}
-        />
+        <ProfileImg size={40} />
         <div className={styles.profile}>
-          <h5 className={styles.profileName}>Mustafa kamal</h5>
-          <p className={styles.profileTitle}>
-            {personTitle} @ {personCompany}
-          </p>
+          <div className={styles.tooltip}>
+            <h5 className={styles.profileName}>{personName}</h5>
+          </div>
+          <div className={styles.tooltip}>
+            <p
+              className={`${styles.profileTitle} ${
+                truncatedProfileTitle !== profileTitle ? styles.truncatedName : ''
+              }`}
+            >
+              {truncatedProfileTitle}
+            </p>
+            {truncatedProfileTitle !== profileTitle && (
+              <span className={styles.tooltipText}>{personTitle}</span>
+            )}
+            <p className={styles.profileTitle}>@ {personCompany}</p>
+          </div>
           <p className={styles.locationContainer}>
             <span className={styles.location}>
               <Location size={16} />
             </span>
-            Islamabad, Pakistan
+            {personLocation}
           </p>
         </div>
       </div>
-      <TertiaryButton
-        colorVariant='lightGray'
-        type='button'
-        text={followButton}
-        tertiaryButtonClassName={`${styles.followAccount} ${isFollowed && styles.followed}`}
-        sizeVariant='base'
-        onClick={e => {
-          e.stopPropagation();
-          handleFollowToggle();
-        }}
-      />
     </div>
   );
 }

@@ -1,6 +1,14 @@
 .profileListContainer {
-  flex: 1 1 calc(50% - 16px);
-  max-width: calc(50% - 16px);
-  box-sizing: border-box;
-  display: contents;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 16px;
+
+  @media (max-width: 1024px) {
+    max-width: 850px;
+    justify-content: center;
+    max-height: 640px;
+    overflow: auto;
+    overflow-x: hidden;
+  }
 }

@@ -10,24 +10,28 @@ function AiSuggestCard() {
             <div className={styles.profileName} />
             <div className={styles.profileTitle} />
             <div className={styles.profileLocation} />
+            <div className={styles.profileLocation} />
           </div>
         </div>
-        <div className={styles.profileButton} />
-      </div>
-      <hr className={styles.seprator} />
+        <hr className={styles.seprator} />
 
-      <div className={styles.bussinessImpact}>
-        <div className={styles.impactContainer}>
-          <div className={styles.impact} />
-          <div className={styles.impactButton} />
-        </div>
-        <div className={styles.scoreContainer}>
-          <div className={styles.score} />
-          <div className={styles.scoreButton} />
-        </div>
-        <div className={styles.progresContainer}>
-          <div className={styles.progress} />
-          <div className={styles.progressButton} />
+        <div className={styles.rightContainer}>
+          <div className={styles.bussinessImpact}>
+            <div className={styles.impactContainer}>
+              <div className={styles.impact} />
+              <div className={styles.impactButton} />
+            </div>
+            <div className={styles.profileButton} />
+          </div>
+          <div className={styles.impactAverage} />
+          <div className={styles.scoreContainer}>
+            <div className={styles.score} />
+            <div className={styles.scoreButton} />
+          </div>
+          <div className={styles.progresContainer}>
+            <div className={styles.progress} />
+            <div className={styles.progressButton} />
+          </div>
         </div>
       </div>
     </div>

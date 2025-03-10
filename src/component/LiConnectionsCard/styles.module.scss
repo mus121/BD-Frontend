@@ -1,0 +1,51 @@
+@import '../../styles/colors';
+@import '../../styles/fonts';
+@import '../../styles/mixin';
+
+.cardContainer {
+  @include justify-space-between();
+  width: 488px;
+  height: 118px;
+  padding: 20px 16px;
+  border: 1px solid $gray-700;
+  border-radius: 16px;
+  gap: 12px;
+  margin-top: 10px;
+
+  .profileInfo {
+    width: 341px;
+    display: flex;
+    .profileImage {
+      border-radius: 100px;
+    }
+    .textInfo {
+      margin-left: 12px;
+      .profileName {
+        @include font-semibold-sm();
+        color: $gray-10;
+      }
+      .profileHeadline {
+        @include font-sm();
+        margin-top: 8px;
+        margin-left: 2px;
+        color: $gray-50;
+      }
+    }
+  }
+  .followButton {
+    width: 72px;
+    height: 34px;
+    &.followed {
+      @include justify-space-between();
+      width: 103px;
+      height: 32px;
+      border-color: $Orange-500;
+      color: $Orange-500;
+      background: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    width: 820px;
+  }
+}

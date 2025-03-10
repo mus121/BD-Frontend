@@ -6,9 +6,29 @@
   @include center-flex;
   height: 95vh;
   padding: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  @media (max-width: 480px) {
+    height: auto;
+    padding: 5px;
+  }
+
   .welcome {
     padding: 100px 120px;
     border: 1px solid $gray-700;
     border-radius: 16px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      padding: 60px 40px; // Reduce padding for smaller screens
+    }
+
+    @media (max-width: 480px) {
+      padding: 30px 20px; // Further reduce padding for very small screens
+    }
   }
 }

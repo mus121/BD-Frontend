@@ -3,20 +3,21 @@
 import { useState } from 'react';
 import AiProfiles from '@/component/shared/AiProfiles/index';
 import AiBussinessImpact from '@/component/shared/BussinessImpact/index';
-import AiProgressBar from '@/component/shared/progressbar/ProgressBar';
+import AiProgressBar from '@/component/shared/Progressbar/ProgressBar';
+import { AiSuggestionCardProps } from '@/types/TAiSuggesProfiles';
 import styles from './styles.module.scss';
 import Modal from '../../Modal/index';
 
-type AiSuggestionCardProps = {
-  personTitle: string;
-  personCompany: string;
-  // score: number;
-  companyScore: any;
-};
-
-function AiSuggestionCard({ personTitle, personCompany, companyScore }: AiSuggestionCardProps) {
+function AiSuggestionCard({
+  personName,
+  personLocation,
+  personTitle,
+  personCompany,
+  companyScore,
+  roleDescription,
+  title_reasoning,
+}: AiSuggestionCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleCardClick = () => {
     setIsModalOpen(true);
   };
@@ -27,7 +28,6 @@ function AiSuggestionCard({ personTitle, personCompany, companyScore }: AiSugges
 
   return (
     <>
-      {/* Main Card */}
       <div
         className={styles.profileCard}
         onClick={handleCardClick}
@@ -39,26 +39,34 @@ function AiSuggestionCard({ personTitle, personCompany, companyScore }: AiSugges
         role='button'
         tabIndex={0}
       >
-        {/* Profile Details */}
-        <AiProfiles
-          personTitle={personTitle}
-          personCompany={personCompany}
-        />
+        <div className={styles.leftProfileCard}>
+          <AiProfiles
+            personName={personName}
+            personLocation={personLocation}
+            personTitle={personTitle}
+            personCompany={personCompany}
+          />
+        </div>
         <hr className={styles.separator} />
-        {/* Conditional Rendering */}
-        {companyScore?.['Domain Alignment score']?.score !== null && (
-          <>
-            <AiBussinessImpact score={companyScore['Domain Alignment score']?.score} />
-            <AiProgressBar score={companyScore['Domain Alignment score']?.score} />
-          </>
-        )}
+        <div className={styles.rightProfileCard}>
+          {companyScore !== null && (
+            <>
+              <AiBussinessImpact />
+              <AiProgressBar score={companyScore} />
+            </>
+          )}
+        </div>
       </div>
-      {/* Modal */}
+
       {isModalOpen && (
         <Modal
+          personName={personName}
+          personLocation={personLocation}
           personTitle={personTitle}
           personCompany={personCompany}
-          score={companyScore?.['Domain Alignment score']?.score || 0} // Provide a fallback value if score is null
+          score={companyScore || 0}
+          roleDescription={roleDescription}
+          title_reasoning={title_reasoning}
           onClose={handleModalClose}
           isOpen
         >

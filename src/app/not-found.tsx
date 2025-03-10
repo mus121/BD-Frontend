@@ -1,7 +1,20 @@
-const notfound = () => (
-  <div>
-    <h5 style={{ color: 'white' }}>Page Not Found Error</h5>
-  </div>
-);
+import PageNotFound from '@/component/shared/svg/PageNotFound';
 
-export default notfound;
+function NotFound() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '95vh',
+        width: '100%',
+        textAlign: 'center',
+      }}
+    >
+      <PageNotFound size={400.65} />
+    </div>
+  );
+}
+
+export default NotFound;

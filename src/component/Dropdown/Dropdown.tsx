@@ -1,46 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import { getProfileSearch } from '@/api/getProfileSearch';
-import { useQuery } from '@tanstack/react-query';
-import { Profile, DropdownProps } from '@/types/dropdownProfile';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useGetDropDownSearch } from '@/hooks/useGetDropDownSearch';
+import { useAppDispatch } from '@/hooks/rtk';
+import { setProfiles } from '@/store/slices/liConnectionProfiles';
+import { DropDownProfiles, DropdownProps, ProfileSearchResponse } from '@/types/TDropDownProfiles';
 import ProfileItem from './ProfileItem/ProfileItem';
 import styles from './styles.module.scss';
 
-function Dropdown({ searchQuery, setSearchProfile }: DropdownProps) {
-  const [profiles, setProfiles] = useState<Profile[]>([]);
-
-  const { isLoading, error, data } = useQuery({
-    queryKey: ['profileSearch', searchQuery],
-    queryFn: () => getProfileSearch(searchQuery),
-  });
+function Dropdown({ searchQuery }: DropdownProps) {
+  const [profiles, setProfile] = useState<DropDownProfiles[]>([]);
+  const { data: dropDownProfiles = [] } = useGetDropDownSearch(searchQuery);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (searchQuery.trim()) {
-      setProfiles(data?.response?.data?.searchDashTypeaheadByGlobalTypeahead?.elements || []);
+      const responseProfiles = Array.isArray((dropDownProfiles as ProfileSearchResponse)?.response)
+        ? (dropDownProfiles as ProfileSearchResponse).response
+        : [];
+      setProfile(responseProfiles);
     } else {
-      setProfiles([]);
+      setProfile([]);
     }
-  }, [searchQuery, data]);
+  }, [searchQuery, dropDownProfiles]);
 
   if (!searchQuery.trim()) return null;
 
+  const clickProfiles = (index: any) => {
+    if (searchQuery.trim() && dropDownProfiles) {
+      const responseProfiles = Array.isArray((dropDownProfiles as ProfileSearchResponse)?.response)
+        ? (dropDownProfiles as ProfileSearchResponse).response
+        : [];
+      dispatch(setProfiles(responseProfiles[index]));
+    }
+  };
   return (
     <div className={styles.dropDown}>
-      {profiles && profiles.length > 0 ? (
+      {Array.isArray(profiles) && profiles.length > 0 ? (
         <div className={styles.section}>
           <div className={styles.sectionTitle}>
             <p>SEARCH RESULTS</p>
           </div>
-          {profiles
-            .filter(item => item.entityLockupView?.subtitle?.text)
-            .map((item, index) => (
-              <ProfileItem
-                key={item.id || index}
-                profile={item}
-                onClick={profile => setSearchProfile(profile)}
-              />
-            ))}
+          {profiles.map((item, index) => (
+            <ProfileItem
+              key={item.id || index}
+              profile={item}
+              onClick={() => clickProfiles(index)}
+            />
+          ))}
         </div>
-      ) : null}
+      ) : (
+        <div className={styles.noResults} />
+      )}
     </div>
   );
 }

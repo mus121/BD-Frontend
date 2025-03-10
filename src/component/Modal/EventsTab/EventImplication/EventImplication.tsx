@@ -1,12 +1,13 @@
-import ImpactScore from '@/component/shared/score';
+// import ImpactScore from '@/component/shared/score';
+import { EventsDetail } from '@/types/TModal';
 import styles from './styles.module.scss';
-import Eventaccordian from '../Eventaccordian/index';
+import EventAccordion from '../EventAccordion/index';
 
-function EventImplication({ score }: { score: number }) {
+function EventImplication({ title_reasoning }: EventsDetail) {
   return (
     <div className={styles.eventImpact}>
       <h5 className={styles.impactDetails}>IMPLICATION DETAILS</h5>
-      <div className={styles.impact}>
+      {/* <div className={styles.impact}>
         <h5 className={styles.impactHaeding}>IMPACT SCORE</h5>
         <div className={styles.impactScore}>
           <div className={styles.scoreTerm}>
@@ -20,8 +21,12 @@ function EventImplication({ score }: { score: number }) {
             />
           </div>
         </div>
-      </div>
-      <Eventaccordian />
+      </div> */}
+      <EventAccordion
+        title_reasoning={title_reasoning}
+        score={0}
+        roleDescription={undefined}
+      />
     </div>
   );
 }

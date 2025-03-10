@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { EventsDetail } from '@/types/TModal';
 import styles from './styles.module.scss';
-import TabsComponent from '../../shared/tabs/index';
-import EventDetailContainer from './EventDetailContainer/index';
+import TabsComponent from '../../shared/Tabs/index';
+import EventInfo from './EventInfo/index';
 
 const tabs = [
   { label: 'Summary', value: 'summary' },
@@ -9,7 +10,7 @@ const tabs = [
   { label: 'Experience', value: 'experience' },
 ];
 
-function EventsTab({ score }: { score: number }) {
+function EventsTab({ score, roleDescription, title_reasoning }: EventsDetail) {
   const [activeTab, setActiveTab] = useState('events');
 
   const handleTabChange = (value: string) => {
@@ -26,7 +27,11 @@ function EventsTab({ score }: { score: number }) {
         {activeTab === 'summary' && <p />}
         {activeTab === 'events' && (
           <p>
-            <EventDetailContainer score={score} />
+            <EventInfo
+              score={score}
+              roleDescription={roleDescription}
+              title_reasoning={title_reasoning}
+            />
           </p>
         )}
         {activeTab === 'experience' && <p />}

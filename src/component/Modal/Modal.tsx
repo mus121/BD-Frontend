@@ -1,18 +1,21 @@
-import Close from '@/component/common/svg/Close';
+import Close from '@/component/shared/svg/Close';
+import { ModalProps } from '@/types/TModal';
 import styles from './styles.module.scss';
-import SuggestModalCard from './SuggesModalCard/index';
+import ProfileSuggestionCard from './ProfileSuggestionCard/index';
 import EventsTab from './EventsTab';
 
-type ModalProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  personTitle: string;
-  personCompany: string;
-  score: number;
-  children?: React.ReactNode;
-};
-
-function Modal({ isOpen, onClose, personTitle, personCompany, score, children }: ModalProps) {
+function Modal({
+  isOpen,
+  onClose,
+  personName,
+  personLocation,
+  personTitle,
+  personCompany,
+  score,
+  roleDescription,
+  title_reasoning,
+  children,
+}: ModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -26,13 +29,18 @@ function Modal({ isOpen, onClose, personTitle, personCompany, score, children }:
             <Close size={24} />
           </button>
         </div>
-        {/* SuggestModalCard */}
-        <SuggestModalCard
+        <ProfileSuggestionCard
+          personName={personName}
+          personLocation={personLocation}
           personTitle={personTitle}
           personCompany={personCompany}
           score={score}
         />
-        <EventsTab score={score} />
+        <EventsTab
+          score={score}
+          roleDescription={roleDescription}
+          title_reasoning={title_reasoning}
+        />
         {children}
       </div>
     </div>

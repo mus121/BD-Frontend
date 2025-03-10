@@ -1,11 +1,5 @@
+import { PaginationProps } from '@/types/TPaginationProps';
 import styles from './styles.module.scss';
-
-type PaginationProps = {
-  totalItems: number;
-  itemsPerPage: number;
-  currentPage: number;
-  onPageChange: (page: number) => void;
-};
 
 function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: PaginationProps) {
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
@@ -21,8 +15,6 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
 
   const getVisiblePages = (): (number | string)[] => {
     const pages: (number | string)[] = [];
-    // const totalVisiblePages = 4;
-
     const showEllipsisBefore = currentPage > 2;
     const showEllipsisAfter = currentPage < totalPages - 3;
 

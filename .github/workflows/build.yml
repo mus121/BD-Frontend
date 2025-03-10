@@ -16,7 +16,7 @@ jobs:
       run: npm run build
     - name: Check build status
       run: |
-        if [ -d "dist" ]; then
+        if [ -d ".next" ]; then
           echo "BD build successful!"
         else
           echo "BD build failed!"

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ProfileImage from '../shared/profileImages/profileImages';
+import ProfileImage from '../shared/ProfileImages/ProfileImages';
 import styles from './styles.module.scss';
 
 function Navbar() {

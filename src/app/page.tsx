@@ -1,7 +1,5 @@
 import WelcomeCredentials from '../component/WelcomeCredentials/index';
 
-function Home() {
+export default function Home() {
   return <WelcomeCredentials />;
 }
-
-export default Home;

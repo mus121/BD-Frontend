@@ -1,27 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useAppDispatch } from '@/hooks/rtk';
+import { clearProfiles } from '@/store/slices/liConnectionProfiles';
+import { SearchBarProps } from '@/types/TSearchBarProps';
 import Dropdown from '../../Dropdown/index';
 import styles from './styles.module.scss';
-import Search from '../../common/svg/Search';
-import Close from '../../common/svg/Close';
+import Search from '../../shared/svg/Search';
+import Close from '../../shared/svg/Close';
 
-type SearchBarProps = {
-  placeholder?: string;
-  onSearch: (query: string) => void;
-  setProfiles: any;
-};
-
-function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchBarProps) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery);
+function SearchBar({
+  placeholder = 'Search...',
+  onSearch,
+  setProfiles,
+  searchQuery,
+  setSearchQuery,
+  setcurrentPage,
+  setIsSearchActive,
+}: SearchBarProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // Debounce the search query
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearchQuery(searchQuery);
-    }, 2000);
-    // Open dropdown on input change
-    return () => clearTimeout(timer);
-  }, [searchQuery]);
+  const [, setShowGlobalSearch] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -31,7 +28,10 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       onSearch(searchQuery);
-      setIsDropdownOpen(false); // Close dropdown on enter
+      setShowGlobalSearch(true);
+      setIsDropdownOpen(false);
+      setIsSearchActive(true);
+      setcurrentPage(0);
     }
   };
 
@@ -39,11 +39,10 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
     setSearchQuery('');
     onSearch('');
     setIsDropdownOpen(false);
-    // setProfiles(
-    //   queryClient.invalidateQueries({
-    //     predicate: query => query.queryKey.includes('mutualConnections'),
-    //   }),
-    // );
+    setProfiles(null);
+    setcurrentPage(0);
+    setIsSearchActive(false);
+    dispatch(clearProfiles());
   };
 
   const handleBlur = () => {
@@ -83,5 +82,4 @@ function SearchBar({ placeholder = 'Search...', onSearch, setProfiles }: SearchB
     </div>
   );
 }
-
 export default SearchBar;

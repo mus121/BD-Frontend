@@ -1,20 +1,14 @@
-import { ProfileItemProps } from '@/types/dropdownProfile';
-import { toCamelCase } from '@/utils/camelcase';
-import ProfileImage from '../../shared/profileImages/index';
-import Enter from '../../common/svg/Enter';
+import { ProfileItemProps } from '@/types/TDropDownProfiles';
+import { toCamelCase } from '@/utils/camelCase';
+import { getProfileImageUrl, getProfileTitle, getProfileHeadline } from '@/utils/dropdownProfiles';
+import ProfileImage from '../../shared/ProfileImages/index';
+import Enter from '../../shared/svg/Enter';
 import styles from './styles.module.scss';
-import {
-  getProfileImageUrl,
-  getProfileTitle,
-  getProfileHeadline,
-} from './profileUtils/profileUtils';
 
 function ProfileItem({ profile, onClick }: ProfileItemProps) {
-  // Use the utility functions to extract the profile information
   const imageUrl = getProfileImageUrl(profile);
   const title = getProfileTitle(profile);
   const headline = getProfileHeadline(profile);
-
   return (
     <div
       onClick={() => onClick(profile)}
