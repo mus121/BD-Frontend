@@ -1,7 +1,7 @@
 'use client';
 
 import { redirect, useSearchParams } from 'next/navigation';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 function GoogleSuccessPage() {
   const searchParams = useSearchParams();

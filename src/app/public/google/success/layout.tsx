@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 export default function GoogleSuccessLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,9 @@ export default function GoogleSuccessLayout({
 }>) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body>
+        <Suspense>{children}</Suspense>
+      </body>
     </html>
   );
 }
