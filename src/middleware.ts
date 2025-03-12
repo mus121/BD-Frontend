@@ -8,7 +8,7 @@ export function middleware(req: NextRequest) {
   const publicRoutes = ['/'];
 
   if (!token) {
-    if (!publicRoutes.includes(currentPath)) {
+    if (!publicRoutes.includes(currentPath) && !currentPath.includes('public')) {
       return NextResponse.redirect(new URL('/', req.url));
     }
     return NextResponse.next();
