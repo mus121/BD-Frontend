@@ -5,7 +5,6 @@ import Providers from '../store/Providers';
 import Navbar from '../component/Navbar/Navbar';
 import QueryProvider from './QueryProvider';
 import Extensionsignal from '../component/Extensionsignal/index';
-import AuthProvider from '@/component/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'Bussiness Development App',
@@ -25,7 +24,6 @@ export default function RootLayout({
             <Extensionsignal />
             <Navbar />
             {children}
-            {/* <AuthProvider>{children}</AuthProvider> */}
           </Providers>
         </QueryProvider>
       </body>
