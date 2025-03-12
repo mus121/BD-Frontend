@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
-  const token = req.cookies.get('session_token');
+  const token = req.cookies.get('access_token');
+
   const currentPath = req.nextUrl.pathname;
+
   const publicRoutes = ['/'];
 
   if (!token) {
