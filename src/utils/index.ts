@@ -2,7 +2,6 @@ const extensionId = process.env.NEXT_PUBLIC_BD_EXTENSION_ID;
 
 type MessageResponse<T> = T | undefined;
 
-// Centralized function for sending messages to the Chrome extension
 export const sendMessage = <T>(type: string, payload?: object): Promise<MessageResponse<T>> =>
   new Promise((resolve, reject) => {
     if (chrome.runtime) {

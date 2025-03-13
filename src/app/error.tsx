@@ -1,7 +1,7 @@
 'use client';
 
 import Error from '@/component/shared/svg/Error';
-import PrimaryButton from '@/component/shared/Buttons/PrimaryButton';
+import PrimaryButton from '@/component/shared/button/PrimaryButton';
 import styles from './error.module.scss';
 
 export default function ErrorBoundry() {

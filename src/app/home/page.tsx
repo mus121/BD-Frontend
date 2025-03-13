@@ -1,4 +1,4 @@
-import AiSuggestProfiles from '@/component/AiSuggestProfiles/index';
+import AiSuggestProfiles from '@/component/aiProfile/index';
 
 export default function Home() {
   return <AiSuggestProfiles />;

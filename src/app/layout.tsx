@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import '../styles/main.scss';
 import '../styles/globals.scss';
-import Providers from '../store/Providers';
-import Navbar from '../component/Navbar/Navbar';
+import Providers from '../provider';
+import Navbar from '../component/header/Navbar';
 import QueryProvider from './QueryProvider';
-import Extensionsignal from '../component/Extensionsignal/index';
+import Extensionsignal from '../component/extensionSignal/index';
 
 export const metadata: Metadata = {
   title: 'Bussiness Development App',

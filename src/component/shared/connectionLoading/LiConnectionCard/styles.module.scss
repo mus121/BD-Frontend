@@ -1,0 +1,57 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.profileCard {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 16px;
+  width: 488px;
+  height: 116px;
+  border-radius: 16px;
+  border: 1px solid $gray-800;
+  margin-top: -4px;
+
+  .container {
+    display: flex;
+    .profileImage {
+      width: 48px;
+      height: 48px;
+      border-radius: 100px;
+      @include shimmerAnimation();
+    }
+    .profileData {
+      margin-left: 12px;
+      .profileName {
+        width: 173px;
+        height: 20px;
+        border-radius: 4px;
+        @include shimmerAnimation();
+      }
+      .profileTitle {
+        width: 304px;
+        height: 16px;
+        border-radius: 4px;
+        @include shimmerAnimation();
+        margin-top: 12px;
+      }
+      .profileLocation {
+        width: 173px;
+        height: 20px;
+        border-radius: 4px;
+        @include shimmerAnimation();
+        margin-top: 12px;
+      }
+    }
+  }
+  .profileButton {
+    width: 80px;
+    height: 34px;
+    border-radius: 8px;
+    @include shimmerAnimation();
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 630px;
+  }
+}

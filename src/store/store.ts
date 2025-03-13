@@ -1,17 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import popupReducer from './slices/popupSlice';
-import sessionReducer from './sessionSlice';
-import appReducer from './slices/appslice';
-import miniProfileReducer from './slices/miniProfilesSlice';
-import aiFindSuggestProfilesReducer from './slices/aiFindSuggestProfiles';
-import liConnectionProfilesReducer from './slices/liConnectionProfiles';
+import popupReducer from '../slices/popUp';
+import appReducer from '../slices/extension';
+import miniProfileReducer from '../slices/miniProfile';
+import aiFindSuggestProfilesReducer from '../slices/aiProfile';
+import liConnectionProfilesReducer from '../slices/connection';
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
     profile: miniProfileReducer,
     popup: popupReducer,
-    session: sessionReducer,
     aiFindSuggestProfiles: aiFindSuggestProfilesReducer,
     dropDownProfiles: liConnectionProfilesReducer,
   },
