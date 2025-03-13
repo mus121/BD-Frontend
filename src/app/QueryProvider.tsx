@@ -12,12 +12,14 @@ const queryClient = new QueryClient({
     },
   },
 });
+
 function QueryProvider({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {process.env.NODE_ENV !== 'production' && <ReactQueryDevtools initialIsOpen={false} />}
       {children}
     </QueryClientProvider>
   );
 }
+
 export default QueryProvider;

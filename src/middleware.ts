@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
-  const token = req.cookies.get('session_token');
+  const token = req.cookies.get('access_token');
+
   const currentPath = req.nextUrl.pathname;
+
   const publicRoutes = ['/'];
 
   if (!token) {
-    if (!publicRoutes.includes(currentPath)) {
+    if (!publicRoutes.includes(currentPath) && !currentPath.includes('public')) {
       return NextResponse.redirect(new URL('/', req.url));
     }
     return NextResponse.next();
