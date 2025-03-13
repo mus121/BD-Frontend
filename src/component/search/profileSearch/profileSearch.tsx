@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAppDispatch } from '@/hooks/rtk';
 import { clearProfiles } from '@/slices/connection';
-import { SearchBarProps } from '@/interfaces/searchBarProp';
+import { SearchBarProps } from '@/interfaces/search';
 import Dropdown from '../../dropDown/index';
 import styles from './styles.module.scss';
 import Search from '../../shared/svg/Search';

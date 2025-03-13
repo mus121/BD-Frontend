@@ -1,5 +1,5 @@
 import { getApi } from '@/utils/api';
-import { ExternalMessageEnum } from '@/constants/common';
+import { ExternalMessageEnum } from '@/constant/common';
 import { connectionProfile } from '@/utils/index';
 import { MutualConnectionResponse } from '@/interfaces/connection';
 import { totalConnection } from '@/utils/index';

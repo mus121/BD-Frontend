@@ -1,4 +1,4 @@
-import { DropDownProfiles } from '@/interfaces/dropDown';
+import { DropDownProfiles } from '@/interfaces/search';
 
 export const getProfileImageUrl = (profile: DropDownProfiles): string =>
   profile?.image || '/assets/images/LiDefault.png';

@@ -1,7 +1,7 @@
 'use client';
 
 import { fetchGlobalProfile } from '@/api/search';
-import { SearchBarProps } from '@/interfaces/searchBarProp';
+import { SearchBarProps } from '@/interfaces/search';
 import styles from './styles.module.scss';
 import SearchBar from './profileSearch/index';
 

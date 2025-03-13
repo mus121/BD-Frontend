@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { TabsComponentProps } from '@/interfaces/tab';
+import { TabsComponentProps } from '@/interfaces/modal';
 import styles from './styles.module.scss';
 
 export default function TabComponent({ tabs, activeTab, onTabChange }: TabsComponentProps) {

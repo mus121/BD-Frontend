@@ -1,46 +1,7 @@
-import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
-import { retrieveProfile, fetchConnection, retrieveConnection } from '@/api/connection';
-import { LI_PROFILE_QUERY_KEYS, FOLLOW_QUERY_KEYS } from '@/constants/query/processLi';
-import { RootState } from '@/store/store';
-import { useAppSelector } from './rtk';
-import { useUserId } from './user';
-
-export const useProfile = () => {
-  const queryClient = useQueryClient();
-  const liProfileResponse = useAppSelector((state: RootState) => state.profile.miniProfile);
-  const { userId } = useUserId();
-  const liMutationFn = async () => {
-    await retrieveProfile(
-      userId ?? '',
-      liProfileResponse.firstName ?? '',
-      liProfileResponse.lastName ?? '',
-      liProfileResponse.entityUrn ?? '',
-      liProfileResponse.publicIdentifier ?? '',
-    );
-  };
-
-  const mutation = useMutation({
-    mutationFn: liMutationFn,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: LI_PROFILE_QUERY_KEYS.liProfile });
-    },
-  });
-  return mutation;
-};
-
-export const useFetchConnection = () => {
-  const { userId } = useUserId();
-  const query = useQuery({
-    queryKey: FOLLOW_QUERY_KEYS.followProfiles,
-    queryFn: () =>
-      userId ? fetchConnection(userId) : Promise.reject(new Error('User ID is null')),
-    staleTime: Infinity,
-    gcTime: Infinity,
-    refetchOnMount: false,
-    refetchOnWindowFocus: false,
-  });
-  return query;
-};
+import { fetchConnection, retrieveConnection } from '@/api/connection';
+import { FOLLOW_QUERY_KEYS } from '@/constant/query/processLi';
+import { useUserId } from '@/hooks/user';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const useRetrieveConnection = (
   setFollowprofile: React.Dispatch<React.SetStateAction<string[]>>,
@@ -103,5 +64,16 @@ export const useRetrieveConnection = (
   return mutation;
 };
 
-export const usePublicIdentifier = () =>
-  useAppSelector(state => state.profile.miniProfile.publicIdentifier);
+export const useFetchConnection = () => {
+  const { userId } = useUserId();
+  const query = useQuery({
+    queryKey: FOLLOW_QUERY_KEYS.followProfiles,
+    queryFn: () =>
+      userId ? fetchConnection(userId) : Promise.reject(new Error('User ID is null')),
+    staleTime: Infinity,
+    gcTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
+  return query;
+};

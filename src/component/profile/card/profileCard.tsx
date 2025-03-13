@@ -1,8 +1,8 @@
-import { useAppSelector } from '@/hooks/rtk';
+import { useAppSelector } from '../../../hooks/rtk';
 import ProfileImage from '@/component/shared/profileImage/ProfileImages';
 import Location from '@/component/shared/svg/Location';
 import Home from '@/component/shared/svg/Home';
-import { usefetchLocation } from '@/hooks/connection';
+import { usefetchLocation } from '@/hooks/connection/location';
 import styles from './styles.module.scss';
 
 function LiProfileCard() {

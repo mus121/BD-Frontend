@@ -1,12 +1,12 @@
 /* eslint-disable no-nested-ternary */
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useConnection } from '@/hooks/connection';
-import { useConnectionCount } from '@/hooks/connection';
-import { useFetchConnection } from '@/hooks/profile';
-import { useGlobalProfile } from '@/hooks/search';
+import { useConnection } from '@/hooks/connection/mutual';
+import { useConnectionCount } from '@/hooks/connection/total';
+import { useFetchConnection } from '@/hooks/profile/connection';
+import { useGlobalProfile } from '@/hooks/search/global';
 import { RootState } from '@/store/store';
-import { LiConnectionDataProps } from '@/interfaces/connectionData';
+import { LiConnectionDataProps } from '@/interfaces/connection';
 import Pagination from '../../pagination';
 import LiConnectionShimmerLoading from '../../shared/connectionLoading';
 import styles from './styles.module.scss';

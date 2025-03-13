@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useFetchConnection } from '@/hooks/profile';
+import { useFetchConnection } from '@/hooks/profile/connection';
 import styles from './styles.module.scss';
 import SuggestButton from './suggestButton/index';
 import SearchProfile from '../search';

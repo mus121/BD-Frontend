@@ -10,9 +10,7 @@ function LoginButton() {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = process.env.NEXT_PUBLIC_API_URL
-      ? `${process.env.NEXT_PUBLIC_API_URL}/public/auth/google/login`
-      : '';
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/public/auth/google/login`;
   };
 
   return (

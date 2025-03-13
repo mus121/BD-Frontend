@@ -1,4 +1,4 @@
-import { GlobalProfiles } from './globalProfile';
+import { GlobalProfiles } from './search';
 
 export type FilterMutualApiResponse = {
   completeImageUrl: string;

@@ -1,10 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GlobalProfiles } from '@/interfaces/globalProfile';
-
-type DropDownProfilesState = {
-  profiles: GlobalProfiles | null;
-  isFollowedFilterEnabled: boolean;
-};
+import { GlobalProfiles, DropDownProfilesState } from '@/interfaces/search';
 
 const initialState: DropDownProfilesState = {
   profiles: null,

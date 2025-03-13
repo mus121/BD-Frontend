@@ -1,5 +1,5 @@
-import { ExternalMessageEnum } from '@/constants/common';
-import { LocationResponse } from '@/interfaces/location';
+import { ExternalMessageEnum } from '@/constant/common';
+import { LocationResponse } from '@/interfaces/profile';
 import { liuserlocation } from '@/utils/index';
 
 type LiUserLocationResult = {

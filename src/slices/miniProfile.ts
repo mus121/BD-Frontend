@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TMiniProfile } from '@/interfaces/miniProfile';
+import { TMiniProfile } from '@/interfaces/profile';
 
 const initialState: TMiniProfile = {
   miniProfile: {

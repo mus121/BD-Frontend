@@ -1,7 +1,6 @@
 import { useRouter } from 'next/navigation';
-import { useFindProfile } from '@/hooks/aiProfile';
-import { usePublicIdentifier } from '@/hooks/profile';
-import { useProfile } from '@/hooks/profile';
+import { useFindProfile } from '@/hooks/aiProfile/find';
+import { usePublicIdentifier, useProfile } from '@/hooks/profile/liProfile';
 import PrimaryButton from '../../shared/button/PrimaryButton/index';
 import SecondaryButton from '../../shared/button/SecondaryButton/index';
 import styles from './styles.module.scss';

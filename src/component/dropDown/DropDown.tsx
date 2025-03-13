@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useDropDownProfile } from '@/hooks/search';
-import { useAppDispatch } from '@/hooks/rtk';
+import { useDropDownProfile } from '@/hooks/search/dropDown';
+import { useAppDispatch } from '../../hooks/rtk';
 import { setProfiles } from '@/slices/connection';
-import { DropDownProfiles, DropdownProps, ProfileSearchResponse } from '@/interfaces/dropDown';
+import { DropDownProfiles, DropdownProps, ProfileSearchResponse } from '@/interfaces/search';
 import ProfileItem from './profileItem/profileItem';
 import styles from './styles.module.scss';
 

@@ -1,6 +1,6 @@
-import { ExternalMessageEnum } from '@/constants/common';
+import { ExternalMessageEnum } from '@/constant/common';
 import { dropDownSearch } from '@/utils/index';
-import { ProfileSearchResponse } from '@/interfaces/dropDown';
+import { ProfileSearchResponse } from '@/interfaces/search';
 import { globalProfilesResult } from '@/utils';
 
 export const fetchDropDownProfile = async (

@@ -1,4 +1,4 @@
-import { ProfilesListProps } from '@/interfaces/profileList';
+import { ProfilesListProps } from '@/interfaces/profile';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { renderMutualConnections } from '../render/renderMutualConnections';

@@ -1,10 +1,10 @@
 import { useCallback, useRef, useEffect } from 'react';
-import { ExternalMessageEnum } from '@/constants/common';
+import { ExternalMessageEnum } from '@/constant/common';
 import { extensionMessage, liProfile } from '@/utils/index';
-import { TMiniProfile } from '@/interfaces/miniProfile';
-import { useAppDispatch, useAppSelector } from './rtk';
-import { setIsExtensionInstalled } from '../slices/extension';
-import { setMiniProfile } from '../slices/miniProfile';
+import { TMiniProfile } from '@/interfaces/profile';
+import { useAppDispatch, useAppSelector } from '@/hooks/rtk';
+import { setIsExtensionInstalled } from '@/slices/extension';
+import { setMiniProfile } from '@/slices/miniProfile';
 
 const useExtension = () => {
   const dispatch = useAppDispatch();

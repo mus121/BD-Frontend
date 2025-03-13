@@ -1,6 +1,6 @@
 import { truncateHeadline } from '@/utils/stringUtils';
-import { ProfileProps } from '@/interfaces/profileCard';
-import { useRetrieveConnection } from '@/hooks/profile';
+import { ProfileProps } from '@/interfaces/profile';
+import { useRetrieveConnection } from '@/hooks/profile/connection';
 import styles from './styles.module.scss';
 import FollowCheck from '../shared/followCheck';
 import TertiaryButton from '../shared/button/TertiaryButton';
