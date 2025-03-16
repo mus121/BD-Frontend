@@ -11,7 +11,7 @@
   background: $Dropdown-Gradient;
   @include center-flex();
   z-index: 2000;
-  .modalContent {
+  > .modalContent {
     background-color: rgba(23, 21, 34, 1);
     padding: 24px;
     width: 705px;
@@ -19,10 +19,10 @@
     position: absolute;
     right: 0;
     top: 0;
-    h2 {
+    > h2 {
       margin-bottom: 10px;
     }
-    .closeIcon {
+    > .closeIcon {
       position: absolute;
       top: 44px;
       right: 35px;

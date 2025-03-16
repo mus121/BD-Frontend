@@ -1,3 +1,3 @@
-import PopupHeader from './PopupHeader';
+import PopupHeader from './popUpHeader';
 
 export default PopupHeader;

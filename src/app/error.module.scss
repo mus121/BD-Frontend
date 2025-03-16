@@ -8,17 +8,17 @@
   height: 95vh;
   color: $gray-10;
   text-align: center;
-  .errorIcon {
+  > .errorIcon {
     margin-bottom: 16px;
   }
-  .errorText {
+  > .errorText {
     @include font-semibold-xl();
   }
 
-  .tryAgain {
+  > .tryAgain {
     margin-top: 24px;
 
-    .tryButton {
+    > .tryButton {
       background-color: $Orange-400;
       color: $Orange-1000;
       padding: 8px 12px;

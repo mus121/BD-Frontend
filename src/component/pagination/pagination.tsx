@@ -1,7 +1,12 @@
 import { PaginationProps } from '@/interfaces/paginationProps';
 import styles from './styles.module.scss';
 
-function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: PaginationProps) {
+export default function Pagination({
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  onPageChange,
+}: PaginationProps) {
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
 
   const startItem = currentPage * itemsPerPage;
@@ -66,7 +71,7 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
     return (
       <span
         key={index}
-        className={styles.ellipsis}
+        className={styles.ellipis}
       >
         {page}
       </span>
@@ -74,12 +79,12 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
   };
 
   return (
-    <div className={styles.paginationContainer}>
-      <div className={styles.Rangedisplay}>
+    <div className={styles.container}>
+      <div className={styles.rangeDisplay}>
         {startItem + 1} - {endItem} of {totalItems}
       </div>
 
-      <div className={styles.paginationControls}>
+      <div className={styles.paginationControl}>
         <button
           className={`${styles.paginationButton} ${currentPage === 0 ? styles.disabled : ''}`}
           onClick={() => handlePageClick(currentPage - 1)}
@@ -103,5 +108,3 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }: Pag
     </div>
   );
 }
-
-export default Pagination;

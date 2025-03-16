@@ -1,3 +1,3 @@
-import AiSuggestDataProfiles from './profileData';
+import AiProfileData from './data';
 
-export default AiSuggestDataProfiles;
+export default AiProfileData;

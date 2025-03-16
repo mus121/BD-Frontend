@@ -7,12 +7,12 @@
   border-radius: 16px;
   padding: 32px;
   margin-top: 40px;
-  .userProfile {
+  > .userProfile {
     border-radius: 50px;
   }
-  .linkedin {
+  > .linkedin {
     display: flex;
-    .linkedHeading {
+    > .linkedHeading {
       @include fontAlpha();
       font-size: 16px;
       line-height: 20px;
@@ -23,19 +23,19 @@
       bottom: 2px;
     }
   }
-  .cardData {
+  > .cardData {
     display: flex;
     margin-top: 24px;
-    .head {
+    > .head {
       margin-left: 10px;
-      .headName {
+      > .headName {
         @include fontAlpha();
         font-size: 24px;
         list-style: 30px;
         color: $gray-10;
         font-weight: 600px;
       }
-      .occupation {
+      > .occupation {
         @include font-sm();
         color: $gray-25;
       }
@@ -47,7 +47,7 @@
   margin-top: 24px;
   .location {
     display: flex;
-    .location {
+    > .location {
       @include font-sm();
       color: $gray-300;
       margin-left: 4px;
@@ -55,11 +55,11 @@
   }
   .university {
     display: flex;
-    .home {
+    > .home {
       position: relative;
       top: 2px;
     }
-    .education {
+    > .education {
       @include font-sm();
       color: $gray-300;
       margin-left: 8px;

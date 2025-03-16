@@ -8,7 +8,7 @@
   flex-direction: column;
   gap: 16px;
   width: 550px;
-  .title {
+  > .title {
     @include fontAlpha();
     color: $white-color;
     font-size: 32px;
@@ -17,7 +17,7 @@
     margin: 0;
     letter-spacing: 0px;
   }
-  .description {
+  > .description {
     @include fontAlpha();
     @include font-sm();
     color: $gray-100;

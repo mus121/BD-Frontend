@@ -1,3 +1,3 @@
-import LoginButton from './LoginButton';
+import Authentiaction from './authentication';
 
-export default LoginButton;
+export default Authentiaction;

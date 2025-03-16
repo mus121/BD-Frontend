@@ -1,3 +1,3 @@
-import PopupBody from './PopupBody';
+import Body from './body';
 
-export default PopupBody;
+export default Body;

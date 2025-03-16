@@ -1,3 +1,3 @@
-import LiMutualAndGlobalConnection from './connectionCard';
+import ConnectionCard from './card';
 
-export default LiMutualAndGlobalConnection;
+export default ConnectionCard;

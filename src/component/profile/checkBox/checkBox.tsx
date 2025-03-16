@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
 import Check from '../../shared/checkBox/enable/enable';
 
-function CheckBox() {
+export default function CheckBox() {
   return (
     <div className={styles.checkOut}>
       <Check />
@@ -12,4 +12,3 @@ function CheckBox() {
     </div>
   );
 }
-export default CheckBox;

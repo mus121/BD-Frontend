@@ -2,7 +2,7 @@
 
 import styles from './styles.module.scss';
 import LiProfileCard from './card/index';
-import LiProfileButton from './profileButton';
+import LiProfileButton from './button';
 import CheckBox from './checkBox/index';
 
 export default function LiProfile() {

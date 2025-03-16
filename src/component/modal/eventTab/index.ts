@@ -1,3 +1,3 @@
-import EventsTab from './EventsTab';
+import EventsTab from './event';
 
 export default EventsTab;

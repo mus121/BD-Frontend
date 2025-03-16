@@ -1,3 +1,3 @@
-import ProfilesList from './profileList';
+import List from './list';
 
-export default ProfilesList;
+export default List;

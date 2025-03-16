@@ -5,7 +5,7 @@ import Home from '@/component/shared/svg/Home';
 import { usefetchLocation } from '@/hooks/connection/location';
 import styles from './styles.module.scss';
 
-function LiProfileCard() {
+export default function LiProfileCard() {
   const miniProfile = useAppSelector(state => state.profile.miniProfile);
   const { data: fetchLiUserLocation } = usefetchLocation(`${miniProfile.publicIdentifier}`);
   const imgUrl = miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl
@@ -60,5 +60,3 @@ function LiProfileCard() {
     </div>
   );
 }
-
-export default LiProfileCard;

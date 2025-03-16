@@ -2,7 +2,7 @@
 @import '../../styles/fonts';
 @import '../../styles/mixin';
 
-.paginationContainer {
+.container {
   @include space-between();
   border-radius: 4px;
   color: $gray-25;
@@ -10,7 +10,7 @@
   width: 1000px;
   margin-top: 12px;
 
-  .paginationControls {
+  .paginationControl {
     @include center-flex();
     background: $gray-800;
     height: 36px;
@@ -54,7 +54,7 @@
       color: white;
     }
   }
-  .ellipsis {
+  .ellipis {
     color: #a0a0a0;
     padding: 5px;
   }

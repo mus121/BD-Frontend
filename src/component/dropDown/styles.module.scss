@@ -12,10 +12,10 @@
   border-radius: 8px;
   margin-top: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  .section {
-    .sectionTitle {
+  > .section {
+    > .sectionTitle {
       padding: 8px 16px;
-      p {
+      > p {
         font-size: 12px;
         font-weight: 300;
         line-height: 18px;

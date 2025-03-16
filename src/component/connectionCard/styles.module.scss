@@ -12,19 +12,19 @@
   gap: 12px;
   margin-top: 10px;
 
-  .profileInfo {
+  > .profileInfo {
     width: 341px;
     display: flex;
-    .profileImage {
+    > .profileImage {
       border-radius: 100px;
     }
-    .textInfo {
+    > .textInfo {
       margin-left: 12px;
-      .profileName {
+      > .profileName {
         @include font-semibold-sm();
         color: $gray-10;
       }
-      .profileHeadline {
+      > .profileHeadline {
         @include font-sm();
         margin-top: 8px;
         margin-left: 2px;

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '../styles/main.scss';
 import '../styles/globals.scss';
 import Providers from '../provider';
-import Navbar from '../component/header/Navbar';
+import Navbar from '../component/header/header';
 import QueryProvider from './QueryProvider';
 import Extensionsignal from '../component/extensionSignal/index';
 

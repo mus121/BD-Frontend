@@ -4,7 +4,7 @@
 
 .closeBack {
   height: 48px;
-  .closeButton {
+  > .closeButton {
     @include button-style($gray-700, $gray-25);
     @include center-flex();
     position: relative;

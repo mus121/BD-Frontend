@@ -1,3 +1,3 @@
-import PermissionCheck from './PermissionCheck';
+import CheckPermission from './check';
 
-export default PermissionCheck;
+export default CheckPermission;

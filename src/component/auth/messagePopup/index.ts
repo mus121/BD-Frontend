@@ -1,3 +1,3 @@
-import MessagePopup from './MessagePopup';
+import MessagePopup from './messagePopup';
 
 export default MessagePopup;

@@ -1,0 +1,18 @@
+import Link from 'next/link';
+import ProfileImage from '../shared/profileImage/ProfileImages';
+import styles from './styles.module.scss';
+
+export default function Header() {
+  return (
+    <nav className={styles.navbar}>
+      <Link href='/'>
+        <ProfileImage
+          src='/assets/images/Logo.png'
+          alt='BD APP'
+          width={32}
+          height={32}
+        />
+      </Link>
+    </nav>
+  );
+}

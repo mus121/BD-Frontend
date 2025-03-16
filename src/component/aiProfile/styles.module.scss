@@ -11,21 +11,21 @@
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  .suggestHeading {
+  > .suggestHeading {
     @include space-between();
     .networkHeading {
       @include font-semibold-3xl();
       color: $gray-10;
     }
   }
-  .suggestDescription {
+  > .suggestDescription {
     .networkDescription {
       width: fit-content;
       color: $gray-100;
       @include font-normal();
     }
   }
-  .suggestTop {
+  > .suggestTop {
     .suggestConnection {
       @include space-between();
       .searchAndfilterContainer {
@@ -34,7 +34,7 @@
         gap: 16px;
         @include space-between();
       }
-      .profileHead {
+      > .profileHead {
         @include font-semibold-xl();
         color: $gray-10;
       }

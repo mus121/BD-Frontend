@@ -1,3 +1,3 @@
-import WelcomeCredentials from './weclome';
+import AuthCredntial from './auth';
 
-export default WelcomeCredentials;
+export default AuthCredntial;

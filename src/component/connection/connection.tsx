@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFetchConnection } from '@/hooks/profile/connection';
 import styles from './styles.module.scss';
-import SuggestButton from './suggestButton/index';
+import SuggestButton from './button/index';
 import SearchProfile from '../search';
 import Filters from '../filter';
-import LiConnectionData from './connectionData/index';
+import LiConnectionData from './data/index';
 
 export default function ConnectionProfile() {
   const [isSearchActive, setIsSearchActive] = useState(false);

@@ -5,12 +5,12 @@
 .button {
   @include space-between();
   margin-top: 24px;
-  .cancel {
+  > .cancel {
     @include center-flex;
     @include Cancel-Allow(12px, 180px, 34px, $Orange-400, $Orange-400, 8px, 500);
     @include fontAlpha();
   }
-  .allow {
+  > .allow {
     @include center-flex;
     @include Cancel-Allow(12px, 180px, 34px, $Orange-1000, $Orange-400, 8px, 500);
     @include fontAlpha();

@@ -1,3 +1,3 @@
-import SuggestProfile from './aiProfile';
+import AiProfile from './aiProfile';
 
-export default SuggestProfile;
+export default AiProfile;

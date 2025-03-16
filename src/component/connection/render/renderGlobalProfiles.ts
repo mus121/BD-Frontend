@@ -1,6 +1,6 @@
 import { isValidUrl } from '@/utils/isValidUrl';
 import { extractPublicIdentifier } from '@/utils/extractPublicIdentifier';
-import { GlobalProfiles } from '@/interfaces/globalProfile';
+import { GlobalProfiles } from '@/interfaces/search';
 import { renderProfileCard } from './RenderProfileCard';
 
 export const renderGlobalProfiles = (

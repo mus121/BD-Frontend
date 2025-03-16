@@ -7,24 +7,24 @@
   height: 95vh;
   width: 100%;
 
-  .profileContent {
+  > .profileContent {
     padding: 80px 100px;
     border: 1px solid $gray-800;
     border-radius: 16px;
     @include justify-center;
 
-    .profileData {
+    > .profileData {
       text-align: justify;
       width: 498px;
 
-      .title {
+      > .title {
         @include fontAlpha();
         color: $white-color;
         font-size: 35px;
         line-height: 54px;
         font-weight: 500;
       }
-      .description {
+      > .description {
         @include font-sm();
         color: $gray-100;
         margin-top: 16px;

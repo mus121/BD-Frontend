@@ -7,7 +7,7 @@ import SearchProfile from '../search';
 import Filters from '../filter';
 import AiSuggestDataProfiles from './profileData/index';
 
-function AiSuggestProfiles() {
+export default function AiProfile() {
   return (
     <div className={styles.suggestProfile}>
       <div className={styles.suggestHeading}>
@@ -38,5 +38,3 @@ function AiSuggestProfiles() {
     </div>
   );
 }
-
-export default AiSuggestProfiles;

@@ -7,10 +7,10 @@
   height: 270px;
   text-align: left;
 
-  .bdHeading {
+  > .bdHeading {
     @include font-medium-4xl();
     color: $gray-10;
-    .bd {
+    > .bd {
       color: $Orange-400;
     }
   }

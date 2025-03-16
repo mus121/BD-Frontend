@@ -17,18 +17,18 @@
     padding: 5px;
   }
 
-  .welcome {
+  > .authCredential {
     padding: 100px 120px;
     border: 1px solid $gray-700;
     border-radius: 16px;
     text-align: center;
 
     @media (max-width: 768px) {
-      padding: 60px 40px; // Reduce padding for smaller screens
+      padding: 60px 40px;
     }
 
     @media (max-width: 480px) {
-      padding: 30px 20px; // Further reduce padding for very small screens
+      padding: 30px 20px;
     }
   }
 }

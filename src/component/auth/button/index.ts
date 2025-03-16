@@ -1,3 +1,3 @@
-import AuthenticationButton from './AuthenticationButton';
+import Auth from './auth';
 
-export default AuthenticationButton;
+export default Auth;

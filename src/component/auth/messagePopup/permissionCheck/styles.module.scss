@@ -5,7 +5,7 @@
   @include space-between;
   margin-top: 25px;
 
-  .text {
+  > .text {
     flex: 1;
     font-size: 14px;
     line-height: 21px;

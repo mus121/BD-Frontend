@@ -11,13 +11,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   background-color: $Gradient-Grey-Black;
-  .separator {
-    // margin: 16px 0;
+  > .separator {
     border: none;
     height: 1px;
     background-color: $gray-800;
   }
-  .bussinessImpact {
+  > .bussinessImpact {
     margin-top: 16px;
   }
 }
