@@ -7,6 +7,13 @@
   height: 95vh;
   padding: 20px;
 
+  @media (max-height: 1425px) {
+    height: 90vh;
+  }
+  @media (max-width: 1024px) {
+    padding: 15px;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 10px;
@@ -23,6 +30,9 @@
     border-radius: 16px;
     text-align: center;
 
+    @media (max-width: 1024px) {
+      padding: 70px 80px;
+    }
     @media (max-width: 768px) {
       padding: 60px 40px;
     }

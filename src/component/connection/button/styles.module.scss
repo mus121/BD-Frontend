@@ -2,12 +2,48 @@
 @import '../../../styles/fonts';
 @import '../../../styles/mixin';
 
-.followButton {
-  background-color: $gray-800;
-  color: $gray-300;
-  width: 240px;
-  &.suggested {
-    background-color: $orange-400;
-    color: black;
-  }
+.nextButton {
+  background-color: $Orange-700;
+  color: rgba(25, 14, 8, 1);
+  width: 97px;
+  height: 37px;
+  margin: 16px;
+}
+.tooltipContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 339px;
+  height: 45px;
+  background: $gray-50;
+  color: $gray-800;
+  padding: 12px;
+  border-radius: 8px;
+  @include font-sm();
+  white-space: nowrap;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.tooltipContainer .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 80%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: $gray-50 transparent transparent transparent;
 }

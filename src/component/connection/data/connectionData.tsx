@@ -8,7 +8,7 @@ import { useGlobalProfile } from '@/hooks/search/global';
 import { RootState } from '@/store/store';
 import { LiConnectionDataProps } from '@/interfaces/connection';
 import Pagination from '../../pagination';
-import LiConnectionShimmerLoading from '../../shared/connectionLoading';
+import ConnectionShimmer from '../../shared/connectionLoading/index';
 import styles from './styles.module.scss';
 import ProfilesList from '../profileList/list';
 
@@ -31,6 +31,7 @@ export default function ConnectionData({
     setCurrentPage(page);
   };
 
+  console.log('Fetch Connection', followedProfiles);
   useEffect(() => {
     if (globalSearchProfiles) {
       setGlobalProfiles(globalSearchProfiles);
@@ -38,7 +39,7 @@ export default function ConnectionData({
   }, [globalSearchProfiles, setGlobalProfiles]);
 
   if (isLoading) {
-    return <LiConnectionShimmerLoading />;
+    // return <ConnectionShimmer />;
   }
 
   if (error instanceof Error) {

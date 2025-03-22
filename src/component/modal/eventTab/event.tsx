@@ -10,7 +10,7 @@ const tabs = [
   { label: 'Experience', value: 'experience' },
 ];
 
-export default function EventsTab({ score, roleDescription, title_reasoning }: EventsDetail) {
+export default function EventsTab({ score }: EventsDetail) {
   const [activeTab, setActiveTab] = useState('events');
 
   const handleTabChange = (value: string) => {
@@ -27,11 +27,7 @@ export default function EventsTab({ score, roleDescription, title_reasoning }: E
         {activeTab === 'summary' && <p />}
         {activeTab === 'events' && (
           <p>
-            <EventInfo
-              score={score}
-              roleDescription={roleDescription}
-              title_reasoning={title_reasoning}
-            />
+            <EventInfo score={score} />
           </p>
         )}
         {activeTab === 'experience' && <p />}

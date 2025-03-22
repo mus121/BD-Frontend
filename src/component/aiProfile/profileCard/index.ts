@@ -1,3 +1,3 @@
-import AiProfileCard from './card';
+import aiProfileCard from './card';
 
-export default AiProfileCard;
+export default aiProfileCard;

@@ -62,3 +62,16 @@ export type AiProfilesProp = {
   personTitle: string;
   personCompany: string;
 };
+
+export type BusinessImpactScore = {
+  total: number;
+  label: string;
+};
+
+export type Profile = {
+  username: string;
+  name: string;
+  location: string;
+  company: string;
+  business_impact_score?: BusinessImpactScore;
+};

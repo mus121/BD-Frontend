@@ -7,6 +7,9 @@
   height: 95vh;
   width: 100%;
 
+  @media (max-height: 1024px) {
+    height: 93vh;
+  }
   > .profileContent {
     padding: 80px 100px;
     border: 1px solid $gray-800;

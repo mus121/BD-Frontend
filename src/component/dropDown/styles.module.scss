@@ -5,6 +5,7 @@
 .dropDown {
   position: absolute;
   max-height: 345px;
+  width: 653px;
   overflow-y: auto;
   overflow-x: hidden;
   background: $gray-800;
@@ -12,6 +13,7 @@
   border-radius: 8px;
   margin-top: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
   > .section {
     > .sectionTitle {
       padding: 8px 16px;

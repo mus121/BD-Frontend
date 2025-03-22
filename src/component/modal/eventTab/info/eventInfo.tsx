@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import EventImapct from '../impact/index';
 import EventImplication from '../implication/index';
 
-export default function EventInfo({ score, roleDescription, title_reasoning }: EventsDetail) {
+export default function EventInfo({ score }: EventsDetail) {
   return (
     <div className={styles.eventDetail}>
       <News
@@ -16,7 +16,7 @@ export default function EventInfo({ score, roleDescription, title_reasoning }: E
       <EventDetails
         title='Spencer Stuart Enters Strategic Partnership with AI-powered Firm Qlu'
         description='QLU recently secured a $20M Series B funding from XYZ Ventures,
-         suggesting they’re looking to scale rapidly.'
+       suggesting they’re looking to scale rapidly.'
         tag='Strategic Partnerships'
       />
       <EventImapct score={score} />
@@ -28,15 +28,11 @@ export default function EventInfo({ score, roleDescription, title_reasoning }: E
         buttonText='READ NOW'
       />
       <EventDetails
-        title={roleDescription?.Heading}
-        description={roleDescription?.Summary}
+        title='Appointed as CEO of New AI Venture - QLU.ai'
+        description='Exciting Leadership Change: To Drive Innovation and Growth as CEO of New AI Company'
         tag='Leadership and People'
       />
-      <EventImplication
-        score={score}
-        title_reasoning={title_reasoning}
-        roleDescription={undefined}
-      />
+      <EventImplication score={score} />
     </div>
   );
 }

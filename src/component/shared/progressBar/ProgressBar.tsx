@@ -1,7 +1,7 @@
 import ImpactButton from '../button/ImpactButton';
 import styles from './styles.module.scss';
 
-function ProgressBar({ score }: { score: number }) {
+export default function ProgressBar({ score }: { score: number }) {
   const segments = Array.from({ length: 10 }, (_, index) => index + 1);
 
   return (
@@ -29,5 +29,3 @@ function ProgressBar({ score }: { score: number }) {
     </>
   );
 }
-
-export default ProgressBar;

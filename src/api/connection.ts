@@ -40,12 +40,12 @@ export const connectionCount = async (): Promise<ConnectionCount | undefined> =>
   }
 };
 
-export const fetchConnection = async (userId: string) => {
+export const fetchConnection = async (userId: number) => {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/private/linkedin/connection?userId=${userId}`;
   try {
     const response = await getApi(apiUrl);
-    if (response.data)
-      return response?.data.map(
+    if (response?.response?.data)
+      return response?.response?.data.map(
         ({ public_identifier }: { public_identifier: string }) => public_identifier,
       );
     return [];
@@ -55,7 +55,7 @@ export const fetchConnection = async (userId: string) => {
 };
 
 export const retrieveConnection = async (
-  userId: string,
+  userId: number,
   publicIdentifier: string,
   entityUrn: string,
   connectionStatus: boolean,
@@ -77,19 +77,14 @@ export const retrieveConnection = async (
 };
 
 export const retrieveProfile = async (
-  userId: string,
+  userId: number,
   firstName: string,
   lastName: string,
   publicIdentifier: string,
   entityUrn: string,
 ) => {
   try {
-    if (!userId) {
-      console.error('Error: User ID is missing.');
-      return;
-    }
-
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL ?? ''}/private/linkedin/profile`;
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/private/linkedin/profile`;
     const requestBody = {
       userId,
       firstName,

@@ -11,9 +11,7 @@ export default function Modal({
   personLocation,
   personTitle,
   personCompany,
-  score,
-  roleDescription,
-  title_reasoning,
+  companyScore,
   children,
 }: ModalProps) {
   if (!isOpen) return null;
@@ -34,13 +32,9 @@ export default function Modal({
           personLocation={personLocation}
           personTitle={personTitle}
           personCompany={personCompany}
-          score={score}
+          score={companyScore}
         />
-        <EventsTab
-          score={score}
-          roleDescription={roleDescription}
-          title_reasoning={title_reasoning}
-        />
+        <EventsTab score={companyScore} />
         {children}
       </div>
     </div>

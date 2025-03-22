@@ -1,7 +1,6 @@
 import { useAppSelector } from '../../../hooks/rtk';
 import ProfileImage from '@/component/shared/profileImage/ProfileImages';
 import Location from '@/component/shared/svg/Location';
-import Home from '@/component/shared/svg/Home';
 import { usefetchLocation } from '@/hooks/connection/location';
 import styles from './styles.module.scss';
 
@@ -45,16 +44,8 @@ export default function LiProfileCard() {
         <div className={styles.location}>
           <Location size={20} />
           <h5 className={styles.location}>
-            {typeof fetchLiUserLocation === 'string'
-              ? fetchLiUserLocation
-              : 'Location not available'}
+            {typeof fetchLiUserLocation === 'string' ? fetchLiUserLocation : ''}
           </h5>
-        </div>
-        <div className={styles.university}>
-          <span className={styles.home}>
-            <Home size={16} />
-          </span>
-          <h5 className={styles.education}>University of Calicut</h5>
         </div>
       </div>
     </div>

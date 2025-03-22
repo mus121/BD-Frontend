@@ -2,39 +2,38 @@
 @import '../../styles/mixin';
 @import '../../styles/fonts';
 
-.suggestProfile {
+.conatiner {
   box-sizing: border-box;
   margin-top: 32px;
   flex-direction: column;
   display: flex;
   gap: 24px;
-  width: 1000px;
+  width: 904px;
   margin-left: auto;
   margin-right: auto;
-  > .suggestHeading {
+  > .heading {
     @include space-between();
-    .networkHeading {
+    > .expandNetwork {
       @include font-semibold-3xl();
       color: $gray-10;
     }
   }
-  > .suggestDescription {
-    .networkDescription {
+  > .description {
+    > .expandNetworkDescription {
       width: fit-content;
       color: $gray-100;
       @include font-normal();
     }
   }
-  > .suggestTop {
-    .suggestConnection {
+  .top {
+    .connection {
       @include space-between();
-      .searchAndfilterContainer {
-        width: 487px;
+      .profileConnection {
         height: 40px;
         gap: 16px;
         @include space-between();
       }
-      > .profileHead {
+      .filter {
         @include font-semibold-xl();
         color: $gray-10;
       }

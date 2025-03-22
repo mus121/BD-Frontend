@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import AiProfiles from '@/component/shared/aiProfile/index';
 import AiBussinessImpact from '@/component/shared/bussinessImpact/index';
-import AiProgressBar from '@/component/shared/progressBar/ProgressBar';
-import { AiSuggestionCardProps } from '@/interfaces/aiProfile';
+import AiProgressBar from '@/component/shared/progressBar/index';
 import styles from './styles.module.scss';
-import Modal from '../../modal/index';
+import Modal from '@/component/modal/index';
+import { AiSuggestionCardProps } from '@/interfaces/aiProfile';
 
-export default function AiProfileCard({
+function AiSuggestionCard({
   personName,
   personLocation,
   personTitle,
@@ -49,35 +49,27 @@ export default function AiProfileCard({
         </div>
         <hr className={styles.separator} />
         <div className={styles.rightProfileCard}>
-          {companyScore !== null && (
-            <>
-              <AiBussinessImpact />
-              <AiProgressBar score={companyScore} />
-            </>
-          )}
+          <AiBussinessImpact />
+          <AiProgressBar score={companyScore} />
         </div>
       </div>
 
       {isModalOpen && (
         <Modal
+          onClose={handleModalClose}
+          isOpen
           personName={personName}
           personLocation={personLocation}
           personTitle={personTitle}
           personCompany={personCompany}
-          score={companyScore || 0}
-          roleDescription={roleDescription}
-          title_reasoning={title_reasoning}
-          onClose={handleModalClose}
-          isOpen
-        >
-          <div className={styles.ModalContent}>
-            <h3>Profile Details</h3>
-            <p>
-              More information about {personTitle} at {personCompany}...
-            </p>
-          </div>
-        </Modal>
+          score={companyScore}
+          roleDescription={undefined}
+          title_reasoning={undefined}
+          companyScore={0}
+        ></Modal>
       )}
     </>
   );
 }
+
+export default AiSuggestionCard;

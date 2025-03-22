@@ -1,4 +1,4 @@
-export type SuggestButtonProps = {
-  followprofile: string[];
-  handleButtonClick: () => void;
+export type labelSuggestionProps = {
+  connectionCheck: string[];
+  handleNextClick: () => void;
 };

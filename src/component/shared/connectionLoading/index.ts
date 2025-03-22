@@ -1,3 +1,3 @@
-import LiConnectionShimmerLoading from './LiConnectionShimmerLoading';
+import connectionShimmer from './connectionShimmer';
 
-export default LiConnectionShimmerLoading;
+export default connectionShimmer;

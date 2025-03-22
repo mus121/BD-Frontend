@@ -2,39 +2,33 @@
 @import '../../../styles/fonts';
 @import '../../../styles/mixin';
 
-.shimmerHead {
-  box-sizing: border-box;
-  margin-top: 32px;
-  flex-direction: column;
-  display: flex;
-  gap: 24px;
-  width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-
-  .profileHead {
-    .yourProfiles {
+.container {
+  > .profileHead {
+    max-height: 650px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    > .yourProfiles {
       @include space-between();
-      .profileLeft {
+      > .profileLeft {
         width: 173px;
         height: 30px;
         border-radius: 8px;
         background: $gray-800;
         @include shimmerAnimation();
       }
-      .cardFilter {
+      > .cardFilter {
         width: 487px;
         height: 40px;
         gap: 16px;
         @include space-between();
-        .profileRight {
+        > .profileRight {
           width: 331px;
           height: 40px;
           border-radius: 8px;
           background: $gray-800;
           @include shimmerAnimation();
         }
-        .filter {
+        > .filter {
           width: 140px;
           height: 40px;
           border-radius: 8px;
@@ -43,7 +37,7 @@
         }
       }
     }
-    .profileCardHead {
+    > .profileCardHead {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
@@ -51,17 +45,17 @@
       margin-top: 16px;
     }
   }
-  .footerHead {
+  > .pagination {
     @include space-between();
-    margin-top: -2px;
-    .leftFoot {
+    margin-top: 24px;
+    > .paginationLeft {
       width: 173px;
       height: 30px;
       border-radius: 8px;
       background: $gray-800;
       @include shimmerAnimation();
     }
-    .rightFoot {
+    > .paginationRight {
       width: 331px;
       height: 40px;
       border-radius: 8px;
@@ -71,7 +65,6 @@
   }
 }
 
-// Shimmer animation definition
 @keyframes shimmer {
   0% {
     background-position: -1500px 0;

@@ -11,7 +11,7 @@ export default function LiProfileButton() {
   const router = useRouter();
   const liProfile = () => {
     mutate();
-    router.push('/dashboard/follow');
+    router.push('/dashboard/connection');
   };
   return (
     <div className={styles.buttons}>

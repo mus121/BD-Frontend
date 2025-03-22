@@ -1,3 +1,3 @@
-import ConnectionCard from './card';
+import connectionCard from './card';
 
-export default ConnectionCard;
+export default connectionCard;

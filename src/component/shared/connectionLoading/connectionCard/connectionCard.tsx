@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 
-export default function LiConnectionCard() {
+export default function connectionCard() {
   return (
     <div className={styles.profileCard}>
       <div className={styles.container}>

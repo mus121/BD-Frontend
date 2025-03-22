@@ -19,10 +19,13 @@
     position: absolute;
     right: 0;
     top: 0;
+    max-height: 100vh;
+    overflow: auto;
+    overflow-x: hidden;
     > h2 {
       margin-bottom: 10px;
     }
-    > .closeIcon {
+    .closeIcon {
       position: absolute;
       top: 44px;
       right: 35px;

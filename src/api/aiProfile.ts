@@ -1,4 +1,4 @@
-import { postApi } from '@/utils/api';
+import { postApi, getApi } from '@/utils/api';
 import { fetchConnection } from './connection';
 
 export const findProfile = async (publicIdentifier: string) => {
@@ -20,7 +20,7 @@ export const findProfile = async (publicIdentifier: string) => {
   }
 };
 
-export const similarProfile = async (userId: string) => {
+export const similarProfile = async (userId: number) => {
   try {
     const followPublicIdentifier = userId ? await fetchConnection(userId) : 'Not';
 
@@ -49,5 +49,17 @@ export const similarProfile = async (userId: string) => {
   } catch (error) {
     console.error('Error fetching AI profile suggestions:', error);
     throw error;
+  }
+};
+
+export const aiProfile = async (): Promise<any[] | null> => {
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/private/aiProfile`;
+
+  try {
+    const response = await getApi(apiUrl);
+    return response ?? [];
+  } catch (error) {
+    console.error('Error fetching AI profiles:', error);
+    return null;
   }
 };

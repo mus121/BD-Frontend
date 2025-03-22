@@ -6,15 +6,15 @@
   display: flex;
   justify-content: space-evenly;
   padding: 20px 16px;
-  width: 488px;
-  height: 116px;
+  width: 480px;
+  height: 139px;
   border-radius: 16px;
   border: 1px solid $gray-800;
-  margin-top: -4px;
+  margin-top: 12px;
 
-  .container {
+  > .container {
     display: flex;
-    .profileImage {
+    > .profileImage {
       width: 48px;
       height: 48px;
       border-radius: 100px;
@@ -22,20 +22,20 @@
     }
     .profileData {
       margin-left: 12px;
-      .profileName {
+      > .profileName {
         width: 173px;
         height: 20px;
         border-radius: 4px;
         @include shimmerAnimation();
       }
-      .profileTitle {
+      > .profileTitle {
         width: 304px;
         height: 16px;
         border-radius: 4px;
         @include shimmerAnimation();
         margin-top: 12px;
       }
-      .profileLocation {
+      > .profileLocation {
         width: 173px;
         height: 20px;
         border-radius: 4px;
@@ -44,7 +44,7 @@
       }
     }
   }
-  .profileButton {
+  > .profileButton {
     width: 80px;
     height: 34px;
     border-radius: 8px;

@@ -2,12 +2,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 16px;
+  width: 904px;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @media (max-width: 1024px) {
     max-width: 850px;
     justify-content: center;
-    max-height: 640px;
+    max-height: 570px;
     overflow: auto;
     overflow-x: hidden;
   }
