@@ -4,6 +4,7 @@ import appReducer from '../slices/extension';
 import miniProfileReducer from '../slices/miniProfile';
 import aiFindSuggestProfilesReducer from '../slices/aiProfile';
 import liConnectionProfilesReducer from '../slices/connection';
+import stepComponentReducer from '../slices/steps';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     popup: popupReducer,
     aiFindSuggestProfiles: aiFindSuggestProfilesReducer,
     dropDownProfiles: liConnectionProfilesReducer,
+    stepComponent: stepComponentReducer,
   },
 });
 export const selectMiniProfile = (state: RootState) => state.profile.response.miniProfile;

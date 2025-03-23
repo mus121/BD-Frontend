@@ -29,16 +29,16 @@ export type TMiniProfile = {
 export type Profile = {
   id: number;
   firstName: string;
-  lastName?: string;
+  lastName: string;
   headline: string;
-  profilePicture: string | undefined | null;
+  profilePicture: string;
   entityUrn: string | undefined;
   publicIdentifier: string | undefined | null;
 };
 
 export type ProfileProps = {
   profile: Profile;
-  followProfile: string[];
+  // followProfile: string[];
   setFollowProfile: React.Dispatch<React.SetStateAction<string[]>>;
 };
 

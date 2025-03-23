@@ -1,0 +1,114 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+
+.container {
+  > .addLabel {
+    background: none;
+    border: 1px solid $Orange-500;
+    color: $Orange-500;
+    padding: 10px 20px;
+    width: 354px;
+    @include font-sm();
+  }
+
+  > .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > .profileHeading {
+      @include font-semibold-3xl();
+    }
+  }
+}
+
+.addLabel {
+  background: none;
+  border: none;
+  color: $Orange-500;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.labelsList {
+  margin-top: 24pxpx;
+}
+
+.labelItem {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid $gray-700;
+  gap: 10px;
+  margin-top: 16px;
+  width: 353px;
+  height: 72px;
+  padding: 16px 12px;
+  background: $Gradient-Grey-Black;
+
+  span {
+    flex-grow: 1;
+    @include font-semibold();
+    color: $gray-25;
+  }
+
+  .editButton {
+    background: $gray-800;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.editMode,
+.addMode {
+  display: flex;
+  align-items: center;
+  padding: 16px 12px;
+  border-radius: 8px;
+  border: 1px solid $gray-700;
+  width: 355px;
+  height: 72px;
+  margin-top: 16px;
+  gap: 10px;
+  background: $Gradient-Grey-Black;
+
+  .input {
+    background: $gray-800;
+    border: none;
+    border-radius: 8px;
+    @include font-semibold();
+    color: $gray-25;
+    outline: none;
+    width: 241px;
+    height: 40px;
+    padding: 16px 12px;
+  }
+
+  > .buttonContainer {
+    display: flex;
+    > .close {
+      background: $gray-800;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid $gray-700;
+      cursor: pointer;
+      color: $gray-25;
+    }
+    > .click {
+      background: $gray-800;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      padding: 8px;
+      margin-left: 8px;
+      border: 1px solid $gray-700;
+      cursor: pointer;
+      color: $gray-25;
+    }
+  }
+}

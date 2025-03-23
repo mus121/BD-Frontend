@@ -1,4 +1,4 @@
-import { fetchConnection, retrieveConnection } from '@/api/connection';
+import { fetchConnection, retrieveConnection, fetchAllConnection } from '@/api/connection';
 import { FOLLOW_QUERY_KEYS } from '@/constant/query/processLi';
 import { useCurrentUser } from '@/hooks/user';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -10,11 +10,24 @@ export const useRetrieveConnection = (
   const { data } = useCurrentUser();
   const connectionMutationFunc = async (action: {
     follow: boolean;
+    firstName: string;
+    lastName: string;
+    headline: string;
+    profilePicture: string;
     identifier: string;
     entityUrn: string;
   }) => {
     if (data?.id) {
-      return retrieveConnection(data?.id, action.identifier, action.entityUrn, action.follow);
+      return retrieveConnection(
+        data?.id,
+        action.firstName,
+        action.lastName,
+        action.headline,
+        action.profilePicture,
+        action.identifier,
+        action.entityUrn,
+        action.follow,
+      );
     }
     throw new Error('User ID is null');
   };
@@ -38,7 +51,6 @@ export const useRetrieveConnection = (
           ? [...prev, variables.identifier]
           : prev.filter(value => value !== variables.identifier),
       );
-
       return { previousFollowProfiles };
     },
     onError: (error, variables, context) => {
@@ -59,6 +71,20 @@ export const useFetchConnection = () => {
     queryKey: FOLLOW_QUERY_KEYS.followProfiles,
     queryFn: () =>
       data?.id ? fetchConnection(data?.id) : Promise.reject(new Error('User ID is null')),
+    staleTime: Infinity,
+    gcTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
+  return query;
+};
+
+export const useFetchAllConnection = () => {
+  const { data } = useCurrentUser();
+  const query = useQuery({
+    queryKey: FOLLOW_QUERY_KEYS.fetchAllConnection,
+    queryFn: () =>
+      data?.id ? fetchAllConnection(data?.id) : Promise.reject(new Error('User ID is null')),
     staleTime: Infinity,
     gcTime: Infinity,
     refetchOnMount: false,

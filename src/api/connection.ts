@@ -54,8 +54,22 @@ export const fetchConnection = async (userId: number) => {
   }
 };
 
+export const fetchAllConnection = async (userId: number) => {
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/private/linkedin/connection?userId=${userId}`;
+  try {
+    const response = await getApi(apiUrl);
+    if (response?.response?.data) return response?.response?.data;
+  } catch (error) {
+    return null;
+  }
+};
+
 export const retrieveConnection = async (
   userId: number,
+  firstName: string,
+  lastName: string,
+  headline: string,
+  profilePicture: string,
   publicIdentifier: string,
   entityUrn: string,
   connectionStatus: boolean,
@@ -63,6 +77,10 @@ export const retrieveConnection = async (
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/private/linkedin/follow`;
   const requestBody = {
     userId,
+    firstName,
+    lastName,
+    headline,
+    profilePicture,
     publicIdentifier,
     entityUrn,
     connectionStatus,

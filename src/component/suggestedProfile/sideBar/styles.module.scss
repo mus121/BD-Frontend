@@ -1,0 +1,18 @@
+@import '../../../styles/colors';
+@import '../../../styles/mixin';
+
+.sidebar {
+  width: 378px;
+  height: 755px;
+  padding: 16px;
+  background: $Gradient-Grey-Black;
+
+  > .addLabel {
+    background: none;
+    border: 1px solid $Orange-500;
+    color: $Orange-500;
+    padding: 10px 20px;
+    width: 354px;
+    @include font-sm();
+  }
+}

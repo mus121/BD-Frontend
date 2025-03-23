@@ -12,7 +12,7 @@ export default function List({
   setFollowProfile,
 }: ProfilesListProps) {
   const profileData = useSelector((state: RootState) => state.dropDownProfiles.profiles);
-  console.log('Follow Profiles Data', followProfile);
+
   return (
     <div className={styles.profileListContainer}>
       {profileData && renderGlobalProfiles([profileData], followProfile, setFollowProfile)}

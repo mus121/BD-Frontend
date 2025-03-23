@@ -22,7 +22,6 @@ function CustomCheckbox({ checked, onChange, disabled = false, size = 16, classN
         id={uniqueId}
         checked={checked}
         onChange={onChange}
-        aria-label='Enable'
         disabled={disabled}
       />
       <span

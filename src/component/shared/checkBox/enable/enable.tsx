@@ -10,20 +10,16 @@ export type CheckProps = {
   isFollowed: boolean;
 };
 
-const Check: React.FC<CheckProps> = ({ size = 16, className, onClick }) => {
-  const [isChecked, setIsChecked] = useState(false);
-
+const Check = ({ size = 16, className, onClick, isFollowed }: CheckProps) => {
   const handleCheckboxChange = () => {
-    setIsChecked(prev => !prev);
     if (onClick) {
       onClick();
     }
   };
-
   return (
     <div className={className}>
       <CustomCheckbox
-        checked={isChecked}
+        checked={isFollowed}
         onChange={handleCheckboxChange}
         size={size}
         className={className}

@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFetchConnection } from '@/hooks/profile/connection';
 import styles from './styles.module.scss';
-import NextButton from './button/index';
 import SearchProfile from '../search';
 import LiConnectionData from './data/index';
+import { setIsDisabledButton } from '@/slices/steps';
+import { useDispatch } from 'react-redux';
 
 export default function ConnectionProfile() {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -16,11 +17,12 @@ export default function ConnectionProfile() {
   const router = useRouter();
   const { data: connectionProfile } = useFetchConnection();
 
-  const handleNextClick = () => {
-    if (connectionProfile?.length >= 5) {
-      router.push('/dashboard/selected-profile');
-    }
-  };
+  const dispatch = useDispatch();
+  if (connectionProfile?.length >= 5) {
+    dispatch(setIsDisabledButton(false));
+  } else {
+    dispatch(setIsDisabledButton(true));
+  }
 
   return (
     <div className={styles.container}>
@@ -51,13 +53,6 @@ export default function ConnectionProfile() {
             setCurrentPage={setcurrentPage}
           />
         </div>
-      </div>
-
-      <div className={styles.nextButton}>
-        <NextButton
-          connectionCheck={connectionProfile}
-          handleNextClick={handleNextClick}
-        />
       </div>
     </div>
   );

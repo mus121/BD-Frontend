@@ -11,6 +11,11 @@ export type SearchBarProps = {
   setIsSearchActive: Dispatch<SetStateAction<any>>;
 };
 
+export type SearchBarV2Props = {
+  placeholder?: string;
+  onSearch: (query: string) => void;
+};
+
 export type DropDownProfiles = {
   publicIdentifier: string;
   entityUrn: string;

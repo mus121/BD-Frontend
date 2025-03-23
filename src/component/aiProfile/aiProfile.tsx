@@ -3,7 +3,7 @@
 'use client';
 
 import styles from './styles.module.scss';
-import Filters from '../filter';
+import Filters from '../suggestedProfile/filter';
 import AiSuggestDataProfiles from './profileData/index';
 
 export default function aiProfile() {

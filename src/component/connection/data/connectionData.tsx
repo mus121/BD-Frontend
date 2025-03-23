@@ -25,13 +25,12 @@ export default function ConnectionData({
 
   const { isLoading, error, data: mutualConnections } = useConnection(currentPage);
   const { data: totalConnectionData } = useConnectionCount();
-  const { data: followedProfiles } = useFetchConnection();
+  const { data: connectionProfiles } = useFetchConnection();
   const { data: globalSearchProfiles } = useGlobalProfile(searchQuery, currentPage, isSearchActive);
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  console.log('Fetch Connection', followedProfiles);
   useEffect(() => {
     if (globalSearchProfiles) {
       setGlobalProfiles(globalSearchProfiles);
@@ -57,7 +56,7 @@ export default function ConnectionData({
           mutualConnections={mutualConnections}
           globalProfiles={globalProfiles}
           setFollowProfile={setFollowProfile}
-          followProfile={followedProfiles}
+          followProfile={connectionProfiles}
         />
       )}
       {!profileData ? (

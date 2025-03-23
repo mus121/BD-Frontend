@@ -1,0 +1,16 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.container {
+  display: flex;
+  flex: auto;
+  > .back {
+    background-color: $gray-800;
+    color: $gray-100;
+    width: 77px;
+    height: 37px;
+    margin: 16px;
+    border: 1px solid $gray-500;
+  }
+}

@@ -9,17 +9,21 @@ export default function connectionCard({
   profile,
   followProfile = [],
   setFollowProfile,
-}: ProfileProps) {
+}: ProfileProps & { followProfile: string[] }) {
   const { firstName, lastName, headline, profilePicture, publicIdentifier, entityUrn } = profile;
 
   const isFollowed = followProfile.includes(publicIdentifier || '');
 
   const { mutateAsync: toggleFollow } = useRetrieveConnection(setFollowProfile);
-  const handleFollowToggle = async (): Promise<void> => {
+  const handleConnectionToggle = async (): Promise<void> => {
     if (!publicIdentifier || !entityUrn) {
       return;
     }
     await toggleFollow({
+      firstName,
+      lastName,
+      headline,
+      profilePicture,
       follow: !isFollowed,
       identifier: publicIdentifier,
       entityUrn,
@@ -32,7 +36,7 @@ export default function connectionCard({
         <Check
           size={28}
           className={styles.myCustomCheckbox}
-          onClick={handleFollowToggle}
+          onClick={handleConnectionToggle}
           isFollowed={isFollowed}
         />
         <div className={styles.cardBody}>
