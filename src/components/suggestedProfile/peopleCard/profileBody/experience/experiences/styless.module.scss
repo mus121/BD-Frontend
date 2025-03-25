@@ -3,35 +3,68 @@
 @import '../../../../../../styles/mixin';
 
 .experiencesContainer {
-  position: relative;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px 16px 0px 0px;
-  gap: 20px;
-  width: 100% !important;
-  margin-top: 16px;
-}
-.profileImage {
-  width: 34px;
-  height: 34px;
-}
-.right {
-  width: 187px;
-  height: 18px;
-  gap: 4px;
-}
-.title {
-  font-size: 12px;
-  font-weight: 500;
-  color: $gray-25;
-  @include fontAlpha();
-}
-.company {
-  background: none;
-  border: none;
-  font-size: 12px;
-  font-weight: 600;
-  color: $gray-300;
-  @include fontAlpha();
+  width: 345px;
+  height: 45px;
+  gap: 24px;
+  > .logoWrapper {
+    display: flex;
+    width: 299px;
+    height: 45px;
+    gap: 12px;
+
+    > .header {
+      width: 247px;
+      height: 45px;
+      gap: 1px;
+      position: relative;
+      bottom: 4px;
+      > .experienceDetails {
+        width: 270px;
+        height: 24px;
+        gap: 4px;
+        > .title {
+          @include fontAlpha();
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 150%;
+          letter-spacing: 0%;
+          color: $gray-25;
+        }
+        > .date {
+          @include fontAlpha();
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 125%;
+          letter-spacing: 0%;
+          color: $gray-300;
+        }
+      }
+    }
+  }
+  .profileImage {
+    width: 34px;
+    height: 34px;
+  }
+  .right {
+    width: 187px;
+    height: 18px;
+    gap: 4px;
+  }
+  .title {
+    font-size: 12px;
+    font-weight: 500;
+    color: $gray-25;
+    @include fontAlpha();
+  }
+  .company {
+    background: none;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: $gray-300;
+    @include fontAlpha();
+  }
 }

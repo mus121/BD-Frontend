@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { Profile } from './profile';
 
 export type SearchBarProps = {
+  setShowBackButton: boolean;
   placeholder?: string;
   onSearch: (query: string) => void;
   setProfiles: Dispatch<SetStateAction<DropDownProfiles[] | Profile[] | null>>;
@@ -33,6 +34,7 @@ export type ProfileItemProps = {
 export type DropdownProps = {
   searchQuery: string;
   setSearchProfile: Dispatch<SetStateAction<DropDownProfiles[] | Profile[] | null>>;
+  setShowBackButton: Boolean;
 };
 
 export type ProfileSearchResponse = {

@@ -3,13 +3,13 @@
 @import '../../../../../styles/mixin';
 
 .profileCard {
-  width: 425px;
-  height: 96px;
-  gap: 12px;
+  border: 1px solid $gray-800;
+  width: 427px;
+  height: 120px;
   border-radius: 8px;
   border-width: 1px;
-  padding: 24px 16px;
-  border: 1px solid $gray-800;
+  gap: 12px;
+  padding: 32px 20px;
 
   > .container {
     display: flex;

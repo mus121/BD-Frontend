@@ -5,19 +5,26 @@
 .profileBody {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   width: 409px;
-  padding: 48px;
-  height: 298px;
-
+  height: 335px;
+  gap: 12px;
+  padding: 32px;
   > .experienceWrapper {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-
+    width: 345px;
+    height: 271px;
+    gap: 24px;
+    > .experienceHeading {
+      width: 345px;
+      height: 27px;
+    }
     > h3 {
-      font-size: 12px;
-      font-weight: 600;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 150%;
+      letter-spacing: 0%;
+      vertical-align: middle;
       color: $gray-25;
       @include fontAlpha();
     }

@@ -1,0 +1,68 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.selectedProfilesContainer {
+  width: 864px;
+  height: 124px;
+  gap: 16px;
+  > .selected {
+    > .select {
+      @include fontAlpha();
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: $gray-25;
+    }
+  }
+  > .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    > .profileItem {
+      height: 38px;
+      border-radius: 100px;
+      border-width: 1px;
+      gap: 12px;
+      padding: 4px 8px;
+      border: 1px solid $gray-500;
+      > .innerContainer {
+        height: 30px;
+        gap: 16px;
+        display: flex;
+        > .container {
+          height: 30px;
+          gap: 8px;
+          > .profileImage {
+            width: 30px;
+            height: 30px;
+            border-radius: 100px;
+          }
+          > .profileName {
+            @include fontAlpha();
+            font-family: Inter;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 150%;
+            letter-spacing: 0%;
+            color: white;
+            position: relative;
+            bottom: 10px;
+            left: 8px;
+          }
+        }
+        > button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          > .close {
+            margin-top: 3px;
+          }
+        }
+      }
+    }
+  }
+}

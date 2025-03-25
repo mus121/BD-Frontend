@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useFetchConnection } from '@/hooks/profile/connection';
+import { useFetchAllConnection, useFetchConnection } from '@/hooks/profile/connection';
 import styles from './styles.module.scss';
 import SearchProfile from '../search';
 import LiConnectionData from './data/index';
@@ -9,6 +9,7 @@ import { setIsDisabledButton } from '@/slices/steps';
 import { useDispatch } from 'react-redux';
 import LeftArrowSvg from '../shared/svg/LeftArrowsvg';
 import { clearProfiles } from '@/slices/connection';
+import SelectedProfilesList from './selectedProfile/selectedProfiles';
 
 export default function ConnectionProfile() {
   const [showBackButton, setShowBackButton] = useState(false);
@@ -17,6 +18,7 @@ export default function ConnectionProfile() {
   const [currentPage, setcurrentPage] = useState(0);
   const [golbalProfiles, setGolbalProfiles] = useState<any>(null);
   const { data: connectionProfile } = useFetchConnection();
+  const { data: fetchAllConnection } = useFetchAllConnection();
 
   const dispatch = useDispatch();
   if (connectionProfile?.length >= 5) {
@@ -46,8 +48,11 @@ export default function ConnectionProfile() {
               <LeftArrowSvg size={24} />
             </button>
           ) : null}
-          <h5 className={styles.heading}>LinkedIn Connections</h5>
-          <p className={styles.description}>Select 5 profiles to get started</p>
+          <h5 className={styles.heading}>Find & Connect with Trusted Professionals</h5>
+          <p className={styles.description}>
+            Easily browse your LinkedIn connections or explore professionals worldwide. Select 5
+            profiles to continue.
+          </p>
         </div>
         <div className={styles.contactProfile}>
           <SearchProfile
@@ -61,6 +66,10 @@ export default function ConnectionProfile() {
           />
         </div>
         <div className={styles.contactTop}>
+          {fetchAllConnection && <SelectedProfilesList selectedProfiles={fetchAllConnection} />}
+          <div className={styles.linkedIn}>
+            <h2 className={styles.heading}>LinkedIn Connections</h2>
+          </div>
           <LiConnectionData
             globalProfiles={golbalProfiles}
             setGlobalProfiles={setGolbalProfiles}

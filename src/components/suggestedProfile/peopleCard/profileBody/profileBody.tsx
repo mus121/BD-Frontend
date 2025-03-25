@@ -5,7 +5,9 @@ const ProfileBody = () => {
   return (
     <div className={styles.profileBody}>
       <div className={styles.experienceWrapper}>
-        <h3>Experience</h3>
+        <div className={styles.experienceHeading}>
+          <h3>Experience</h3>
+        </div>
         <Experiences />
       </div>
     </div>

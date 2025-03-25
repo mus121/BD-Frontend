@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import ProfileImage from '@/components/shared/profileImage';
 import styles from './styles.module.scss';
 import SecondaryButton from '@/components/shared/button/SecondaryButton';
@@ -16,31 +15,34 @@ const ProfileInfo = () => {
     <div className={styles.profileInfo}>
       <div className={styles.profileContainer}>
         <div className={styles.profilePictureWrapper}>
-          <div className={styles.profileCard}></div>
-          <ProfileImage
-            src='/assets/images/LiDefault.png'
-            alt=''
-            className={styles.image}
-            width={120}
-            height={120}
-          />
-        </div>
-        <div className={styles.container}>
-          <div className={styles.name}>
-            <button
-              type='button'
-              className={styles.titleSection}
-              onClick={handleOpenModal}
-            >
-              Mustafa kamal
-            </button>
+          <div className={styles.profileCard}>
+            <div className={styles.image}>
+              <ProfileImage
+                src='/assets/images/Helene Engels.png'
+                alt=''
+                width={100}
+                height={100}
+              />
+            </div>
+            <div className={styles.container}>
+              <div className={styles.name}>
+                <button
+                  type='button'
+                  className={styles.titleSection}
+                  onClick={handleOpenModal}
+                >
+                  Mustafa kamal
+                </button>
+              </div>
+              <div className={styles.title}>
+                <p>Account Manager at MasterCard</p>
+              </div>
+              <div className={styles.containerLocation}>
+                <p className={styles.location}>New York Metropolitan Area</p>
+              </div>
+            </div>
           </div>
-          <span className={styles.title}>
-            <p>Account Manager at MasterCard</p>
-          </span>
-          <p className={styles.location}>New York Metropolitan Area</p>
         </div>
-
         <div className={styles.viewProfile}>
           <SecondaryButton
             colorVariant='lightGray'

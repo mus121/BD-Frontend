@@ -4,12 +4,14 @@
 
 .container {
   @include justify-space-between();
-  width: 425px;
-  height: 96px;
-  padding: 24px 16px;
   border: 1px solid $gray-700;
+  width: 427px;
+  height: 120px;
   border-radius: 8px;
-  margin-top: 24px;
+  border-width: 1px;
+  gap: 12px;
+  padding: 32px 20px;
+  margin-bottom: 16px;
 
   > .profileInfo {
     width: 353px;

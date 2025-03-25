@@ -1,11 +1,10 @@
 @import '../../../styles/colors';
 @import '../../../styles/mixin';
 
-.sidebar {
+.container {
   width: 378px;
-  height: 755px;
-  padding: 16px;
-  background: $Gradient-Grey-Black;
+  height: 893px;
+  background: linear-gradient(212.26deg, rgba(73, 73, 73, 0.2) 0%, rgba(73, 73, 73, 0) 99.04%);
 
   > .addLabel {
     background: none;

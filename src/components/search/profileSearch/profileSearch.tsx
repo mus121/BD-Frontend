@@ -37,7 +37,6 @@ export default function SearchBar({
   };
 
   const handleClearInput = () => {
-    setShowBackButton(false);
     setSearchQuery('');
     onSearch('');
     setIsDropdownOpen(false);
@@ -45,6 +44,7 @@ export default function SearchBar({
     setcurrentPage(0);
     setIsSearchActive(false);
     dispatch(clearProfiles());
+    setShowBackButton(false);
   };
 
   const handleBlur = () => {

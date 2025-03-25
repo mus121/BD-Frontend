@@ -12,7 +12,7 @@ export default function () {
       <main className={styles.expandNetwork}>
         <div className={styles.container}>
           <div className={styles.network}>
-            <h2 className={styles.exploreNetwork}>Explore and Build Network</h2>
+            <h2 className={styles.exploreNetwork}>Grow Your Professional Network</h2>
             <p className={styles.paragraph}>
               Here are profiles that match your professional vision.
             </p>

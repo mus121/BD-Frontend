@@ -16,7 +16,7 @@ export default function SearchProfile({
   const handleSearch = async (searchTerm: string) => {
     try {
       const GlobalProfiles = await fetchGlobalProfile(searchTerm);
-      setProfiles(GlobalProfiles);s
+      setProfiles(GlobalProfiles);
     } catch (error) {
       setProfiles(null);
     }

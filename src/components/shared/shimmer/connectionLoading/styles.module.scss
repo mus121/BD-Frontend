@@ -3,8 +3,9 @@
 @import '../../../../styles/mixin';
 
 .container {
+  width: 904px;
   > .profileHead {
-    max-height: 550px;
+    max-height: 540px;
     overflow-y: auto;
     overflow-x: hidden;
     > .yourProfiles {
@@ -41,8 +42,6 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
-      padding: 0px;
-      margin-top: 24px;
     }
   }
   > .pagination {

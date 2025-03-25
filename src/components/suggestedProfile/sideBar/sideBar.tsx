@@ -3,7 +3,7 @@ import ProfileSegments from './labels/index';
 
 const Sidebar = () => {
   return (
-    <aside className={styles.sidebar}>
+    <aside className={styles.container}>
       <ProfileSegments />
     </aside>
   );

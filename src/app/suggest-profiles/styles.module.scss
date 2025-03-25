@@ -1,5 +1,7 @@
 @import '../../styles/colors';
 @import '../../styles/mixin';
+@import '../../styles/fonts';
+
 .expandNetwork {
   margin: 24px 136px;
 }
@@ -8,12 +10,21 @@
 
   > .network {
     > .exploreNetwork {
-      @include font-semibold-3xl();
+      @include fontAlpha();
+      font-weight: 600;
+      font-size: 30px;
       color: $gray-10;
+      line-height: 150%;
+      letter-spacing: 0%;
+      vertical-align: middle;
     }
     > .paragraph {
-      @include font-sm();
-      color: $gray-50;
+      @include fontAlpha();
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 150%;
+      letter-spacing: 0%;
+      color: $gray-25;
       margin-top: 8px;
     }
   }

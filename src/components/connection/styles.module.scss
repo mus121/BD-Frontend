@@ -43,8 +43,21 @@
   .contactTop {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-
+    width: 878px;
+    gap: 24px;
+    margin-top: 32px;
+    > .linkedIn {
+      width: 878px;
+      height: 24px;
+      > .heading {
+        @include fontAlpha();
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+      }
+    }
     > .profile {
       @include font-semibold-xl();
       color: $gray-10;

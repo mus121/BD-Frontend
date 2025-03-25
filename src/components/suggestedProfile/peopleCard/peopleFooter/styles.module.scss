@@ -4,14 +4,42 @@
 
 .container {
   display: flex;
-  justify-content: flex-end;
-  > .followButton {
-    background: none;
-    color: $Orange-500;
-    width: 64px;
-    height: 34px;
-    border-radius: 8px;
-    border: 1px solid $Orange-500;
-    padding: 8px 12px;
+  width: 842px;
+  height: 40px;
+  justify-content: space-between;
+  > .notInterested {
+    width: 156px;
+    height: 24px;
+    gap: 24px;
+    > .not {
+      background: none;
+      border: none;
+      display: flex;
+      > .like {
+        position: relative;
+        top: 4px;
+      }
+      > .interest {
+        color: $gray-500;
+        @include fontAlpha();
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 125%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        margin-left: 8px;
+      }
+    }
+  }
+  > .follow {
+    > .followButton {
+      background: none;
+      color: $Orange-500;
+      width: 64px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid $Orange-500;
+      padding: 8px 12px;
+    }
   }
 }

@@ -1,3 +1,4 @@
+import Check from '@/components/shared/checkBox/enable/enable';
 import PeopleFooter from './peopleFooter/peopleFooter';
 import ProfileBody from './profileBody/profileBody';
 import ProfileInfo from './profileInfo/profileInfo';
@@ -7,20 +8,15 @@ const PeopleCard = () => {
   return (
     <div className={styles.peopleCardContainer}>
       <div className={styles.isViewedlabelContainer}>
-        <p>Linkedin Connection</p>
+        <p className={styles.linkedinConnection}>Linkedin Connection</p>
       </div>
-      {/* <div className={styles.header}>
-        <CardCheckBox
-          esId={profile._id}
-          key={profile.publicIdentifier}
-          index={count}
-        />
-      </div> */}
+      <Check size={28} />
+
       <div className={styles.peopleCard}>
         <div className={styles.details}>
           <ProfileInfo />
+          <ProfileBody />
         </div>
-        <ProfileBody />
       </div>
 
       <div className={styles.peopleFooter}>

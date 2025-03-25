@@ -2,44 +2,57 @@
 @import '../../../styles/mixin';
 
 .peopleCardContainer {
-  padding: 16px 0px 16px 16px;
+  width: 890px;
   border-radius: 8px;
-  border: 1px solid $gray-800;
-  background: linear-gradient(212.26deg, rgba(73, 73, 73, 0.2), rgba(73, 73, 73, 0) 99.04%);
-  position: relative;
-  height: 441px;
+  border-width: 1px;
+  padding: 24px;
+  background: $Gradient-Grey-Black;
+  border: 1px solid $gray-500;
   margin-top: 24px;
+  position: relative;
 
   > .isViewedlabelContainer {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    width: 842px;
     position: absolute;
-    top: 0;
-    right: 0;
+    right: 0px;
+    top: 0px;
     > p {
-      @include font-sm();
-      color: $gray-25;
-      height: 26px;
+      width: 179px;
+      height: 36px;
+      gap: 4px;
+      padding-top: 8px;
+      padding-right: 12px;
+      padding-bottom: 8px;
+      padding-left: 12px;
+      border-top-right-radius: 8px;
+      border-bottom-left-radius: 8px;
       background: rgba(0, 119, 181, 1);
-      border-radius: 0px 8px 0px 8px;
-      text-align: center;
-      padding: 4px 8px 4px 8px;
-      border: 1px solid rgba(0, 119, 181, 1);
+    }
+    > .heading {
+      font-family: Inter;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 150%;
+      letter-spacing: 0%;
+      vertical-align: middle;
     }
   }
   > .peopleCard {
-    box-sizing: border-box;
-    display: flex;
+    width: 842px;
     height: 335px;
-    // > .details {
-    //   margin-right: 24px;
-    // }
+    box-sizing: border-box;
+    > .details {
+      display: flex;
+    }
   }
   > .peopleFooter {
-    width: 724px;
-    height: 50px;
-    border-top: 1px solid $gray-800;
+    width: 842px;
+    height: 56px;
+    justify-content: space-between;
+    border-top-width: 1px;
     padding-top: 16px;
+    border-top: 1px solid $gray-800;
   }
 }

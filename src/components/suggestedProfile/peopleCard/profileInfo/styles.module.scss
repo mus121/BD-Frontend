@@ -8,6 +8,7 @@
   padding: 32px;
   border-right-width: 1px;
   border-right: 1px solid $gray-800;
+
   > .profileContainer {
     width: 251px;
     height: 242px;
@@ -15,72 +16,94 @@
     > .profilePictureWrapper {
       display: flex;
       justify-content: center;
-      padding: 14px;
+      > .profileCard {
+        width: 251px;
+        height: 202px;
+        border-radius: 8px;
+        gap: 16px;
+        > .image {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        > .container {
+          width: 251px;
+          height: 86px;
+          gap: 4px;
+          > .name {
+            margin-top: 16px;
+            height: 30px;
+            gap: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            > .titleSection {
+              @include fontAlpha();
+              color: $gray-25;
+              font-weight: 600;
+              font-size: 24px;
+              line-height: 125%;
+              letter-spacing: 0%;
+              text-align: center;
+              cursor: pointer;
+              background: none;
+              border: none;
+            }
+          }
+          > .title {
+            width: 316px;
+            height: 24px;
+            gap: 8px;
+            display: flex;
+            > p {
+              margin-top: 4px;
+              @include fontAlpha();
+              color: $gray-100;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 150%;
+              letter-spacing: 0%;
+              text-align: right;
+            }
+          }
+          > .containerLocation {
+            height: 24px;
+            margin-top: 4px;
+            display: flex;
+            justify-content: center;
+            > .location {
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 150%;
+              letter-spacing: 0%;
+              text-align: center;
+              color: $gray-100;
+              @include fontAlpha();
+            }
+          }
+        }
+      }
+    }
+    > .viewProfile {
+      width: 251px;
+      height: 28px;
+      border-radius: 8px;
+      gap: 8px;
+      padding-top: 2px;
+      padding-right: 4px;
+      padding-bottom: 2px;
+      padding-left: 4px;
+      display: flex;
+      justify-content: center;
+      > .viewFullProfile {
+        background: transparent;
+        color: $Orange-500;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0%;
+        @include fontAlpha();
+      }
     }
   }
-}
-.container {
-  width: 251px;
-  height: 86px;
-  gap: 4px;
-}
-.name {
-  height: 30px;
-  gap: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  > .titleSection {
-    @include fontAlpha();
-    color: $gray-25;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 125%;
-    letter-spacing: 0%;
-    text-align: center;
-    cursor: pointer;
-    background: none;
-    border: none;
-  }
-}
-.title {
-  display: flex;
-  justify-content: center;
-
-  > p {
-    margin-top: 4px;
-    @include font-sm();
-    color: $gray-100;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    letter-spacing: 0%;
-    text-align: right;
-  }
-}
-.location {
-  margin-top: 4px;
-  display: flex;
-  justify-content: center;
-  font-family: fontAlpha();
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  text-align: center;
-
-  color: $gray-100;
-  @include fontAlpha();
-}
-.viewProfile {
-  display: flex;
-  justify-content: center;
-}
-.viewFullProfile {
-  background: transparent;
-  color: $Orange-500;
-  font-size: 12px;
-  font-weight: 500;
-  @include fontAlpha();
 }
