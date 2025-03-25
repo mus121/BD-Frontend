@@ -1,0 +1,86 @@
+@import '../../../../styles/colors';
+@import '../../../../styles//mixin';
+@import '../../../../styles//fonts';
+
+.profileInfo {
+  width: 315px;
+  height: 306px;
+  padding: 32px;
+  border-right-width: 1px;
+  border-right: 1px solid $gray-800;
+  > .profileContainer {
+    width: 251px;
+    height: 242px;
+    gap: 12px;
+    > .profilePictureWrapper {
+      display: flex;
+      justify-content: center;
+      padding: 14px;
+    }
+  }
+}
+.container {
+  width: 251px;
+  height: 86px;
+  gap: 4px;
+}
+.name {
+  height: 30px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > .titleSection {
+    @include fontAlpha();
+    color: $gray-25;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 125%;
+    letter-spacing: 0%;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+}
+.title {
+  display: flex;
+  justify-content: center;
+
+  > p {
+    margin-top: 4px;
+    @include font-sm();
+    color: $gray-100;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+}
+.location {
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+  font-family: fontAlpha();
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+
+  color: $gray-100;
+  @include fontAlpha();
+}
+.viewProfile {
+  display: flex;
+  justify-content: center;
+}
+.viewFullProfile {
+  background: transparent;
+  color: $Orange-500;
+  font-size: 12px;
+  font-weight: 500;
+  @include fontAlpha();
+}

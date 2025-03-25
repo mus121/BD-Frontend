@@ -1,0 +1,39 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 501px;
+  padding: 16px 16px;
+  border: 1px solid $gray-600;
+  border-radius: 8px;
+  background-color: $gray-800;
+  .searchInput {
+    margin-left: 10px;
+    @include font-sm();
+    color: $gray-100;
+    background: none;
+    border: none;
+    width: 100%;
+    outline: none;
+  }
+}
+
+.clearButton {
+  position: absolute;
+  left: 450px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  color: $gray-25;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  &:hover {
+    background-color: $gray-700;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/mixin';
+@import '../../../../styles/fonts';
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  > .followButton {
+    background: none;
+    color: $Orange-500;
+    width: 64px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid $Orange-500;
+    padding: 8px 12px;
+  }
+}

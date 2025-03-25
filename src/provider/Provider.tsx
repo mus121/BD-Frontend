@@ -2,7 +2,7 @@
 
 import { Provider } from 'react-redux';
 import { store } from '../store/store';
-import Extensionsignal from '../component/extensionSignal/index';
+import Extensionsignal from '../components/extensionSignal/index';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (

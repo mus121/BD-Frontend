@@ -1,0 +1,27 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/fonts';
+@import '../../../../../styles/mixin';
+
+.container {
+  width: 904px;
+  height: 80px;
+  gap: 16px;
+  border-radius: 8px;
+  border-width: 1px;
+  padding: 24px 16px;
+  background: $Gradient-Grey-Black;
+  border: 1px solid $gray-700;
+  margin-top: 16px;
+  > .midContainer {
+    width: 872px;
+    height: 24px;
+    gap: 16px;
+    > .mid {
+      width: 776px;
+      height: 24px;
+      border-radius: 4px;
+      background: $gray-800;
+      @include shimmerAnimation();
+    }
+  }
+}

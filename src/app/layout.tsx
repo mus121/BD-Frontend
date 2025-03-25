@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import '../styles/main.scss';
 import '../styles/globals.scss';
+import 'qlu-20-ui-library/dist/build/index.css';
 import Providers from '../provider';
-import Navbar from '../component/header/header';
+import Navbar from '../components/header/header';
 import QueryProvider from './QueryProvider';
-import Extensionsignal from '../component/extensionSignal/index';
+import Extensionsignal from '../components/extensionSignal/index';
+import MultiSidebar from '@/components/multSlideBar/multiSlidebar';
 
 export const metadata: Metadata = {
   title: 'Bussiness Development App',
@@ -21,8 +23,10 @@ export default function RootLayout({
       <body>
         <QueryProvider>
           <Providers>
+            {/* TODO: Name Convention Fixed*/}
             <Extensionsignal />
             <Navbar />
+            <MultiSidebar />
             {children}
           </Providers>
         </QueryProvider>

@@ -1,0 +1,7 @@
+[submodule "src/components/sidebars"]
+	path = src/components/sidebars
+	url = git@github.com:dnnaeinc/qlu-global-components.git
+	branch = aneeq/init
+[submodule "src/components/sidebar"]
+	path = src/components/sidebar
+	url = git@github.com:dnnaeinc/qlu-global-components.git

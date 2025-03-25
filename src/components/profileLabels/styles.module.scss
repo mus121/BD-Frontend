@@ -1,0 +1,140 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+
+.container {
+  max-width: 904px;
+  width: 100%;
+  margin: auto;
+  margin-top: 24px;
+
+  > .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > .profileHeading {
+      @include font-semibold-3xl();
+    }
+  }
+}
+
+.addLabel {
+  background: none;
+  border: none;
+  color: $Orange-500;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.labelsList {
+  margin-top: 24pxpx;
+}
+
+.labelItem {
+  display: flex;
+  align-items: center;
+  padding: 24px 16px;
+  border-radius: 8px;
+  border: 1px solid $gray-700;
+  gap: 16px;
+  height: 96px;
+  margin-top: 16px;
+  background: $Gradient-Grey-Black;
+  input[type='checkbox'] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $Orange-500;
+    border-radius: 4px;
+    border: 1px solid $gray-600;
+    background: $gray-700;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 24px;
+
+    &:checked {
+      background-color: $Orange-500;
+      border-color: $Orange-500;
+      margin-bottom: 24px;
+    }
+
+    &:checked::after {
+      content: '✔'; //
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      color: black;
+    }
+  }
+  span {
+    flex-grow: 1;
+    @include font-semibold();
+    color: $gray-25;
+  }
+
+  .editButton {
+    background: $gray-800;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+    > .editIcon {
+    }
+  }
+}
+
+.editMode,
+.addMode {
+  display: flex;
+  align-items: center;
+  padding: 24px 16px;
+  border-radius: 8px;
+  border: 1px solid $gray-700;
+  gap: 16px;
+  height: 136px;
+  margin-top: 16px;
+  background: $Gradient-Grey-Black;
+
+  .input {
+    background: $gray-800;
+    border: none;
+    border-radius: 8px;
+    @include font-semibold();
+    color: $gray-25;
+    outline: none;
+    width: 768px;
+    height: 88px;
+    padding: 8px 12px;
+  }
+
+  > .buttonContainer {
+    display: flex;
+    margin-bottom: 54px;
+    > .close {
+      background: $gray-800;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid $gray-700;
+      cursor: pointer;
+      color: $gray-25;
+    }
+    > .click {
+      background: $gray-800;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      padding: 8px;
+      margin-left: 8px;
+      border: 1px solid $gray-700;
+      border: none;
+      cursor: pointer;
+      color: $gray-25;
+    }
+  }
+}

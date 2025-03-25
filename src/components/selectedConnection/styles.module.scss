@@ -1,0 +1,14 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+
+.container {
+  box-sizing: border-box;
+  width: 904px;
+  margin: auto;
+  > .selectedProfile {
+    margin-top: 24px;
+    > .selectedHeading {
+      @include font-semibold-3xl();
+    }
+  }
+}

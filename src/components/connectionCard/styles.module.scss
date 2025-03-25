@@ -1,0 +1,42 @@
+@import '../../styles/colors';
+@import '../../styles/fonts';
+@import '../../styles/mixin';
+
+.container {
+  @include justify-space-between();
+  width: 425px;
+  height: 96px;
+  padding: 24px 16px;
+  border: 1px solid $gray-700;
+  border-radius: 8px;
+  margin-top: 24px;
+
+  > .profileInfo {
+    width: 353px;
+    display: flex;
+    height: 48px;
+    > .myCustomCheckbox {
+      margin-top: 4px;
+    }
+    > .cardBody {
+      display: flex;
+      margin-left: 12px;
+      > .profileImage {
+        border-radius: 100px;
+      }
+      > .textInfo {
+        margin-left: 12px;
+        > .profileName {
+          @include font-semibold-sm();
+          color: $gray-10;
+        }
+        > .profileHeadline {
+          @include font-sm();
+          margin-top: 8px;
+          margin-left: 2px;
+          color: $gray-50;
+        }
+      }
+    }
+  }
+}

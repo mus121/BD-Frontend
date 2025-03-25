@@ -1,0 +1,14 @@
+.profileListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 874px;
+
+  @media (max-width: 1024px) {
+    max-width: 850px;
+    justify-content: center;
+    max-height: 570px;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+}

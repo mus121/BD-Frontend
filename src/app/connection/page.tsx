@@ -1,8 +1,8 @@
 'use client';
 
-import ConnectionProfile from '@/component/connection';
-import SelectedProfile from '@/component/selectedConnection';
-import ProfileLabels from '@/component/profileLabels/index';
+import ConnectionProfile from '@/components/connection';
+import SelectedProfile from '@/components/selectedConnection';
+import ProfileLabels from '@/components/profileLabels/index';
 import { useAppSelector } from '@/hooks/rtk';
 
 export default function Connection() {

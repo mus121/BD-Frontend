@@ -13,7 +13,7 @@ const useExtension = () => {
 
   const pollExtensionStatus = useCallback(async () => {
     try {
-      const response = await extensionMessage<{ signal: boolean }>(ExternalMessageEnum.MESSAGE);
+      const response = await extensionMessage<{ signal: boolean }>(ExternalMessageEnum.MESSAGE); // TODO: NAME WILL BE ExtentensionInstalled
       const isInstalled = response?.signal || false;
 
       if (isInstalled !== isExtensionInstalled) {

@@ -1,8 +1,8 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import NextButton from '@/component/shared/button/nextButton/index';
-import PreviousButton from '@/component/shared/button/previousButton/index';
+import NextButton from '@/components/shared/button/nextButton/index';
+import PreviousButton from '@/components/shared/button/previousButton/index';
 import { useAppSelector } from '@/hooks/rtk';
 import { decrementCurrentStep, incrementCurrentStep } from '@/slices/steps';
 import { useDispatch } from 'react-redux';
@@ -19,7 +19,7 @@ export default function RootLayout({
 
   const handleNextClick = () => {
     if (currentStep === 2) {
-      router.push('/suggestedProfile');
+      router.push('/suggest-profiles');
     } else {
       dispatch(incrementCurrentStep());
     }

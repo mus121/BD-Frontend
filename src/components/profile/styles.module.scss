@@ -1,0 +1,37 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+@import '../../styles/fonts';
+
+.profileCard {
+  @include center-flex;
+  height: 95vh;
+  width: 100%;
+
+  @media (max-height: 1024px) {
+    height: 93vh;
+  }
+  > .profileContent {
+    padding: 80px 100px;
+    border: 1px solid $gray-800;
+    border-radius: 16px;
+    @include justify-center;
+
+    > .profileData {
+      text-align: justify;
+      width: 500px;
+
+      > .title {
+        @include fontAlpha();
+        color: $white-color;
+        font-size: 36px;
+        line-height: 54px;
+        font-weight: 500;
+      }
+      > .description {
+        @include font-normal();
+        color: $gray-100;
+        margin-top: 16px;
+      }
+    }
+  }
+}

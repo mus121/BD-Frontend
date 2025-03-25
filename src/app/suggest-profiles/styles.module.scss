@@ -1,0 +1,31 @@
+@import '../../styles/colors';
+@import '../../styles/mixin';
+.expandNetwork {
+  margin: 24px 136px;
+}
+.container {
+  display: flex;
+
+  > .network {
+    > .exploreNetwork {
+      @include font-semibold-3xl();
+      color: $gray-10;
+    }
+    > .paragraph {
+      @include font-sm();
+      color: $gray-50;
+      margin-top: 8px;
+    }
+  }
+}
+.selectedContanier {
+  display: flex;
+  justify-content: space-between;
+  width: 772px;
+  margin-top: 24px;
+  > .searchAndFilter {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}

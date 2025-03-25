@@ -1,7 +1,0 @@
-@import '../../../../styles/colors';
-@import '../../../../styles/fonts';
-@import '../../../../styles/mixin';
-
-.scoresContainer {
-  @include justify-space-between();
-}

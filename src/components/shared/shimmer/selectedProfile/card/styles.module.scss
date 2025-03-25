@@ -1,0 +1,42 @@
+@import '../../../../../styles/colors';
+@import '../../../../../styles/mixin';
+
+.container {
+  display: flex;
+  width: 904px;
+  height: 120px;
+  gap: 12px;
+  border-radius: 8px;
+  border-width: 1px;
+  padding: 32px;
+  border: 1px solid $gray-700;
+  margin-top: 20px;
+
+  .image {
+    width: 56px;
+    height: 55px;
+    border-radius: 116px;
+    background: $gray-800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    @include shimmerAnimation();
+  }
+
+  .name {
+    width: 173px;
+    height: 25px;
+    border-radius: 4px;
+    background: $gray-800;
+    @include shimmerAnimation();
+  }
+  .description {
+    margin-top: 4px;
+    width: 732px;
+    height: 27px;
+    border-radius: 4px;
+    background: $gray-800;
+    @include shimmerAnimation();
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+@import '../../../styles/mixin';
+
+.container {
+  @include justify-space-between();
+  > .cardBody {
+    > .profileImage {
+      border-radius: 100px;
+    }
+    > .textInfo {
+      margin-left: 12px;
+      > .profileName {
+        @include font-semibold-sm();
+        color: $gray-10;
+      }
+      > .profileHeadline {
+        @include font-sm();
+        margin-top: 8px;
+        margin-left: 2px;
+        color: $gray-50;
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+import { useAppSelector } from '../../../hooks/rtk';
+import ProfileImage from '@/components/shared/profileImage/ProfileImages';
+import Location from '@/components/shared/svg/Location';
+import { usefetchLocation } from '@/hooks/connection/location';
+import styles from './styles.module.scss';
+
+export default function LiProfileCard() {
+  const miniProfile = useAppSelector(state => state.profile.miniProfile);
+  const { data: fetchLiUserLocation } = usefetchLocation(`${miniProfile.publicIdentifier}`);
+  const imgUrl = miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl
+    ? `${miniProfile.picture['com.linkedin.common.VectorImage'].rootUrl}${miniProfile.picture['com.linkedin.common.VectorImage'].artifacts[0]?.fileIdentifyingUrlPathSegment}`
+    : '';
+
+  return (
+    <div className={styles.linkedinCard}>
+      <div className={styles.linkedin}>
+        <ProfileImage
+          src='/assets/images/linkedIn.png'
+          width={16}
+          height={16}
+          alt='LinkedIn'
+        />
+        <h5 className={styles.linkedHeading}>LinkedIn</h5>
+      </div>
+      <div className={styles.cardData}>
+        <div className={styles.userImg}>
+          {imgUrl && (
+            <ProfileImage
+              src={imgUrl}
+              width={48}
+              height={48}
+              alt='Linkedin Profile User'
+              className={styles.userProfile}
+            />
+          )}
+        </div>
+        <div className={styles.head}>
+          <h5 className={styles.headName}>
+            {miniProfile.firstName} {miniProfile.lastName}
+          </h5>
+          <span className={styles.occupation}>{miniProfile.occupation}</span>
+        </div>
+      </div>
+      <div className={styles.cardLocation}>
+        <div className={styles.location}>
+          <Location size={20} />
+          <h5 className={styles.location}>
+            {typeof fetchLiUserLocation === 'string' ? fetchLiUserLocation : ''}
+          </h5>
+        </div>
+      </div>
+    </div>
+  );
+}

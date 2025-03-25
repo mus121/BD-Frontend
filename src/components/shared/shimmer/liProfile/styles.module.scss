@@ -1,0 +1,33 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/fonts';
+@import '../../../../styles/mixin';
+
+.container {
+  > .image {
+    width: 56px;
+    height: 56px;
+    border-radius: 116px;
+    background: $gray-800;
+    @include shimmerAnimation();
+  }
+  > .containerHead {
+    > .name {
+      width: 173px;
+      height: 23px;
+      border-radius: 4px;
+      @include shimmerAnimation();
+    }
+    > .title {
+      width: 173px;
+      height: 24px;
+      border-radius: 4px;
+      @include shimmerAnimation();
+    }
+  }
+  > .location {
+    width: 173px;
+    height: 24px;
+    border-radius: 4px;
+    @include shimmerAnimation();
+  }
+}
